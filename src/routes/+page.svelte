@@ -1,2 +1,6 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	// Optional: Load any homepage-specific data or logic here
+</script>
+
+<h1>Welcome to the Homepage!</h1>
+<p>This is the main page of the web application.</p>
