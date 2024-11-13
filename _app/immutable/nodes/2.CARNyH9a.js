@@ -1,1 +1,0 @@
-import"../chunks/disclose-version.Bg9kRutz.js";import"../chunks/legacy.CtaTdtmd.js";import{q as o}from"../chunks/runtime.DIM9elB8.js";import{a,t as p}from"../chunks/template.Dxu7jRSR.js";var m=p("<h1>Welcome to the Homepage!</h1> <p>This is the main page of the web application.</p>",1);function s(t){var e=m();o(2),a(t,e)}export{s as component};
