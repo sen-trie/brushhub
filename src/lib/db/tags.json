@@ -1,0 +1,12 @@
+[
+    { "name": "anime", "count": 100 },
+    { "name": "3d", "count": 100 },
+    { "name": "illustration", "count": 100 },
+    { "name": "character", "count": 100 },
+    { "name": "concept art", "count": 100 },
+    { "name": "fantasy", "count": 100 },
+    { "name": "landscape", "count": 100 },
+    { "name": "sci-fi", "count": 100 },
+    { "name": "realism", "count": 100 },
+    { "name": "portrait", "count": 100 }
+]

@@ -3,30 +3,35 @@
         "id": 1,
         "artist": 1,
         "imgSrc": "test.jpg",
-        "closed": false
+        "closed": false,
+        "tags": ["anime", "illustration"]
     },
     {
         "id": 2,
         "artist": 2,
         "imgSrc": "test.jpg",
-        "closed": true
+        "closed": true,
+        "tags": ["3d", "character"]
     },
     {
         "id": 3,
         "artist": 2,
         "imgSrc": "test.jpg",
-        "closed": true
+        "closed": true,
+        "tags": ["anime", "3d"] 
     },
     {
         "id": 4,
         "artist": 2,
         "imgSrc": "test.jpg",
-        "closed": true
+        "closed": true,
+        "tags": ["illustration", "concept art"] 
     },
     {
         "id": 5,
         "artist": 2,
         "imgSrc": "test.jpg",
-        "closed": true
+        "closed": true,
+        "tags": ["anime", "3d", "fantasy"] 
     }
 ]

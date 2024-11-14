@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { artworkDB }: ComponentProps<any> = $props();
+    let { updateDB }: ComponentProps<any> = $props();
     const images: any = import.meta.glob(['$lib/assets/artwork/**'], {
         eager: true,
         query: '?url',
@@ -9,7 +9,7 @@
 </script>
 
 <div class="grid grid-cols-4 gap-4">
-    {#each artworkDB as item}
+    {#each updateDB as item}
         <div class="relative overflow-hidden rounded-lg border bg-white shadow">
             <img
                 src={images['/src/lib/assets/artwork/' + item.imgSrc]}
