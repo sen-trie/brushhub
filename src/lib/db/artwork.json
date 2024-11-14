@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "artist": 1,
+        "imgSrc": "test.jpg",
+        "closed": false
+    },
+    {
+        "id": 2,
+        "artist": 2,
+        "imgSrc": "test.jpg",
+        "closed": true
+    },
+    {
+        "id": 3,
+        "artist": 2,
+        "imgSrc": "test.jpg",
+        "closed": true
+    },
+    {
+        "id": 4,
+        "artist": 2,
+        "imgSrc": "test.jpg",
+        "closed": true
+    },
+    {
+        "id": 5,
+        "artist": 2,
+        "imgSrc": "test.jpg",
+        "closed": true
+    }
+]
