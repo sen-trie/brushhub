@@ -1,19 +1,24 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import '../app.css';
 	import Header from '$lib/Header.svelte';
 	import Sidebar from '$lib/Sidebar.svelte';
-	import { writable } from 'svelte/store';
 
 	let { children } = $props();
 	let showSidebar = $state(false);
 
-	const toggleSidebar = () => showSidebar = !showSidebar;
+	const defaultValue = '';
+	const username = browser
+		? (window.localStorage.getItem('username') ?? defaultValue)
+		: defaultValue;
+
+	const toggleSidebar = () => (showSidebar = !showSidebar);
 </script>
 
 <div class="layout">
-	<Header toggleSidebar={toggleSidebar} />
+	<Header {toggleSidebar} username={username}/>
 	{#if showSidebar}
-		<Sidebar toggleSidebar={toggleSidebar} />
+		<Sidebar {toggleSidebar} username={username}/>
 	{/if}
 	<main class="content">
 		{@render children()}

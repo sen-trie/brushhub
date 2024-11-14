@@ -1,26 +1,25 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import { navigateTo } from '$lib/util';
 	import type { ComponentProps } from 'svelte';
 
-    let { toggleSidebar }: ComponentProps<any> = $props();
-
-	const defaultValue = '';
-	const username = browser
-		? (window.localStorage.getItem('username') ?? defaultValue)
-		: defaultValue;
-
+	let { toggleSidebar, username }: ComponentProps<any> = $props();
 </script>
 
 <header>
 	<nav>
 		<ul>
-            <li><button onclick={() => toggleSidebar()}>Sidebar</button></li>
+			<li><button onclick={() => toggleSidebar()}>Sidebar</button></li>
 			<li><button onclick={() => navigateTo('/')}>BrushHub</button></li>
-			<li><button onclick={() => navigateTo('/account')}>Account</button></li>
-            {#if !!username}
-                <p>Logged in as {username}</p>
-            {/if}
+			<li>
+				<button onclick={() => navigateTo('/account')}>
+					{#if !!username}
+						<p>Logged in as {username}</p>
+					{:else}
+						<p>Sign In</p>
+					{/if}
+				</button>
+			</li>
+			
 		</ul>
 	</nav>
 </header>
