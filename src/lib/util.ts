@@ -20,3 +20,9 @@ export function includesArray<T>(arr: T[], values: T[]): boolean {
     const set = new Set(arr); // O(arr + values) time complexity
     return values.every((v: T) => set.has(v));
 }
+
+export function filterArray<T>(arr: T[], filterFn: (item: T) => boolean): () => T[] {
+    return () => {
+        return arr.filter(filterFn);
+    };
+}

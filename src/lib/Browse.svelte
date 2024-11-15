@@ -1,11 +1,13 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     let { updateDB }: ComponentProps<any> = $props();
+
     const images: any = import.meta.glob(['$lib/assets/artwork/**'], {
         eager: true,
         query: '?url',
         import: 'default'
     });
+
 </script>
 
 <div class="grid grid-cols-4 gap-4">

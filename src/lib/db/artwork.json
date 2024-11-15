@@ -8,7 +8,7 @@
     },
     {
         "id": 2,
-        "artist": 2,
+        "artist": 1,
         "imgSrc": "test.jpg",
         "closed": true,
         "tags": ["3d", "character"]
@@ -18,20 +18,20 @@
         "artist": 2,
         "imgSrc": "test.jpg",
         "closed": true,
-        "tags": ["anime", "3d"] 
+        "tags": ["anime", "3d"]
     },
     {
         "id": 4,
         "artist": 2,
         "imgSrc": "test.jpg",
         "closed": true,
-        "tags": ["illustration", "concept art"] 
+        "tags": ["illustration", "concept art"]
     },
     {
         "id": 5,
         "artist": 2,
         "imgSrc": "test.jpg",
         "closed": true,
-        "tags": ["anime", "3d", "fantasy"] 
+        "tags": ["anime", "3d", "fantasy"]
     }
 ]
