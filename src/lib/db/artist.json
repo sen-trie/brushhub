@@ -10,9 +10,14 @@
         "following": 100,
         "avatar": "/images/anne-avatar.jpg",
         "coverImage": "/images/anne-cover.jpg",
-        "status": "Opening",
+        "status": true,
         "youtube": "youtube.com/@hungryanne",
-        "twitter": "x.com/hungry_anne"
+        "twitter": "x.com/hungry_anne",
+        "joined": "2024-01-15T00:00:00Z",
+        "satisfaction": 4.8,
+        "responseTime": "02:00:00",
+        "completionRate": 95,
+        "total": 120
     },
     {
         "id": 2,
@@ -25,8 +30,13 @@
         "following": 200,
         "avatar": "/images/artist2-avatar.jpg",
         "coverImage": "/images/artist2-cover.jpg",
-        "status": "Available",
+        "status": false,
         "youtube": "youtube.com/@artistname2",
-        "twitter": "x.com/artist_name2"
+        "twitter": "x.com/artist_name2",
+        "joined": "2023-07-01T00:00:00Z",
+        "satisfaction": 4.5,
+        "responseTime": "02:30:00",
+        "completionRate": 85,
+        "total": 45
     }
 ]

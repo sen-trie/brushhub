@@ -8,14 +8,14 @@
     const artist = data;
 
     let items = [
-        { 
-            label: "Overview",
+        {
+            label: 'Overview',
             value: 1,
             component: Overview,
             props: [artist]
         },
-        { 
-            label: "Browse",
+        {
+            label: 'Browse',
             value: 2,
             component: Portfolio,
             props: [artist]
@@ -23,34 +23,35 @@
     ];
 </script>
 
-<div class="w-full mx-auto p-4">
+<div class="mx-auto w-full p-4">
     <!-- Cover Image -->
-    <div 
-        class="header-section bg-cover bg-center p-6 text-black flex items-center"
+    <div
+        class="header-section flex items-center bg-cover bg-center p-6 text-black"
         style="background-image: url('{artist.coverImage}')"
     >
         <div class="profile-info flex items-center">
             <!-- Profile Avatar -->
-            <img src="{artist.avatar}" alt="{artist.name}" class="w-20 h-20 rounded-full" />
-            
+            <img src={artist.avatar} alt={artist.name} class="h-20 w-20 rounded-full" />
+
             <div class="profile-details ml-4">
                 <h1 class="profile-name text-2xl font-bold">{artist.name}</h1>
-                <span class="profile-status bg-green-500 text-white px-2 py-1 rounded text-sm mt-2 inline-block">
-                    {artist.status}
-                </span>
+                <span
+                    class="profile-status mt-2 inline-block rounded {artist.status ? "bg-green-500" : "bg-red-500"} px-2 py-1 text-sm text-white"
+                >
+                    {artist.status ? "Open" : "Closed"}
+                </span> 
                 <p class="profile-username text-gray-600">@{artist.username}</p>
-                <div class="profile-followers text-gray-500 text-sm mt-2">
+                <div class="profile-followers mt-2 text-sm text-gray-500">
                     <span>{artist.followers} Followers</span> •
                     <span>{artist.following} Following</span>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Tabs Component -->
-    <Tabs items={items} />
+    <Tabs {items} />
 </div>
 
 <style>
-
 </style>
