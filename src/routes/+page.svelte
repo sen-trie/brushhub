@@ -6,13 +6,18 @@
 
     const user = getUser();
 
+    let followersOnly = $state(false);
     let openTagOnly = $state(false);
     let tags: string[] = $state([]);
     let tagInput = $state('');
 
     let updateDB = $derived.by(
         filterArray(artworkDB, (art) => {
-            return includesArray(art.tags, tags) && (!openTagOnly || art.closed === false);
+            return (
+                includesArray(art.tags, tags) &&
+                (!openTagOnly || art.closed === false) &&
+                (!followersOnly || (user.isNotEmpty() && user.following.includes(art.artist)))
+            );
         })
     );
 
@@ -38,9 +43,25 @@
 <div class="container mx-auto flex px-4">
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
-            <h2 class="mr-4 text-2xl font-bold text-orange-500">Explore</h2>
-            {#if user}
-                <h3 class="text-2xl font-bold text-gray-400">Following</h3>
+            <button
+                class=
+                    "mr-4 text-2xl font-bold focus:outline-none
+                    {followersOnly === false ? "text-orange-500" : "text-gray-400 hover:text-orange-500"}
+                    "
+                onclick={() => (followersOnly = false)}
+            >
+                Explore
+            </button>
+            {#if user.isNotEmpty()}
+                <button
+                    class=
+                        "mr-4 text-2xl font-bold focus:outline-none
+                        {followersOnly === true ? "text-orange-500" : "text-gray-400 hover:text-orange-500"}
+                        "
+                    onclick={() => (followersOnly = true)}
+                >
+                    Following
+                </button>
             {/if}
         </div>
         <Browse {updateDB} />

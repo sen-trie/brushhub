@@ -12,11 +12,25 @@ export function stopPropagation(event: MouseEvent) {
     }
 }
 
+const defaultUser = {
+    id: 0,
+    username: '',
+    following: []
+};
+
 export function getUser() {
     const defaultValue = 1;
-    const storedId = browser ? (window.localStorage.getItem('username') ?? defaultValue) : defaultValue;
+    const storedId = browser
+        ? (window.localStorage.getItem('username') ?? defaultValue)
+        : defaultValue;
     const user = users.find((u) => u.id === storedId);
-    return user ?? {};
+    return {
+        ...defaultUser,
+        ...user,
+        isNotEmpty(): boolean {
+            return this.id !== 0;
+        }
+    };
 }
 
 export function includesArray<T>(arr: T[], values: T[]): boolean {

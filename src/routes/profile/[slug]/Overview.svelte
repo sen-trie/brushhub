@@ -7,8 +7,8 @@
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
-    const artistServices = services.filter((service) => 
-        service.artistId === artist.id && service.state === "published"
+    const artistServices = services.filter(
+        (service) => service.artistId === artist.id && service.state === 'published'
     );
 </script>
 

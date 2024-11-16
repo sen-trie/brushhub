@@ -36,10 +36,12 @@
             <div class="profile-details ml-4">
                 <h1 class="profile-name text-2xl font-bold">{artist.displayName}</h1>
                 <span
-                    class="profile-status mt-2 inline-block rounded {artist.status ? "bg-green-500" : "bg-red-500"} px-2 py-1 text-sm text-white"
+                    class="profile-status mt-2 inline-block rounded {artist.status
+                        ? 'bg-green-500'
+                        : 'bg-red-500'} px-2 py-1 text-sm text-white"
                 >
-                    {artist.status ? "Open" : "Closed"}
-                </span> 
+                    {artist.status ? 'Open' : 'Closed'}
+                </span>
                 <p class="profile-username text-gray-600">@{artist.username}</p>
                 <div class="profile-followers mt-2 text-sm text-gray-500">
                     <span>{artist.followers} Followers</span> •

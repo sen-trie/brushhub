@@ -11,7 +11,7 @@
 </script>
 
 <div class="layout">
-    <Header {toggleSidebar}/>
+    <Header {toggleSidebar} />
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}

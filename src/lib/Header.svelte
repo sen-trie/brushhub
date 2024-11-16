@@ -14,7 +14,7 @@
             <li><button onclick={() => navigateTo('/')}>BrushHub</button></li>
             <li>
                 <button onclick={() => navigateTo('/account')}>
-                    {#if !!user}
+                    {#if user.isNotEmpty()}
                         <p>{user.displayName}</p>
                     {:else}
                         <p>Sign In</p>

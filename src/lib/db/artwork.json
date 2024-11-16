@@ -29,7 +29,7 @@
     },
     {
         "id": 5,
-        "artist": 2,
+        "artist": 5,
         "imgSrc": "test.jpg",
         "closed": true,
         "tags": ["anime", "3d", "fantasy"]
