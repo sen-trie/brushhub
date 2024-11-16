@@ -46,7 +46,7 @@
         class="flex w-48 flex-col items-center border-r border-gray-300 bg-white p-4"
         onclick={(e) => stopPropagation(e)}
     >
-        <button onclick={() => toggleSidebar}>Sidebar</button>
+        <button onclick={() => toggleSidebar}>☰</button>
         <ul class="w-full space-y-2">
             {#each !!user ? menuItemsLogged : menuItemsNotLogged as item}
                 <li>

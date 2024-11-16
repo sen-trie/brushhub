@@ -2,39 +2,40 @@
     import { navigateTo } from '$lib/util';
     import type { ComponentProps } from 'svelte';
     import { page } from '$app/stores';
+    import Searchbar from './Searchbar.svelte';
 
     let { toggleSidebar }: ComponentProps<any> = $props();
     const user = $page.data.user;
 </script>
 
-<header>
-    <nav>
-        <ul>
-            <li><button onclick={() => toggleSidebar()}>Sidebar</button></li>
-            <li><button onclick={() => navigateTo('/')}>BrushHub</button></li>
-            <li>
-                <button onclick={() => navigateTo('/account')}>
-                    {#if user.isNotEmpty()}
-                        <p>{user.displayName}</p>
-                    {:else}
-                        <p>Sign In</p>
-                    {/if}
-                </button>
-            </li>
-        </ul>
+<header class="bg-gray-800 text-white py-3">
+    <nav class="container mx-auto flex items-center justify-between px-4">
+        <div class="flex items-center gap-4">
+            <button
+                class="text-white hover:text-orange-500"
+                onclick={() => toggleSidebar()}
+            >
+            ☰
+            </button>
+            <button
+                class="text-xl font-semibold text-white hover:text-orange-500"
+                onclick={() => navigateTo('/')}
+            >
+                BrushHub
+            </button>
+        </div>
+        <Searchbar />
+        <div>
+            <button
+                class="text-white hover:text-orange-500"
+                onclick={() => navigateTo('/account')}
+            >
+                {#if user.isNotEmpty()}
+                    <p>{user.displayName}</p>
+                {:else}
+                    <p>Sign In</p>
+                {/if}
+            </button>
+        </div>
     </nav>
 </header>
-
-<style>
-    header {
-        background-color: #333;
-        color: #fff;
-        padding: 1rem;
-        text-align: center;
-    }
-    nav ul {
-        display: flex;
-        gap: 1rem;
-        list-style: none;
-    }
-</style>
