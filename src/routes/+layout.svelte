@@ -1,5 +1,6 @@
 <script lang="ts">
     import '../app.css';
+
     import Header from '$lib/Header.svelte';
     import Sidebar from '$lib/Sidebar.svelte';
 
@@ -10,7 +11,7 @@
 </script>
 
 <div class="layout">
-    <Header {toggleSidebar} />
+    <Header {toggleSidebar}/>
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}

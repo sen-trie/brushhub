@@ -1,9 +1,10 @@
 <script lang="ts">
-    import { navigateTo, getUsername } from '$lib/util';
+    import { navigateTo } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { page } from '$app/stores';
 
     let { toggleSidebar }: ComponentProps<any> = $props();
-    const username = getUsername();
+    const user = $page.data.user;
 </script>
 
 <header>
@@ -13,8 +14,8 @@
             <li><button onclick={() => navigateTo('/')}>BrushHub</button></li>
             <li>
                 <button onclick={() => navigateTo('/account')}>
-                    {#if !!username}
-                        <p>Logged in as {username}</p>
+                    {#if !!user}
+                        <p>{user.displayName}</p>
                     {:else}
                         <p>Sign In</p>
                     {/if}

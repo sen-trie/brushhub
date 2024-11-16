@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { getUsername, includesArray, filterArray } from '$lib/util';
+    import { getUser, includesArray, filterArray } from '$lib/util';
     import artworkDB from '$lib/db/artwork.json';
     import tagsDB from '$lib/db/tags.json';
     import Browse from '$lib/Browse.svelte';
 
-    const username = getUsername();
+    const user = getUser();
 
     let openTagOnly = $state(false);
     let tags: string[] = $state([]);
@@ -39,7 +39,7 @@
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
             <h2 class="mr-4 text-2xl font-bold text-orange-500">Explore</h2>
-            {#if username}
+            {#if user}
                 <h3 class="text-2xl font-bold text-gray-400">Following</h3>
             {/if}
         </div>

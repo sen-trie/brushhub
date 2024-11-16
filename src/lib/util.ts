@@ -1,5 +1,6 @@
 import { goto } from '$app/navigation';
 import { browser } from '$app/environment';
+import users from '$lib/db/user.json';
 
 export function navigateTo(path: string) {
     goto(path);
@@ -11,9 +12,11 @@ export function stopPropagation(event: MouseEvent) {
     }
 }
 
-export function getUsername() {
-    const defaultValue = 'TEST';
-    return browser ? (window.localStorage.getItem('username') ?? defaultValue) : defaultValue;
+export function getUser() {
+    const defaultValue = 1;
+    const storedId = browser ? (window.localStorage.getItem('username') ?? defaultValue) : defaultValue;
+    const user = users.find((u) => u.id === storedId);
+    return user ?? {};
 }
 
 export function includesArray<T>(arr: T[], values: T[]): boolean {

@@ -31,10 +31,10 @@
     >
         <div class="profile-info flex items-center">
             <!-- Profile Avatar -->
-            <img src={artist.avatar} alt={artist.name} class="h-20 w-20 rounded-full" />
+            <img src={artist.avatar} alt={artist.displayName} class="h-20 w-20 rounded-full" />
 
             <div class="profile-details ml-4">
-                <h1 class="profile-name text-2xl font-bold">{artist.name}</h1>
+                <h1 class="profile-name text-2xl font-bold">{artist.displayName}</h1>
                 <span
                     class="profile-status mt-2 inline-block rounded {artist.status ? "bg-green-500" : "bg-red-500"} px-2 py-1 text-sm text-white"
                 >

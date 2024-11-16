@@ -1,8 +1,6 @@
 [
     {
         "id": 1,
-        "username": "hungry_anne",
-        "name": "Anne the Hungry",
         "bio": "I'm Anne, a digital artist who loves playing games on Steam. Feed me so I can buy more games. Follow for new updates and buy me some snacks!",
         "location": "Singapore",
         "languages": ["English", "Malay"],
@@ -21,8 +19,6 @@
     },
     {
         "id": 2,
-        "username": "artist_name2",
-        "name": "Artist Name 2",
         "bio": "Sample bio for Artist Name 2.",
         "location": "USA",
         "languages": ["English"],

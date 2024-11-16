@@ -1,16 +1,17 @@
 <script lang="ts">
-    import { navigateTo, stopPropagation, getUsername } from '$lib/util';
+    import { navigateTo, stopPropagation } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { page } from '$app/stores';
 
     const { toggleSidebar }: ComponentProps<any> = $props();
-    const username = getUsername();
+    const user = $page.data.user;
 
     const menuItemsLogged = [
         { name: 'Home', path: '/', iconClass: 'fas fa-home' },
         { name: 'Profile', path: '/profile', iconClass: 'fas fa-th-large' },
-        { name: 'Services', path: '/my-services', iconClass: 'fas fa-tools' },
-        { name: 'Dashboard', path: '/dashboard', iconClass: 'fas fa-tachometer-alt' },
-        { name: 'Commission', path: '/my-commission', iconClass: 'fas fa-boxes' },
+        { name: 'Services', path: '/services', iconClass: 'fas fa-tools' },
+        { name: 'Commission', path: '/commission', iconClass: 'fas fa-tachometer-alt' },
+        { name: 'Orders', path: '/orders', iconClass: 'fas fa-boxes' },
         { name: 'Settings', path: '/settings', iconClass: 'fas fa-cog' },
         { name: 'Log out', path: '/logout', iconClass: 'fas fa-sign-out-alt' }
     ];
@@ -47,7 +48,7 @@
     >
         <button onclick={() => toggleSidebar}>Sidebar</button>
         <ul class="w-full space-y-2">
-            {#each !!username ? menuItemsLogged : menuItemsNotLogged as item}
+            {#each !!user ? menuItemsLogged : menuItemsNotLogged as item}
                 <li>
                     <button
                         type="button"
