@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "service": 1,
+        "commissioner": 5,
+        "artist": 1,
+        "rating": 5,
+        "comment": "Artist was pleasant and helpful, making my comm exactly how I wanted!"
+    },
+    {
+        "id": 2,
+        "service": 2,
+        "commissioner": 4,
+        "artist": 1,
+        "rating": 4,
+        "comment": "Great work, just needed a few revisions."
+    },
+    {
+        "id": 3,
+        "service": 3,
+        "commissioner": 5,
+        "artist": 1,
+        "rating": 5,
+        "comment": "Received my order very fast!!"
+    },
+    {
+        "id": 4,
+        "service": 1,
+        "commissioner": 4,
+        "artist": 1,
+        "rating": 5,
+        "comment": "Very happy with the product."
+    }
+]

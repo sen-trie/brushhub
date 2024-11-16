@@ -2,6 +2,7 @@
     import Tabs from '$lib/Tabs.svelte';
     import Overview from './Overview.svelte';
     import Portfolio from './Portfolio.svelte';
+    import Review from './Review.svelte';
     import type { PageData } from './$types';
 
     let { data }: { data: PageData } = $props();
@@ -15,11 +16,17 @@
             props: [artist]
         },
         {
-            label: 'Browse',
+            label: 'Portfolio',
             value: 2,
             component: Portfolio,
             props: [artist]
-        }
+        },
+        {
+            label: 'Reviews',
+            value: 3,
+            component: Review,
+            props: [artist]
+        },
     ];
 </script>
 
@@ -36,11 +43,11 @@
             <div class="profile-details ml-4">
                 <h1 class="profile-name text-2xl font-bold">{artist.displayName}</h1>
                 <span
-                    class="profile-status mt-2 inline-block rounded {artist.status
+                    class="profile-status mt-2 inline-block rounded {artist.openCommission
                         ? 'bg-green-500'
                         : 'bg-red-500'} px-2 py-1 text-sm text-white"
                 >
-                    {artist.status ? 'Open' : 'Closed'}
+                    {artist.openCommission ? 'Open' : 'Closed'}
                 </span>
                 <p class="profile-username text-gray-600">@{artist.username}</p>
                 <div class="profile-followers mt-2 text-sm text-gray-500">
@@ -51,7 +58,6 @@
         </div>
     </div>
 
-    <!-- Tabs Component -->
     <Tabs {items} />
 </div>
 

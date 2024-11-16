@@ -7,9 +7,9 @@
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
 
-    let updateDB = $derived.by(filterArray(artworkDB, (art) => art.artist === artist.id));
+    let artDB = $derived.by(filterArray(artworkDB, (art) => art.artist === artist.id));
 </script>
 
 <div>
-    <Browse {updateDB} />
+    <Browse {artDB} />
 </div>

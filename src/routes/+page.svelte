@@ -1,6 +1,7 @@
 <script lang="ts">
     import { getUser, includesArray, filterArray } from '$lib/util';
     import artworkDB from '$lib/db/artwork.json';
+    import artistDB from '$lib/db/artist.json'
     import tagsDB from '$lib/db/tags.json';
     import Browse from '$lib/Browse.svelte';
 
@@ -11,11 +12,11 @@
     let tags: string[] = $state([]);
     let tagInput = $state('');
 
-    let updateDB = $derived.by(
+    let artDB = $derived.by(
         filterArray(artworkDB, (art) => {
             return (
                 includesArray(art.tags, tags) &&
-                (!openTagOnly || art.closed === false) &&
+                (!openTagOnly || artistDB.find((artist) => artist.id === art.artist)?.openCommission === false) &&
                 (!followersOnly || (user.isNotEmpty() && user.following.includes(art.artist)))
             );
         })
@@ -64,7 +65,7 @@
                 </button>
             {/if}
         </div>
-        <Browse {updateDB} />
+        <Browse {artDB} />
     </div>
     <div class="filter-panel ml-8 w-64 rounded-lg bg-gray-100 p-4 shadow">
         <button class="clear-button mb-4" onclick={clearFilters}>
