@@ -8,17 +8,17 @@
 
     const menuItemsLogged = [
         { name: 'Home', path: '/', iconClass: 'fas fa-home' },
-        { name: 'Profile', path: '/profile', iconClass: 'fas fa-th-large' },
-        { name: 'Services', path: '/services', iconClass: 'fas fa-tools' },
-        { name: 'Commission', path: '/commission', iconClass: 'fas fa-tachometer-alt' },
-        { name: 'Orders', path: '/orders', iconClass: 'fas fa-boxes' },
-        { name: 'Settings', path: '/settings', iconClass: 'fas fa-cog' },
-        { name: 'Log out', path: '/logout', iconClass: 'fas fa-sign-out-alt' }
+        { name: 'Profile', path: './profile', iconClass: 'fas fa-th-large' },
+        { name: 'Services', path: './services', iconClass: 'fas fa-tools' },
+        { name: 'Commission', path: './commission', iconClass: 'fas fa-tachometer-alt' },
+        { name: 'Orders', path: './orders', iconClass: 'fas fa-boxes' },
+        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' },
+        { name: 'Log out', path: './logout', iconClass: 'fas fa-sign-out-alt' }
     ];
 
     const menuItemsNotLogged = [
-        { name: 'Home', path: '/', iconClass: 'fas fa-home' },
-        { name: 'Sign In', path: '/account', iconClass: 'fas fa-th-large' }
+        { name: 'Home', path: './', iconClass: 'fas fa-home' },
+        { name: 'Sign In', path: './account', iconClass: 'fas fa-th-large' }
     ];
 
     function handleKeyPress(event: KeyboardEvent, path: string) {

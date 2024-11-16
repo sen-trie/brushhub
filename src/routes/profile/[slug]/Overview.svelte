@@ -70,9 +70,7 @@
             </div>
         </div>
 
-        <!-- Right Column: Featured Artworks and Services -->
         <div class="right-column flex w-full flex-col gap-6 md:w-2/3">
-            <!-- Featured Artworks Section -->
             <div class="featured-artworks rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Featured Artworks</h3>
                 <div class="artwork-grid mt-4 grid grid-cols-3 gap-4">

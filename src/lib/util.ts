@@ -1,5 +1,5 @@
-import { goto } from '$app/navigation';
 import { browser } from '$app/environment';
+import { goto } from '$app/navigation';
 import users from '$lib/db/user.json';
 
 export function navigateTo(path: string) {

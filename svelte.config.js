@@ -5,10 +5,12 @@ import { importAssets } from 'svelte-preprocess-import-assets';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
     kit: {
-        adapter: adapter(),
+        adapter: adapter({
+			fallback: '404.html'
+		}),
         paths: {
-            base: process.env.NODE_ENV === 'production' ? '/sentrie.github.io/brushhub' : ''
-        }
+            base: process.env.NODE_ENV === "production" ? "/brushhub" : ""
+        },
     },
     preprocess: [importAssets(), vitePreprocess()]
 };

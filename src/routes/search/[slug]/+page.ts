@@ -1,7 +1,14 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageLoad, EntryGenerator  } from './$types';
 import artworkDB from '$lib/db/artwork.json';
 import tagsDB from '$lib/db/tags.json';
+
+export const entries: EntryGenerator = async () => {
+	return [
+		{ slug: 'anime' },
+		{ slug: '3d' }
+	];
+};
 
 export const load: PageLoad = ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
@@ -10,18 +17,12 @@ export const load: PageLoad = ({ params }) => {
     if (!matchingTag) {
         throw error(404, 'No matching tag found for your search');
     }
-    
-    const artwork = artworkDB.filter((artwork) =>
-        artwork.tags.includes(matchingTag.name)
-    );
+
+    const artwork = artworkDB.filter((artwork) => artwork.tags.includes(matchingTag.name));
 
     if (artwork.length === 0) {
         throw error(404, 'No artworks found for the matching tag');
     }
-
-    
-    console.log(artwork)
-    console.log('SERVER ^^')
 
     return {
         artwork

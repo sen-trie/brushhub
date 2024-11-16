@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getUser, includesArray, filterArray } from '$lib/util';
     import artworkDB from '$lib/db/artwork.json';
-    import artistDB from '$lib/db/artist.json'
+    import artistDB from '$lib/db/artist.json';
     import tagsDB from '$lib/db/tags.json';
     import Browse from '$lib/Browse.svelte';
 
@@ -16,7 +16,9 @@
         filterArray(artworkDB, (art) => {
             return (
                 includesArray(art.tags, tags) &&
-                (!openTagOnly || artistDB.find((artist) => artist.id === art.artist)?.openCommission === false) &&
+                (!openTagOnly ||
+                    artistDB.find((artist) => artist.id === art.artist)?.openCommission ===
+                        false) &&
                 (!followersOnly || (user.isNotEmpty() && user.following.includes(art.artist)))
             );
         })
@@ -45,9 +47,10 @@
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
             <button
-                class=
-                    "mr-4 text-2xl font-bold focus:outline-none
-                    {followersOnly === false ? "text-orange-500" : "text-gray-400 hover:text-orange-500"}
+                class="mr-4 text-2xl font-bold focus:outline-none
+                    {followersOnly === false
+                    ? 'text-orange-500'
+                    : 'text-gray-400 hover:text-orange-500'}
                     "
                 onclick={() => (followersOnly = false)}
             >
@@ -55,9 +58,10 @@
             </button>
             {#if user.isNotEmpty()}
                 <button
-                    class=
-                        "mr-4 text-2xl font-bold focus:outline-none
-                        {followersOnly === true ? "text-orange-500" : "text-gray-400 hover:text-orange-500"}
+                    class="mr-4 text-2xl font-bold focus:outline-none
+                        {followersOnly === true
+                        ? 'text-orange-500'
+                        : 'text-gray-400 hover:text-orange-500'}
                         "
                     onclick={() => (followersOnly = true)}
                 >

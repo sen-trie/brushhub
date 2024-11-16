@@ -8,14 +8,11 @@
     const user = $page.data.user;
 </script>
 
-<header class="bg-gray-800 text-white py-3">
+<header class="bg-gray-800 py-3 text-white">
     <nav class="container mx-auto flex items-center justify-between px-4">
         <div class="flex items-center gap-4">
-            <button
-                class="text-white hover:text-orange-500"
-                onclick={() => toggleSidebar()}
-            >
-            ☰
+            <button class="text-white hover:text-orange-500" onclick={() => toggleSidebar()}>
+                ☰
             </button>
             <button
                 class="text-xl font-semibold text-white hover:text-orange-500"
@@ -26,10 +23,7 @@
         </div>
         <Searchbar />
         <div>
-            <button
-                class="text-white hover:text-orange-500"
-                onclick={() => navigateTo('/account')}
-            >
+            <button class="text-white hover:text-orange-500" onclick={() => navigateTo('/account')}>
                 {#if user.isNotEmpty()}
                     <p>{user.displayName}</p>
                 {:else}

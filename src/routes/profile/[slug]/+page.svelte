@@ -26,19 +26,17 @@
             value: 3,
             component: Review,
             props: [artist]
-        },
+        }
     ];
 </script>
 
 <div class="mx-auto w-full p-4">
-    <!-- Cover Image -->
     <div
         class="header-section flex items-center bg-cover bg-center p-6 text-black"
         style="background-image: url('{artist.coverImage}')"
     >
         <div class="profile-info flex items-center">
-            <!-- Profile Avatar -->
-            <img src={artist.avatar} alt={artist.displayName} class="h-20 w-20 rounded-full" />
+            <!-- <img src={artist.avatar} alt={artist.displayName} class="h-20 w-20 rounded-full" /> -->
 
             <div class="profile-details ml-4">
                 <h1 class="profile-name text-2xl font-bold">{artist.displayName}</h1>

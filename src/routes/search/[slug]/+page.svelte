@@ -6,13 +6,11 @@
 
     let { data }: { data: PageData } = $props();
 
-    console.log(data.artwork)
-
     let artDB = $state(data.artwork);
 
     $effect(() => {
         artDB = data.artwork;
-    })
+    });
 </script>
 
 <div class="mx-auto w-full p-4">

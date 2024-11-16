@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import artistDB from '$lib/db/artist.json'
+    import artistDB from '$lib/db/artist.json';
     let { artDB }: ComponentProps<any> = $props();
 
     const images: any = import.meta.glob(['$lib/assets/artwork/**'], {
