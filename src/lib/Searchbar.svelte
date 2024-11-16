@@ -1,10 +1,14 @@
 <script lang="ts">
     import tagsDB from '$lib/db/tags.json';
+    import { navigateTo } from './util';
+    import { page } from '$app/stores';
+    
+    const { slug } = $page.params
 
-    let searchQuery = '';
-    let showSuggestions = false;
-    let filteredTags: { name: string; count: number }[] = [];
-    let activeIndex = 0;
+    let searchQuery = $state(slug ?? '');
+    let showSuggestions = $state(false);
+    let filteredTags: { name: string; count: number }[] = $state([]);
+    let activeIndex = $state(0);
 
     function updateSuggestions() {
         activeIndex = 0; 
@@ -16,9 +20,9 @@
     }
 
     function selectTag(tagName: string) {
+        navigateTo(`/search/${tagName}`);
         searchQuery = tagName;
         showSuggestions = false;
-        activeIndex = 0;
     }
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -38,16 +42,16 @@
 </script>
 
 <div class="relative w-full max-w-lg mx-auto">
-    <!-- Search Input -->
     <input
         type="text"
         bind:value={searchQuery}
-        on:input={updateSuggestions}
-        on:keydown={handleKeyDown}
+        oninput={updateSuggestions}
+        onkeydown={handleKeyDown}
         placeholder="Search for tags..."
         class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
 
+    <!-- TODO -->
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     {#if showSuggestions}
         <ul
@@ -56,7 +60,7 @@
             {#each filteredTags as tag, index}
                 <li
                     class="flex justify-between items-center px-4 py-2 cursor-pointer text-gray-700 hover:bg-orange-100 {index === activeIndex ? 'bg-orange-100' : ''}"
-                    on:click={() => selectTag(tag.name)}
+                    onclick={() => selectTag(tag.name)}
                 >
                     <span>{tag.name}</span>
                     <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
