@@ -15,7 +15,8 @@
         "satisfaction": 4.8,
         "responseTime": "02:00:00",
         "completionRate": 95,
-        "total": 120
+        "total": 120,
+        "tags": ["anime", "concept art", "illustration"]
     },
     {
         "id": 2,
@@ -33,6 +34,7 @@
         "satisfaction": 4.5,
         "responseTime": "02:30:00",
         "completionRate": 85,
-        "total": 45
+        "total": 45,
+        "tags": ["portrait", "landscape", "realism"]
     }
 ]

@@ -1,20 +1,37 @@
 <script lang="ts">
-    import Tabs from '$lib/Tabs.svelte';
-    import Browse from '$lib/Browse.svelte';
-    import { page } from '$app/stores';
     import type { PageData } from './$types';
+    import Tabs from '$lib/Tabs.svelte';
+    import Artwork from './Artwork.svelte';
+    import Artists from './Artists.svelte';
+    import Service from './Service.svelte';
 
     let { data }: { data: PageData } = $props();
+    let items = [
+        {
+            label: 'Artworks',
+            value: 1,
+            component: Artwork,
+            props: [data]
+        },
+        {
+            label: 'Artists',
+            value: 2,
+            component: Artists,
+            props: [data]
+        },
+        {
+            label: 'Service',
+            value: 3,
+            component: Service,
+            props: [data]
+        },
+    ];
 
-    let artDB = $state(data.artwork);
-
-    $effect(() => {
-        artDB = data.artwork;
-    });
+    
 </script>
 
 <div class="mx-auto w-full p-4">
-    <Browse {artDB} />
+    <Tabs {items} />
 </div>
 
 <style>

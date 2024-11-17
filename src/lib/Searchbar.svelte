@@ -9,6 +9,7 @@
     let showSuggestions = $state(false);
     let filteredTags: { name: string; count: number }[] = $state([]);
     let activeIndex = $state(0);
+    let inputRef: HTMLInputElement | null = null; 
 
     function updateSuggestions() {
         activeIndex = 0;
@@ -17,6 +18,9 @@
         );
         showSuggestions = filteredTags.length > 0;
     }
+
+    // TODO 
+    // FIX TAG APPEARING IN SEARCH
 
     function selectTag(tagName: string) {
         navigateTo(`./search/${tagName}`);
@@ -37,12 +41,26 @@
             }
         }
     }
+
+    function handleClickOutside(event: MouseEvent) {
+        if (inputRef && !inputRef.contains(event.target as Node)) {
+            showSuggestions = false;
+        }
+    }
+
+    $effect(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    })
 </script>
 
 <div class="relative mx-auto w-full max-w-lg">
     <input
         type="text"
         bind:value={searchQuery}
+        bind:this={inputRef}
         oninput={updateSuggestions}
         onkeydown={handleKeyDown}
         placeholder="Search for tags..."
@@ -53,7 +71,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     {#if showSuggestions}
         <ul
-            class="absolute left-0 z-10 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
+            class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg "
         >
             {#each filteredTags as tag, index}
                 <li

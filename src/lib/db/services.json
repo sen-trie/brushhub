@@ -8,6 +8,7 @@
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "/images/high-quality-illustration.jpg",
         "samples": ["/images/sample1.jpg", "/images/sample2.jpg"],
+        "tags": ["illustration", "character", "fantasy"],
         "types": [
             {
                 "name": "Headshot",
@@ -94,6 +95,7 @@
         "description": "Black and white manga-style illustration.",
         "thumbnail": "/images/manga-thumbnail.jpg",
         "samples": ["/images/manga1.jpg", "/images/manga2.jpg"],
+        "tags": ["anime", "manga", "illustration"],
         "types": [
             {
                 "name": "Panel",
