@@ -3,11 +3,9 @@
     import Browse from '$lib/Browse.svelte';
 
     let { props }: ComponentProps<any> = $props();
-    const service = props[0].service;
-    
-    let serviceDB = $state(service);
+    let serviceDB = $state(props[0].service);
     $effect(() => {
-        serviceDB = service;
+        serviceDB = props[0].service;
     });
 
     $inspect(serviceDB)

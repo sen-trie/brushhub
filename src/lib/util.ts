@@ -2,8 +2,15 @@ import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import users from '$lib/db/user.json';
 
-export function navigateTo(path: string) {
-    goto(path);
+export function navigateTo(path: string, pageUrl: string) {
+    const segments = pageUrl?.split('/').filter(Boolean) ?? 0;
+    const prefix = '/..'.repeat(segments.length);
+    
+    if (segments.length > 0) {
+        path = path.replace('./', '/');
+    }
+
+    goto(`${prefix}${path}`);
 }
 
 export function stopPropagation(event: MouseEvent) {

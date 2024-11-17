@@ -5,11 +5,20 @@
 
     const { slug } = $page.params;
 
-    let searchQuery = $state(slug ?? '');
+    let pathName = $page.url.pathname;
+    let searchQuery = $state('');
     let showSuggestions = $state(false);
     let filteredTags: { name: string; count: number }[] = $state([]);
     let activeIndex = $state(0);
-    let inputRef: HTMLInputElement | null = null; 
+    let inputRef: HTMLInputElement | null = null;
+
+    function validateSlug(pathName: string): boolean {
+        return pathName.startsWith('/search/') && tagsDB.some(tag => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase());
+    }
+
+    if (validateSlug(pathName)) {
+        searchQuery = slug;
+    }
 
     function updateSuggestions() {
         activeIndex = 0;
@@ -19,11 +28,8 @@
         showSuggestions = filteredTags.length > 0;
     }
 
-    // TODO 
-    // FIX TAG APPEARING IN SEARCH
-
     function selectTag(tagName: string) {
-        navigateTo(`./search/${tagName}`);
+        navigateTo(`./search/${tagName}`, $page.url.pathname);
         searchQuery = tagName;
         showSuggestions = false;
     }
@@ -49,6 +55,8 @@
     }
 
     $effect(() => {
+        pathName = $page.url.pathname;
+
         document.addEventListener('click', handleClickOutside);
         return () => {
             document.removeEventListener('click', handleClickOutside);
@@ -69,22 +77,24 @@
 
     <!-- TODO -->
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
-    {#if showSuggestions}
-        <ul
-            class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg "
-        >
-            {#each filteredTags as tag, index}
-                <li
-                    class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
-                    activeIndex
-                        ? 'bg-orange-100'
-                        : ''}"
-                    onclick={() => selectTag(tag.name)}
-                >
-                    <span>{tag.name}</span>
-                    <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
-                </li>
-            {/each}
-        </ul>
-    {/if}
+    {#key $page.url}
+        {#if showSuggestions}
+            <ul
+                class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg "
+            >
+                {#each filteredTags as tag, index}
+                    <li
+                        class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
+                        activeIndex
+                            ? 'bg-orange-100'
+                            : ''}"
+                        onclick={() => selectTag(tag.name)}
+                    >
+                        <span>{tag.name}</span>
+                        <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
+    {/key}
 </div>

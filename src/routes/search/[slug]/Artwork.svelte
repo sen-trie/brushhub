@@ -2,12 +2,10 @@
     import type { ComponentProps } from 'svelte';
     import Browse from '$lib/Browse.svelte';
 
-    let { props }: ComponentProps<any> = $props();
-    const artwork = props[0].artwork;
-    
-    let artDB = $state(artwork);
+    let { props }: ComponentProps<any> = $props();    
+    let artDB = $state(props[0].artwork);
     $effect(() => {
-        artDB = artwork;
+        artDB = props[0].artwork;
     });
 
 </script>

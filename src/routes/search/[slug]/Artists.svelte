@@ -3,11 +3,9 @@
     import Browse from '$lib/Browse.svelte';
 
     let { props }: ComponentProps<any> = $props();
-    const artist = props[0].artist;
-    
-    let artistDB = $state(artist);
+    let artistDB = $state(props[0].artist);
     $effect(() => {
-        artistDB = artist;
+        artistDB = props[0].artist;
     });
 
     $inspect(artistDB)
