@@ -36,7 +36,7 @@
                         {/if}
                     </div>
                     <p class="text-sm text-gray-500">@{artist.username}</p>
-                    <p class="text-sm text-gray-700 font-medium">{artist.followers.length} Followers</p>
+                    <p class="text-sm text-gray-700 font-medium">{artist.artFollowers} Followers</p>
                 </div>
             </div>
 

@@ -3,30 +3,45 @@
         "id": 1,
         "artist": 1,
         "imgSrc": "test.jpg",
-        "tags": ["anime", "illustration"]
+        "tags": ["anime", "illustration"],
+        "datePosted": "2024-01-01T10:00:00Z",
+        "title": "Anime Character Illustration",
+        "description": "A vibrant anime-style character illustration showcasing detailed shading and dynamic poses."
     },
     {
         "id": 2,
         "artist": 1,
         "imgSrc": "0.png",
-        "tags": ["3d", "character"]
+        "tags": ["3d", "character"],
+        "datePosted": "2024-01-02T14:30:00Z",
+        "title": "3D Character Model",
+        "description": "A fully rendered 3D character model with realistic textures and intricate details."
     },
     {
         "id": 3,
         "artist": 2,
         "imgSrc": "1.png",
-        "tags": ["anime"]
+        "tags": ["anime"],
+        "datePosted": "2024-01-03T08:45:00Z",
+        "title": "Anime Artwork",
+        "description": "A captivating anime artwork with expressive emotions and vibrant colours."
     },
     {
         "id": 4,
         "artist": 2,
         "imgSrc": "2.png",
-        "tags": ["illustration", "concept art"]
+        "tags": ["illustration", "concept art"],
+        "datePosted": "2024-01-04T12:15:00Z",
+        "title": "Concept Art Illustration",
+        "description": "Concept art focusing on a futuristic cityscape with stunning lighting and atmosphere."
     },
     {
         "id": 5,
         "artist": 5,
         "imgSrc": "3.png",
-        "tags": ["anime", "3d", "fantasy"]
+        "tags": ["anime", "3d", "fantasy"],
+        "datePosted": "2024-01-05T16:00:00Z",
+        "title": "Fantasy World Design",
+        "description": "A breathtaking fantasy world design blending anime aesthetics with 3D elements."
     }
 ]
