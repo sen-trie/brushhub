@@ -23,7 +23,10 @@
         </div>
         <Searchbar />
         <div>
-            <button class="text-white hover:text-orange-500" onclick={() => navigateTo('/account', $page.url.pathname)}>
+            <button
+                class="text-white hover:text-orange-500"
+                onclick={() => navigateTo('/account', $page.url.pathname)}
+            >
                 {#if user.isNotEmpty()}
                     <p>{user.displayName}</p>
                 {:else}

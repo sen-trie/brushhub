@@ -1,15 +1,24 @@
 <script lang="ts">
     import { calculateTimePassed, formatResponseTime } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import Browse from '$lib/Browse.svelte';
+    import artworkDB from '$lib/db/artwork.json';
     import tosData from '$lib/db/tos.json';
     import services from '$lib/db/services.json';
     import Services from '$lib/Services.svelte';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
+    const toggleToService = props[1];
+
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
+
     const serviceDB = services.filter(
         (service) => service.artistId === artist.id && service.state === 'published'
+    );
+
+    const artDB = artworkDB.filter(
+        (artwork) => artist.featured.includes(artwork.id)
     );
 </script>
 
@@ -74,26 +83,13 @@
         <div class="right-column flex w-full flex-col gap-6 md:w-2/3">
             <div class="featured-artworks rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Featured Artworks</h3>
-                <div class="artwork-grid mt-4 grid grid-cols-3 gap-4">
-                    {#each artist.artworks as artwork (artwork.id)}
-                        <div class="artwork relative">
-                            <img
-                                src={artwork.image}
-                                alt="Artwork"
-                                class="h-28 w-full rounded-lg object-cover"
-                            />
-                            <button class="remove-button absolute right-2 top-2 text-red-500">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    {/each}
-                </div>
+                <Browse {artDB} showArtist={false} />
             </div>
 
             <!-- Services Section -->
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <Services {serviceDB} />
+                <Services {serviceDB} {toggleToService}/>
                 <button
                     class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                 >

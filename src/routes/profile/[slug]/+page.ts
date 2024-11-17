@@ -4,9 +4,7 @@ import users from '$lib/db/user.json';
 import artists from '$lib/db/artist.json';
 
 export const entries: EntryGenerator = async () => {
-	return [
-		{ slug: 'hungry_anne' },
-	];
+    return [{ slug: 'hungry_anne' }];
 };
 
 export const load: PageLoad = ({ params }) => {

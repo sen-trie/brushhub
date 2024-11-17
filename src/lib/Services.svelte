@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { serviceDB }: ComponentProps<any> = $props();
+    let { serviceDB, toggleToService }: ComponentProps<any> = $props();
 
     const images: any = import.meta.glob(['$lib/assets/thumbnail/**'], {
         eager: true,
@@ -8,29 +8,31 @@
         import: 'default'
     });
 </script>
-
+<!-- 
+TODO -->
 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
     {#each serviceDB as service}
-        <div
+        <div 
             class="service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm"
+            onclick={() => toggleToService(service)}
         >
             <div class="relative w-full">
                 <img
                     src={images['/src/lib/assets/thumbnail/' + service.thumbnail]}
                     alt="Service Thumbnail"
-                    class="h-48 w-full object-cover rounded-md"
+                    class="h-48 w-full rounded-md object-cover"
                 />
                 {#if !service.isOpen}
                     <span
-                        class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded"
+                        class="absolute right-2 top-2 rounded bg-red-600 px-2 py-1 text-xs font-bold text-white"
                     >
                         CLOSED
                     </span>
                 {/if}
             </div>
             <div class="mt-4">
-                <h4 class="font-semibold text-lg">{service.title}</h4>
-                <p class="text-green-600 mt-2">
+                <h4 class="text-lg font-semibold">{service.title}</h4>
+                <p class="mt-2 text-green-600">
                     {service.types.length > 0
                         ? `SGD ${Math.min(...service.types.map((type: any) => type.price))} ~ SGD ${Math.max(
                               ...service.types.map((type: any) => type.price)
@@ -40,14 +42,14 @@
                 <div class="mt-3 flex flex-wrap items-center gap-2">
                     {#if service.fastDelivery?.enabled}
                         <span
-                            class="bg-yellow-100 text-yellow-600 text-xs font-medium px-2 py-1 rounded"
+                            class="rounded bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-600"
                         >
                             Fast Delivery
                         </span>
                     {/if}
                     {#if service.commercialUse?.enabled}
                         <span
-                            class="bg-orange-100 text-orange-600 text-xs font-medium px-2 py-1 rounded"
+                            class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600"
                         >
                             Commercial
                         </span>

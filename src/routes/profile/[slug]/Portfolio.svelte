@@ -11,5 +11,5 @@
 </script>
 
 <div>
-    <Browse {artDB} />
+    <Browse {artDB} showArtist={false} />
 </div>

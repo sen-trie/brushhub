@@ -13,7 +13,10 @@
     let inputRef: HTMLInputElement | null = null;
 
     function validateSlug(pathName: string): boolean {
-        return pathName.startsWith('/search/') && tagsDB.some(tag => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase());
+        return (
+            pathName.startsWith('/search/') &&
+            tagsDB.some((tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase())
+        );
     }
 
     if (validateSlug(pathName)) {
@@ -61,7 +64,7 @@
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
-    })
+    });
 </script>
 
 <div class="relative mx-auto w-full max-w-lg">
@@ -80,7 +83,7 @@
     {#key $page.url}
         {#if showSuggestions}
             <ul
-                class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg "
+                class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
             >
                 {#each filteredTags as tag, index}
                     <li

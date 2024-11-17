@@ -15,7 +15,8 @@
         "responseTime": "02:00:00",
         "completionRate": 95,
         "total": 120,
-        "tags": ["anime", "concept art", "illustration"]
+        "tags": ["anime", "concept art", "illustration"],
+        "featured": [1, 2]
     },
     {
         "id": 2,
@@ -33,6 +34,7 @@
         "responseTime": "02:30:00",
         "completionRate": 85,
         "total": 45,
-        "tags": ["anime", "landscape", "realism"]
+        "tags": ["anime", "landscape", "realism"],
+        "featured": [3, 4]
     }
 ]

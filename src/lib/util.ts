@@ -5,7 +5,7 @@ import users from '$lib/db/user.json';
 export function navigateTo(path: string, pageUrl: string) {
     const segments = pageUrl?.split('/').filter(Boolean) ?? 0;
     const prefix = '/..'.repeat(segments.length);
-    
+
     if (segments.length > 0) {
         path = path.replace('./', '/');
     }

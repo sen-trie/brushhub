@@ -6,11 +6,11 @@ import { importAssets } from 'svelte-preprocess-import-assets';
 const config = {
     kit: {
         adapter: adapter({
-			fallback: '404.html'
-		}),
+            fallback: '404.html'
+        }),
         paths: {
-            base: process.env.NODE_ENV === "production" ? "/brushhub" : ""
-        },
+            base: process.env.NODE_ENV === 'production' ? '/brushhub' : ''
+        }
     },
     preprocess: [importAssets(), vitePreprocess()]
 };
