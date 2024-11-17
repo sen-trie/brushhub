@@ -23,7 +23,7 @@
 
     function handleKeyPress(event: KeyboardEvent, path: string) {
         if (event.key === 'Enter' || event.key === ' ') {
-            navigateTo(path);
+            navigateTo(path, $page.url.pathname);
         }
     }
 
@@ -52,7 +52,7 @@
                 <li>
                     <button
                         type="button"
-                        onclick={() => navigateTo(item.path)}
+                        onclick={() => navigateTo(item.path, $page.url.pathname)}
                         onkeypress={(e) => handleKeyPress(e, item.path)}
                         class="flex w-full items-center justify-center gap-3 p-3 text-gray-600 transition hover:bg-gray-100 hover:text-orange-500 focus:bg-gray-100 focus:text-orange-500 focus:outline-none"
                     >

@@ -6,7 +6,7 @@
         "isOpen": true,
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
-        "thumbnail": "/images/high-quality-illustration.jpg",
+        "thumbnail": "1.jpg",
         "samples": ["/images/sample1.jpg", "/images/sample2.jpg"],
         "tags": ["illustration", "character", "fantasy"],
         "types": [
@@ -42,19 +42,17 @@
                 "currency": "SGD"
             }
         ],
-        "addInServices": {
-            "fastDelivery": {
-                "enabled": true,
-                "duration": 3,
-                "unit": "days",
-                "price": 50,
-                "currency": "SGD"
-            },
-            "commercialUse": {
-                "enabled": true,
-                "price": 100,
-                "type": "percentage"
-            }
+        "fastDelivery": {
+            "enabled": true,
+            "duration": 3,
+            "unit": "days",
+            "price": 50,
+            "currency": "SGD"
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 100,
+            "type": "percentage"
         },
         "milestones": [
             {
@@ -93,7 +91,7 @@
         "isOpen": false,
         "title": "Manga",
         "description": "Black and white manga-style illustration.",
-        "thumbnail": "/images/manga-thumbnail.jpg",
+        "thumbnail": "2.jpg",
         "samples": ["/images/manga1.jpg", "/images/manga2.jpg"],
         "tags": ["anime", "manga", "illustration"],
         "types": [
@@ -117,16 +115,18 @@
                 "value": 20
             }
         ],
-        "addInServices": {
-            "fastDelivery": {
-                "enabled": false
-            },
-            "commercialUse": {
-                "enabled": true,
-                "price": 150,
-                "type": "currency",
-                "currency": "SGD"
-            }
+        "fastDelivery": {
+            "enabled": false,
+            "duration": 3,
+            "unit": "days",
+            "price": 50,
+            "currency": "SGD"
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 150,
+            "type": "currency",
+            "currency": "SGD"
         },
         "milestones": [
             {

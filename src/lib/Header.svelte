@@ -16,14 +16,14 @@
             </button>
             <button
                 class="text-xl font-semibold text-white hover:text-orange-500"
-                onclick={() => navigateTo('/')}
+                onclick={() => navigateTo('/', $page.url.pathname)}
             >
                 BrushHub
             </button>
         </div>
         <Searchbar />
         <div>
-            <button class="text-white hover:text-orange-500" onclick={() => navigateTo('/account')}>
+            <button class="text-white hover:text-orange-500" onclick={() => navigateTo('/account', $page.url.pathname)}>
                 {#if user.isNotEmpty()}
                     <p>{user.displayName}</p>
                 {:else}

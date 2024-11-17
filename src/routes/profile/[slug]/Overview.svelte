@@ -3,11 +3,12 @@
     import type { ComponentProps } from 'svelte';
     import tosData from '$lib/db/tos.json';
     import services from '$lib/db/services.json';
+    import Services from '$lib/Services.svelte';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
-    const artistServices = services.filter(
+    const serviceDB = services.filter(
         (service) => service.artistId === artist.id && service.state === 'published'
     );
 </script>
@@ -92,25 +93,7 @@
             <!-- Services Section -->
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <div class="service-grid mt-4 grid grid-cols-2 gap-4">
-                    {#each artistServices as service}
-                        <div
-                            class="service flex flex-col items-center rounded-lg border border-gray-200 p-4 shadow-sm"
-                        >
-                            <h4 class="font-semibold">{service.title}</h4>
-                            <p class="text-green-600">
-                                {service.types.length > 0
-                                    ? `SGD ${Math.min(...service.types.map((type) => type.price))} ~ SGD ${Math.max(
-                                          ...service.types.map((type) => type.price)
-                                      )}`
-                                    : 'Price not set'}
-                            </p>
-                            <button class="more-options mt-2 text-gray-500">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                        </div>
-                    {/each}
-                </div>
+                <Services {serviceDB} />
                 <button
                     class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                 >
