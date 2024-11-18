@@ -9,10 +9,8 @@
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
-    const toggleToService = props[1];
 
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
-
     const serviceDB = services.filter(
         (service) => service.artistId === artist.id && service.state === 'published'
     );
@@ -89,7 +87,7 @@
             <!-- Services Section -->
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <Services {serviceDB} {toggleToService}/>
+                <Services {serviceDB}/>
                 <button
                     class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                 >

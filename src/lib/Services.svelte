@@ -1,6 +1,9 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { serviceDB, toggleToService }: ComponentProps<any> = $props();
+    import { navigateTo } from './util';
+    import { page } from '$app/stores';
+
+    let { serviceDB }: ComponentProps<any> = $props();
 
     const images: any = import.meta.glob(['$lib/assets/thumbnail/**'], {
         eager: true,
@@ -8,13 +11,12 @@
         import: 'default'
     });
 </script>
-<!-- 
-TODO -->
+<!-- TODO -->
 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
     {#each serviceDB as service}
         <div 
             class="service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm"
-            onclick={() => toggleToService(service)}
+            onclick={() => navigateTo(`./service/${service.id}`, $page.url.pathname)}
         >
             <div class="relative w-full">
                 <img
