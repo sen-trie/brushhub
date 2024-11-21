@@ -58,14 +58,24 @@
             {
                 "name": "Sketch",
                 "duration": {
-                    "value": 0,
+                    "value": 3,
+                    "unit": "days"
+                }
+            },
+            {
+                "name": "Base Color",
+                "duration": {
+                    "value": 7,
                     "unit": "days"
                 },
                 "payment": 50
             },
             {
                 "name": "Final",
-                "duration": null,
+                "duration": {
+                    "value": 10,
+                    "unit": "days"
+                },
                 "payment": 100
             }
         ],

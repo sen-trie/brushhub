@@ -15,9 +15,7 @@
         (service) => service.artistId === artist.id && service.state === 'published'
     );
 
-    const artDB = artworkDB.filter(
-        (artwork) => artist.featured.includes(artwork.id)
-    );
+    const artDB = artworkDB.filter((artwork) => artist.featured.includes(artwork.id));
 </script>
 
 <div class="overview-container p-4">
@@ -87,7 +85,7 @@
             <!-- Services Section -->
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <Services {serviceDB}/>
+                <Services {serviceDB} />
                 <button
                     class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                 >

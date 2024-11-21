@@ -5,7 +5,7 @@
     import artistDB from '$lib/db/artist.json';
     import { stopPropagation, navigateTo } from './util';
     import { page } from '$app/stores';
-    
+
     let { artDB, showArtist = true }: ComponentProps<any> = $props();
     const images: any = import.meta.glob(['$lib/assets/artwork/**'], {
         eager: true,
@@ -102,16 +102,16 @@
                     </div>
                     {#if showArtist}
                         <button
-                        onclick={() => {
-                            navigateTo(
-                                `./profile/${userDB.find((artist) => artist.id === selectedArt?.artist)?.username}`,
-                                $page.url.pathname
-                            );
-                        }}
-                        class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 text-center font-medium text-white"
-                    >
-                        TO ARTIST PROFILE
-                    </button>
+                            onclick={() => {
+                                navigateTo(
+                                    `./profile/${userDB.find((artist) => artist.id === selectedArt?.artist)?.username}`,
+                                    $page.url.pathname
+                                );
+                            }}
+                            class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 text-center font-medium text-white"
+                        >
+                            TO ARTIST PROFILE
+                        </button>
                     {/if}
                 </div>
             </div>

@@ -28,7 +28,6 @@
             props: [artist]
         }
     ];
-
 </script>
 
 <div class="mx-auto w-full p-4">
@@ -57,7 +56,6 @@
 
     <Tabs {items} />
 </div>
-
 
 <style>
 </style>

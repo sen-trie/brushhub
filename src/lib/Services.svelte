@@ -11,10 +11,11 @@
         import: 'default'
     });
 </script>
+
 <!-- TODO -->
 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
     {#each serviceDB as service}
-        <div 
+        <button
             class="service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm"
             onclick={() => navigateTo(`./service/${service.id}`, $page.url.pathname)}
         >
@@ -58,6 +59,6 @@
                     {/if}
                 </div>
             </div>
-        </div>
+        </button>
     {/each}
 </div>
