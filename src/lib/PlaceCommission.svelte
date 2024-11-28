@@ -1,16 +1,34 @@
 <script lang="ts">
-    import type { ComponentProps } from 'svelte';
+    import type { Component, ComponentProps } from 'svelte';
     import CommissionOverview from '$lib/components/CommissionOverview.svelte';
     import CommissionBrief from '$lib/components/CommissionBrief.svelte';
     import CommissionCheckout from '$lib/components/CommissionCheckout.svelte';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
-    let { selectedService, closePlaceCommission }: ComponentProps<any> = $props();
+
+    let { selectedService, closePlaceCommission, tierIndex }: ComponentProps<any> = $props();
+
+    let commissionChoice = $state({
+        selectedTier: tierIndex,
+        extras: selectedService.extras.map((extra: any) => false),
+        brief: '',
+        images: []
+    });
+
+    $inspect(commissionChoice);
 
     let progress = $state(0);
-    const steps = [
-        ['Service Details', 'Agree and Continue'],
-        ['Milestones and Terms of Service', 'Proceed to Check Out'],
-        ['Commission Request', 'Pay Now']
+    let steps: { component: Component; backwards: string; forwards: string }[] = [
+        { component: CommissionOverview, backwards: 'Back to Overview', forwards: 'Next to Brief' },
+        {
+            component: CommissionBrief,
+            backwards: 'Back to Type Selection',
+            forwards: 'Next to Checkout'
+        },
+        {
+            component: CommissionCheckout,
+            backwards: 'Back to Brief',
+            forwards: 'Finish'
+        }
     ];
 
     function proceedToNextStep() {
@@ -44,30 +62,15 @@
             <p class="text-sm text-gray-500">Anne the Hungry</p>
         </div>
 
-        {#if progress === 0}
-            <CommissionOverview {selectedService} />
-            <CommissionButtons
-                {goToPreviousStep}
-                {proceedToNextStep}
-                backwards={steps[progress][0]}
-                forwards={steps[progress][1]}
-            />
-        {:else if progress === 1}
-            <CommissionBrief />
-            <CommissionButtons
-                {goToPreviousStep}
-                {proceedToNextStep}
-                backwards={steps[progress][0]}
-                forwards={steps[progress][1]}
-            />
-        {:else if progress === 2}
-            <CommissionCheckout {selectedService} />
-            <CommissionButtons
-                {goToPreviousStep}
-                {proceedToNextStep}
-                backwards={steps[progress][0]}
-                forwards={steps[progress][1]}
-            />
-        {/if}
+        {#each steps as { component: Component, backwards, forwards }, index}
+            {#if index === progress}
+                {#if index === 1}
+                    <Component {selectedService} bind:commissionChoice />
+                {:else}
+                    <Component {selectedService} />
+                {/if}
+                <CommissionButtons {goToPreviousStep} {proceedToNextStep} {backwards} {forwards} />
+            {/if}
+        {/each}
     </div>
 </div>

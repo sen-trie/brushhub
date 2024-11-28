@@ -1,9 +1,12 @@
 <script lang="ts">
+    import type { ComponentProps } from 'svelte';
+
+    let { selectedService, commissionChoice = $bindable() }: ComponentProps<any> = $props();
+
     let uploadedImages: string[] = $state([]);
     let uploadedBrief: string = $state('');
-    let uploadedBriefLength: number = $state(0);
-    let warningMessage = $state('');
-    let briefWarningMessage = $state('');
+    let imageWarningMessage: string = $state('');
+    let briefWarningMessage: string = $state('');
 
     const MAX_BRIEF_LENGTH = 5000;
 
@@ -15,8 +18,6 @@
             uploadedBrief = value;
             briefWarningMessage = '';
         }
-
-        uploadedBriefLength = uploadedBrief.length;
     };
 
     const handleBriefUpload = (event: Event) => {
@@ -41,13 +42,13 @@
         if (!files) return;
 
         if (uploadedImages.length + files.length > 10) {
-            warningMessage = 'You can upload a maximum of 10 images.';
+            imageWarningMessage = 'You can upload a maximum of 10 images.';
             return;
         }
 
         for (const file of files) {
             if (!file.type.startsWith('image/')) {
-                warningMessage = 'Only image files (e.g., jpg, png) are allowed.';
+                imageWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
                 return;
             }
             const fileReader = new FileReader();
@@ -56,12 +57,20 @@
             };
             fileReader.readAsDataURL(file);
         }
-        warningMessage = '';
+        imageWarningMessage = '';
     };
 
     const removeImage = (index: number) => {
         uploadedImages = uploadedImages.filter((_, i) => i !== index);
     };
+
+    $effect(() => {
+        // SINCE TEXTBOX IS USING BINDABLE
+        // DOUBLE UPDATES WHEN BRIEF CHANGES
+        // PROBABLY WONT CAUSE ISSUES
+        commissionChoice.brief = uploadedBrief;
+        commissionChoice.images = uploadedImages;
+    });
 </script>
 
 <div class="grid grid-cols-2 gap-6 p-6">
@@ -71,55 +80,38 @@
             <select
                 id="type"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                bind:value={commissionChoice.selectedTier}
             >
-                <option>Full body</option>
-                <option>Half body</option>
-                <option>Headshot</option>
+                {#each selectedService.types as type, index}
+                    <option value={index}>{type.name}</option>
+                {/each}
             </select>
         </div>
 
         <div class="mb-4">
             <label for="extras" class="block text-sm font-medium text-gray-700">Extras</label>
             <div class="mt-2 space-y-2">
-                <div class="flex items-center">
-                    <input
-                        id="detailed-background"
-                        type="checkbox"
-                        value="Detailed Background"
-                        class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
-                    />
-                    <label for="detailed-background" class="ml-2 text-sm text-gray-700"
-                        >Detailed Background</label
-                    >
-                </div>
-                <div class="flex items-center">
-                    <input
-                        id="layered-animation"
-                        type="checkbox"
-                        value="Layered for Animation"
-                        class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
-                    />
-                    <label for="layered-animation" class="ml-2 text-sm text-gray-700"
-                        >Layered for Animation</label
-                    >
-                </div>
-                <div class="flex items-center">
-                    <input
-                        id="extra-characters"
-                        type="checkbox"
-                        value="Extra Characters"
-                        class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
-                    />
-                    <label for="extra-characters" class="ml-2 text-sm text-gray-700"
-                        >Extra Characters</label
-                    >
-                </div>
+                {#each selectedService.extras as extra, index}
+                    <div class="flex items-center">
+                        <input
+                            id={extra.name}
+                            type="checkbox"
+                            class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                            onchange={() => {
+                                commissionChoice.extras[index] = !commissionChoice.extras[index];
+                            }}
+                        />
+                        <label for={extra.name} class="ml-2 text-sm text-gray-700"
+                            >{extra.name}</label
+                        >
+                    </div>
+                {/each}
             </div>
         </div>
 
         <div class="mb-4">
             <label for="brief" class="block text-sm font-medium text-gray-700"
-                >Brief * ({MAX_BRIEF_LENGTH - uploadedBriefLength} characters left)</label
+                >Brief * ({MAX_BRIEF_LENGTH - uploadedBrief.length} characters left)</label
             >
             <textarea
                 id="brief"
@@ -189,8 +181,8 @@
                 </div>
             {/each}
         </div>
-        {#if warningMessage}
-            <p class="mt-2 text-sm text-red-500">{warningMessage}</p>
+        {#if imageWarningMessage}
+            <p class="mt-2 text-sm text-red-500">{imageWarningMessage}</p>
         {/if}
         <div class="mt-4">
             <label

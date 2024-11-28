@@ -11,8 +11,10 @@
     const artDB = artworkDB.filter((artwork) => selectedService.samples.includes(artwork.id));
 
     let showPlaceCommission = $state(false);
+    let tierIndex = $state(0);
 
-    function openPlaceCommission() {
+    function openPlaceCommission(index: number) {
+        tierIndex = index;
         showPlaceCommission = true;
     }
 
@@ -23,7 +25,7 @@
 
 <div>
     {#if showPlaceCommission}
-        <PlaceCommission {selectedService} {closePlaceCommission} />
+        <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} />
     {/if}
 
     <div class="p-6">
@@ -48,14 +50,16 @@
 
         <h2 class="mt-8 text-lg font-bold">Tiers</h2>
         <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {#each selectedService.types as type}
+            {#each selectedService.types as type, index}
                 <div class="rounded-lg border p-4 shadow-sm">
                     <h2 class="text-lg font-semibold text-orange-500">{type.name}</h2>
                     <p class="font-bold text-green-600">SGD {type.price}</p>
                     <p class="mt-2 text-sm text-gray-600">{type.description}</p>
                     <button
                         class="mt-4 w-full rounded-lg bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600"
-                        onclick={openPlaceCommission}
+                        onclick={() => {
+                            openPlaceCommission(index);
+                        }}
                     >
                         Place a commission
                     </button>
