@@ -8,7 +8,7 @@
 
     const menuItemsLogged = [
         { name: 'Home', path: '/', iconClass: 'fas fa-home' },
-        { name: 'Profile', path: './profile', iconClass: 'fas fa-th-large' },
+        { name: 'Profile', path: `./profile/${user.username}`, iconClass: 'fas fa-th-large' },
         { name: 'Services', path: './services', iconClass: 'fas fa-tools' },
         { name: 'Commission', path: './commission', iconClass: 'fas fa-tachometer-alt' },
         { name: 'Orders', path: './orders', iconClass: 'fas fa-boxes' },

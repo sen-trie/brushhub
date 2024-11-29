@@ -2,7 +2,30 @@ import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import users from '$lib/db/user.json';
 
-export function navigateTo(path: string, pageUrl: string) {
+export function handleClickOutside(buttonClass: string, menuClass: string,
+    callback: () => void
+): () => void {
+    const handleDocumentClick = (event: MouseEvent) => {
+        const buttonElement = document.querySelector(buttonClass);
+        const menuElement = document.querySelector(menuClass);
+
+        if (buttonElement && buttonElement.contains(event.target as Node)) {
+            return;
+        }
+
+        if (menuElement && !menuElement.contains(event.target as Node)) {
+            callback();
+        }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+        document.removeEventListener('click', handleDocumentClick);
+    };
+}
+
+export function navigateTo(path: string, pageUrl: string): void {
     const segments = pageUrl?.split('/').filter(Boolean) ?? 0;
     const prefix = '/..'.repeat(segments.length);
 
@@ -13,7 +36,7 @@ export function navigateTo(path: string, pageUrl: string) {
     goto(`${prefix}${path}`);
 }
 
-export function stopPropagation(event: MouseEvent) {
+export function stopPropagation(event: MouseEvent): void {
     if (event.currentTarget === event.target) {
         event.stopPropagation();
     }
