@@ -2,7 +2,7 @@
     import Milestone from './Milestone.svelte';
     import type { ComponentProps } from 'svelte';
 
-    const { selectedService }: ComponentProps<any> = $props();
+    const { selectedService, commissionChoice }: ComponentProps<any> = $props();
 
     const totalPrice = 100;
 </script>
@@ -16,11 +16,15 @@
         <div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Type:</span>
-                <span class="font-medium text-gray-900">{selectedService.type}</span>
+                <span class="font-medium text-gray-900"
+                    >{selectedService.types[commissionChoice.selectedTier].name}</span
+                >
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Base Price:</span>
-                <span class="font-medium text-gray-900">SGD {selectedService.basePrice}</span>
+                <span class="font-medium text-gray-900"
+                    >SGD {selectedService.types[commissionChoice.selectedTier].price}</span
+                >
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Extras:</span>
@@ -39,13 +43,19 @@
                     readonly
                     rows="5"
                     class="mt-1 w-full rounded-md border-gray-300 bg-gray-100 p-2 shadow-sm focus:border-gray-300 focus:ring-0 sm:text-sm"
-                >
-                    {selectedService.brief}
+                    >{commissionChoice.brief}
                 </textarea>
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Deadline:</span>
-                <span class="font-medium text-gray-900">{selectedService.deadline}</span>
+                <span class="font-medium text-gray-900">
+                    {commissionChoice.deadline}
+                    [Due in {Math.ceil(
+                        (new Date(commissionChoice.deadline).setHours(0, 0, 0, 0) -
+                            new Date().setHours(0, 0, 0, 0)) /
+                            (1000 * 60 * 60 * 24)
+                    )} day(s)]
+                </span>
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Add-in Services:</span>
@@ -65,7 +75,7 @@
         <div>
             <span class="mb-2 block font-medium text-gray-700">References:</span>
             <div class="grid grid-cols-3 gap-2">
-                {#each selectedService.references as ref}
+                {#each commissionChoice.images as ref}
                     <img
                         src={ref}
                         alt="Reference"

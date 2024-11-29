@@ -7,11 +7,13 @@
 
     let { selectedService, closePlaceCommission, tierIndex }: ComponentProps<any> = $props();
 
+    let warningMessage = $state('');
     let commissionChoice = $state({
         selectedTier: tierIndex,
         extras: selectedService.extras.map((extra: any) => false),
         brief: '',
-        images: []
+        images: [],
+        deadline: ''
     });
 
     $inspect(commissionChoice);
@@ -31,7 +33,34 @@
         }
     ];
 
+    const checkChoices = (): boolean => {
+        if (commissionChoice.brief === '') {
+            warningMessage = 'Please provide a brief for your commission.';
+            return false;
+        }
+
+        if (commissionChoice.deadline === '') {
+            warningMessage = 'Please provide a deadline for your commission.';
+            return false;
+        }
+
+        const today = new Date().setHours(0, 0, 0, 0);
+        const selectedDeadline = new Date(commissionChoice.deadline).setHours(0, 0, 0, 0);
+
+        if (selectedDeadline <= today) {
+            warningMessage = 'Deadline must be after today.';
+            return false;
+        }
+
+        warningMessage = '';
+        return true;
+    };
+
     function proceedToNextStep() {
+        if (progress === 1 && !checkChoices()) {
+            return;
+        }
+
         if (progress < steps.length - 1) {
             progress += 1;
         }
@@ -65,7 +94,9 @@
         {#each steps as { component: Component, backwards, forwards }, index}
             {#if index === progress}
                 {#if index === 1}
-                    <Component {selectedService} bind:commissionChoice />
+                    <Component {selectedService} {warningMessage} bind:commissionChoice />
+                {:else if index === 2}
+                    <Component {selectedService} {commissionChoice} />
                 {:else}
                     <Component {selectedService} />
                 {/if}

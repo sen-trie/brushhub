@@ -1,7 +1,11 @@
 <script lang="ts">
-    import type { ComponentProps } from 'svelte';
+    import { onMount, type ComponentProps } from 'svelte';
 
-    let { selectedService, commissionChoice = $bindable() }: ComponentProps<any> = $props();
+    let {
+        selectedService,
+        commissionChoice = $bindable(),
+        warningMessage
+    }: ComponentProps<any> = $props();
 
     let uploadedImages: string[] = $state([]);
     let uploadedBrief: string = $state('');
@@ -19,6 +23,10 @@
             briefWarningMessage = '';
         }
     };
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
 
     const handleBriefUpload = (event: Event) => {
         const file = (event.target as HTMLInputElement).files?.[0];
@@ -63,6 +71,11 @@
     const removeImage = (index: number) => {
         uploadedImages = uploadedImages.filter((_, i) => i !== index);
     };
+
+    onMount(() => {
+        uploadedBrief = commissionChoice.brief;
+        uploadedImages = commissionChoice.images;
+    });
 
     $effect(() => {
         // SINCE TEXTBOX IS USING BINDABLE
@@ -140,9 +153,6 @@
                     onchange={handleBriefUpload}
                 />
             </div>
-            {#if briefWarningMessage}
-                <p class="mt-2 text-sm text-red-500">{briefWarningMessage}</p>
-            {/if}
         </div>
 
         <div class="mb-4">
@@ -151,6 +161,8 @@
                 id="deadline"
                 type="date"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                bind:value={commissionChoice.deadline}
+                min={minDate}
             />
         </div>
 
@@ -201,4 +213,8 @@
             />
         </div>
     </div>
+
+    {#if warningMessage}
+        <p class="mb-4 text-sm text-red-500">{warningMessage}</p>
+    {/if}
 </div>
