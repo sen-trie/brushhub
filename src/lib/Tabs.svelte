@@ -1,19 +1,20 @@
 <script lang="ts">
+    import type { Component } from 'svelte';
+
     interface TabItem {
         label: string;
         value: number;
-        component: any;
-        props: any[];
+        component: Component;
+        props: Record<string, any>[];
     }
 
-    export let items: TabItem[];
-    export let activeTabValue = 1;
+    let { items }: { items: TabItem[] } = $props();
+    let activeTabValue = $state(1);
 
     const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);
 </script>
 
 <div class="flex h-screen flex-col">
-    <!-- Sticky Tabs Navigation -->
     <ul class="sticky top-0 z-10 flex border-b border-gray-300 bg-white">
         {#each items as item}
             <li class={activeTabValue === item.value ? 'active' : ''}>
@@ -29,7 +30,6 @@
         {/each}
     </ul>
 
-    <!-- Scrollable Tab Content -->
     {#each items as item}
         {#if activeTabValue == item.value}
             <div class="flex-1 rounded-b-lg border border-gray-300 p-10">
@@ -46,6 +46,6 @@
 
     ul {
         margin-top: 1px;
-        /* ? Theres a tiny gap at the top when stickied*/
+        /* Theres a tiny gap at the top when stickied */
     }
 </style>

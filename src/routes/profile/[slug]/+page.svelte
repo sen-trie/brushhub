@@ -47,8 +47,8 @@
                 </span>
                 <p class="profile-username text-gray-600">@{artist.username}</p>
                 <div class="profile-followers mt-2 text-sm text-gray-500">
-                    <span>{artist.followers} Followers</span> •
-                    <span>{artist.following} Following</span>
+                    <span>{artist.followers.length} Followers</span> •
+                    <span>{artist.following.length} Following</span>
                 </div>
             </div>
         </div>

@@ -93,6 +93,7 @@
                     <ul>
                         {#each menuItemsLogged as { name, path, iconClass, action }}
                             <li>
+                                <!-- TODO WHITE VIEW PROFILE IF ON PROFILE PAGE -->
                                 {#if action}
                                     <button
                                         class="flex w-full items-center px-4 py-2 text-white hover:bg-gray-600"

@@ -1,8 +1,11 @@
 import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
+import { base } from '$app/paths';
 import users from '$lib/db/user.json';
 
-export function handleClickOutside(buttonClass: string, menuClass: string,
+export function handleClickOutside(
+    buttonClass: string,
+    menuClass: string,
     callback: () => void
 ): () => void {
     const handleDocumentClick = (event: MouseEvent) => {
@@ -33,7 +36,7 @@ export function navigateTo(path: string, pageUrl: string): void {
         path = path.replace('./', '/');
     }
 
-    goto(`${prefix}${path}`);
+    goto(`${base}${path}`);
 }
 
 export function stopPropagation(event: MouseEvent): void {

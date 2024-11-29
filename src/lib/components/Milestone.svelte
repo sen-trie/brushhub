@@ -6,18 +6,12 @@
 <div class="flex w-full items-center">
     <div class="relative flex w-full items-center">
         <div class="flex flex-col items-center">
-            <div
-                class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500"
-            >
+            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
                 <div class="h-3 w-3 rounded-full bg-white"></div>
             </div>
 
-            <p class="mt-2 text-sm font-medium text-orange-500">
-                Start
-            </p>
-            <p class="text-xs text-gray-500">
-                Start of Project
-            </p>
+            <p class="mt-2 text-sm font-medium text-orange-500">Start</p>
+            <p class="text-xs text-gray-500">Start of Project</p>
 
             <p class="text-xs font-bold text-green-600">
                 <span class="invisible">Pay</span>
@@ -28,9 +22,7 @@
 
         {#each selectedService.milestones as milestone, index}
             <div class="flex flex-col items-center">
-                <div
-                    class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500"
-                >
+                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
                     <div class="h-3 w-3 rounded-full bg-white"></div>
                 </div>
 

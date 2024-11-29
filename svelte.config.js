@@ -10,8 +10,9 @@ const config = {
         }),
         paths: {
             base: process.env.NODE_ENV === 'production' ? '/brushhub' : ''
-        }
+        },
     },
+    relative: true,
     preprocess: [importAssets(), vitePreprocess()]
 };
 

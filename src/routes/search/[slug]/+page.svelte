@@ -6,7 +6,7 @@
     import Service from './Service.svelte';
 
     let { data }: { data: PageData } = $props();
-    let items = $state([
+    let items = [
         {
             label: 'Artworks',
             value: 1,
@@ -20,35 +20,12 @@
             props: [data]
         },
         {
-            label: 'Service',
+            label: 'Services',
             value: 3,
             component: Service,
             props: [data]
         }
-    ]);
-
-    $effect(() => {
-        items = [
-            {
-                label: 'Artworks',
-                value: 1,
-                component: Artwork,
-                props: [data]
-            },
-            {
-                label: 'Artists',
-                value: 2,
-                component: Artists,
-                props: [data]
-            },
-            {
-                label: 'Service',
-                value: 3,
-                component: Service,
-                props: [data]
-            }
-        ];
-    });
+    ];
 </script>
 
 <div class="mx-auto w-full p-4">
