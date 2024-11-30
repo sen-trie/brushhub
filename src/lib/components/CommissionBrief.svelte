@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount, type ComponentProps } from 'svelte';
+    import { calculateCommission } from '$lib/util';
 
     let {
         selectedService,
@@ -11,6 +12,10 @@
     let uploadedBrief: string = $state('');
     let imageWarningMessage: string = $state('');
     let briefWarningMessage: string = $state('');
+
+    let price = $derived.by((): number => {
+        return calculateCommission(selectedService, commissionChoice);
+    });
 
     const MAX_BRIEF_LENGTH = 5000;
 
@@ -166,7 +171,7 @@
             />
         </div>
 
-        <p class="mt-4 text-lg font-bold text-green-600">SGD 500</p>
+        <p class="mt-4 text-lg font-bold text-green-600">{price} SGD</p>
     </div>
 
     <div>

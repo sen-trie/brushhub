@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import { base } from '$app/paths';
 import users from '$lib/db/user.json';
+import type { Service, CommissionChoice } from '$lib/types';
 
 export function handleClickOutside(
     buttonClass: string,
@@ -26,6 +27,22 @@ export function handleClickOutside(
     return () => {
         document.removeEventListener('click', handleDocumentClick);
     };
+}
+
+export function calculateCommission(selectedService: Service, commissionChoice: CommissionChoice): number {
+    const basePrice = selectedService.types[commissionChoice.selectedTier].price;
+    const extrasPrice = selectedService.extras.reduce(
+        (acc: number, extra: any, index: number) => {
+            if (!commissionChoice.extras[index]) return acc;
+            if (extra.type === 'percentage') {
+                return acc + (basePrice * extra.value) / 100;
+            } else {
+                return acc + extra.value;
+            }
+        },
+        0
+    );
+    return basePrice + extrasPrice;
 }
 
 export function navigateTo(path: string, pageUrl: string): void {

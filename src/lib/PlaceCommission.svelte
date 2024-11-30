@@ -1,14 +1,19 @@
 <script lang="ts">
-    import type { Component, ComponentProps } from 'svelte';
+    import type { Component } from 'svelte';
+    import type { Service, CommissionChoice } from '$lib/types';
     import CommissionOverview from '$lib/components/CommissionOverview.svelte';
     import CommissionBrief from '$lib/components/CommissionBrief.svelte';
     import CommissionCheckout from '$lib/components/CommissionCheckout.svelte';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
 
-    let { selectedService, closePlaceCommission, tierIndex }: ComponentProps<any> = $props();
+    let {
+        selectedService,
+        closePlaceCommission,
+        tierIndex
+    }: { selectedService: Service; closePlaceCommission: () => void; tierIndex: number } = $props();
 
     let warningMessage = $state('');
-    let commissionChoice = $state({
+    let commissionChoice: CommissionChoice = $state({
         selectedTier: tierIndex,
         extras: selectedService.extras.map((extra: any) => false),
         brief: '',
@@ -18,6 +23,8 @@
 
     // TODO: CLEAN UP
     // ADD FORM SUBMISSION
+
+    console.log(selectedService);
 
     $inspect(commissionChoice);
 

@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad, EntryGenerator } from './$types';
+import type { Service } from '$lib/types';
 import serviceDB from '$lib/db/services.json';
 
 export const entries: EntryGenerator = async () => {
@@ -9,7 +10,7 @@ export const entries: EntryGenerator = async () => {
 export const load: PageLoad = ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
 
-    const service = serviceDB.find((tag) => tag.id === Number(searchQuery));
+    const service: (Service | undefined) = serviceDB.find((tag) => tag.id === Number(searchQuery));
     if (!service) {
         throw error(404, 'No matching tag found for your search');
     }

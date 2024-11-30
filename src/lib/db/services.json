@@ -7,25 +7,29 @@
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "1.jpg",
-        "samples": [1, 2],
-        "tags": ["illustration", "character", "fantasy"],
+        "samples": [
+            1,
+            2
+        ],
+        "tags": [
+            "illustration",
+            "character",
+            "fantasy"
+        ],
         "types": [
             {
                 "name": "Headshot",
                 "price": 300,
-                "currency": "SGD",
                 "description": "A detailed headshot illustration."
             },
             {
                 "name": "Half-body",
                 "price": 400,
-                "currency": "SGD",
                 "description": "An illustration covering half of the body."
             },
             {
                 "name": "Full-body",
                 "price": 500,
-                "currency": "SGD",
                 "description": "A fully rendered full-body illustration."
             }
         ],
@@ -38,16 +42,14 @@
             {
                 "name": "Detailed Background",
                 "type": "currency",
-                "value": 50,
-                "currency": "SGD"
+                "value": 50
             }
         ],
         "fastDelivery": {
             "enabled": true,
             "duration": 3,
             "unit": "days",
-            "price": 50,
-            "currency": "SGD"
+            "price": 50
         },
         "commercialUse": {
             "enabled": true,
@@ -102,19 +104,24 @@
         "title": "Manga",
         "description": "Black and white manga-style illustration.",
         "thumbnail": "2.jpg",
-        "samples": [3, 4],
-        "tags": ["anime", "manga", "illustration"],
+        "samples": [
+            3,
+            4
+        ],
+        "tags": [
+            "anime",
+            "manga",
+            "illustration"
+        ],
         "types": [
             {
                 "name": "Panel",
                 "price": 200,
-                "currency": "SGD",
                 "description": "A single manga panel illustration."
             },
             {
                 "name": "Page",
                 "price": 500,
-                "currency": "SGD",
                 "description": "A full manga page illustration."
             }
         ],
@@ -129,14 +136,12 @@
             "enabled": false,
             "duration": 3,
             "unit": "days",
-            "price": 50,
-            "currency": "SGD"
+            "price": 50
         },
         "commercialUse": {
             "enabled": true,
             "price": 150,
-            "type": "currency",
-            "currency": "SGD"
+            "type": "percentage"
         },
         "milestones": [
             {
