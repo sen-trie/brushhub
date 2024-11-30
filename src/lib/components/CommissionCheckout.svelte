@@ -1,10 +1,12 @@
 <script lang="ts">
     import Milestone from './Milestone.svelte';
     import type { ComponentProps } from 'svelte';
+    import { calculateCommission } from '$lib/util';
 
     const { selectedService, commissionChoice }: ComponentProps<any> = $props();
 
-    const totalPrice = 100;
+    const basePrice = selectedService.types[commissionChoice.selectedTier].price;
+    const finalPrice = calculateCommission(selectedService, commissionChoice);
 </script>
 
 <div class="p-6">
@@ -22,18 +24,25 @@
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Base Price:</span>
-                <span class="font-medium text-gray-900"
-                    >SGD {selectedService.types[commissionChoice.selectedTier].price}</span
-                >
+                <span class="font-medium text-gray-900">{basePrice} USD</span>
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Extras:</span>
                 <div class="text-right">
-                    {#each selectedService.extras as extra}
-                        <div>
-                            <span>{extra.name} ({extra.count})</span>
-                            <span class="font-medium text-gray-900">SGD {extra.price}</span>
-                        </div>
+                    {#each selectedService.extras as extra, index}
+                        {#if commissionChoice.extras[index]}
+                            <div>
+                                <span>{extra.name}: </span>
+                                <span class="font-medium text-gray-900">
+                                    +{extra.type === 'percentage'
+                                        ? extra.value +
+                                          '% (' +
+                                          Math.round((basePrice * extra.value) / 100) +
+                                          ' USD)'
+                                        : extra.value + ' USD'}
+                                </span>
+                            </div>
+                        {/if}
                     {/each}
                 </div>
             </div>
@@ -107,7 +116,7 @@
             in case of cancellation.
         </p>
         <div class="text-right">
-            <p class="mb-2 text-lg font-bold text-green-600">SGD {totalPrice}</p>
+            <p class="mb-2 text-lg font-bold text-green-600">{finalPrice} USD</p>
         </div>
     </div>
 </div>

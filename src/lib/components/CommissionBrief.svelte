@@ -101,7 +101,7 @@
                 bind:value={commissionChoice.selectedTier}
             >
                 {#each selectedService.types as type, index}
-                    <option value={index}>{type.name}</option>
+                    <option value={index}>{type.name} ({type.price} USD)</option>
                 {/each}
             </select>
         </div>
@@ -115,12 +115,14 @@
                             id={extra.name}
                             type="checkbox"
                             class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
-                            onchange={() => {
-                                commissionChoice.extras[index] = !commissionChoice.extras[index];
-                            }}
+                            bind:checked={commissionChoice.extras[index]}
                         />
-                        <label for={extra.name} class="ml-2 text-sm text-gray-700"
-                            >{extra.name}</label
+                        <label
+                            for={extra.name}
+                            class="ml-2 text-sm text-gray-700"
+                            style="user-select: none;"
+                            >{extra.name} (+{extra.value}
+                            {extra.type === 'percentage' ? '% of base price' : 'USD'})</label
                         >
                     </div>
                 {/each}
