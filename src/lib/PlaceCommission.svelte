@@ -22,11 +22,6 @@
     });
 
     // TODO: CLEAN UP
-    // ADD FORM SUBMISSION
-
-    console.log(selectedService);
-
-    $inspect(commissionChoice);
 
     let progress = $state(0);
     let steps: { component: Component; backwards: string; forwards: string }[] = [

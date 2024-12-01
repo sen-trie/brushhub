@@ -5,7 +5,7 @@
         label: string;
         value: number;
         component: Component;
-        props: Record<string, any>[];
+        props: any;
     }
 
     let { items }: { items: TabItem[] } = $props();
@@ -19,7 +19,7 @@
         {#each items as item}
             <li class={activeTabValue === item.value ? 'active' : ''}>
                 <span
-                    on:click={handleClick(item.value)}
+                    onclick={handleClick(item.value)}
                     class="block cursor-pointer border-b-2 px-4 py-2 hover:border-gray-300"
                     class:font-semibold={activeTabValue === item.value}
                     class:bg-white={activeTabValue === item.value}
@@ -33,7 +33,7 @@
     {#each items as item}
         {#if activeTabValue == item.value}
             <div class="flex-1 rounded-b-lg border border-gray-300 p-10">
-                <svelte:component this={item.component} props={item.props} />
+                <item.component props={item.props} />
             </div>
         {/if}
     {/each}

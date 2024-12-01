@@ -3,7 +3,7 @@
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
-    let { serviceDB, filter }: ComponentProps<any> = $props();
+    let { serviceDB, filter, viewOnly = true, callback }: ComponentProps<any> = $props();
 
     serviceDB = serviceDB.filter((service: any) => service.state === filter);
 
@@ -19,7 +19,9 @@
     {#each serviceDB as service}
         <button
             class="service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm"
-            onclick={() => navigateTo(`./service/${service.id}`, $page.url.pathname)}
+            onclick={viewOnly
+                ? () => navigateTo(`./service/${service.id}`, $page.url.pathname)
+                : () => callback(service)}
         >
             <div class="relative w-full">
                 <img
