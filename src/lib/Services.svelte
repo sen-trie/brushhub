@@ -3,7 +3,9 @@
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
-    let { serviceDB }: ComponentProps<any> = $props();
+    let { serviceDB, filter }: ComponentProps<any> = $props();
+
+    serviceDB = serviceDB.filter((service: any) => service.state === filter);
 
     const images: any = import.meta.glob(['$lib/assets/thumbnail/**'], {
         eager: true,

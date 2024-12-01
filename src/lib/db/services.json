@@ -98,7 +98,104 @@
     },
     {
         "id": 2,
-        "artistId": 2,
+        "artistId": 1,
+        "state": "published",
+        "isOpen": true,
+        "title": "High-quality Illustration",
+        "description": "This service provides you with fully rendered artwork, including a free simple background.",
+        "thumbnail": "1.jpg",
+        "samples": [
+            1,
+            2
+        ],
+        "tags": [
+            "illustration",
+            "character",
+            "fantasy"
+        ],
+        "types": [
+            {
+                "name": "Headshot",
+                "price": 300,
+                "description": "A detailed headshot illustration."
+            },
+            {
+                "name": "Half-body",
+                "price": 400,
+                "description": "An illustration covering half of the body."
+            },
+            {
+                "name": "Full-body",
+                "price": 500,
+                "description": "A fully rendered full-body illustration."
+            }
+        ],
+        "extras": [
+            {
+                "name": "Character",
+                "type": "percentage",
+                "value": 70
+            },
+            {
+                "name": "Detailed Background",
+                "type": "currency",
+                "value": 50
+            }
+        ],
+        "fastDelivery": {
+            "enabled": true,
+            "duration": 3,
+            "unit": "days",
+            "price": 50
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 100,
+            "type": "percentage"
+        },
+        "milestones": [
+            {
+                "name": "Sketch",
+                "duration": {
+                    "value": 3,
+                    "unit": "days"
+                }
+            },
+            {
+                "name": "Base Color",
+                "duration": {
+                    "value": 7,
+                    "unit": "days"
+                },
+                "payment": 50
+            },
+            {
+                "name": "Final",
+                "duration": {
+                    "value": 10,
+                    "unit": "days"
+                },
+                "payment": 100
+            }
+        ],
+        "termsOfService": [
+            {
+                "title": "What I Draw?",
+                "details": "I can draw characters, fantasy scenes, and simple backgrounds."
+            },
+            {
+                "title": "Commercial Usage",
+                "details": "Commercial use requires additional fees. Contact me for pricing details."
+            },
+            {
+                "title": "Personal Usage",
+                "details": "All services are available for personal use unless specified otherwise."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "artistId": 1,
         "state": "archived",
         "isOpen": false,
         "title": "Manga",
