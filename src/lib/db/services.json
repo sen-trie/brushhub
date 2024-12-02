@@ -59,29 +59,36 @@
             "price": 100,
             "type": "percentage"
         },
+        "downpayment": {
+            "payment": {
+                "value": 20,
+                "enabled": true
+            }
+        },
         "milestones": [
             {
                 "name": "Sketch",
                 "duration": {
                     "value": 3,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 30,
+                    "enabled": false
                 }
             },
             {
                 "name": "Base Color",
                 "duration": {
                     "value": 7,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": false
                 },
-                "payment": 50
-            },
-            {
-                "name": "Final",
-                "duration": {
-                    "value": 10,
-                    "unit": "days"
-                },
-                "payment": 100
+                "payment": {
+                    "value": 50,
+                    "enabled": true
+                }
             }
         ],
         "termsOfService": [
@@ -159,29 +166,36 @@
             "price": 100,
             "type": "percentage"
         },
+        "downpayment": {
+            "payment": {
+                "value": 20,
+                "enabled": true
+            }
+        },
         "milestones": [
             {
                 "name": "Sketch",
                 "duration": {
                     "value": 3,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 30,
+                    "enabled": false
                 }
             },
             {
                 "name": "Base Color",
                 "duration": {
                     "value": 7,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": false
                 },
-                "payment": 50
-            },
-            {
-                "name": "Final",
-                "duration": {
-                    "value": 10,
-                    "unit": "days"
-                },
-                "payment": 100
+                "payment": {
+                    "value": 50,
+                    "enabled": true
+                }
             }
         ],
         "termsOfService": [
@@ -248,27 +262,36 @@
             "price": 150,
             "type": "percentage"
         },
+        "downpayment": {
+            "payment": {
+                "value": 30,
+                "enabled": true
+            }
+        },
         "milestones": [
             {
                 "name": "Line Art",
                 "duration": {
                     "value": 5,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": true
                 },
-                "payment": 30
+                "payment": {
+                    "value": 30,
+                    "enabled": false
+                }
             },
             {
                 "name": "Shading",
                 "duration": {
                     "value": 3,
-                    "unit": "days"
+                    "unit": "days",
+                    "enabled": false
                 },
-                "payment": 30
-            },
-            {
-                "name": "Final",
-                "duration": null,
-                "payment": 40
+                "payment": {
+                    "value": 50,
+                    "enabled": true
+                }
             }
         ],
         "termsOfService": [

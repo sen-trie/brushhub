@@ -1,6 +1,5 @@
 <script>
     let { tab, removeSelf, extra = false } = $props();
-
     let openState = $state(false);
 </script>
 
@@ -41,9 +40,6 @@
         </div>
     {:else}
         <div class="relative grow">
-            <div class="mb-4 flex items-center justify-between">
-                <h3 class="text-lg font-bold text-gray-800">Edit "{tab.name}"</h3>
-            </div>
             <button
                 class="absolute right-2 top-2 text-gray-500 hover:text-orange-500"
                 onclick={() => (openState = !openState)}
@@ -55,6 +51,7 @@
                     <label class="block text-sm font-medium text-gray-700">Name*</label>
                     <input
                         type="text"
+                        placeholder={tab.name}
                         bind:value={tab.name}
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
@@ -64,6 +61,7 @@
                     <div class="flex items-center gap-2">
                         <input
                             type="number"
+                            placeholder={tab.price}
                             bind:value={tab.price}
                             class="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
