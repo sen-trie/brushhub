@@ -97,5 +97,4 @@
 </div>
 
 <style>
-    /* No additional CSS needed as all styles are handled by Tailwind classes */
 </style>

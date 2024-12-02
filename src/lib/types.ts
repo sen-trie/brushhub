@@ -26,7 +26,8 @@ export interface Service {
     extras: {
         name: string;
         type: string;
-        value: number;
+        price: number;
+        description: string;
     }[];
     fastDelivery: {
         enabled: boolean;

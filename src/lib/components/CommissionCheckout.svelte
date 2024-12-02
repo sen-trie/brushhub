@@ -35,11 +35,11 @@
                                 <span>{extra.name}: </span>
                                 <span class="font-medium text-gray-900">
                                     +{extra.type === 'percentage'
-                                        ? extra.value +
+                                        ? extra.price +
                                           '% (' +
-                                          Math.round((basePrice * extra.value) / 100) +
+                                          Math.round((basePrice * extra.price) / 100) +
                                           ' USD)'
-                                        : extra.value + ' USD'}
+                                        : extra.price + ' USD'}
                                 </span>
                             </div>
                         {/if}

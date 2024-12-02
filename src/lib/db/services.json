@@ -37,19 +37,22 @@
             {
                 "name": "Character",
                 "type": "percentage",
-                "value": 70
+                "price": 70,
+                "description": "Additional character in the illustration."
             },
             {
                 "name": "Detailed Background",
                 "type": "currency",
-                "value": 50
+                "price": 50,
+                "description": "A detailed background for the illustration."
             }
         ],
         "fastDelivery": {
             "enabled": true,
+            "price": 50,
+            "type": "percentage",
             "duration": 3,
-            "unit": "days",
-            "price": 50
+            "unit": "days"
         },
         "commercialUse": {
             "enabled": true,
@@ -134,18 +137,21 @@
             {
                 "name": "Character",
                 "type": "percentage",
-                "value": 70
+                "price": 70,
+                "description": "Additional character in the illustration."
             },
             {
                 "name": "Detailed Background",
                 "type": "currency",
-                "value": 50
+                "price": 50,
+                "description": "A detailed background for the illustration."
             }
         ],
         "fastDelivery": {
             "enabled": true,
             "duration": 3,
             "unit": "days",
+            "type": "percentage",
             "price": 50
         },
         "commercialUse": {
@@ -226,13 +232,15 @@
             {
                 "name": "Background Details",
                 "type": "percentage",
-                "value": 20
+                "price": 20,
+                "description": "Detailed background for the illustration."
             }
         ],
         "fastDelivery": {
             "enabled": false,
             "duration": 3,
             "unit": "days",
+            "type": "percentage",
             "price": 50
         },
         "commercialUse": {

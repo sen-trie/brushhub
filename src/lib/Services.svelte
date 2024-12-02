@@ -3,9 +3,8 @@
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
-    let { serviceDB, filter, viewOnly = true, callback }: ComponentProps<any> = $props();
-
-    serviceDB = serviceDB.filter((service: any) => service.state === filter);
+    let { serviceDB, filter = null, viewOnly = true, callback }: ComponentProps<any> = $props();
+    serviceDB = filter ? serviceDB.filter((service: any) => service.state === filter) : serviceDB;
 
     const images: any = import.meta.glob(['$lib/assets/thumbnail/**'], {
         eager: true,
