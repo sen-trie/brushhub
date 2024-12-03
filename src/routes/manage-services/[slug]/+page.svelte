@@ -19,20 +19,20 @@
 <div>
     {#if showEditCommission}
         <EditCommission closeEdit={() => (showEditCommission = false)} {selectedService} />
+    {:else}
+        <div class="overview-container p-4">
+            <section class="mb-8">
+                <h2 class="mb-4 text-lg font-semibold">Published</h2>
+                <Services {serviceDB} filter={'published'} viewOnly={false} {callback} />
+            </section>
+            <section class="mb-8">
+                <h2 class="mb-4 text-lg font-semibold">Archived</h2>
+                <Services {serviceDB} filter={'archived'} viewOnly={false} {callback} />
+            </section>
+            <section class="mb-8">
+                <h2 class="mb-4 text-lg font-semibold">Draft</h2>
+                <Services {serviceDB} filter={'draft'} viewOnly={false} {callback} />
+            </section>
+        </div>
     {/if}
-
-    <div class="overview-container p-4">
-        <section class="mb-8">
-            <h2 class="mb-4 text-lg font-semibold">Published</h2>
-            <Services {serviceDB} filter={'published'} viewOnly={false} {callback} />
-        </section>
-        <section class="mb-8">
-            <h2 class="mb-4 text-lg font-semibold">Archived</h2>
-            <Services {serviceDB} filter={'archived'} viewOnly={false} {callback} />
-        </section>
-        <section class="mb-8">
-            <h2 class="mb-4 text-lg font-semibold">Draft</h2>
-            <Services {serviceDB} filter={'draft'} viewOnly={false} {callback} />
-        </section>
-    </div>
 </div>
