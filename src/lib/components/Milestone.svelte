@@ -14,7 +14,7 @@
             <p class="text-xs text-gray-500">Start of Project</p>
 
             <p class="text-xs font-bold text-green-600">
-                <span class="invisible">Pay</span>
+                <span class="invisible">-</span>
             </p>
         </div>
 
@@ -39,16 +39,31 @@
 
                 <p class="text-xs font-bold text-green-600">
                     {#if milestone.payment}
-                        Pay {milestone.payment}%
+                        Pay {milestone.payment.value}%
                     {:else}
                         <span class="invisible">Pay</span>
                     {/if}
                 </p>
             </div>
 
-            {#if index < selectedService.milestones.length - 1}
-                <div class="mx-2 h-1 flex-1 bg-orange-500"></div>
-            {/if}
+            <div class="mx-2 h-1 flex-1 bg-orange-500"></div>
         {/each}
+
+        <div class="flex flex-col items-center">
+            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
+                <div class="h-3 w-3 rounded-full bg-white"></div>
+            </div>
+
+            <p class="mt-2 text-sm font-medium text-orange-500">End</p>
+            <p class="text-xs text-gray-500">End of Project</p>
+
+            {#if selectedService.milestones.filter((milestone: any) => milestone.payment.value >= 100).length > 0}
+                <p class="text-xs font-bold text-green-600">
+                    <span class="invisible">-</span>
+                </p>
+            {:else}
+                <p class="text-xs font-bold text-green-600">Pay 100%</p>
+            {/if}
+        </div>
     </div>
 </div>

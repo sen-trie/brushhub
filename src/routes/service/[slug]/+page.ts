@@ -10,7 +10,7 @@ export const entries: EntryGenerator = async () => {
 export const load: PageLoad = ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
 
-    const service: (Service | undefined) = serviceDB.find((tag) => tag.id === Number(searchQuery));
+    const service: any = serviceDB.find((service) => service.id === Number(searchQuery));
     if (!service) {
         throw error(404, 'No matching tag found for your search');
     }

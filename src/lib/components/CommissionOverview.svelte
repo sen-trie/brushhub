@@ -1,8 +1,13 @@
 <script lang="ts">
     import Milestone from './Milestone.svelte';
+    import tosDB from '$lib/db/tos.json';
     import type { ComponentProps } from 'svelte';
 
     const { selectedService }: ComponentProps<any> = $props();
+
+    const tos = tosDB
+        .find((tos) => tos.artistId === selectedService.artistId)
+        ?.categories.filter((tos) => selectedService.termsOfService[tos.title] === true);
 </script>
 
 <h2 class="mt-6 text-lg font-semibold">Milestones</h2>
@@ -14,9 +19,10 @@
 
 <h2 class="mt-6 text-lg font-semibold">Terms of Services</h2>
 <div class="mt-4 space-y-2">
-    {#each selectedService.termsOfService as term}
+    {#each tos as term}
         <details class="rounded-md border p-4">
             <summary class="text-sm font-semibold">{term.title}</summary>
+            <!-- TODO: FIX NEW LINE NOT WORKING -->
             <p class="mt-2 text-sm text-gray-500">{term.details}</p>
         </details>
     {/each}

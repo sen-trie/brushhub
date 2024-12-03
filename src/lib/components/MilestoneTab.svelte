@@ -5,7 +5,9 @@
 
 <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
     {#if !downpayment}
-        <button class="mr-4 text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
+        <button class="mr-4 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
+            >Remove</button
+        >
     {/if}
     {#if !openState}
         <div class="relative grow">
@@ -71,11 +73,11 @@
                     <div class="mt-2 flex items-center gap-2">
                         <input
                             type="checkbox"
-                            id="checkbox-payment"
+                            id="checkbox-duration"
                             bind:checked={tab.duration.enabled}
                             class="h-4 w-4 text-orange-500 focus:ring-orange-500"
                         />
-                        <label for="checkbox-payment" class="text-sm text-gray-700">
+                        <label for="checkbox-duration" class="select-none text-sm text-gray-700">
                             Duration
                         </label>
                         <input
@@ -103,7 +105,9 @@
                         bind:checked={tab.payment.enabled}
                         class="h-4 w-4 text-orange-500 focus:ring-orange-500"
                     />
-                    <label for="checkbox-payment" class="text-sm text-gray-700"> Payment </label>
+                    <label for="checkbox-payment" class="select-none text-sm text-gray-700">
+                        Payment
+                    </label>
                     <input
                         type="number"
                         min="0"

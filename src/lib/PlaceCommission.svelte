@@ -10,7 +10,11 @@
         selectedService,
         closePlaceCommission,
         tierIndex
-    }: { selectedService: Service; closePlaceCommission: () => void; tierIndex: number } = $props();
+    }: {
+        selectedService: Service;
+        closePlaceCommission: () => void;
+        tierIndex: number;
+    } = $props();
 
     let warningMessage = $state('');
     let commissionChoice: CommissionChoice = $state({

@@ -73,7 +73,7 @@
                 <div class="rounded-lg border bg-orange-50 p-4 shadow-sm">
                     <h3 class="font-semibold text-orange-500">{extra.name}</h3>
                     <p class="font-bold text-green-600">
-                        {extra.type === 'percentage' ? `+ ${extra.value}%` : `+ SGD ${extra.value}`}
+                        {extra.type === 'percentage' ? `+ ${extra.price}%` : `+ SGD ${extra.price}`}
                     </p>
                     <p class="mt-2 text-sm text-gray-600">
                         <!-- {extra.description || `Extra ${extra.name.toLowerCase()}`} -->

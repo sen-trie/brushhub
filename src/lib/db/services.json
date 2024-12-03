@@ -91,18 +91,15 @@
                 }
             }
         ],
-        "termsOfService": [
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true,
+            "Commission Briefs": true
+        },
+        "uniqueTos": [
             {
-                "title": "What I Draw?",
-                "details": "I can draw characters, fantasy scenes, and simple backgrounds."
-            },
-            {
-                "title": "Commercial Usage",
-                "details": "Commercial use requires additional fees. Contact me for pricing details."
-            },
-            {
-                "title": "Personal Usage",
-                "details": "All services are available for personal use unless specified otherwise."
+                "title": "Prohibited Content",
+                "details": "I do not draw explicit content, hate speech, or offensive material."
             }
         ]
     },
@@ -198,18 +195,15 @@
                 }
             }
         ],
-        "termsOfService": [
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true,
+            "Commission Briefs": true
+        },
+        "uniqueTos": [
             {
-                "title": "What I Draw?",
-                "details": "I can draw characters, fantasy scenes, and simple backgrounds."
-            },
-            {
-                "title": "Commercial Usage",
-                "details": "Commercial use requires additional fees. Contact me for pricing details."
-            },
-            {
-                "title": "Personal Usage",
-                "details": "All services are available for personal use unless specified otherwise."
+                "title": "Prohibited Content",
+                "details": "I do not draw explicit content, hate speech, or offensive material."
             }
         ]
     },
@@ -294,7 +288,12 @@
                 }
             }
         ],
-        "termsOfService": [
+        "termsOfService": {
+            "Prohibited Works": true,
+            "Payment": false,
+            "Edits and Revisions": true
+        },
+        "uniqueTos": [
             {
                 "title": "Prohibited Content",
                 "details": "I do not draw explicit content, hate speech, or offensive material."

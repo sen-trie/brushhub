@@ -49,6 +49,9 @@ export interface Service {
         payment?: number;
     }[];
     termsOfService: {
+        title: boolean;
+    };
+    uniqueTos: {
         title: string;
         details: string;
     }[];
