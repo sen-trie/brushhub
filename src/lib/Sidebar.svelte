@@ -10,8 +10,12 @@
         { name: 'Home', path: '/', iconClass: 'fas fa-home' },
         { name: 'Profile', path: `./profile/${user.username}`, iconClass: 'fas fa-th-large' },
         { name: 'Services', path: `./manage-services/${user.username}`, iconClass: 'fas fa-tools' },
-        { name: 'Commission', path: './commission', iconClass: 'fas fa-tachometer-alt' },
-        { name: 'Orders', path: './orders', iconClass: 'fas fa-boxes' },
+        {
+            name: 'Commission',
+            path: `./manage-commissions/${user.username}`,
+            iconClass: 'fas fa-tachometer-alt'
+        },
+        { name: 'Orders', path: `./manage-orders/${user.username}`, iconClass: 'fas fa-boxes' },
         { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' },
         { name: 'Log out', path: './logout', iconClass: 'fas fa-sign-out-alt' }
     ];

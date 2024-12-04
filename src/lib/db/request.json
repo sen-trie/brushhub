@@ -1,0 +1,78 @@
+[
+    {
+        "id": 1,
+        "artistId": 2,
+        "customerId": 1,
+        "serviceId": 1,
+        "state": {
+            "value": "pending",
+            "progress": [
+                {
+                    "name": "Sketch",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": []
+                },
+                {
+                    "name": "Base Colour",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": []
+                }
+            ]
+        },
+        "brief": "I WANT A DRAWING OF A CAT",
+        "deadline": "2021-12-31",
+        "references": [
+            1,
+            2
+        ],
+        "type": "Full-body",
+        "extras": [
+            "Character"
+        ],
+        "fastDelivery": true,
+        "commercialUse": true,
+        "price": 650
+    },
+    {
+        "id": 2,
+        "artistId": 2,
+        "customerId": 1,
+        "serviceId": 1,
+        "state": {
+            "value": "active",
+            "progress": [
+                {
+                    "name": "Sketch",
+                    "date": "2021-12-21",
+                    "feedback": "",
+                    "approval": true,
+                    "sample": []
+                },
+                {
+                    "name": "Base Colour",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": []
+                }
+            ]
+        },
+        "brief": "I WANT A DRAWING OF A CAT",
+        "deadline": "2021-12-31",
+        "references": [
+            1,
+            2
+        ],
+        "type": "Full-body",
+        "extras": [
+            "Character"
+        ],
+        "fastDelivery": true,
+        "commercialUse": true,
+        "price": 650
+    }
+]

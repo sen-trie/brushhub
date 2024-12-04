@@ -5,7 +5,7 @@
         label: string;
         value: number;
         component: Component;
-        props: any;
+        props: any | undefined;
     }
 
     let { items }: { items: TabItem[] } = $props();
