@@ -4,6 +4,7 @@
     let { props }: ComponentProps<any> = $props();
 
     const requestDB = props.requestDB;
+    const openRequest = props.openRequest;
 </script>
 
 <table class="w-full border-collapse text-left">
@@ -18,7 +19,7 @@
     </thead>
     <tbody>
         {#each requestDB as request}
-            <Request {request} />
+            <Request {request} {openRequest} />
         {/each}
     </tbody>
 </table>

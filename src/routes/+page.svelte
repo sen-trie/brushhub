@@ -110,7 +110,7 @@
             {/each}
         </div>
         <button class="apply-button mt-4 w-full rounded-full bg-orange-500 p-3 text-white"
-            >APPLY FILTER</button
+            >Apply Filter</button
         >
     </div>
 </div>

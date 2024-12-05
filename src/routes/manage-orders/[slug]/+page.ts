@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit';
 import { getUser } from '$lib/util';
 import type { PageLoad, EntryGenerator } from './$types';
 import userDB from '$lib/db/user.json';
+import serviceDB from '$lib/db/services.json';
 import requestDB from '$lib/db/request.json';
 
 export const entries: EntryGenerator = async () => {
@@ -18,7 +19,14 @@ export const load: PageLoad = ({ params }) => {
         throw error(404, 'You are not the current user');
     }
 
-    const request = requestDB.filter((req) => req.customerId === user.id);
+    let request = requestDB.filter((req) => req.customerId === user.id);
+    request = request.map((req) => {
+        // O(N^2) COMPLEXITY - BEWARE
+        return {
+            ...req,
+            service: serviceDB.find((service) => service.id === req.serviceId)
+        }
+    });
 
     return { request };
 };

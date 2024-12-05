@@ -1,9 +1,12 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { request }: ComponentProps<any> = $props();
+    let { request, openRequest }: ComponentProps<any> = $props();
 
     let currentStage = $state('');
-    let milestone = $state('');
+    let milestone = $state({
+        name: '',
+        date: ''
+    });
 
     switch (request.state.value) {
         case 'active':
@@ -31,7 +34,7 @@
 <tr class="border-b text-sm">
     <td class="px-4 py-2">
         <div class="flex flex-col">
-            <span class="font-semibold">{request.serviceId}</span>
+            <span class="font-semibold">{request.service.title}</span>
             <span class="text-xs text-gray-500">Anne the Hungry</span>
         </div>
     </td>
@@ -54,8 +57,9 @@
         </span>
     </td>
     <td class="px-4 py-2">
-        <span class={`rounded-full px-2 py-1 text-xs font-medium text-white`}>
-            {currentStage}
-        </span>
+        <button
+            class="apply-button rounded-full bg-orange-500 p-3 px-6 text-white"
+            onclick={() => openRequest(request)}>View Details</button
+        >
     </td>
 </tr>

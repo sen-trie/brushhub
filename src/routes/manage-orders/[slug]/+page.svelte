@@ -1,10 +1,18 @@
 <script lang="ts">
     import Tabs from '$lib/Tabs.svelte';
     import Dashboard from '$lib/Dashboard.svelte';
+    import ViewCommission from '$lib/ViewCommission.svelte';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
     const requestDB: any[] = data?.request;
+    let currentCommission = $state({});
+
+    let showRequest = $state(false);
+    const openRequest = (request: any) => {
+        showRequest = true;
+        currentCommission = request;
+    };
 
     let items = [
         {
@@ -14,7 +22,8 @@
             props: {
                 requestDB: requestDB.filter(
                     (req) => req.state.value === 'active' || req.state.value === 'pending'
-                )
+                ),
+                openRequest: openRequest
             }
         },
         {
@@ -24,23 +33,31 @@
             props: {
                 requestDB: requestDB.filter(
                     (req) => req.state.value === 'cancelled' || req.state.value === 'rejected'
-                )
+                ),
+                openRequest: openRequest
             }
         },
         {
             label: 'Finished',
             value: 3,
             component: Dashboard,
-            props: { requestDB: requestDB.filter((req) => req.state.value === 'finished') }
+            props: {
+                requestDB: requestDB.filter((req) => req.state.value === 'finished'),
+                openRequest: openRequest
+            }
         }
     ];
 </script>
 
-<div>
-    <div class="overview-container p-4">
-        <h2 class="mb-4 text-lg font-semibold">Your Orders</h2>
-        <div>
-            <Tabs {items} />
+{#if showRequest}
+    <ViewCommission closeRequest={() => (showRequest = false)} request={currentCommission} />
+{:else}
+    <div>
+        <div class="overview-container p-4">
+            <h2 class="mb-4 text-lg font-semibold">Your Orders</h2>
+            <div>
+                <Tabs {items} />
+            </div>
         </div>
     </div>
-</div>
+{/if}
