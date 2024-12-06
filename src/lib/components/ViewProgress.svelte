@@ -4,8 +4,6 @@
     let { props }: ComponentProps<any> = $props();
 
     const request = props.request;
-
-    $inspect(request);
 </script>
 
-<Milestone selectedService={request.service} />
+<Milestone selectedService={request.service} currentService={request.state} />

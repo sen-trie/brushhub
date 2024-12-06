@@ -1,68 +1,103 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { selectedService }: ComponentProps<any> = $props();
+    let { selectedService, currentService = {} }: ComponentProps<any> = $props();
+
+    $inspect(selectedService, currentService);
+
+    const emptyService = (trueCondition: any, falseCondition: any, index = -1) => {
+        if (Object.keys(currentService).length === 0 || currentService.value === 'finished') {
+            return trueCondition;
+        } else if (index !== -1) {
+            if (index === -2 || currentService.progress[index].date !== null) {
+                return trueCondition;
+            }
+        }
+        return falseCondition;
+    };
 </script>
+
+{#snippet circleNode(index = -2)}
+    <div
+        class="flex h-6 w-6 items-center justify-center rounded-full {emptyService(
+            'bg-orange-500',
+            'bg-gray-500',
+            index
+        )}"
+    >
+        {#if Object.keys(currentService).length === 0}
+            <!-- ONLY PREVIEWING MILESTONE -->
+            <div class="h-3 w-3 rounded-full bg-white"></div>
+        {:else if currentService.value === 'finished'}
+            <div></div>
+        {:else if index === -1 || (index >= 0 && currentService.progress[index].date === null)}
+            <div class="h-3 w-3 rounded-full bg-white"></div>
+        {/if}
+    </div>
+{/snippet}
+
+{#snippet payNode(index = -1, nodeText = '', durationText = '', payText = '')}
+    {#if index !== -2}
+        <p class="mt-2 text-sm font-medium {emptyService('text-orange-500', 'text-gray-500')}">
+            {nodeText}
+        </p>
+    {:else}
+        <p class="mt-2 text-sm font-medium text-orange-500">{nodeText}</p>
+    {/if}
+
+    {#if durationText}
+        <p class="text-xs text-gray-500">{durationText}</p>
+    {:else}
+        <span class="invisible">-</span>
+    {/if}
+
+    {#if payText}
+        <p class="text-xs font-bold text-green-600">{payText}</p>
+    {:else}
+        <span class="invisible">-</span>
+    {/if}
+{/snippet}
 
 <div class="flex w-full items-center">
     <div class="relative flex w-full items-center">
         <div class="flex flex-col items-center">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
-                <div class="h-3 w-3 rounded-full bg-white"></div>
-            </div>
-
-            <p class="mt-2 text-sm font-medium text-orange-500">Start</p>
-            <p class="text-xs text-gray-500">Start of Project</p>
-
-            <p class="text-xs font-bold text-green-600">
-                <span class="invisible">-</span>
-            </p>
+            {@render circleNode()}
+            {#if selectedService.downpayment.payment.enabled === false}
+                {@render payNode(-2, 'Start', 'Start of Project', '')}
+            {:else}
+                {@render payNode(
+                    -2,
+                    'Start',
+                    'Start of Project',
+                    `Pay ${selectedService.downpayment.payment.value}%`
+                )}
+            {/if}
         </div>
 
         <div class="mx-2 h-1 flex-1 bg-orange-500"></div>
 
         {#each selectedService.milestones as milestone, index}
             <div class="flex flex-col items-center">
-                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
-                    <div class="h-3 w-3 rounded-full bg-white"></div>
-                </div>
-
-                <p class="mt-2 text-sm font-medium text-orange-500">
-                    {milestone.name}
-                </p>
-                <p class="text-xs text-gray-500">
-                    {#if milestone.duration}
-                        {milestone.duration.value} {milestone.duration.unit}
-                    {:else}
-                        <span class="invisible">Days</span>
-                    {/if}
-                </p>
-
-                <p class="text-xs font-bold text-green-600">
-                    {#if milestone.payment}
-                        Pay {milestone.payment.value}%
-                    {:else}
-                        <span class="invisible">Pay</span>
-                    {/if}
-                </p>
+                {@render circleNode(index)}
+                {@render payNode(
+                    index,
+                    milestone.name,
+                    milestone.duration
+                        ? `${milestone.duration.value} ${milestone.duration.unit}`
+                        : '',
+                    milestone.payment ? `Pay ${milestone.payment.value}%` : ''
+                )}
             </div>
-
-            <div class="mx-2 h-1 flex-1 bg-orange-500"></div>
+            <div
+                class="mx-2 h-1 flex-1 {emptyService('bg-orange-500', 'bg-gray-500', index)}"
+            ></div>
         {/each}
 
         <div class="flex flex-col items-center">
-            <div class="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500">
-                <div class="h-3 w-3 rounded-full bg-white"></div>
-            </div>
-
-            <p class="mt-2 text-sm font-medium text-orange-500">End</p>
-            <p class="text-xs text-gray-500">End of Project</p>
-
+            {@render circleNode(-1)}
             {#if selectedService.milestones.filter((milestone: any) => milestone.payment.value >= 100).length > 0}
-                <p class="text-xs font-bold text-green-600">
-                    <span class="invisible">-</span>
-                </p>
+                {@render payNode(-1, 'End', 'End of Project', '')}
             {:else}
-                <p class="text-xs font-bold text-green-600">Pay 100%</p>
+                {@render payNode(-1, 'End', 'End of Project', 'Pay 100%')}
             {/if}
         </div>
     </div>
