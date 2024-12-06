@@ -1,6 +1,9 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
+    import userDB from '$lib/db/user.json';
     let { request, openRequest }: ComponentProps<any> = $props();
+
+    const currentArtist = userDB.find((artist: any) => artist.id === request.artistId);
 
     let currentStage = $state('');
     let milestone = $state({
@@ -35,7 +38,7 @@
     <td class="px-4 py-2">
         <div class="flex flex-col">
             <span class="font-semibold">{request.service.title}</span>
-            <span class="text-xs text-gray-500">Anne the Hungry</span>
+            <span class="text-xs text-gray-500">{currentArtist?.displayName}</span>
         </div>
     </td>
     <td class="px-4 py-2">{request.type}</td>
@@ -59,7 +62,9 @@
     <td class="px-4 py-2">
         <button
             class="apply-button rounded-full bg-orange-500 p-3 px-6 text-white"
-            onclick={() => openRequest(request)}>View Details</button
+            onclick={() => {
+                openRequest(request);
+            }}>View Details</button
         >
     </td>
 </tr>

@@ -35,9 +35,9 @@ export function calculateCommission(selectedService: Service, commissionChoice: 
         (acc: number, extra: any, index: number) => {
             if (!commissionChoice.extras[index]) return acc;
             if (extra.type === 'percentage') {
-                return acc + (basePrice * extra.value) / 100;
+                return acc + (basePrice * extra.price) / 100;
             } else {
-                return acc + extra.value;
+                return acc + extra.price;
             }
         },
         0

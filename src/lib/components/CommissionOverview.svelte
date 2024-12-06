@@ -11,7 +11,7 @@
 </script>
 
 <h2 class="mt-6 text-lg font-semibold">Milestones</h2>
-<p class="text-sm text-gray-500">
+<p class="mb-6 text-sm text-gray-500">
     * Your money will be held and paid to the artist as per the completion of milestones.
 </p>
 

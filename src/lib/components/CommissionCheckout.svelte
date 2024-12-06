@@ -7,6 +7,9 @@
 
     const basePrice = selectedService.types[commissionChoice.selectedTier].price;
     const finalPrice = calculateCommission(selectedService, commissionChoice);
+    const noExtra =
+        selectedService.extras.filter((_: any, index: any) => commissionChoice.extras[index])
+            .length > 0;
 </script>
 
 <div class="p-6">
@@ -44,6 +47,10 @@
                             </div>
                         {/if}
                     {/each}
+
+                    {#if !noExtra}
+                        <p class="text-gray-500">No extras selected.</p>
+                    {/if}
                 </div>
             </div>
             <div class="mb-4">
@@ -67,16 +74,13 @@
                 </span>
             </div>
             <div class="mb-4 flex justify-between">
+                <!-- TODO ADD IN SERVICES -->
                 <span class="font-medium text-gray-700">Add-in Services:</span>
                 <!-- <span class="font-medium text-gray-900">
                     {selectedService.addInServices.length > 0
                         ? selectedService.addInServices.join(', ')
                         : 'None'}
                 </span> -->
-            </div>
-            <div class="mb-4 flex justify-between">
-                <span class="font-medium text-gray-700">Add-in Price:</span>
-                <span class="font-medium text-gray-900">SGD 0</span>
             </div>
         </div>
 

@@ -2,8 +2,6 @@
     import type { ComponentProps } from 'svelte';
     let { selectedService, currentService = {} }: ComponentProps<any> = $props();
 
-    $inspect(selectedService, currentService);
-
     const emptyService = (trueCondition: any, falseCondition: any, index = -1) => {
         if (Object.keys(currentService).length === 0 || currentService.value === 'finished') {
             return trueCondition;
@@ -37,7 +35,13 @@
 
 {#snippet payNode(index = -1, nodeText = '', durationText = '', payText = '')}
     {#if index !== -2}
-        <p class="mt-2 text-sm font-medium {emptyService('text-orange-500', 'text-gray-500')}">
+        <p
+            class="mt-2 text-sm font-medium {emptyService(
+                'text-orange-500',
+                'text-gray-500',
+                index
+            )}"
+        >
             {nodeText}
         </p>
     {:else}

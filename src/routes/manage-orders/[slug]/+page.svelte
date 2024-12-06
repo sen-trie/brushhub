@@ -13,7 +13,6 @@
         showRequest = true;
         currentCommission = request;
     };
-
     let items = [
         {
             label: 'Active',

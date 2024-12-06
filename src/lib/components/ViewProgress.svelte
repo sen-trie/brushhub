@@ -6,4 +6,9 @@
     const request = props.request;
 </script>
 
+<h2 class="text-lg font-semibold">Milestones</h2>
+<p class="mb-6 text-sm text-gray-500">
+    * Your money will be held and paid to the artist as per the completion of milestones.
+</p>
+
 <Milestone selectedService={request.service} currentService={request.state} />
