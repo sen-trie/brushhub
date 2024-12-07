@@ -6,8 +6,6 @@
 
     const selectedService = request.service;
     const commissionChoice = request;
-
-    $inspect(selectedService, request);
 </script>
 
 <div>
