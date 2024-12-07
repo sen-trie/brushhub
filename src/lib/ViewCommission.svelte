@@ -14,6 +14,8 @@
     const currentCommissioner = userDB.find((comm: any) => comm.id === request.customerId);
     const newRequestView = artistView && request.state.value === 'pending';
 
+    // TODO: ARTIST VIEW
+
     let items = [
         {
             label: 'Progress',

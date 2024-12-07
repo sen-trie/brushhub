@@ -14,7 +14,7 @@
         { name: 'View Profile', path: `/profile/${user.username}`, iconClass: 'fas fa-user' },
         {
             name: 'Manage Profile',
-            path: `/account/${user.username}/edit`,
+            path: `/account/edit`,
             iconClass: 'fas fa-edit'
         },
         { name: 'Sign Out', path: '#', iconClass: 'fas fa-sign-out-alt', action: () => signOut() },
@@ -24,7 +24,7 @@
             iconClass: 'fas fa-moon',
             action: () => toggleDarkMode()
         },
-        { name: 'Settings', path: '/settings', iconClass: 'fas fa-cog' },
+        { name: 'Settings', path: '/account/settings', iconClass: 'fas fa-cog' },
         { name: 'Help', path: '/help', iconClass: 'fas fa-question-circle' }
     ];
 
