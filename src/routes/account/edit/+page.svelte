@@ -7,7 +7,15 @@
         ...data.user
     });
 
-    $inspect(profileInfo);
+    let languageValue = $state('');
+
+    $effect(() => {
+        if (/,\s$/.test(languageValue)) {
+            languageValue = languageValue.replace(/,\s$/, '');
+            profileInfo.languages.push(languageValue);
+            languageValue = '';
+        }
+    });
 </script>
 
 <div class="space-y-6 p-6">
@@ -88,19 +96,6 @@
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-            <select
-                id="location"
-                bind:value={profileInfo.location}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            >
-                <option value="Singapore">Singapore</option>
-                <option value="Malaysia">Malaysia</option>
-                <option value="Indonesia">Indonesia</option>
-            </select>
-        </div>
-
-        <div>
             <label for="languages" class="block text-sm font-medium text-gray-700">Languages</label>
             <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
                 <div class="flex flex-wrap gap-2">
@@ -119,8 +114,23 @@
                     type="text"
                     placeholder="Add language"
                     class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                    bind:value={languageValue}
                 />
             </div>
+            <p class="mt-1 text-sm text-gray-500">Enter a comma after every language</p>
+        </div>
+
+        <div>
+            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+            <select
+                id="location"
+                bind:value={profileInfo.location}
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            >
+                <option value="Singapore">Singapore</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Indonesia">Indonesia</option>
+            </select>
         </div>
     </div>
 
