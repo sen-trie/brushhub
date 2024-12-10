@@ -3,15 +3,13 @@
     import type { Artwork } from '$lib/types.ts';
     import userDB from '$lib/db/user.json';
     import artistDB from '$lib/db/artist.json';
-    import { stopPropagation, navigateTo } from './util';
+    import { navigateTo } from './util';
     import { page } from '$app/stores';
+    import { importImages } from '$lib/api';
 
     let { artDB, showArtist = true }: ComponentProps<any> = $props();
-    const images: any = import.meta.glob(['$lib/assets/artwork/**'], {
-        eager: true,
-        query: '?url',
-        import: 'default'
-    });
+        
+    const images: Record<string, string> = importImages("artwork");
 
     let selectedArt: Artwork | null = $state(null);
     function openPopup(art: Artwork) {
@@ -32,7 +30,7 @@
             aria-label="View artwork details"
         >
             <img
-                src={images['/src/lib/assets/artwork/' + art.imgSrc]}
+                src={images[art.imgSrc]}
                 alt="Artwork"
                 class="h-48 w-full object-cover"
             />

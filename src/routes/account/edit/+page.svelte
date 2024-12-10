@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { importSingle } from '$lib/api';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
@@ -27,11 +28,11 @@
             <p class="mt-1 text-sm text-gray-500">
                 Appears whenever your page is presented to others
             </p>
-            <!-- <img
-                src={$profileInfo.avatar}
-                alt="Profile Picture"
+            <img
+                src={importSingle('dp', '1.jpg')}
+                alt="DP"
                 class="mx-auto h-24 w-24 rounded-full"
-            /> -->
+            />
             <div class="mt-2 flex justify-center space-x-2">
                 <button class="text-orange-500 hover:underline">Change</button>
                 <button class="text-red-500 hover:underline">Remove</button>
@@ -43,11 +44,11 @@
             <p class="mt-1 text-sm text-gray-500">
                 This image will be displayed at the top of your profile page
             </p>
-            <!-- <img
-                src={$profileInfo.coverImage}
-                alt="Cover Image"
+            <img
+                src={importSingle('banner', '1.jpg')}
+                alt="Cover Banner"
                 class="mx-auto h-24 w-full rounded-md object-cover"
-            /> -->
+            />
             <div class="mt-2 flex justify-center space-x-2">
                 <button class="text-orange-500 hover:underline">Change</button>
                 <button class="text-red-500 hover:underline">Remove</button>

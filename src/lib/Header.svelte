@@ -1,5 +1,6 @@
 <script lang="ts">
     import { navigateTo, handleClickOutside } from '$lib/util';
+    import { importSingle } from '$lib/api';
     import type { ComponentProps } from 'svelte';
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
@@ -71,7 +72,17 @@
                 class="dropdown-button flex items-center text-white hover:text-orange-500"
                 onclick={toggleDropdown}
             >
-                <p>{user.displayName || 'Sign In'}</p>
+                {#if user.displayName}
+                        <img
+                        src={importSingle('dp', user.avatar)}
+                        alt="Avatar"
+                        class="h-10 w-10 rounded-full"
+                    />
+                {:else}
+                <p>'Sign In'</p>
+                {/if}
+                
+                
             </button>
             {#if showDropdown}
                 <div
@@ -79,11 +90,11 @@
                 >
                     <div class="border-b border-gray-600 p-4">
                         <div class="flex items-center">
-                            <!-- <img TODO
-                                src={user.avatar || '/default-avatar.png'}
+                            <img
+                                src={importSingle("dp", user.avatar)}
                                 alt="Avatar"
                                 class="mr-3 h-10 w-10 rounded-full"
-                            /> -->
+                            />
                             <div>
                                 <p class="font-semibold">{user.displayName}</p>
                                 <p class="text-gray-400">@{user.username}</p>

@@ -3,10 +3,11 @@
         "id": 1,
         "bio": "I'm Anne, a digital artist who loves playing games on Steam. Feed me so I can buy more games. Follow for new updates and buy me some snacks!",
         "location": "Singapore",
-        "languages": ["English", "Malay"],
+        "languages": [
+            "English",
+            "Malay"
+        ],
         "artFollowers": 100,
-        "avatar": "/images/anne-avatar.jpg",
-        "coverImage": "/images/anne-cover.jpg",
         "openCommission": true,
         "youtube": "youtube.com/@hungryanne",
         "twitter": "x.com/hungry_anne",
@@ -15,17 +16,24 @@
         "responseTime": "02:00:00",
         "completionRate": 95,
         "total": 120,
-        "tags": ["anime", "concept art", "illustration"],
-        "featured": [1, 2]
+        "tags": [
+            "anime",
+            "concept art",
+            "illustration"
+        ],
+        "featured": [
+            1,
+            2
+        ]
     },
     {
         "id": 2,
         "bio": "Sample bio for Artist Name 2.",
         "location": "USA",
-        "languages": ["English"],
+        "languages": [
+            "English"
+        ],
         "artFollowers": 150,
-        "avatar": "/images/artist2-avatar.jpg",
-        "coverImage": "/images/artist2-cover.jpg",
         "openCommission": false,
         "youtube": "youtube.com/@artistname2",
         "twitter": "x.com/artist_name2",
@@ -34,7 +42,14 @@
         "responseTime": "02:30:00",
         "completionRate": 85,
         "total": 45,
-        "tags": ["anime", "landscape", "realism"],
-        "featured": [3, 4]
+        "tags": [
+            "anime",
+            "landscape",
+            "realism"
+        ],
+        "featured": [
+            3,
+            4
+        ]
     }
 ]

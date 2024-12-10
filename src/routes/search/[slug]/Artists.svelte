@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { importSingle } from '$lib/api';
     import { navigateTo } from '$lib/util';
     import { page } from '$app/stores';
     import type { ComponentProps } from 'svelte';
@@ -21,16 +22,13 @@
             0
                 ? 'bg-blue-50'
                 : ''}"
-            onclick={() => {
-                navigateTo(`./profile/${artist.username}`, $page.url.pathname);
-            }}
         >
             <div class="flex items-center">
-                <!-- <img
-                    src={artist.avatar}
+                <img
+                    src={importSingle("dp", artist.avatar)}
                     alt="Artist avatar"
                     class="w-16 h-16 rounded-full border border-gray-300 object-cover mr-4"
-                /> -->
+                />
                 <div>
                     <div class="flex items-center space-x-2">
                         <h3 class="text-lg font-bold">{artist.displayName}</h3>
@@ -53,7 +51,10 @@
 
             <button
                 class="flex items-center gap-2 rounded-md border border-blue-500 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-blue-50"
-            >
+                onclick={() => {
+                    navigateTo(`./profile/${artist.username}`, $page.url.pathname);
+                }}
+                >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -65,7 +66,7 @@
                         fill="currentColor"
                     />
                 </svg>
-                Follow
+                View Page
             </button>
         </div>
     {/each}
