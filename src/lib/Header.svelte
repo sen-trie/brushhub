@@ -45,7 +45,7 @@
         {
             name: 'Settings',
             iconClass: 'fas fa-cog',
-            action: () => navigateHeader('/account/settings')
+            action: () => navigateHeader('/settings')
         },
         {
             name: 'Help',
