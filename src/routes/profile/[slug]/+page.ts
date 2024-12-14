@@ -3,6 +3,8 @@ import type { PageLoad, EntryGenerator } from './$types';
 import users from '$lib/db/user.json';
 import artists from '$lib/db/artist.json';
 
+export const ssr = false;
+
 export const entries: EntryGenerator = async () => {
     return [{ slug: 'hungry_anne' }];
 };

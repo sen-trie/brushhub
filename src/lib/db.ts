@@ -3,6 +3,8 @@
 
 const imageDict: Record<string, Map<string, string>> = {};
 
+export const imagesKey = import.meta.glob('$lib/assets/**/**', { eager: true });
+
 Object.entries(import.meta.glob([`$lib/assets/**/**`], {
     eager: true,
     query: '?url',

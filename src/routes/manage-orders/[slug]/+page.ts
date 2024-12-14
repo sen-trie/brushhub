@@ -5,11 +5,14 @@ import userDB from '$lib/db/user.json';
 import serviceDB from '$lib/db/services.json';
 import requestDB from '$lib/db/request.json';
 
+export const ssr = false;
+
 export const entries: EntryGenerator = async () => {
     return [{ slug: 'hungry_anne' }];
 };
 
-export const load: PageLoad = ({ params }) => {
+
+export const load: PageLoad = async ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
     const currentUser = getUser();
 

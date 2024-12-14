@@ -5,7 +5,7 @@
     import artistDB from '$lib/db/artist.json';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
-    import { importImages } from '$lib/api';
+    import { importImages, imagesKey } from '$lib/db';
 
     let { artDB, showArtist = true }: ComponentProps<any> = $props();
         
@@ -19,6 +19,16 @@
     function closePopup() {
         selectedArt = null;
     }
+
+    const imageModules: any = import.meta.glob(
+		'$lib/assets/artwork/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
+		{
+			eager: true,
+            query: '?url',
+            import: 'default'
+		}
+	)
+
 </script>
 
 <div class="grid grid-cols-4 gap-4">
@@ -30,7 +40,7 @@
             aria-label="View artwork details"
         >
             <img
-                src={images[art.imgSrc]}
+                src={imageModules['/src/lib/assets/artwork/18.png']}
                 alt="Artwork"
                 class="h-48 w-full object-cover"
             />
@@ -73,7 +83,7 @@
             </button>
             <div class="flex">
                 <img
-                    src={images['/src/lib/assets/artwork/' + selectedArt.imgSrc]}
+                    src={images[selectedArt.imgSrc]}
                     alt="Artwork"
                     class="h-64 w-64 rounded-md object-cover"
                 />
@@ -108,7 +118,7 @@
                             }}
                             class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 text-center font-medium text-white"
                         >
-                            TO ARTIST PROFILE
+                            To Artist Profile
                         </button>
                     {/if}
                 </div>

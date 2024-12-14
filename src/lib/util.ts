@@ -45,6 +45,10 @@ export function calculateCommission(selectedService: Service, commissionChoice: 
     return basePrice + extrasPrice;
 }
 
+/**
+ * @param {string} path - The target path, always start with '/'.
+ * @param {string} pageUrl - Pass `$page.url.pathname`.
+ */
 export function navigateTo(path: string, pageUrl: string): void {
     const segments = pageUrl?.split('/').filter(Boolean) ?? 0;
     const prefix = '/..'.repeat(segments.length);
@@ -69,11 +73,13 @@ const defaultUser = {
 };
 
 export function getUser() {
-    const defaultValue = 1;
+    const defaultValue = 0;
     const storedId = browser
-        ? (window.localStorage.getItem('username') ?? defaultValue)
+        ? (window.localStorage.getItem('user_id') ?? defaultValue)
         : defaultValue;
-    const user = users.find((u) => u.id === storedId);
+
+    const user = users.find((u) => String(u.id) === storedId);
+
     return {
         ...defaultUser,
         ...user,

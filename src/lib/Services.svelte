@@ -24,7 +24,7 @@
         >
             <div class="relative w-full">
                 <img
-                    src={images['/src/lib/assets/thumbnail/' + service.thumbnail]}
+                    src={'/src/lib/assets/thumbnail/' + service.thumbnail}
                     alt="Service Thumbnail"
                     class="h-48 w-full rounded-md object-cover"
                 />

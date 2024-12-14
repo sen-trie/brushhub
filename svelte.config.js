@@ -11,6 +11,9 @@ const config = {
         paths: {
             base: process.env.NODE_ENV === 'production' ? '/brushhub' : ''
         },
+        prerender: {
+            handleHttpError: 'ignore'
+        }
     },
     relative: true,
     preprocess: [importAssets(), vitePreprocess()]

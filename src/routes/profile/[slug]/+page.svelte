@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { importSingle } from '$lib/api';
+    import { importSingle } from '$lib/db';
     import Tabs from '$lib/Tabs.svelte';
     import Overview from './Overview.svelte';
     import Portfolio from './Portfolio.svelte';
@@ -35,7 +35,11 @@
     <!-- style="background-image: url('{artist.coverImage}')" -->
     <div class="header-section flex items-center bg-cover bg-center p-6 text-black">
         <div class="profile-info flex items-center">
-            <img src={importSingle("dp", artist.avatar)} alt={artist.displayName} class="h-20 w-20 rounded-full" />
+            <img 
+                src={'/src/lib/assets/dp/' + artist.avatar}
+                alt={artist.displayName} 
+                class="h-20 w-20 rounded-full" 
+            />
 
             <div class="profile-details ml-4">
                 <h1 class="profile-name text-2xl font-bold">{artist.displayName}</h1>

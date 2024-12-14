@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { importSingle } from '$lib/api';
+    import { importSingle } from '$lib/db';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
@@ -29,7 +29,7 @@
                 Appears whenever your page is presented to others
             </p>
             <img
-                src={importSingle('dp', '1.jpg')}
+                src={'/src/lib/assets/dp/1.jpg'}
                 alt="DP"
                 class="mx-auto h-24 w-24 rounded-full"
             />
@@ -45,7 +45,7 @@
                 This image will be displayed at the top of your profile page
             </p>
             <img
-                src={importSingle('banner', '1.jpg')}
+                src={'/src/lib/assets/banner/1.jpg'}
                 alt="Cover Banner"
                 class="mx-auto h-24 w-full rounded-md object-cover"
             />

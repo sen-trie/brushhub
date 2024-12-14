@@ -5,6 +5,8 @@ import type { Service } from '$lib/types';
 import userDB from '$lib/db/user.json';
 import serviceDB from '$lib/db/services.json';
 
+export const ssr = false;
+
 export const entries: EntryGenerator = async () => {
     return [{ slug: 'hungry_anne' }];
 };
@@ -19,7 +21,7 @@ export const load: PageLoad = ({ params }) => {
         throw error(404, 'You are not the current artist');
     }
 
-    const service: (Service[] | undefined) = serviceDB.filter((service) => service.artistId === Number(artist.id));
+    const service: any = serviceDB.filter((service) => service.artistId === Number(artist.id));
     if (!service) {
         throw error(404, 'No matching artist found for your search');
     }

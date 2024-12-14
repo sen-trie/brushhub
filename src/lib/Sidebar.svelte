@@ -3,9 +3,9 @@
     import type { ComponentProps } from 'svelte';
     import { page } from '$app/stores';
 
-    const { toggleSidebar }: ComponentProps<any> = $props();
     const user = $page.data.user;
-
+    const { toggleSidebar }: ComponentProps<any> = $props();
+        
     const menuItemsLogged = [
         { name: 'Home', path: '/', iconClass: 'fas fa-home' },
         { name: 'Profile', path: `./profile/${user.username}`, iconClass: 'fas fa-th-large' },
@@ -16,13 +16,14 @@
             iconClass: 'fas fa-tachometer-alt'
         },
         { name: 'Orders', path: `./manage-orders/${user.username}`, iconClass: 'fas fa-boxes' },
-        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' },
-        { name: 'Log out', path: './logout', iconClass: 'fas fa-sign-out-alt' }
+        { name: 'Log Out', path: './logout', iconClass: 'fas fa-sign-out-alt' },
+        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' }
     ];
 
     const menuItemsNotLogged = [
         { name: 'Home', path: './', iconClass: 'fas fa-home' },
-        { name: 'Sign In', path: './account', iconClass: 'fas fa-th-large' }
+        { name: 'Sign In', path: './account/login/', iconClass: 'fas fa-th-large' },
+        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' },
     ];
 
     function handleKeyPress(event: KeyboardEvent, path: string) {
@@ -52,7 +53,7 @@
     >
         <button onclick={() => toggleSidebar}>☰</button>
         <ul class="w-full space-y-2">
-            {#each !!user ? menuItemsLogged : menuItemsNotLogged as item}
+            {#each (user.displayName ? menuItemsLogged : menuItemsNotLogged) as item}
                 <li>
                     <button
                         type="button"

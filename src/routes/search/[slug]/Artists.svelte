@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { importSingle } from '$lib/api';
+    import { importSingle } from '$lib/db';
     import { navigateTo } from '$lib/util';
     import { page } from '$app/stores';
     import type { ComponentProps } from 'svelte';
@@ -25,7 +25,7 @@
         >
             <div class="flex items-center">
                 <img
-                    src={importSingle("dp", artist.avatar)}
+                    src={'/src/lib/assets/dp/' + artist.avatar}
                     alt="Artist avatar"
                     class="w-16 h-16 rounded-full border border-gray-300 object-cover mr-4"
                 />
