@@ -6,9 +6,9 @@ export const trailingSlash = 'always';
 
 export const load: LayoutLoad = async ({ depends }) => {
     depends('user:profile');
-    
+
     let userData = getUser();
     return {
-        user: userData,
+        user: userData
     };
 };

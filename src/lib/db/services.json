@@ -7,15 +7,8 @@
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "1.jpg",
-        "samples": [
-            1,
-            2
-        ],
-        "tags": [
-            "illustration",
-            "character",
-            "fantasy"
-        ],
+        "samples": [1, 2],
+        "tags": ["illustration", "character", "fantasy"],
         "types": [
             {
                 "name": "Headshot",
@@ -111,15 +104,8 @@
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "1.jpg",
-        "samples": [
-            1,
-            2
-        ],
-        "tags": [
-            "illustration",
-            "character",
-            "fantasy"
-        ],
+        "samples": [1, 2],
+        "tags": ["illustration", "character", "fantasy"],
         "types": [
             {
                 "name": "Headshot",
@@ -215,15 +201,8 @@
         "title": "Manga",
         "description": "Black and white manga-style illustration.",
         "thumbnail": "2.jpg",
-        "samples": [
-            3,
-            4
-        ],
-        "tags": [
-            "anime",
-            "manga",
-            "illustration"
-        ],
+        "samples": [3, 4],
+        "tags": ["anime", "manga", "illustration"],
         "types": [
             {
                 "name": "Panel",

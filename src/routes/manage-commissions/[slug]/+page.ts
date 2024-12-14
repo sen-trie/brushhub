@@ -27,7 +27,7 @@ export const load: PageLoad = ({ params }) => {
         return {
             ...req,
             service: serviceDB.find((service) => service.id === req.serviceId)
-        }
+        };
     });
 
     return { request };

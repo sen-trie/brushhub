@@ -1,13 +1,11 @@
 <script lang="ts">
-    import { navigateTo, handleClickOutside } from '$lib/util';
-    import { importSingle } from '$lib/db';
-    import { setContext } from 'svelte';
+    import Searchbar from './Searchbar.svelte';
     import type { ComponentProps } from 'svelte';
     import { onMount } from 'svelte';
-    import Searchbar from './Searchbar.svelte';
+    import { navigateTo, handleClickOutside } from '$lib/util';
+    import { getSingle } from '$lib/db';
     import { page } from '$app/stores';
     import { invalidate } from '$app/navigation';
-    import path from 'path';
 
     const { toggleSidebar }: ComponentProps<any> = $props();
 
@@ -17,14 +15,14 @@
         username: '',
         avatar: ''
     });
-    
+
     $effect(() => {
         user = $page.data.user;
-    })
+    });
 
     const menuItemsLogged = [
-        {   
-            name: 'View Profile', 
+        {
+            name: 'View Profile',
             path: '#',
             iconClass: 'fas fa-user',
             action: () => navigateHeader(`/profile/${user.username}`)
@@ -32,28 +30,28 @@
         {
             name: 'Manage Profile',
             iconClass: 'fas fa-edit',
-            action: () => navigateHeader('/account/edit') 
+            action: () => navigateHeader('/account/edit')
         },
-        { 
-            name: 'Sign Out', 
+        {
+            name: 'Sign Out',
             iconClass: 'fas fa-sign-out-alt',
-            action: () => signOut() 
+            action: () => signOut()
         },
         {
             name: 'Toggle Dark Mode',
             iconClass: 'fas fa-moon',
             action: () => toggleDarkMode()
         },
-        { 
-            name: 'Settings', 
+        {
+            name: 'Settings',
             iconClass: 'fas fa-cog',
-            action: () => navigateHeader('/account/settings') 
+            action: () => navigateHeader('/account/settings')
         },
-        { 
-            name: 'Help', 
-            path: '/help', 
+        {
+            name: 'Help',
+            path: '/help',
             iconClass: 'fas fa-question-circle',
-            action: () => signOut() 
+            action: () => signOut()
         }
     ];
 
@@ -72,7 +70,7 @@
 
     function signOut() {
         showDropdown = false;
-        window.localStorage.setItem('user_id', "0")
+        window.localStorage.setItem('user_id', '0');
         invalidate('user:profile').then(() => {
             navigateTo('/', $page.url.pathname);
         });
@@ -114,12 +112,12 @@
             >
                 {#if user.displayName}
                     <img
-                        src={'/src/lib/assets/dp/' + user.avatar}
+                        src={getSingle('dp', user.avatar)}
                         alt="Avatar"
                         class="h-10 w-10 rounded-full"
                     />
                 {:else}
-                <p>Sign In</p>
+                    <p>Sign In</p>
                 {/if}
             </button>
             {#if showDropdown && user.displayName}
@@ -129,7 +127,7 @@
                     <div class="border-b border-gray-600 p-4">
                         <div class="flex items-center">
                             <img
-                                src={'/src/lib/assets/dp/' + user.avatar}
+                                src={getSingle('dp', user.avatar)}
                                 alt="Avatar"
                                 class="mr-3 h-10 w-10 rounded-full"
                             />

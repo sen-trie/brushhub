@@ -2,6 +2,7 @@
     import type { ComponentProps } from 'svelte';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
+    import { getSingle } from '$lib/db';
 
     let { serviceDB, filter = null, viewOnly = true, callback }: ComponentProps<any> = $props();
     serviceDB = filter ? serviceDB.filter((service: any) => service.state === filter) : serviceDB;
@@ -24,7 +25,7 @@
         >
             <div class="relative w-full">
                 <img
-                    src={'/src/lib/assets/thumbnail/' + service.thumbnail}
+                    src={getSingle('thumbnail', service.thumbnail)}
                     alt="Service Thumbnail"
                     class="h-48 w-full rounded-md object-cover"
                 />

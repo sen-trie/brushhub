@@ -11,7 +11,6 @@ export const entries: EntryGenerator = async () => {
     return [{ slug: 'hungry_anne' }];
 };
 
-
 export const load: PageLoad = async ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
     const currentUser = getUser();
@@ -28,7 +27,7 @@ export const load: PageLoad = async ({ params }) => {
         return {
             ...req,
             service: serviceDB.find((service) => service.id === req.serviceId)
-        }
+        };
     });
 
     return { request };

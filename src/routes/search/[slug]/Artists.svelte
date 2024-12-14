@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { importSingle } from '$lib/db';
+    import { getSingle } from '$lib/db';
     import { navigateTo } from '$lib/util';
     import { page } from '$app/stores';
     import type { ComponentProps } from 'svelte';
@@ -25,9 +25,9 @@
         >
             <div class="flex items-center">
                 <img
-                    src={'/src/lib/assets/dp/' + artist.avatar}
+                    src={getSingle('dp', artist.avatar)}
                     alt="Artist avatar"
-                    class="w-16 h-16 rounded-full border border-gray-300 object-cover mr-4"
+                    class="mr-4 h-16 w-16 rounded-full border border-gray-300 object-cover"
                 />
                 <div>
                     <div class="flex items-center space-x-2">
@@ -54,7 +54,7 @@
                 onclick={() => {
                     navigateTo(`./profile/${artist.username}`, $page.url.pathname);
                 }}
-                >
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

@@ -5,13 +5,13 @@
     import artistDB from '$lib/db/artist.json';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
-    import { importImages, imagesKey } from '$lib/db';
+    import { imageModules, getImage } from '$lib/db';
 
     let { artDB, showArtist = true }: ComponentProps<any> = $props();
-        
-    const images: Record<string, string> = importImages("artwork");
-
     let selectedArt: Artwork | null = $state(null);
+
+    const artworkArray = imageModules('artwork');
+
     function openPopup(art: Artwork) {
         selectedArt = art;
     }
@@ -19,16 +19,6 @@
     function closePopup() {
         selectedArt = null;
     }
-
-    const imageModules: any = import.meta.glob(
-		'$lib/assets/artwork/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
-		{
-			eager: true,
-            query: '?url',
-            import: 'default'
-		}
-	)
-
 </script>
 
 <div class="grid grid-cols-4 gap-4">
@@ -40,7 +30,7 @@
             aria-label="View artwork details"
         >
             <img
-                src={imageModules['/src/lib/assets/artwork/18.png']}
+                src={getImage('artwork', art.imgSrc, artworkArray)}
                 alt="Artwork"
                 class="h-48 w-full object-cover"
             />
@@ -83,7 +73,7 @@
             </button>
             <div class="flex">
                 <img
-                    src={images[selectedArt.imgSrc]}
+                    src={getImage('artwork', selectedArt.imgSrc, artworkArray)}
                     alt="Artwork"
                     class="h-64 w-64 rounded-md object-cover"
                 />

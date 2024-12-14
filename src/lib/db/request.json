@@ -25,14 +25,9 @@
         },
         "brief": "I WANT A DRAWING OF A CAT",
         "deadline": "2021-12-31",
-        "references": [
-            1,
-            2
-        ],
+        "references": [1, 2],
         "type": "Full-body",
-        "extras": [
-            "Character"
-        ],
+        "extras": ["Character"],
         "fastDelivery": true,
         "commercialUse": true,
         "price": 650
@@ -63,14 +58,9 @@
         },
         "brief": "I WANT A DRAWING OF A CAT",
         "deadline": "2021-12-30",
-        "references": [
-            1,
-            2
-        ],
+        "references": [1, 2],
         "type": "Full-body",
-        "extras": [
-            "Character"
-        ],
+        "extras": ["Character"],
         "fastDelivery": true,
         "commercialUse": true,
         "price": 650

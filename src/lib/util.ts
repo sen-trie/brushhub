@@ -29,19 +29,19 @@ export function handleClickOutside(
     };
 }
 
-export function calculateCommission(selectedService: Service, commissionChoice: CommissionChoice): number {
+export function calculateCommission(
+    selectedService: Service,
+    commissionChoice: CommissionChoice
+): number {
     const basePrice = selectedService.types[commissionChoice.selectedTier].price;
-    const extrasPrice = selectedService.extras.reduce(
-        (acc: number, extra: any, index: number) => {
-            if (!commissionChoice.extras[index]) return acc;
-            if (extra.type === 'percentage') {
-                return acc + (basePrice * extra.price) / 100;
-            } else {
-                return acc + extra.price;
-            }
-        },
-        0
-    );
+    const extrasPrice = selectedService.extras.reduce((acc: number, extra: any, index: number) => {
+        if (!commissionChoice.extras[index]) return acc;
+        if (extra.type === 'percentage') {
+            return acc + (basePrice * extra.price) / 100;
+        } else {
+            return acc + extra.price;
+        }
+    }, 0);
     return basePrice + extrasPrice;
 }
 
