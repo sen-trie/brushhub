@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
+    import { calculateCurrency } from '$lib/util';
     let { props }: ComponentProps<any> = $props();
 
     const request = props.request;
@@ -72,6 +73,6 @@
         </div>
     </div>
     <div class="mb-4 flex justify-between">
-        <span class="font-medium text-gray-900">{commissionChoice.price} USD</span>
+        <span class="font-medium text-gray-900">{calculateCurrency(commissionChoice.price)}</span>
     </div>
 </div>

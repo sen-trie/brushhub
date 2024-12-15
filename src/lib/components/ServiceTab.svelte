@@ -1,7 +1,10 @@
 <script>
+    import { getPreferredCurrency } from '$lib/util';
     let { tab, removeSelf, extra = false } = $props();
     let openState = $state(false);
 </script>
+<!-- 
+TODO SWITCH TO USD  -->
 
 <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
     <button class="mr-4 text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
@@ -31,7 +34,7 @@
                 {#if tab.price}
                     <p class="text-sm font-medium text-gray-900">
                         {tab.price}
-                        {tab.type === 'percentage' ? '%' : 'USD'}
+                        {tab.type === 'percentage' ? '%' : getPreferredCurrency()}
                     </p>
                 {:else}
                     <i class="fas fa-pencil-alt text-sm text-gray-500">(Missing Price)</i>
@@ -71,7 +74,7 @@
                                 class="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                             >
                                 <option value="percentage">%</option>
-                                <option value="currency">USD</option>
+                                <option value="currency">{getPreferredCurrency()}</option>
                             </select>
                         {/if}
                     </div>

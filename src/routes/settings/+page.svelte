@@ -1,6 +1,6 @@
 <script lang="ts">
     import { getSingle } from '$lib/db';
-    import { getUser, getPrefs } from '$lib/util';
+    import { getUser, getPrefs, exchangeRates } from '$lib/util';
 
     let userPrefs = $state(getPrefs());
     const user = getUser();
@@ -39,10 +39,9 @@
                 bind:value={userPrefs.preferredCurrency}
                 class="rounded-md focus:border-orange-500 focus:ring-orange-500"
             >
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="SGD">SGD</option>
-                <option value="JPY">JPY</option>
+                {#each Object.entries(exchangeRates) as [rate, _]}
+                    <option value={rate}>{rate}</option>
+                {/each}
             </select>
         </div>
     </div>

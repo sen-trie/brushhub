@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
+    import { getPreferredCurrency } from '$lib/util';
     import ServiceTab from '$lib/components/ServiceTab.svelte';
 
     let { props }: ComponentProps<any> = $props();
@@ -14,6 +15,8 @@
     const addTab = (tabs: any[]) => {
         return [...tabs, { name: '', value: 0, type: 'currency', description: '' }];
     };
+
+    // TODO CONVERT CURRENCY TO USD
 
     function removeTab(index: number, tabs: any[]) {
         return tabs.filter((_: any, i: number) => i !== index);
@@ -70,10 +73,11 @@
             />
             <select class="rounded-md border px-2 py-1" bind:value={fastDelivery.type}>
                 <option value="percentage">%</option>
-                <option value="currency">USD</option>
+                <option value="currency">{getPreferredCurrency()}</option>
             </select>
         </div>
 
+        <!-- TODO FIX THIS PAGE -->
         <div class="flex items-center space-x-4">
             <input type="checkbox" bind:checked={commercialUse.enabled} id="commercial-use" />
             <label for="commercial-use" class="flex-1">Commercial Use</label>
@@ -85,7 +89,7 @@
             />
             <select class="rounded-md border px-2 py-1" bind:value={commercialUse.type}>
                 <option value="percentage">%</option>
-                <option value="currency">USD</option>
+                <option value="currency">{getPreferredCurrency()}</option>
             </select>
         </div>
     </div>

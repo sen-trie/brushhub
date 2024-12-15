@@ -5,12 +5,7 @@ import { countries } from 'countries-list';
 import users from '$lib/db/user.json';
 import type { Service, CommissionChoice } from '$lib/types';
 
-const countryNames: string[] = Object.entries(countries)
-    .map(([_, name]) => name.name)
-    .sort();
-export function getCountryList(): string[] {
-    return countryNames;
-}
+
 
 export async function handleImageUpload(
     event: Event,
@@ -162,6 +157,45 @@ export function filterArray<T>(arr: T[], filterFn: (item: T) => boolean): () => 
     };
 }
 
+export const exchangeRates: Record<string, number> = {
+    USD: 1.0,
+    EUR: 0.91,
+    JPY: 148.5,
+    GBP: 0.79,
+    AUD: 1.48,
+    CAD: 1.36,
+    CHF: 0.89,
+    CNY: 7.15,
+    HKD: 7.83,
+    NZD: 1.63,
+    SEK: 10.39,
+    KRW: 1330,
+    SGD: 1.35,
+    NOK: 10.68,
+    MXN: 17.3,
+    INR: 83.1,
+    RUB: 92.5,
+    ZAR: 18.9,
+    BRL: 5.1,
+    TRY: 32.5,
+    IDR: 15300,
+    PLN: 3.95,
+    THB: 36.2,
+    AED: 3.67,
+    SAR: 3.75,
+};
+
+export function getPreferredCurrency(): string {
+    return getPrefs().preferredCurrency;
+}
+
+export function calculateCurrency(amount: number): string {
+    const prefCurrency = getPreferredCurrency();
+    const formattedAmount = (Math.round(amount * exchangeRates[prefCurrency]))
+        .toLocaleString('en-US');
+    return `${prefCurrency} ${formattedAmount}`;
+}
+
 export function calculateTimePassed(joinedDate: Date): string {
     const now = new Date();
     const timeDiff = now.getTime() - joinedDate.getTime();
@@ -189,4 +223,12 @@ export function formatResponseTime(responseTime: string): string {
     const days = Math.floor(hours / 24);
 
     return days > 0 ? `${days} days` : `${hours} hours`;
+}
+
+const countryNames: string[] = Object.entries(countries)
+    .map(([_, name]) => name.name)
+    .sort();
+
+export function getCountryList(): string[] {
+    return countryNames;
 }

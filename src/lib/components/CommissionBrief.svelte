@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount, type ComponentProps } from 'svelte';
-    import { calculateCommission } from '$lib/util';
+    import { calculateCommission, calculateCurrency } from '$lib/util';
     import ImageSamples from './ImageSamples.svelte';
 
     let {
@@ -102,7 +102,7 @@
                 bind:value={commissionChoice.selectedTier}
             >
                 {#each selectedService.types as type, index}
-                    <option value={index}>{type.name} ({type.price} USD)</option>
+                    <option value={index}>{type.name} ({calculateCurrency(type.price)})</option>
                 {/each}
             </select>
         </div>
@@ -122,8 +122,8 @@
                             for={extra.name}
                             class="ml-2 text-sm text-gray-700"
                             style="user-select: none;"
-                            >{extra.name} (+{extra.price}
-                            {extra.type === 'percentage' ? '% of base price' : 'USD'})</label
+                            >{extra.name} (+{extra.type === 'percentage' ? `${extra.price} % of base price` : calculateCurrency(extra.price)}
+                            )</label
                         >
                     </div>
                 {/each}
@@ -174,7 +174,7 @@
             />
         </div>
 
-        <p class="mt-4 text-lg font-bold text-green-600">{price} SGD</p>
+        <p class="mt-4 text-lg font-bold text-green-600">{calculateCurrency(price)}</p>
     </div>
 
     <div>

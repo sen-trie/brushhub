@@ -1,7 +1,7 @@
 <script lang="ts">
     import Milestone from './Milestone.svelte';
     import type { ComponentProps } from 'svelte';
-    import { calculateCommission } from '$lib/util';
+    import { calculateCommission, calculateCurrency } from '$lib/util';
 
     const { selectedService, commissionChoice }: ComponentProps<any> = $props();
 
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Base Price:</span>
-                <span class="font-medium text-gray-900">{basePrice} USD</span>
+                <span class="font-medium text-gray-900">{calculateCurrency(basePrice)}</span>
             </div>
             <div class="mb-4 flex justify-between">
                 <span class="font-medium text-gray-700">Extras:</span>
@@ -40,9 +40,9 @@
                                     +{extra.type === 'percentage'
                                         ? extra.price +
                                           '% (' +
-                                          Math.round((basePrice * extra.price) / 100) +
-                                          ' USD)'
-                                        : extra.price + ' USD'}
+                                          calculateCurrency(Math.round((basePrice * extra.price) / 100)) +
+                                          ')'
+                                        : calculateCurrency(extra.price)}
                                 </span>
                             </div>
                         {/if}
@@ -120,7 +120,7 @@
             in case of cancellation.
         </p>
         <div class="text-right">
-            <p class="mb-2 text-lg font-bold text-green-600">{finalPrice} USD</p>
+            <p class="mb-2 text-lg font-bold text-green-600">{calculateCurrency(finalPrice)}</p>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import { navigateTo } from './util';
+    import { navigateTo, calculateCurrency } from './util';
     import { page } from '$app/stores';
     import { getSingle } from '$lib/db';
 
@@ -35,9 +35,9 @@
                 <h4 class="text-lg font-semibold">{service.title}</h4>
                 <p class="mt-2 text-green-600">
                     {service.types.length > 0
-                        ? `SGD ${Math.min(...service.types.map((type: any) => type.price))} ~ SGD ${Math.max(
-                              ...service.types.map((type: any) => type.price)
-                          )}`
+                        ? `${calculateCurrency(Math.min(...service.types.map((type: any) => type.price)))} ~ 
+                            ${calculateCurrency(Math.max(...service.types.map((type: any) => type.price)))}`
+                            
                         : 'Price not set'}
                 </p>
                 <div class="mt-3 flex flex-wrap items-center gap-2">

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import BackButton from '$lib/components/BackButton.svelte';
+    import { calculateCurrency } from '$lib/util';
     import Browse from '$lib/Browse.svelte';
     import PlaceCommission from '$lib/PlaceCommission.svelte';
     import artworkDB from '$lib/db/artwork.json';
@@ -53,7 +54,7 @@
             {#each selectedService.types as type, index}
                 <div class="rounded-lg border p-4 shadow-sm">
                     <h2 class="text-lg font-semibold text-orange-500">{type.name}</h2>
-                    <p class="font-bold text-green-600">SGD {type.price}</p>
+                    <p class="font-bold text-green-600">{calculateCurrency(type.price)}</p>
                     <p class="mt-2 text-sm text-gray-600">{type.description}</p>
                     <button
                         class="mt-4 w-full rounded-lg bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600"
@@ -73,7 +74,7 @@
                 <div class="rounded-lg border bg-orange-50 p-4 shadow-sm">
                     <h3 class="font-semibold text-orange-500">{extra.name}</h3>
                     <p class="font-bold text-green-600">
-                        {extra.type === 'percentage' ? `+ ${extra.price}%` : `+ SGD ${extra.price}`}
+                        {extra.type === 'percentage' ? `+ ${extra.price}%` : `+ ${calculateCurrency(extra.price)}`}
                     </p>
                     <p class="mt-2 text-sm text-gray-600">
                         <!-- {extra.description || `Extra ${extra.name.toLowerCase()}`} -->

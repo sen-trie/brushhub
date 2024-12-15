@@ -78,7 +78,6 @@
         class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
 
-    <!-- TODO -->
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     {#key $page.url}
         {#if showSuggestions}
