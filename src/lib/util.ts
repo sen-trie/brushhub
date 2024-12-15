@@ -4,6 +4,44 @@ import { base } from '$app/paths';
 import users from '$lib/db/user.json';
 import type { Service, CommissionChoice } from '$lib/types';
 
+export async function handleImageUpload(
+    event: Event,
+    uploadedImages: string[],
+    maxImages: number = 10
+): Promise<[string[], string]> {
+    const files = (event.target as HTMLInputElement).files;
+    if (!files) return [uploadedImages, ''];
+
+    if (uploadedImages.length + files.length > maxImages) {
+        return [uploadedImages, `You can upload a maximum of ${maxImages} images.`];
+    }
+
+    const newUploadedImages = [...uploadedImages];
+    const promises: Promise<string>[] = [];
+
+    for (const file of files) {
+        if (!file.type.startsWith('image/')) {
+            return [uploadedImages, 'Only image files (e.g., jpg, png) are allowed.'];
+        }
+
+        const promise = new Promise<string>((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.onload = () => resolve(fileReader.result as string);
+            fileReader.onerror = () => reject('Error reading file.');
+            fileReader.readAsDataURL(file);
+        });
+
+        promises.push(promise);
+    }
+
+    try {
+        const results = await Promise.all(promises);
+        return [[...newUploadedImages, ...results], ''];
+    } catch {
+        return [uploadedImages, 'An error occurred while uploading images.'];
+    }
+}
+
 export function handleClickOutside(
     buttonClass: string,
     menuClass: string,
@@ -86,6 +124,22 @@ export function getUser() {
         isNotEmpty(): boolean {
             return this.id !== 0;
         }
+    };
+}
+
+export function getPrefs() {
+    const defaultValue = {
+        darkMode: 'auto',
+        preferredCurrency: 'USD'
+    };
+
+    const storedPref = browser
+        ? JSON.parse(window.localStorage.getItem('user_pref') ?? JSON.stringify(defaultValue))
+        : defaultValue;
+
+    return {
+        ...defaultValue,
+        ...storedPref
     };
 }
 

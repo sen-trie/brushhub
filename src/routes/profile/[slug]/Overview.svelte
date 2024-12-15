@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { calculateTimePassed, formatResponseTime } from '$lib/util';
+    import { calculateTimePassed, formatResponseTime, navigateTo } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { page } from '$app/stores';
     import Browse from '$lib/Browse.svelte';
     import artworkDB from '$lib/db/artwork.json';
     import tosData from '$lib/db/tos.json';
@@ -11,6 +12,7 @@
     const artist = props[0];
 
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
+    
     const serviceDB = services.filter(
         (service) => service.artistId === artist.id && service.state === 'published'
     );
@@ -32,7 +34,9 @@
                 <a href="https://{artist.twitter}" target="_blank" class="mt-1 block text-blue-600">
                     {artist.twitter}
                 </a>
-                <button class="edit-profile mt-4 text-orange-600"
+                <button
+                    class="edit-profile mt-4 text-orange-600"
+                    onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}
                     >Edit your profile <i class="fas fa-edit"></i></button
                 >
 
@@ -86,6 +90,7 @@
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
                 <Services {serviceDB} />
+                <!-- TODO EDIT SERVICE IF CURRENT USER IS ARTIST -->
                 <button
                     class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                 >

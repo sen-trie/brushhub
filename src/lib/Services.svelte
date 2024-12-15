@@ -6,15 +6,8 @@
 
     let { serviceDB, filter = null, viewOnly = true, callback }: ComponentProps<any> = $props();
     serviceDB = filter ? serviceDB.filter((service: any) => service.state === filter) : serviceDB;
-
-    const images: any = import.meta.glob(['$lib/assets/thumbnail/**'], {
-        eager: true,
-        query: '?url',
-        import: 'default'
-    });
 </script>
 
-<!-- TODO -->
 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
     {#each serviceDB as service}
         <button
@@ -38,6 +31,7 @@
                 {/if}
             </div>
             <div class="mt-4">
+                <!-- TODO FIX CURRENCY CONVERSION FROM USD -->
                 <h4 class="text-lg font-semibold">{service.title}</h4>
                 <p class="mt-2 text-green-600">
                     {service.types.length > 0

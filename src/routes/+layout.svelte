@@ -14,7 +14,7 @@
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}
-    <main class="content">
+    <main class="content overflow-y-auto">
         {@render children()}
     </main>
 </div>
@@ -29,7 +29,6 @@
 
     .content {
         flex-grow: 1;
-        padding: 1rem;
     }
 
     .overlay {

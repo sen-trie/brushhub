@@ -1,24 +1,71 @@
-
 <script lang="ts">
     import { getSingle } from '$lib/db';
-    import { getUser } from '$lib/util';
+    import { getUser, getPrefs } from '$lib/util';
+
+    let userPrefs = $state(getPrefs());
     const user = getUser();
 
-    let darkMode = $state("auto");
-    let preferredCurrency =  $state('USD');
-    let headerColor =  $state('#ff4500');
+    function savePreferences() {
+        window.localStorage.setItem('user_pref', JSON.stringify(userPrefs));
+        window.location.reload();
+    }
+
+    function pickRandomColor() {
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        userPrefs.headerColor = randomColor;
+    }
 </script>
 
-<div class="max-w-4xl mx-auto mt-8 p-6">
+<div class="mx-auto max-w-4xl p-6">
+    <h1 class="mb-4 text-2xl font-bold">BrushHub Settings</h1>
+    <div class="space-y-4">
+        <div class="flex items-center justify-between">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
+            <label class="text-sm font-medium">Theme mode</label>
+            <select
+                bind:value={userPrefs.darkMode}
+                class="rounded-md text-sm shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            >
+                <option value="auto">Auto Detect</option>
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
+            <label class="text-sm font-medium">Preferred Currency</label>
+            <select
+                bind:value={userPrefs.preferredCurrency}
+                class="rounded-md focus:border-orange-500 focus:ring-orange-500"
+            >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="SGD">SGD</option>
+                <option value="JPY">JPY</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="mt-10 flex justify-end space-x-4">
+        <button
+            class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+            onclick={savePreferences}
+        >
+            Save Preferences
+        </button>
+    </div>
+
     {#if user.displayName}
+        <div class="my-8 border-t border-gray-700"></div>
         <div>
-            <h1 class="text-2xl font-bold mb-2">Your BrushHub profile</h1>
-            <p class="text-sm text-gray-400 mb-6">
-                This is your public presence on BrushHub. You need a profile to upload your own services,
-                comment on artwork, or create commissions.
+            <h1 class="mb-2 text-2xl font-bold">Your BrushHub Profile</h1>
+            <p class="mb-6 text-sm text-gray-400">
+                This is your public presence on BrushHub. You need a profile to upload your own
+                services, comment on artwork, or create commissions.
             </p>
 
-            <div class="flex items-center space-x-4 mb-6">
+            <div class="mb-6 flex items-center space-x-4">
                 <img
                     src={getSingle('dp', user.avatar)}
                     alt={`${user.displayName}'s avatar`}
@@ -44,52 +91,6 @@
                     Manage Profile
                 </a>
             </div>
-            <div class="my-10 border-t border-gray-700"></div>
         </div>
     {/if}
-
-    <h1 class="text-2xl font-bold mb-4">BrushHub Settings</h1>
-
-    <div class="space-y-4">
-        <div class="flex items-center justify-between">
-            <!-- svelte-ignore a11y_label_has_associated_control -->
-            <label class="text-sm font-medium">Accent color</label>
-            <div class="flex items-center space-x-4">
-                <input
-                    type="color"
-                    bind:value={headerColor}
-                    class="w-8 h-8 border rounded-md"
-                />
-                <button class="px-4 py-2 border border-gray-500 rounded-md shadow-sm text-sm">Pick Random</button>
-            </div>
-        </div>
-    
-        <div class="flex items-center justify-between">
-            <!-- svelte-ignore a11y_label_has_associated_control -->
-            <label class="text-sm font-medium">Theme mode</label>
-            <select
-                bind:value={darkMode}
-                class="rounded-md shadow-sm text-sm focus:border-orange-500 focus:ring-orange-500"
-            >
-                <option value="auto">Auto Detect</option>
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-            </select>
-        </div>
-    
-        <div class="flex items-center justify-between">
-            <!-- svelte-ignore a11y_label_has_associated_control -->
-            <label class="text-sm font-medium">Preferred Currency</label>
-            <select
-                bind:value={preferredCurrency}
-                class="rounded-md focus:border-orange-500 focus:ring-orange-500"
-            >
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="SGD">SGD</option>
-                <option value="JPY">JPY</option>
-            </select>
-        </div>
-    </div>
-    
 </div>

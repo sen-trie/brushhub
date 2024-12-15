@@ -91,6 +91,7 @@
     });
 </script>
 
+<!-- style="background-color: {userPrefs.headerColor}" -->
 <header class="bg-gray-800 py-3 text-white">
     <nav class="container mx-auto flex items-center justify-between px-4">
         <div class="flex items-center gap-4">

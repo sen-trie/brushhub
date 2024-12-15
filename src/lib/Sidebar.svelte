@@ -46,13 +46,13 @@
     tabindex="0"
     onkeypress={handleScrimKeyPress}
     onclick={toggleSidebar}
-    transition:fade="{{ duration: 150 }}"
+    transition:fade={{ duration: 150 }}
 >
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <aside
         class="flex w-48 flex-col items-center border-r border-gray-300 bg-white p-4"
         onclick={(e) => stopPropagation(e)}
-        transition:fly="{{ x: -300, duration: 300 }}"
+        transition:fly={{ x: -300, duration: 300 }}
     >
         <button onclick={() => toggleSidebar}>☰</button>
         <ul class="w-full space-y-2">

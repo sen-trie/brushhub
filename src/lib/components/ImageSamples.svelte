@@ -32,7 +32,7 @@
         for="upload-images"
         class="cursor-pointer rounded bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600"
     >
-        Upload images
+        Upload Images
     </label>
     <input
         id="upload-images"
