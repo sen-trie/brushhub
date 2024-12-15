@@ -34,8 +34,6 @@
     const removeImage = (index: number) => {
         uploadedImages = uploadedImages.filter((_, i) => i !== index);
     };
-
-    $inspect(selectedService);
 </script>
 
 <div>

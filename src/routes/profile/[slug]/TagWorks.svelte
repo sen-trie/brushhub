@@ -33,40 +33,46 @@
     };
 
     const removeTag = (index: number, tagIndex: number) => {
-        const updatedTags = uploadedImages[index].tags.filter((_: any, i: number) => i !== tagIndex);
+        const updatedTags = uploadedImages[index].tags.filter(
+            (_: any, i: number) => i !== tagIndex
+        );
         handleTagUpdate(index, 'tags', updatedTags);
     };
 </script>
 
-
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-    <div class="w-full max-w-4xl h-[70vh] rounded-lg bg-white p-6 shadow-lg flex flex-col">
-        <h2 class="text-2xl font-bold mb-4">Tag Artworks</h2>
-        <div class="w-full flex grow overflow-y-auto ">
-            <div class="w-1/3 h-full overflow-y-auto pr-4 border-r border-gray-200">
+    <div class="flex h-[70vh] w-full max-w-4xl flex-col rounded-lg bg-white p-6 shadow-lg">
+        <h2 class="mb-4 text-2xl font-bold">Tag Artworks</h2>
+        <div class="flex w-full grow overflow-y-auto">
+            <div class="h-full w-1/3 overflow-y-auto border-r border-gray-200 pr-4">
                 {#each uploadedImages as image, index}
                     <div
-                        class="relative mb-4 cursor-pointer rounded-lg border p-2 hover:border-orange-500 {currentIndex === index ? 'border-orange-500 border-2' : ''}"
+                        class="relative mb-4 cursor-pointer rounded-lg border p-2 hover:border-orange-500 {currentIndex ===
+                        index
+                            ? 'border-2 border-orange-500'
+                            : ''}"
                         onclick={() => (currentIndex = index)}
                     >
                         <img
                             src={image}
                             alt="Uploaded artwork"
-                            class="w-full h-32 object-cover rounded-md"
+                            class="h-32 w-full rounded-md object-cover"
                         />
                         {#if isTagged(index) !== ''}
-                            <span class="absolute bottom-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+                            <span
+                                class="absolute bottom-2 right-2 rounded bg-red-500 px-2 py-1 text-xs text-white"
+                            >
                                 {isTagged(index)}
                             </span>
                         {/if}
                     </div>
                 {/each}
             </div>
-    
-            <div class="w-2/3 h-full overflow-y-auto  pl-6">
+
+            <div class="h-full w-2/3 overflow-y-auto pl-6">
                 <div>
                     <div class="mb-4">
-                        <label class="block text-sm font-semibold mb-2">Title</label>
+                        <label class="mb-2 block text-sm font-semibold">Title</label>
                         <input
                             type="text"
                             bind:value={imageTags[currentIndex].title}
@@ -74,10 +80,10 @@
                             placeholder="Enter title..."
                         />
                     </div>
-    
+
                     <div class="mb-4">
                         <!-- svelte-ignore a11y_label_has_associated_control -->
-                        <label class="block text-sm font-semibold mb-2">Description</label>
+                        <label class="mb-2 block text-sm font-semibold">Description</label>
                         <textarea
                             rows="3"
                             bind:value={imageTags[currentIndex].description}
@@ -85,16 +91,16 @@
                             placeholder="Enter description..."
                         ></textarea>
                     </div>
-    
+
                     <div class="mb-4">
                         <!-- svelte-ignore a11y_label_has_associated_control -->
-                        <label class="block text-sm font-semibold mb-2">Tags</label>
-                        <SearchTags bind:currentTags={imageTags[currentIndex].tags}/>
+                        <label class="mb-2 block text-sm font-semibold">Tags</label>
+                        <SearchTags bind:currentTags={imageTags[currentIndex].tags} />
                     </div>
-    
+
                     <div class="mb-4">
                         <!-- svelte-ignore a11y_label_has_associated_control -->
-                        <label class="block text-sm font-semibold mb-2">Add to Service</label>
+                        <label class="mb-2 block text-sm font-semibold">Add to Service</label>
                         {#if serviceDB.length > 0}
                             <select
                                 bind:value={imageTags[currentIndex].service}
@@ -112,7 +118,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full flex justify-end space-x-4">
+        <div class="flex w-full justify-end space-x-4">
             <button
                 class="rounded bg-red-500 px-6 py-3 text-white hover:bg-red-600"
                 onclick={backStep}
@@ -123,7 +129,7 @@
                 class={`rounded px-6 py-3 text-white ${
                     uploadedImages.length > 0
                         ? 'bg-green-500 hover:bg-green-600'
-                        : 'bg-gray-400 cursor-not-allowed'
+                        : 'cursor-not-allowed bg-gray-400'
                 }`}
                 disabled={uploadedImages.length === 0}
                 onclick={() => sumbitTag(imageTags)}

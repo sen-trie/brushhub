@@ -9,11 +9,8 @@
     $effect(() => {
         artistDB = props[0].artist;
     });
-
-    $inspect(artistDB);
 </script>
 
-<!-- TODO -->
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <div class="space-y-4">
     {#each artistDB as artist, index}

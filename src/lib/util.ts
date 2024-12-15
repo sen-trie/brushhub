@@ -1,8 +1,16 @@
 import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import { base } from '$app/paths';
+import { countries } from 'countries-list';
 import users from '$lib/db/user.json';
 import type { Service, CommissionChoice } from '$lib/types';
+
+const countryNames: string[] = Object.entries(countries)
+    .map(([_, name]) => name.name)
+    .sort();
+export function getCountryList(): string[] {
+    return countryNames;
+}
 
 export async function handleImageUpload(
     event: Event,

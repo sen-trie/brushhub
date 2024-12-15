@@ -2,6 +2,7 @@
     import { fly, fade } from 'svelte/transition';
     import { navigateTo, stopPropagation } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { invalidate } from '$app/navigation';
     import { page } from '$app/stores';
 
     const user = $page.data.user;
@@ -60,7 +61,16 @@
                 <li>
                     <button
                         type="button"
-                        onclick={() => navigateTo(item.path, $page.url.pathname)}
+                        onclick={() => {
+                            if (item.name === 'Log Out') {
+                                window.localStorage.setItem('user_id', '0');
+                                invalidate('user:profile').then(() => {
+                                    navigateTo('/', $page.url.pathname);
+                                });
+                            } else {
+                                navigateTo(item.path, $page.url.pathname);
+                            }
+                        }}
                         onkeypress={(e) => handleKeyPress(e, item.path)}
                         class="flex w-full items-center justify-center gap-3 p-3 text-gray-600 transition hover:bg-gray-100 hover:text-orange-500 focus:bg-gray-100 focus:text-orange-500 focus:outline-none"
                     >

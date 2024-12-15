@@ -10,10 +10,10 @@
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
-    const currentArtist = getUser() === artist.id;
+    const currentArtist = getUser().id === artist.id;
 
     const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
-    
+
     const serviceDB = services.filter(
         (service) => service.artistId === artist.id && service.state === 'published'
     );
@@ -25,9 +25,9 @@
     <div class="content-section flex flex-col gap-6 md:flex-row">
         <div class="left-column flex w-full flex-col gap-6 md:w-1/3">
             <div class="bio rounded-lg border border-gray-300 p-4 shadow-sm">
-                <p class='mb-4'>{artist.bio}</p>
-                <p class='mb-2'>{artist.location}</p>
-                <p class='mb-4'>{artist.languages.join(', ')}</p>
+                <p class="mb-4">{artist.bio}</p>
+                <p class="mb-2">{artist.location}</p>
+                <p class="mb-4">{artist.languages.join(', ')}</p>
                 <a href="https://{artist.youtube}" target="_blank" class="mt-2 block text-blue-600">
                     {artist.youtube}
                 </a>
@@ -43,11 +43,11 @@
                     >
                 {/if}
 
-                <p class='mt-4'>Joined {calculateTimePassed(new Date(artist.joined))} ago</p>
+                <p class="mt-4">Joined {calculateTimePassed(new Date(artist.joined))} ago</p>
                 <p>Satisfaction Level: {artist.satisfaction}/5.0</p>
                 <p>Avg. Response Time: {formatResponseTime(artist.responseTime)}</p>
                 <p>Completion Rate: {artist.completionRate}%</p>
-                <p class='mb-4'>Total: {artist.total}</p>
+                <p class="mb-4">Total: {artist.total}</p>
 
                 {#if artistTOS}
                     <div class="tos-container mx-auto max-w-2xl rounded-lg bg-gray-50 p-6 shadow">
@@ -81,7 +81,7 @@
 
         <div class="right-column flex w-full flex-col gap-6 md:w-2/3">
             <div class="featured-artworks rounded-lg border border-gray-300 p-4 shadow-sm">
-                <h3 class="text-lg font-semibold mb-4">Featured Artworks</h3>
+                <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
                 <Browse {artDB} showArtist={false} />
             </div>
 

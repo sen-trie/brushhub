@@ -43,7 +43,7 @@
     }
 </script>
 
-<div class="container mx-auto flex p-4 mt-2">
+<div class="container mx-auto mt-2 flex p-4">
     <div class="content flex-grow">
         <div class="mb-2 mb-4 flex items-center">
             <button

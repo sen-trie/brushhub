@@ -8,12 +8,13 @@
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
 
-    const filterDB = reviewDB.filter((review) => review.artist === artist.id)
-                            .map((review) => ({ 
-                                ...review, 
-                                service: serviceDB.find((service) => service.id === review.service),
-                                user: userDB.find((user) => user.id === review.commissioner)
-                            }));
+    const filterDB = reviewDB
+        .filter((review) => review.artist === artist.id)
+        .map((review) => ({
+            ...review,
+            service: serviceDB.find((service) => service.id === review.service),
+            user: userDB.find((user) => user.id === review.commissioner)
+        }));
 </script>
 
 <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-50 p-6">
@@ -40,8 +41,7 @@
                 </div>
                 <div>
                     <p class="font-bold text-gray-700">
-                        {review?.user?.displayName ||
-                            'Anonymous'}
+                        {review?.user?.displayName || 'Anonymous'}
                     </p>
                     <p class="text-sm text-gray-500">
                         (Purchased: {review.service?.title || 'Unknown'})

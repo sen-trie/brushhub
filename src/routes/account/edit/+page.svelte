@@ -1,13 +1,17 @@
 <script lang="ts">
     import { getSingle } from '$lib/db';
+    import { getCountryList } from '$lib/util';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
-    let profileInfo = $state({
+    const initialValue = {
         ...data.artist,
-        ...data.user
-    });
+        ...data.user,
+        uploadedDP: getSingle('dp', data.user.avatar),
+        uploadedBanner: getSingle('banner', data.user.coverImage)
+    };
 
+    let profileInfo = $state(initialValue);
     let languageValue = $state('');
 
     $effect(() => {
@@ -17,26 +21,95 @@
             languageValue = '';
         }
     });
+
+    let bannerWarningMessage: string = $state('');
+    let dpWarningMessage: string = $state('');
+
+    const handleImageUpload = (event: Event, imageLocation: String) => {
+        const file = (event.target as HTMLInputElement).files?.[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            if (imageLocation === 'dp') {
+                dpWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
+            } else {
+                bannerWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
+            }
+            return;
+        }
+
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            if (imageLocation === 'dp') {
+                profileInfo.uploadedDP = fileReader.result as string;
+                dpWarningMessage = '';
+            } else {
+                profileInfo.uploadedBanner = fileReader.result as string;
+                bannerWarningMessage = '';
+            }
+        };
+        fileReader.readAsDataURL(file);
+    };
+
+    function moveLink(fromIndex: number, toIndex: number) {
+        if (toIndex < 0 || toIndex >= profileInfo.links.length) return;
+        const temp = profileInfo.links[fromIndex];
+        profileInfo.links[fromIndex] = profileInfo.links[toIndex];
+        profileInfo.links[toIndex] = temp;
+    }
 </script>
+
+{#snippet imageUpload(imageLocation: string)}
+    <div class="mt-2 flex justify-center space-x-2">
+        <label
+            for="upload-{imageLocation}"
+            class="mr-4 cursor-pointer rounded bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600"
+        >
+            Upload Image
+        </label>
+        <input
+            id="upload-{imageLocation}"
+            type="file"
+            accept="image/*"
+            class="hidden"
+            onchange={(e) => handleImageUpload(e, imageLocation)}
+        />
+        <button
+            class="text-red-500 hover:underline"
+            onclick={() => {
+                if (imageLocation === 'dp') {
+                    profileInfo.uploadedDP = '';
+                    dpWarningMessage = '';
+                } else {
+                    profileInfo.uploadedBanner = '';
+                    bannerWarningMessage = '';
+                }
+            }}
+        >
+            Remove
+        </button>
+    </div>
+{/snippet}
 
 <div class="space-y-6 p-6">
     <h1 class="text-2xl font-bold">Profile Customization</h1>
-
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
             <p class="block text-sm font-medium text-gray-700">Profile Picture</p>
             <p class="mt-1 text-sm text-gray-500">
                 Appears whenever your page is presented to others
             </p>
+
+            {#if dpWarningMessage}
+                <p class="mt-2 text-sm text-red-500">{dpWarningMessage}</p>
+            {/if}
+
             <img
-                src={getSingle('dp', profileInfo.avatar)}
+                src={profileInfo.uploadedDP}
                 alt="DP"
-                class="mx-auto h-24 w-24 rounded-full"
+                class="mx-auto my-4 h-24 w-24 rounded-full"
             />
-            <div class="mt-2 flex justify-center space-x-2">
-                <button class="text-orange-500 hover:underline">Change</button>
-                <button class="text-red-500 hover:underline">Remove</button>
-            </div>
+            {@render imageUpload('dp')}
         </div>
 
         <div>
@@ -44,15 +117,18 @@
             <p class="mt-1 text-sm text-gray-500">
                 This image will be displayed at the top of your profile page
             </p>
+
+            {#if bannerWarningMessage}
+                <p class="mt-2 text-sm text-red-500">{bannerWarningMessage}</p>
+            {/if}
+
+            <!-- TODO FALLBACK -->
             <img
-                src={getSingle('banner', profileInfo.coverImage)}
+                src={profileInfo.uploadedBanner}
                 alt="Cover Banner"
-                class="mx-auto h-24 w-full rounded-md object-cover"
+                class="mx-auto my-4 h-24 w-full rounded-md object-cover"
             />
-            <div class="mt-2 flex justify-center space-x-2">
-                <button class="text-orange-500 hover:underline">Change</button>
-                <button class="text-red-500 hover:underline">Remove</button>
-            </div>
+            {@render imageUpload('banner')}
         </div>
     </div>
 
@@ -128,41 +204,75 @@
                 bind:value={profileInfo.location}
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
             >
-                <option value="Singapore">Singapore</option>
-                <option value="Malaysia">Malaysia</option>
-                <option value="Indonesia">Indonesia</option>
+                {#each getCountryList() as country}
+                    <option value={country}>{country}</option>
+                {/each}
             </select>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <!-- <div>
-            <label for="youtube" class="block text-sm font-medium text-gray-700">YouTube</label>
-            <input
-                id="youtube"
-                type="url"
-                bind:value={profileInfo.youtube}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            />
-        </div>
-        <div>
-            <label for="twitter" class="block text-sm font-medium text-gray-700">Twitter</label>
-            <input
-                id="twitter"
-                type="url"
-                bind:value={profileInfo.twitter}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            />
-        </div> -->
+    <div class="mt-6 space-y-2">
+        <label for="location" class="block text-sm font-medium text-gray-700">External Links</label>
+        <p class="text-sm text-gray-500">
+            Share external links with viewers. They'll be visible on your profile.
+        </p>
+        {#each profileInfo.links as link, index}
+            <div class="flex items-center space-x-2">
+                <button
+                    class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                    onclick={() => moveLink(index, index - 1)}
+                    disabled={index === 0}
+                    aria-label="Move link up"
+                >
+                    ▲
+                </button>
+
+                <button
+                    class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                    onclick={() => moveLink(index, index + 1)}
+                    disabled={index === profileInfo.links.length - 1}
+                    aria-label="Move link down"
+                >
+                    ▼
+                </button>
+                <input
+                    type="url"
+                    bind:value={profileInfo.links[index]}
+                    placeholder="Enter link URL"
+                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                />
+                <button
+                    class="text-gray-500 hover:text-red-500"
+                    onclick={() => profileInfo.links.splice(index, 1)}
+                    aria-label="Remove link"
+                >
+                    🗑️
+                </button>
+            </div>
+        {/each}
+
+        <button
+            class="mt-2 flex items-center text-orange-500 hover:underline"
+            onclick={() => profileInfo.links.push('')}
+        >
+            <span class="mr-2 text-lg">+</span>
+            Add new link
+        </button>
     </div>
 
     <div class="mt-6 flex justify-end space-x-4">
-        <button class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50">
-            View Your Channel
+        <button
+            class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
+            onclick={() => {
+                if (confirm('Are you sure you want to discard all changes?')) {
+                    profileInfo = initialValue;
+                }
+            }}
+        >
+            Discard Changes
         </button>
-        <button class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50">
-            Discard
-        </button>
+        <!-- 
+    TODO -->
         <button class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
             Save
         </button>

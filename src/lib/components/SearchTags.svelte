@@ -7,12 +7,13 @@
     let searchQuery = $state('');
     let showSuggestions = $state(false);
     let filteredTags = $derived.by(() => {
-        return (tagsDB
-            .filter((tag) =>
-                tag.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                !currentTags.includes(tag.name.toLowerCase())
-            ).sort((a, b) => b.count - a.count)
-        )
+        return tagsDB
+            .filter(
+                (tag) =>
+                    tag.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+                    !currentTags.includes(tag.name.toLowerCase())
+            )
+            .sort((a, b) => b.count - a.count);
     });
     let activeIndex = $state(0);
 
@@ -56,7 +57,7 @@
 
 <div class="relative">
     <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
-        <div class="flex flex-wrap gap-2 mb-2">
+        <div class="mb-2 flex flex-wrap gap-2">
             {#each currentTags as tag, index}
                 <div
                     class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"
@@ -77,7 +78,6 @@
         />
     </div>
 
-
     {#if showSuggestions && filteredTags.length > 0}
         <ul
             class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
@@ -89,10 +89,10 @@
                     activeIndex
                         ? 'bg-orange-100'
                         : ''}"
-                     onclick={() => {
+                    onclick={() => {
                         currentTags.push(tag.name);
                         resetSuggestions();
-                     }}
+                    }}
                 >
                     <span>{tag.name}</span>
                     <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
