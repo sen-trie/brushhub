@@ -43,9 +43,9 @@
     }
 </script>
 
-<div class="container mx-auto flex px-4">
+<div class="container mx-auto flex p-4 mt-2">
     <div class="content flex-grow">
-        <div class="mb-4 flex items-center">
+        <div class="mb-2 mb-4 flex items-center">
             <button
                 class="mr-4 text-2xl font-bold focus:outline-none
                     {followersOnly === false

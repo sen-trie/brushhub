@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import { filterArray } from '$lib/util';
+    import { getSingle } from '$lib/db';
     import reviewDB from '$lib/db/review.json';
     import userDB from '$lib/db/user.json';
     import serviceDB from '$lib/db/services.json';
@@ -8,8 +8,12 @@
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
 
-    // Filter reviews for the specific artist
-    let filterDB = reviewDB.filter((review) => review.artist === artist.id);
+    const filterDB = reviewDB.filter((review) => review.artist === artist.id)
+                            .map((review) => ({ 
+                                ...review, 
+                                service: serviceDB.find((service) => service.id === review.service),
+                                user: userDB.find((user) => user.id === review.commissioner)
+                            }));
 </script>
 
 <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-50 p-6">
@@ -27,15 +31,20 @@
             </div>
             <p class="text-gray-800">{review.comment}</p>
             <div class="mt-2 flex items-center gap-4">
-                <div class="h-10 w-10 rounded-full bg-gray-300"></div>
+                <div class="h-10 w-10 rounded-full bg-gray-300">
+                    <img
+                        src={getSingle('dp', review.user?.avatar)}
+                        alt="User Avatar"
+                        class="h-10 w-10 rounded-full object-cover"
+                    />
+                </div>
                 <div>
                     <p class="font-bold text-gray-700">
-                        {userDB.find((user) => user.id === review.commissioner)?.username ||
+                        {review?.user?.displayName ||
                             'Anonymous'}
                     </p>
                     <p class="text-sm text-gray-500">
-                        (Purchased: {serviceDB.find((service) => service.id === review.service)
-                            ?.title || 'Unknown'})
+                        (Purchased: {review.service?.title || 'Unknown'})
                     </p>
                 </div>
             </div>

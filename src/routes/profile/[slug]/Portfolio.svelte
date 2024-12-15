@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import { filterArray, handleImageUpload } from '$lib/util';
+    import { filterArray, handleImageUpload, getUser } from '$lib/util';
     import Browse from '$lib/Browse.svelte';
     import artworkDB from '$lib/db/artwork.json';
     import services from '$lib/db/services.json';
@@ -8,6 +8,7 @@
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
+    const currentArtist = getUser() === artist.id
 
     const artDB = $derived.by(filterArray(artworkDB, (art) => art.artist === artist.id));
     const serviceDB = services.filter(
@@ -42,12 +43,14 @@
 </script>
 
 <div>
-    <button
-        class="my-services-button mb-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-        onclick={() => (uploadStep = 1)}
-    >
-        Upload New Artworks
-    </button>
+    {#if currentArtist}
+        <button
+            class="my-services-button mb-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+            onclick={() => (uploadStep = 1)}
+        >
+            Upload New Artworks
+        </button>
+    {/if}
     <Browse {artDB} showArtist={false} />
 </div>
 
@@ -129,6 +132,7 @@
         {serviceDB} 
         backStep={() => uploadStep = 1}
         sumbitTag={(tags: any) => {
+            // TODO
             console.log(tags);
             resetUpload();
         }}
