@@ -92,7 +92,7 @@
     });
 </script>
 
-<div class="grid grid-cols-2 gap-6 p-6">
+<div class="grid grid-cols-2 gap-6 p-6 pb-0">
     <div>
         <div class="mb-4">
             <label for="type" class="block text-sm font-medium text-gray-700">Type *</label>
@@ -122,7 +122,9 @@
                             for={extra.name}
                             class="ml-2 text-sm text-gray-700"
                             style="user-select: none;"
-                            >{extra.name} (+{extra.type === 'percentage' ? `${extra.price} % of base price` : calculateCurrency(extra.price)}
+                            >{extra.name} (+{extra.type === 'percentage'
+                                ? `${extra.price} % of base price`
+                                : calculateCurrency(extra.price)}
                             )</label
                         >
                     </div>

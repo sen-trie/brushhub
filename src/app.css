@@ -5,3 +5,17 @@
 label {
     user-select: none;
 }
+
+@layer components {
+    .confirm-button {
+        @apply rounded-full bg-orange-500 px-4 py-2 text-white hover:bg-orange-700;
+    }
+
+    .discard-button {
+        @apply confirm-button bg-red-500 hover:bg-red-700;
+    }
+
+    .save-button {
+        @apply confirm-button bg-green-500 hover:bg-green-700;
+    }
+}

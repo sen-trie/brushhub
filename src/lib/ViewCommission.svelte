@@ -3,6 +3,7 @@
     import ViewProgress from '$lib/components/ViewProgress.svelte';
     import ViewSummary from '$lib/components/ViewSummary.svelte';
     import userDB from '$lib/db/user.json';
+    import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
 
     import type { ComponentProps } from 'svelte';
     import { navigateTo } from '$lib/util';
@@ -38,15 +39,7 @@
 
 <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
     <div class="relative p-6">
-        <button
-            class="mb-4 flex items-center text-sm font-bold text-orange-500"
-            onclick={closeRequest}
-            aria-label="Back"
-        >
-            <i class="fas fa-arrow-left"></i>
-            <span>Back</span>
-        </button>
-
+        <BackButtonArrow closeEdit={closeRequest} buttonText="View Commission Request" />
         <div class="mb-2 ml-2">
             <h1 class="text-2xl font-bold">{request.service.title}</h1>
             <button

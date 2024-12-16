@@ -91,6 +91,8 @@
                 {#if currentArtist}
                     <button
                         class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+                        onclick={() =>
+                            navigateTo(`/manage-services/${artist.username}`, $page.url.pathname)}
                     >
                         My Services &gt;
                     </button>

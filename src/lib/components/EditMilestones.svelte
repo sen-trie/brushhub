@@ -39,7 +39,7 @@
 
 <div class="p-6">
     <h2 class="text-lg font-semibold">Milestones *</h2>
-    <h3>
+    <h3 class="mb-4">
         At least 1 milestone is needed. If there is no other milestone, payment will only be fully
         paid once the final work is approved by the customer. Note that these should only serve as a
         guide for your customers and can be negotiated during the project.
@@ -64,12 +64,13 @@
                 </div>
             </div>
         </div>
-
-        <button
-            class="mt-2 text-orange-500"
-            onclick={() => {
-                milestones = addTab(milestones);
-            }}>+ Add new milestone...</button
-        >
     </div>
+    <button
+        class="mt-4 text-orange-500"
+        onclick={() => {
+            milestones = addTab(milestones);
+        }}
+    >
+        + Add new milestone
+    </button>
 </div>

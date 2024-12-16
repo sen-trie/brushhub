@@ -4,5 +4,5 @@
         window.history.back();
     }}
 >
-    <i class="fas fa-arrow-left mr-2"></i> Back
+    Back
 </button>

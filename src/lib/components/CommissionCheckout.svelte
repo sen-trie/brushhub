@@ -40,7 +40,9 @@
                                     +{extra.type === 'percentage'
                                         ? extra.price +
                                           '% (' +
-                                          calculateCurrency(Math.round((basePrice * extra.price) / 100)) +
+                                          calculateCurrency(
+                                              Math.round((basePrice * extra.price) / 100)
+                                          ) +
                                           ')'
                                         : calculateCurrency(extra.price)}
                                 </span>

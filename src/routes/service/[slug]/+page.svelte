@@ -1,15 +1,17 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    import BackButton from '$lib/components/BackButton.svelte';
     import { calculateCurrency } from '$lib/util';
+    import userDB from '$lib/db/user.json';
+    import artworkDB from '$lib/db/artwork.json';
+    import BackButton from '$lib/components/BackButton.svelte';
     import Browse from '$lib/Browse.svelte';
     import PlaceCommission from '$lib/PlaceCommission.svelte';
-    import artworkDB from '$lib/db/artwork.json';
 
     let { data }: { data: PageData } = $props();
     const selectedService = data.service;
 
     const artDB = artworkDB.filter((artwork) => selectedService.samples.includes(artwork.id));
+    const currentArtist = userDB.find((user) => user.id === selectedService.artistId);
 
     let showPlaceCommission = $state(false);
     let tierIndex = $state(0);
@@ -26,7 +28,7 @@
 
 <div>
     {#if showPlaceCommission}
-        <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} />
+        <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} {currentArtist} />
     {/if}
 
     <div class="p-6">
@@ -74,7 +76,9 @@
                 <div class="rounded-lg border bg-orange-50 p-4 shadow-sm">
                     <h3 class="font-semibold text-orange-500">{extra.name}</h3>
                     <p class="font-bold text-green-600">
-                        {extra.type === 'percentage' ? `+ ${extra.price}%` : `+ ${calculateCurrency(extra.price)}`}
+                        {extra.type === 'percentage'
+                            ? `+ ${extra.price}%`
+                            : `+ ${calculateCurrency(extra.price)}`}
                     </p>
                     <p class="mt-2 text-sm text-gray-600">
                         <!-- {extra.description || `Extra ${extra.name.toLowerCase()}`} -->

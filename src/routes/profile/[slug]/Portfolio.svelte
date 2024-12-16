@@ -40,6 +40,8 @@
             document.body.classList.remove('overflow-hidden');
         }
     });
+
+    // TODO ADD EDIT IMAGE BUTTONS
 </script>
 
 <div>

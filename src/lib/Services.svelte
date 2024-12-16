@@ -37,7 +37,6 @@
                     {service.types.length > 0
                         ? `${calculateCurrency(Math.min(...service.types.map((type: any) => type.price)))} ~ 
                             ${calculateCurrency(Math.max(...service.types.map((type: any) => type.price)))}`
-                            
                         : 'Price not set'}
                 </p>
                 <div class="mt-3 flex flex-wrap items-center gap-2">

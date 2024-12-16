@@ -3,6 +3,7 @@
     let { tab, removeSelf, extra = false } = $props();
     let openState = $state(false);
 </script>
+
 <!-- 
 TODO SWITCH TO USD  -->
 

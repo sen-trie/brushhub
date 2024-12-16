@@ -5,15 +5,18 @@
     import CommissionBrief from '$lib/components/CommissionBrief.svelte';
     import CommissionCheckout from '$lib/components/CommissionCheckout.svelte';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
+    import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
 
     let {
         selectedService,
         closePlaceCommission,
-        tierIndex
+        tierIndex,
+        currentArtist
     }: {
         selectedService: Service;
         closePlaceCommission: () => void;
         tierIndex: number;
+        currentArtist: any;
     } = $props();
 
     let warningMessage = $state('');
@@ -29,16 +32,20 @@
 
     let progress = $state(0);
     let steps: { component: Component; backwards: string; forwards: string }[] = [
-        { component: CommissionOverview, backwards: 'Back to Overview', forwards: 'Next to Brief' },
+        {
+            component: CommissionOverview,
+            backwards: 'Back to Overview',
+            forwards: 'Proceed to Brief'
+        },
         {
             component: CommissionBrief,
             backwards: 'Back to Type Selection',
-            forwards: 'Next to Checkout'
+            forwards: 'Proceed to Checkout'
         },
         {
             component: CommissionCheckout,
             backwards: 'Back to Brief',
-            forwards: 'Finish'
+            forwards: 'Submit Request'
         }
     ];
 
@@ -86,18 +93,10 @@
 
 <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
     <div class="relative p-6">
-        <button
-            class="mb-4 flex items-center space-x-2 text-sm font-bold text-orange-500"
-            onclick={closePlaceCommission}
-            aria-label="Back"
-        >
-            <i class="fas fa-arrow-left"></i>
-            <span>Back</span>
-        </button>
-
+        <BackButtonArrow closeEdit={closePlaceCommission} buttonText="Place Commission Request" />
         <div class="space-y-2">
             <h1 class="text-3xl font-bold">{selectedService.title}</h1>
-            <p class="text-sm text-gray-500">Anne the Hungry</p>
+            <p class="text-sm text-gray-500">{currentArtist.displayName}</p>
         </div>
 
         {#each steps as { component: Component, backwards, forwards }, index}

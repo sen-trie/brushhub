@@ -5,8 +5,6 @@ import { countries } from 'countries-list';
 import users from '$lib/db/user.json';
 import type { Service, CommissionChoice } from '$lib/types';
 
-
-
 export async function handleImageUpload(
     event: Event,
     uploadedImages: string[],
@@ -182,7 +180,7 @@ export const exchangeRates: Record<string, number> = {
     PLN: 3.95,
     THB: 36.2,
     AED: 3.67,
-    SAR: 3.75,
+    SAR: 3.75
 };
 
 export function getPreferredCurrency(): string {
@@ -191,8 +189,9 @@ export function getPreferredCurrency(): string {
 
 export function calculateCurrency(amount: number): string {
     const prefCurrency = getPreferredCurrency();
-    const formattedAmount = (Math.round(amount * exchangeRates[prefCurrency]))
-        .toLocaleString('en-US');
+    const formattedAmount = Math.round(amount * exchangeRates[prefCurrency]).toLocaleString(
+        'en-US'
+    );
     return `${prefCurrency} ${formattedAmount}`;
 }
 
