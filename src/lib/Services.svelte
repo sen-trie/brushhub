@@ -30,7 +30,7 @@
                     </span>
                 {/if}
             </div>
-            <div class="mt-4">
+            <div class="mt-4 text-left">
                 <!-- TODO FIX CURRENCY CONVERSION FROM USD -->
                 <h4 class="text-lg font-semibold">{service.title}</h4>
                 <p class="mt-2 text-green-600">

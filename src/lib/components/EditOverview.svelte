@@ -2,7 +2,7 @@
     import type { ComponentProps } from 'svelte';
     import ImageSamples from './ImageSamples.svelte';
 
-    let { props }: ComponentProps<any> = $props();
+    let { props = $bindable() }: ComponentProps<any> = $props();
     let uploadedImages: string[] = $state([]);
     let imageWarningMessage: string = $state('');
 

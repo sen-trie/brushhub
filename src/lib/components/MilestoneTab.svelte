@@ -5,7 +5,7 @@
 
 <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
     {#if !downpayment}
-        <button class="mr-4 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
+        <button class="mr-6 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
             >Remove</button
         >
     {/if}
@@ -64,7 +64,7 @@
                             type="text"
                             placeholder={tab.name}
                             bind:value={tab.name}
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 w-1/2"
                         />
                     {/if}
                 </div>
@@ -86,11 +86,11 @@
                             max="100"
                             placeholder={tab.duration.value}
                             bind:value={tab.duration.value}
-                            class="ml-2 w-16 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="ml-2 w-24 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
                         <select
                             bind:value={tab.duration.unit}
-                            class="ml-2 w-20 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="ml-2 w-32 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         >
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
@@ -110,11 +110,14 @@
                     </label>
                     <input
                         type="number"
-                        min="0"
-                        max="100"
+                        min=0
+                        max=100
                         placeholder={tab.payment.value}
                         bind:value={tab.payment.value}
-                        class="ml-2 w-16 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        onchange={() => {
+                            tab.payment.value = Math.min(100, Math.max(0, tab.payment.value));
+                        }}
+                        class="ml-2 w-24 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
                     <span class="ml-1 text-sm text-gray-700">%</span>
                 </div>

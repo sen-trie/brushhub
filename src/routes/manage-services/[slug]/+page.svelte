@@ -7,6 +7,7 @@
     let { data }: { data: PageData } = $props();
 
     const serviceDB: Service[] = data?.service;
+    const currentArtist = data?.user;
 
     let selectedService = $state<Service | null>(null);
     let showEditCommission = $state(false);
@@ -28,7 +29,7 @@
     {#if showEditCommission}
         <EditCommission closeEdit={resetView} {selectedService} />
     {:else if showCreateCommission}
-        <CreateCommission closeEdit={resetView} />
+        <CreateCommission closeEdit={resetView} {currentArtist}/>
     {:else}
         <div class="overview-container p-4">
             <div class="mb-4 flex justify-end">

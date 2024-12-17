@@ -3,7 +3,7 @@
     import tosDB from '$lib/db/tos.json';
     import TosTab from '$lib/components/TosTab.svelte';
 
-    let { props }: ComponentProps<any> = $props();
+    let { props = $bindable() }: ComponentProps<any> = $props();
     const selectedService = props.selectedService;
 
     const currentTos =
@@ -39,7 +39,7 @@
     }
 </script>
 
-<div class="p-6">
+<div>
     <h2 class="text-lg font-semibold">Terms Of Service</h2>
     <h3>
         Choose sections from your global contract, or add a new term specific to this service. Any

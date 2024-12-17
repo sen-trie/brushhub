@@ -8,9 +8,9 @@
     import EditMilestones from '$lib/components/EditMilestones.svelte';
     import EditOverview from '$lib/components/EditOverview.svelte';
     import EditTos from '$lib/components/EditTos.svelte';
-    import { Forward } from 'svelte-hero-icons';
+    import SummaryCommission from './SummaryCommission.svelte';
 
-    const { closeEdit }: ComponentProps<any> = $props();
+    const { closeEdit, currentArtist }: ComponentProps<any> = $props();
 
     const MAX_TABS = 4;
 
@@ -49,32 +49,42 @@
         "uniqueTos": []
     });
 
-    let items = [
+    let items = $state([
         {
             label: 'Overview',
             value: 1,
             component: EditOverview,
-            props: { selectedService }
+            props: { selectedService },
+            bindable: true
         },
         {
             label: 'Service Details',
             value: 2,
             component: EditDetails,
-            props: { selectedService }
+            props: { selectedService },
+            bindable: true
         },
         {
             label: 'Milestones',
             value: 3,
             component: EditMilestones,
-            props: { selectedService }
+            props: { selectedService },
+            bindable: true
         },
         {
             label: 'Terms of Service',
             value: 4,
             component: EditTos,
-            props: { selectedService }
+            props: { selectedService },
+            bindable: true
+        },
+        {
+            label: 'Summary',
+            value: 5,
+            component: SummaryCommission,
+            props: { selectedService, currentArtist },
         }
-    ];
+    ]);
 
     const goToPreviousStep = () => {
         tabIndex--;
@@ -84,6 +94,10 @@
     const proceedToNextStep = () => {
         tabIndex++;
         return Math.max(tabIndex, MAX_TABS);
+    }
+
+    const changeIndex = (index: number) => {
+        tabIndex = index;
     }
 </script>
 
@@ -97,9 +111,15 @@
             </div>
         </div>
         <div class="p-4">
-            <Timeline {nodeTimeline} currentIndex={tabIndex} />
+            <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex}/>
         </div>
-        <Tabs items={items} hideTabs={true} currentTab={tabIndex + 1}/>
+        <Tabs 
+            items={items} 
+            hideTabs={true} 
+            currentTab={tabIndex + 1} 
+            bind:bindableItems={items}
+            binded={true}
+        />
         <CommissionButtons {goToPreviousStep} {proceedToNextStep} backwards={'Previous Step'} forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}/>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <script>
     import { getPreferredCurrency } from '$lib/util';
-    let { tab, removeSelf, extra = false } = $props();
+    let { tab = $bindable(), removeSelf, extra = false } = $props();
     let openState = $state(false);
 </script>
 

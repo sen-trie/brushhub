@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    const { nodeTimeline, currentIndex }: ComponentProps<any> = $props();
+    const { nodeTimeline, currentIndex, callback = () => {}}: ComponentProps<any> = $props();
 
     const passedNode = (index: number, location: String): String => {
         return currentIndex >= index ? `${location}-orange-500` : `${location}-gray-500`;
@@ -8,7 +8,10 @@
 </script>
 
 {#snippet circleNode(index: number)}
-    <div class="flex flex-col items-center">
+    <div 
+        class="flex flex-col items-center cursor-pointer"
+        onclick={() => callback(index)}
+    >
         <div class="flex h-6 w-6 items-center justify-center rounded-full {passedNode(index, 'bg')}">
             {#if currentIndex < index}
                 <div class="h-3 w-3 rounded-full bg-white"></div>
