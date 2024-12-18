@@ -1,9 +1,9 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import userDB from '$lib/db/user.json';
+    import { pullDB } from '$lib/db';
     let { request, openRequest }: ComponentProps<any> = $props();
 
-    const currentArtist = userDB.find((artist: any) => artist.id === request.artistId);
+    const currentArtist = pullDB('user', {}, { 'id': request.artistId });
 
     let currentStage = $state('');
     let milestone = $state({

@@ -1,6 +1,10 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    let { goToPreviousStep, proceedToNextStep, backwards, forwards, indexes = [0, 0] }: ComponentProps<any> =
+    let { goToPreviousStep, proceedToNextStep, 
+          backwards, forwards, indexes = [0, 0],
+          finalStep = (prop1: any) => {proceedToNextStep(prop1)},
+          finalWord = forwards,
+        }: ComponentProps<any> =
         $props();
 
     // FIRST IS CURRENT INDEX
@@ -36,6 +40,13 @@
                 onclick={proceedToNextStep}
             >
                 {forwards}
+            </button>
+        {:else}
+            <button
+                class="confirm-button save-button"
+                onclick={finalStep}
+            >
+                {finalWord}
             </button>
         {/if}
     {/if}

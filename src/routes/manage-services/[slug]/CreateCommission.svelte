@@ -107,7 +107,7 @@
             <BackButtonArrow {closeEdit} buttonText="Create Service" includeBorder={false} />
             <div class="flex pb-4">
                 <button class="discard-button">Discard Service</button>
-                <button class="save-button mx-4">Save and Leave</button>
+                <button class="confirm-button mx-4">Save as Draft</button>
             </div>
         </div>
         <div class="p-4">
@@ -120,6 +120,10 @@
             bind:bindableItems={items}
             binded={true}
         />
-        <CommissionButtons {goToPreviousStep} {proceedToNextStep} backwards={'Previous Step'} forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}/>
+        <CommissionButtons 
+            {goToPreviousStep} {proceedToNextStep} 
+            backwards={'Previous Step'} forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}
+            finalStep={() => {closeEdit()}} finalWord={'Publish Service'}
+        />
     </div>
 </div>

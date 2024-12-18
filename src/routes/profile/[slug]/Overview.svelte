@@ -1,24 +1,18 @@
 <script lang="ts">
     import { calculateTimePassed, formatResponseTime, getUser, navigateTo } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { pullDB } from '$lib/db';
     import { page } from '$app/stores';
     import Browse from '$lib/Browse.svelte';
-    import artworkDB from '$lib/db/artwork.json';
-    import tosData from '$lib/db/tos.json';
-    import services from '$lib/db/services.json';
     import Services from '$lib/Services.svelte';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
     const currentArtist = getUser().id === artist.id;
 
-    const artistTOS = tosData.find((tos) => tos.artistId === artist.id);
-
-    const serviceDB = services.filter(
-        (service) => service.artistId === artist.id && service.state === 'published'
-    );
-
-    const artDB = artworkDB.filter((artwork) => artist.featured.includes(artwork.id));
+    const artistTOS = pullDB('tos', {}, { 'artistId': artist.id });
+    const serviceDB = pullDB('services', { 'artistId': artist.id,  'state': 'published' }, {});
+    const artDB = pullDB('artwork', { 'featured': (obj: any) => artist.featured.includes(obj.id) }, {});
 </script>
 
 <div class="overview-container p-4">
@@ -87,7 +81,9 @@
 
             <div class="services rounded-lg border border-gray-300 p-4 shadow-sm">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <Services {serviceDB} />
+                <div class="service-grid mt-4 grid grid-cols-2 gap-4">
+                    <Services {serviceDB} />
+                </div>
                 {#if currentArtist}
                     <button
                         class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"

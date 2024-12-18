@@ -1,19 +1,16 @@
 <script lang="ts">
+    import { pullDB } from '$lib/db';
     import type { ComponentProps } from 'svelte';
-    import { filterArray, handleImageUpload, getUser } from '$lib/util';
+    import { handleImageUpload, getUser } from '$lib/util';
     import Browse from '$lib/Browse.svelte';
-    import artworkDB from '$lib/db/artwork.json';
-    import services from '$lib/db/services.json';
     import TagWorks from './TagWorks.svelte';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
     const currentArtist = getUser().id === artist.id;
 
-    const artDB = $derived.by(filterArray(artworkDB, (art) => art.artist === artist.id));
-    const serviceDB = services.filter(
-        (service) => service.artistId === artist.id && service.state === 'published'
-    );
+    const artDB = $derived(pullDB('artwork', { 'artist': artist.id }));
+    const serviceDB = pullDB('services', { 'artistId': artist.id, 'state': 'published' });
 
     let uploadStep = $state(0);
     let uploadedImages: string[] = $state([]);

@@ -25,6 +25,16 @@
     };
 </script>
 
+{#snippet Service(filter: String)}
+    <section class="mb-8">
+        <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>
+        <div class="service-grid mt-4 grid grid-cols-4 gap-4">
+            <Services {serviceDB} filter={filter} viewOnly={false} {callback} />
+        </div>
+    </section>
+{/snippet}
+
+
 <div>
     {#if showEditCommission}
         <EditCommission closeEdit={resetView} {selectedService} />
@@ -40,18 +50,10 @@
                     Create New Service
                 </button>
             </div>
-            <section class="mb-8">
-                <h2 class="mb-4 text-lg font-semibold">Published</h2>
-                <Services {serviceDB} filter={'published'} viewOnly={false} {callback} />
-            </section>
-            <section class="mb-8">
-                <h2 class="mb-4 text-lg font-semibold">Archived</h2>
-                <Services {serviceDB} filter={'archived'} viewOnly={false} {callback} />
-            </section>
-            <section class="mb-8">
-                <h2 class="mb-4 text-lg font-semibold">Draft</h2>
-                <Services {serviceDB} filter={'draft'} viewOnly={false} {callback} />
-            </section>
+
+            {#each ['published', 'archived', 'draft'] as serviceState}
+                {@render Service(serviceState)}
+            {/each}
         </div>
     {/if}
 </div>

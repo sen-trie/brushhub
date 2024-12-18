@@ -1,22 +1,21 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import tagsDB from '$lib/db/tags.json';
+    import { pullDB } from '$lib/db';
 
     let { currentTags = $bindable() }: ComponentProps<any> = $props();
 
     let searchQuery = $state('');
     let showSuggestions = $state(false);
-    let filteredTags = $derived.by(() => {
-        return tagsDB
-            .filter(
-                (tag) =>
-                    tag.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-                    !currentTags.includes(tag.name.toLowerCase())
-            )
-            .sort((a, b) => b.count - a.count);
-    });
-    let activeIndex = $state(0);
+    let filteredTags = $derived(
+        pullDB('tags', { 
+            'name': (tag) => (
+                tag.name.toLowerCase().includes(searchQuery.toLowerCase()) && 
+                !currentTags.includes(tag.name.toLowerCase()
+            ))
+        }, {}).sort((a, b) => b.count - a.count)
+    );
 
+    let activeIndex = $state(0);
     let inputRef: HTMLInputElement | null = null;
 
     $effect(() => {

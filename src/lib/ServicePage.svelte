@@ -3,8 +3,9 @@
     import { calculateCurrency } from '$lib/util';
     import Browse from "./Browse.svelte";
 
-    const { selectedService, artDB, currentArtist, viewOnly = false, openPlaceCommission = () => {} }: ComponentProps<any> = $props();
-    console.log(selectedService.title || 'Missing Title');
+    const { selectedService, artDB, currentArtist, 
+            viewOnly = false, openPlaceCommission = () => {} 
+    }: ComponentProps<any> = $props();
 
     const calculateExtra = (price: number, type: string) => {
         if (isNaN(price)) {

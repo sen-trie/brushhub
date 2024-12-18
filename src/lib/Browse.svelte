@@ -1,16 +1,25 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import type { Artwork } from '$lib/types.ts';
-    import userDB from '$lib/db/user.json';
-    import artistDB from '$lib/db/artist.json';
+    import type { Artwork } from '$lib/types';
+    import { pullDB, imageModules, getImage } from '$lib/db';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
-    import { imageModules, getImage } from '$lib/db';
 
     let { artDB, showArtist = true }: ComponentProps<any> = $props();
     let selectedArt: Artwork | null = $state(null);
 
     const artworkArray = imageModules('artwork');
+    const findArtist = (id: string) => {
+        return pullDB('artist', {}, { 'id': id });
+    };
+
+    const navigateToArtist = () => {
+        const artist = pullDB('user', {}, { 'id': selectedArt?.artist });
+        navigateTo(
+            `./profile/${artist.username}`,
+            $page.url.pathname
+        );
+    };
 
     function openPopup(art: Artwork) {
         selectedArt = art;
@@ -39,7 +48,7 @@
             >
                 <i class="fas fa-times text-xs"></i>
             </div>
-            {#if artistDB.find((artist) => artist.id === art.artist)?.openCommission === false}
+            {#if !findArtist(art.artist)?.openCommission}
                 <span
                     class="absolute left-2 top-2 rounded bg-gray-700 px-2 py-1 text-xs text-white"
                 >
@@ -100,12 +109,7 @@
                     </div>
                     {#if showArtist}
                         <button
-                            onclick={() => {
-                                navigateTo(
-                                    `./profile/${userDB.find((artist) => artist.id === selectedArt?.artist)?.username}`,
-                                    $page.url.pathname
-                                );
-                            }}
+                            onclick={navigateToArtist}
                             class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 text-center font-medium text-white"
                         >
                             To Artist Profile

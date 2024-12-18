@@ -1,19 +1,16 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import { getSingle } from '$lib/db';
-    import reviewDB from '$lib/db/review.json';
-    import userDB from '$lib/db/user.json';
-    import serviceDB from '$lib/db/services.json';
+    import { pullDB } from '$lib/db';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
 
-    const filterDB = reviewDB
-        .filter((review) => review.artist === artist.id)
-        .map((review) => ({
+    const filterDB = pullDB('review', { 'artist': artist.id }, {})
+        .map((review: any) => ({
             ...review,
-            service: serviceDB.find((service) => service.id === review.service),
-            user: userDB.find((user) => user.id === review.commissioner)
+            service: pullDB('services', {}, { 'id': review.service }),
+            user: pullDB('user', {}, { 'id': review.commissioner })
         }));
 </script>
 

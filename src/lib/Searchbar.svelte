@@ -1,5 +1,5 @@
 <script lang="ts">
-    import tagsDB from '$lib/db/tags.json';
+    import { pullDB } from '$lib/db';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
@@ -15,7 +15,7 @@
     function validateSlug(pathName: string): boolean {
         return (
             pathName.startsWith('/search/') &&
-            tagsDB.some((tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase())
+            pullDB('tags').some((tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase())
         );
     }
 
@@ -25,9 +25,11 @@
 
     function updateSuggestions() {
         activeIndex = 0;
-        filteredTags = tagsDB.filter((tag) =>
-            tag.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        filteredTags = pullDB('tags')
+            .filter((tag) =>
+                tag.name.toLowerCase().includes(searchQuery.toLowerCase())
+            ).sort((a, b) => b.count - a.count)
+        ;
         showSuggestions = filteredTags.length > 0;
     }
 
@@ -84,7 +86,7 @@
             <ul
                 class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
             >
-                {#each filteredTags as tag, index}
+                {#each filteredTags.slice(0, 10) as tag, index}
                     <li
                         class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
                         activeIndex

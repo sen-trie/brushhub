@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 import { base } from '$app/paths';
 import { countries } from 'countries-list';
-import users from '$lib/db/user.json';
+import { pullDB } from './db';
 import type { Service, CommissionChoice } from '$lib/types';
 
 export async function handleImageUpload(
@@ -117,8 +117,7 @@ export function getUser() {
         ? (window.localStorage.getItem('user_id') ?? defaultValue)
         : defaultValue;
 
-    const user = users.find((u) => String(u.id) === storedId);
-
+    const user = pullDB('user', {}, { 'id': Number(storedId) });
     return {
         ...defaultUser,
         ...user,

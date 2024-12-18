@@ -1,9 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { getUser } from '$lib/util';
 import type { PageLoad, EntryGenerator } from './$types';
-import userDB from '$lib/db/user.json';
-import serviceDB from '$lib/db/services.json';
-import requestDB from '$lib/db/request.json';
+import { pullDB } from '$lib/db';
 
 export const ssr = false;
 
@@ -15,18 +13,18 @@ export const load: PageLoad = async ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
     const currentUser = getUser();
 
-    const user = userDB.find((user) => user.username === searchQuery);
+    const user = pullDB('user', {}, { 'username': searchQuery });
     if (!user || currentUser.username !== user.username) {
         // TODO CHANGE TO SOMETHING ELSE
         throw error(404, 'You are not the current user');
     }
 
-    let request = requestDB.filter((req) => req.customerId === user.id);
-    request = request.map((req) => {
+    let request = pullDB('request', { 'customerId': user.id }, {});
+    request = request.map((req: any) => {
         // O(N^2) COMPLEXITY - BEWARE
         return {
             ...req,
-            service: serviceDB.find((service) => service.id === req.serviceId)
+            service: pullDB('services', {}, { 'id': req.serviceId })
         };
     });
 

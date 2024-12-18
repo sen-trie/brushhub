@@ -1,14 +1,13 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import tosDB from '$lib/db/tos.json';
+    import { pullDB } from '$lib/db';
     import TosTab from '$lib/components/TosTab.svelte';
 
     let { props = $bindable() }: ComponentProps<any> = $props();
     const selectedService = props.selectedService;
 
-    const currentTos =
-        tosDB.find((tos) => tos.artistId === selectedService.artistId)?.categories ?? [];
-
+    const currentTos = pullDB('tos', {}, { 'artistId': selectedService.artistId })?.categories ?? [];
+    
     let tos = $state(
         currentTos.map((category) => ({
             ...category,

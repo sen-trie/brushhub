@@ -8,7 +8,7 @@
     serviceDB = filter ? serviceDB.filter((service: any) => service.state === filter) : serviceDB;
 </script>
 
-<div class="service-grid mt-4 grid grid-cols-2 gap-4">
+
     {#each serviceDB as service}
         <button
             class="service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm"
@@ -58,4 +58,3 @@
             </div>
         </button>
     {/each}
-</div>

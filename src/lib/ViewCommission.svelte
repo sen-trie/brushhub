@@ -1,8 +1,8 @@
 <script lang="ts">
+    import { pullDB } from './db';
     import Tabs from './Tabs.svelte';
     import ViewProgress from '$lib/components/ViewProgress.svelte';
     import ViewSummary from '$lib/components/ViewSummary.svelte';
-    import userDB from '$lib/db/user.json';
     import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
 
     import type { ComponentProps } from 'svelte';
@@ -11,8 +11,8 @@
 
     let { closeRequest, request, artistView = false }: ComponentProps<any> = $props();
 
-    const currentArtist = userDB.find((artist: any) => artist.id === request.artistId);
-    const currentCommissioner = userDB.find((comm: any) => comm.id === request.customerId);
+    const currentArtist = pullDB('user', {}, { 'id': request.artistId });
+    const currentCommissioner = pullDB('user', {}, { 'id': request.customerId });
     const newRequestView = artistView && request.state.value === 'pending';
 
     // TODO: ARTIST VIEW

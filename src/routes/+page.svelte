@@ -1,34 +1,50 @@
 <script lang="ts">
-    import { getUser, includesArray, filterArray } from '$lib/util';
-    import artworkDB from '$lib/db/artwork.json';
-    import artistDB from '$lib/db/artist.json';
-    import tagsDB from '$lib/db/tags.json';
+    import { getUser, includesArray } from '$lib/util';
+    import { pullDB } from '$lib/db';
     import Browse from '$lib/Browse.svelte';
 
     const user = getUser();
 
     let followersOnly = $state(false);
     let openTagOnly = $state(false);
+    let commercialUseOnly = $state(false);
     let tags: string[] = $state([]);
     let tagInput = $state('');
 
-    let artDB = $derived.by(
-        filterArray(artworkDB, (art) => {
-            return (
-                includesArray(art.tags, tags) &&
-                (!openTagOnly ||
-                    artistDB.find((artist) => artist.id === art.artist)?.openCommission ===
-                        false) &&
-                (!followersOnly || (user.isNotEmpty() && user.following.includes(art.artist)))
-            );
-        })
+    let artDB = $derived(
+        pullDB('artwork', {
+            'tags': (obj: any) => {
+                return includesArray(obj.tags, tags);
+            },
+            'artist': (obj: any) => {
+                const artist = pullDB('artist', {}, { 'id': obj.artist });
+                return !openTagOnly || artist?.openCommission === true;
+            },
+            'followers': (obj: any) => {
+                const following = user.isNotEmpty() && user.following.includes(obj.artist);
+                return !followersOnly || following;
+            },
+            'services': (obj: any) => {
+                const services = pullDB('services', 
+                    { 
+                        'state': 'published', 
+                    }, { 
+                        'samples': (service: any) => service.samples.includes(obj.id),
+                        'commercialUse': (service: any) => service.commercialUse.enabled === true
+                    });
+                return !commercialUseOnly || !!services;
+            }
+        } , {})
     );
 
     function addTag() {
         if (tagInput.trim().toLowerCase()) {
-            const newTag = tagsDB.find((tag) => tag.name.toLowerCase() === tagInput);
+            const newTag = pullDB('tags', {}, {
+                'name': (obj: any) => obj.name.toLowerCase() === tagInput
+            });
+
             if (newTag) {
-                tags = [...tags, newTag.name];
+                tags = [...tags, newTag?.name];
                 tagInput = '';
             }
         }
@@ -82,7 +98,7 @@
         </label>
         <label class="checkbox mt-2 flex justify-between">
             Commercial use only
-            <input type="checkbox" />
+            <input type="checkbox" bind:checked={commercialUseOnly}/>
         </label>
         <hr class="my-4" />
         <label class="mb-2 block">

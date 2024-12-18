@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad, EntryGenerator } from './$types';
-import users from '$lib/db/user.json';
-import artists from '$lib/db/artist.json';
+import { pullDB } from '$lib/db';
 
 export const ssr = false;
 
@@ -10,18 +9,15 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = ({ params }) => {
-    const user = users.find((u) => u.username === params.slug);
-    if (!user) {
-        throw error(404, 'User not found');
-    }
+    try {
+        const user = pullDB('user', {}, { 'username': params.slug });
+        const artist = pullDB('artist', {}, { 'id': user.id });
 
-    const artist = artists.find((a) => a.id === user.id);
-    if (!artist) {
+        return {
+            ...user,
+            ...artist
+        };
+    } catch (_error) {
         throw error(404, 'Artist profile not found');
     }
-
-    return {
-        ...user,
-        ...artist
-    };
 };
