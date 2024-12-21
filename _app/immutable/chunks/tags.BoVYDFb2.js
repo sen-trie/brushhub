@@ -1,1 +1,0 @@
-const n=[{id:1,name:"anime",count:100},{id:2,name:"3d",count:100},{id:3,name:"illustration",count:100},{id:4,name:"character",count:100},{id:5,name:"concept art",count:100},{id:6,name:"fantasy",count:100},{id:7,name:"landscape",count:100},{id:8,name:"sci-fi",count:100},{id:9,name:"realism",count:100},{id:10,name:"portrait",count:100}];export{n as t};

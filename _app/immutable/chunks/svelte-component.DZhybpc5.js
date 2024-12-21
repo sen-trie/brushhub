@@ -1,1 +1,0 @@
-import{x as r,y as c,z as s,E as i,A as h,B as p,C as d}from"./runtime.Bg64Jrmk.js";function u(t,f,o){r&&c();var n=t,a,e;s(()=>{a!==(a=f())&&(e&&(d(e),e=null),a&&(e=h(()=>o(n,a))))},i),r&&(n=p)}export{u as c};
