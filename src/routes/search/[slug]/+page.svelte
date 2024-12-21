@@ -4,8 +4,11 @@
     import Artwork from './Artwork.svelte';
     import Artists from './Artists.svelte';
     import Service from './Service.svelte';
+    import { page } from '$app/stores';
 
     let { data }: { data: PageData } = $props();
+    let searchQuery = $state(data.searchQuery);
+
     let items = [
         {
             label: 'Artworks',
@@ -26,9 +29,19 @@
             props: [data]
         }
     ];
+
+    $effect(() => {
+        if (data.searchQuery !== searchQuery) {
+            window.location.reload();
+        }
+    });
+
 </script>
 
-<Tabs {items} />
+<div>
+    <Tabs {items} />
+</div>
+
 
 <style>
 </style>

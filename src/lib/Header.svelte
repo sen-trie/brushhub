@@ -91,15 +91,6 @@
     });
 </script>
 
-{#snippet logo()}
-    <button
-    class="text-xl font-semibold text-white hover:text-orange-500"
-    onclick={() => navigateTo('/', $page.url.pathname)}
-    >
-        BrushHub
-    </button>
-{/snippet}
-
 <header class="bg-gray-800 py-5 text-white">
     <nav class="container mx-auto flex flex-col px-6 sm:px-4">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10"  
@@ -149,6 +140,15 @@
         </div>
     </nav>
 </header>
+
+{#snippet logo()}
+    <button
+        class="text-xl font-semibold text-white hover:text-orange-500"
+        onclick={() => navigateTo('/', $page.url.pathname)}
+    >
+        BrushHub
+    </button>
+{/snippet}
 
 {#snippet userDropdown(user: any)}
     <div

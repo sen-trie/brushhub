@@ -14,6 +14,7 @@ export const load: PageLoad = ({ params }) => {
         {},
         { name: (tag) => tag.name.toLowerCase() === searchQuery }
     );
+
     if (!matchingTag) {
         throw error(404, 'No matching tag found for your search');
     }
@@ -23,6 +24,7 @@ export const load: PageLoad = ({ params }) => {
         { tags: (artwork) => artwork.tags.includes(matchingTag.name) },
         {}
     );
+
     const artist = pullDB(
         'artist',
         { tags: (artist) => artist.tags.includes(matchingTag.name) },
@@ -31,10 +33,12 @@ export const load: PageLoad = ({ params }) => {
         const user = pullDB('user', {}, { id: artist.id });
         return { ...artist, ...user };
     });
+
     const service = pullDB(
         'services',
         { tags: (service) => service.tags.includes(matchingTag.name) },
         {}
     );
-    return { artwork, artist, service };
+
+    return { artwork, artist, service, searchQuery };
 };
