@@ -16,7 +16,7 @@
         return (
             pathName.startsWith('/search/') &&
             pullDB('tags').some(
-                (tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase()
+                (tag: any) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase()
             )
         );
     }
@@ -28,8 +28,8 @@
     function updateSuggestions() {
         activeIndex = 0;
         filteredTags = pullDB('tags')
-            .filter((tag) => tag.name.toLowerCase().includes(searchQuery.toLowerCase()))
-            .sort((a, b) => b.count - a.count);
+            .filter((tag: any) => tag.name.toLowerCase().includes(searchQuery.toLowerCase()))
+            .sort((a: any, b: any) => b.count - a.count);
         showSuggestions = filteredTags.length > 0;
     }
 
@@ -69,7 +69,6 @@
     });
 </script>
 
-<div class="relative mx-auto w-full max-w-lg">
     <input
         type="text"
         bind:value={searchQuery}
@@ -80,25 +79,25 @@
         class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
 
-    <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
-    {#key $page.url}
-        {#if showSuggestions}
-            <ul
-                class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
-            >
-                {#each filteredTags.slice(0, 10) as tag, index}
-                    <li
-                        class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
-                        activeIndex
-                            ? 'bg-orange-100'
-                            : ''}"
-                        onclick={() => selectTag(tag.name)}
-                    >
-                        <span>{tag.name}</span>
-                        <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
-    {/key}
-</div>
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+{#key $page.url}
+    {#if showSuggestions}
+        <ul
+            class="absolute left-0 top-full mt-1 w-full z-30 rounded-lg border border-gray-300 bg-white shadow-lg overflow-clip"
+        >
+            {#each filteredTags.slice(0, 10) as tag, index}
+                <li
+                    class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
+                    activeIndex
+                        ? 'bg-orange-100'
+                        : ''}"
+                    onclick={() => selectTag(tag.name)}
+                >
+                    <span>{tag.name}</span>
+                    <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
+                </li>
+            {/each}
+        </ul>
+    {/if}
+{/key}
+

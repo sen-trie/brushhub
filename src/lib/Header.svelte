@@ -91,68 +91,94 @@
     });
 </script>
 
-<header class="bg-gray-800 py-3 text-white">
-    <nav class="container mx-auto flex items-center justify-between px-4">
-        <div class="flex items-center gap-4">
-            <!-- TODO: GROUP UP SIDEBAR AND LOGO (LIKE YOUTUBE) -->
-            <button class="text-white hover:text-orange-500" onclick={() => toggleSidebar()}>
-                ☰
-            </button>
-            <button
-                class="text-xl font-semibold text-white hover:text-orange-500"
-                onclick={() => navigateTo('/', $page.url.pathname)}
-            >
-                BrushHub
-            </button>
-        </div>
-        <Searchbar />
-        <div class="relative">
-            <button
-                class="dropdown-button flex items-center text-white hover:text-orange-500"
-                onclick={toggleDropdown}
-            >
-                {#if user.displayName}
-                    <img
-                        src={getSingle('dp', user.avatar)}
-                        alt="Avatar"
-                        class="h-10 w-10 rounded-full"
-                    />
-                {:else}
-                    <p>Sign In</p>
-                {/if}
-            </button>
-            {#if showDropdown && user.displayName}
-                <div
-                    class="dropdown-menu absolute right-0 z-20 mt-2 w-56 rounded bg-gray-700 text-sm shadow-lg"
+{#snippet logo()}
+    <button
+    class="text-xl font-semibold text-white hover:text-orange-500"
+    onclick={() => navigateTo('/', $page.url.pathname)}
+    >
+        BrushHub
+    </button>
+{/snippet}
+
+<header class="bg-gray-800 py-5 text-white">
+    <nav class="container mx-auto flex flex-col px-6 sm:px-4">
+        <div class="flex w-full justify-between space-x-0 sm:space-x-10"  
+        >
+            <div class="flex items-center gap-4 w-16 sm:w-auto">
+                <!-- TODO: GROUP UP SIDEBAR AND LOGO (LIKE YOUTUBE) -->
+                <button 
+                    class="text-white hover:text-orange-500 justify-start" 
+                    onclick={() => toggleSidebar()}
                 >
-                    <div class="border-b border-gray-600 p-4">
-                        <div class="flex items-center">
-                            <img
-                                src={getSingle('dp', user.avatar)}
-                                alt="Avatar"
-                                class="mr-3 h-10 w-10 rounded-full"
-                            />
-                            <div>
-                                <p class="font-semibold">{user.displayName}</p>
-                                <p class="text-gray-400">@{user.username}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <ul>
-                        {#each menuItemsLogged as { name, iconClass, action }}
-                            <li>
-                                <button
-                                    class="flex w-full items-center px-4 py-2 text-white hover:bg-gray-600"
-                                    onclick={action}
-                                >
-                                    <i class="{iconClass} mr-2"></i>
-                                    {name}
-                                </button>
-                            </li>
-                        {/each}
-                    </ul>
+                    <p>☰</p>
+                </button>
+                <div class="hidden sm:flex">
+                    {@render logo()}
                 </div>
-            {/if}
+            </div>
+
+            <div class="relative w-full hidden sm:flex">
+                <Searchbar />
+            </div>
+            <div class="flex sm:hidden">
+                {@render logo()}
+            </div>
+
+            <div class="relative flex justify-end w-16">
+                <button
+                    class="dropdown-button flex text-white hover:text-orange-500"
+                    onclick={toggleDropdown}
+                >
+                    {#if user.displayName}
+                        <img
+                            src={getSingle('dp', user.avatar)}
+                            alt="Avatar"
+                            class="h-10 w-10 rounded-full"
+                        />
+                    {:else}
+                        <p>Sign In</p>
+                    {/if}
+                </button>
+                {#if showDropdown && user.displayName}
+                    {@render userDropdown(user)}
+                {/if}
+            </div>
+        </div>
+        <div class="relative mt-4 flex sm:hidden">
+            <Searchbar />
         </div>
     </nav>
 </header>
+
+{#snippet userDropdown(user: any)}
+    <div
+        class="dropdown-menu absolute right-0 z-20 top-full mt-1 w-56 rounded bg-gray-700 text-sm shadow-lg"
+    >   
+        <div class="border-b border-gray-600 p-4">
+            <div class="flex items-center">
+                <img
+                    src={getSingle('dp', user.avatar)}
+                    alt="Avatar"
+                    class="mr-3 h-10 w-10 rounded-full"
+                />
+                <div>
+                    <p class="font-semibold">{user.displayName}</p>
+                    <p class="text-gray-400">@{user.username}</p>
+                </div>
+            </div>
+        </div>
+        <ul>
+            {#each menuItemsLogged as { name, iconClass, action }}
+                <li>
+                    <button
+                        class="flex w-full items-center px-4 py-2 text-white hover:bg-gray-600"
+                        onclick={action}
+                    >
+                        <i class="{iconClass} mr-2"></i>
+                        {name}
+                    </button>
+                </li>
+            {/each}
+        </ul>
+    </div>
+{/snippet}
