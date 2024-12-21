@@ -19,7 +19,7 @@
     );
 </script>
 
-<div class="overview-container p-4">
+<div class="">
     <div class="content-section flex flex-col gap-6 md:flex-row">
         <div class="left-column flex w-full flex-col gap-6 md:w-1/3">
             <div class="bio rounded-lg border border-gray-300 p-4 shadow-sm">

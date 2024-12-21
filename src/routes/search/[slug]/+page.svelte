@@ -4,7 +4,6 @@
     import Artwork from './Artwork.svelte';
     import Artists from './Artists.svelte';
     import Service from './Service.svelte';
-    import { page } from '$app/stores';
 
     let { data }: { data: PageData } = $props();
     let searchQuery = $state(data.searchQuery);

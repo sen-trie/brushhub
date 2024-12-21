@@ -34,7 +34,7 @@
 <img
     src={getSingle('banner', artist.coverImage)}
     alt={artist.coverImage}
-    class="h-52 w-full rounded-xl object-cover"
+    class="h-52 w-full rounded-xl object-cover -mt-8"
 />
 <div class="header-section my-4 flex items-center text-black">
     <div class="profile-info flex items-center">
@@ -63,6 +63,7 @@
         </div>
     </div>
 </div>
+
 <Tabs {items} />
 
 <style>
