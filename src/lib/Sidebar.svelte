@@ -1,4 +1,15 @@
 <script lang="ts">
+    import {
+        Icon,
+        Cog,
+        Home,
+        BuildingStorefront,
+        User,
+        ArrowLeftStartOnRectangle,
+        ArrowLeftEndOnRectangle,
+        InboxStack,
+        PaintBrush
+    } from 'svelte-hero-icons';
     import { fly, fade } from 'svelte/transition';
     import { navigateTo, stopPropagation } from '$lib/util';
     import type { ComponentProps } from 'svelte';
@@ -9,23 +20,47 @@
     const { toggleSidebar }: ComponentProps<any> = $props();
 
     const menuItemsLogged = [
-        { name: 'Home', path: '/', iconClass: 'fas fa-home' },
-        { name: 'Profile', path: `./profile/${user.username}`, iconClass: 'fas fa-th-large' },
-        { name: 'Services', path: `./manage-services/${user.username}`, iconClass: 'fas fa-tools' },
         {
-            name: 'Commission',
-            path: `./manage-commissions/${user.username}`,
-            iconClass: 'fas fa-tachometer-alt'
+            name: 'Home',
+            path: '/',
+            src: Home
         },
-        { name: 'Orders', path: `./manage-orders/${user.username}`, iconClass: 'fas fa-boxes' },
-        { name: 'Log Out', path: './logout', iconClass: 'fas fa-sign-out-alt' },
-        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' }
+        {
+            name: 'Profile',
+            path: `./profile/${user.username}`,
+            src: User
+        },
+        {
+            name: 'Services',
+            path: `./manage-services/${user.username}`,
+            src: BuildingStorefront
+        },
+        {
+            name: 'Commissions',
+            path: `./manage-commissions/${user.username}`,
+            src: PaintBrush
+        },
+        {
+            name: 'Orders',
+            path: `./manage-orders/${user.username}`,
+            src: InboxStack
+        },
+        {
+            name: 'Log Out',
+            path: './logout',
+            src: ArrowLeftStartOnRectangle
+        },
+        {
+            name: 'Settings',
+            path: './settings',
+            src: Cog
+        }
     ];
 
     const menuItemsNotLogged = [
-        { name: 'Home', path: './', iconClass: 'fas fa-home' },
-        { name: 'Sign In', path: './account/login/', iconClass: 'fas fa-th-large' },
-        { name: 'Settings', path: './settings', iconClass: 'fas fa-cog' }
+        { name: 'Home', path: './', src: Home },
+        { name: 'Sign In', path: './account/login/', src: ArrowLeftEndOnRectangle },
+        { name: 'Settings', path: './settings', src: Cog }
     ];
 
     function handleKeyPress(event: KeyboardEvent, path: string) {
@@ -51,14 +86,16 @@
 >
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <aside
-        class="flex w-48 flex-col items-center border-r border-gray-300 bg-white p-4"
+        class="flex w-64 flex-col items-center border-r border-gray-300 bg-white px-4 py-6"
         onclick={(e) => stopPropagation(e)}
         transition:fly={{ x: -300, duration: 300 }}
     >
-        <button onclick={() => toggleSidebar}>☰</button>
-        <ul class="w-full space-y-2">
+        <button onclick={() => toggleSidebar} class="flex w-full items-center justify-center"
+            >☰
+        </button>
+        <ul class="mt-6 w-full space-y-4">
             {#each user.displayName ? menuItemsLogged : menuItemsNotLogged as item}
-                <li>
+                <li class="text-gray-600">
                     <button
                         type="button"
                         onclick={() => {
@@ -72,10 +109,12 @@
                             }
                         }}
                         onkeypress={(e) => handleKeyPress(e, item.path)}
-                        class="flex w-full items-center justify-center gap-3 p-3 text-gray-600 transition hover:bg-gray-100 hover:text-orange-500 focus:bg-gray-100 focus:text-orange-500 focus:outline-none"
+                        class="flex w-full items-center justify-between space-x-6 rounded-lg p-2
+                               transition hover:bg-gray-100 hover:text-orange-500 focus:bg-gray-100 focus:text-orange-500 focus:outline-none"
                     >
-                        <i class={item.iconClass + ' text-xl'} aria-hidden="true"></i>
-                        <span class="text-sm font-medium">{item.name}</span>
+                        <Icon src={item.src} size="32" />
+                        <span class="mb-1 flex-grow text-left text-lg font-medium">{item.name}</span
+                        >
                     </button>
                 </li>
             {/each}
@@ -86,7 +125,6 @@
 <style lang="css">
     aside {
         position: absolute;
-        padding: 1rem;
         top: 0;
         bottom: 0;
     }

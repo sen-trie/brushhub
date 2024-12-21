@@ -11,26 +11,24 @@
             label: 'Artworks',
             value: 1,
             component: Artwork,
-            props: [data],
+            props: [data]
         },
         {
             label: 'Artists',
             value: 2,
             component: Artists,
-            props: [data],
+            props: [data]
         },
         {
             label: 'Services',
             value: 3,
             component: Service,
-            props: [data],
+            props: [data]
         }
     ];
 </script>
 
-<div class="mx-auto w-full p-4">
-    <Tabs {items} />
-</div>
+<Tabs {items} />
 
 <style>
 </style>

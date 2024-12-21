@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import { calculateCurrency } from '$lib/util';
+    import { calculateCurrency, dueDeadline } from '$lib/util';
     let { props }: ComponentProps<any> = $props();
 
     const request = props.request;
@@ -40,11 +40,7 @@
                 <span class="font-medium text-gray-700">Deadline:</span>
                 <span class="font-medium text-gray-900">
                     {commissionChoice.deadline}
-                    [Due in {Math.ceil(
-                        (new Date(commissionChoice.deadline).setHours(0, 0, 0, 0) -
-                            new Date().setHours(0, 0, 0, 0)) /
-                            (1000 * 60 * 60 * 24)
-                    )} day(s)]
+                    [{dueDeadline(commissionChoice.deadline)}]
                 </span>
             </div>
             <div class="mb-4 flex justify-between">

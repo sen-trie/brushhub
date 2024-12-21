@@ -10,8 +10,8 @@ export const entries: EntryGenerator = async () => {
 
 export const load: PageLoad = ({ params }) => {
     try {
-        const user = pullDB('user', {}, { 'username': params.slug });
-        const artist = pullDB('artist', {}, { 'id': user.id });
+        const user = pullDB('user', {}, { username: params.slug });
+        const artist = pullDB('artist', {}, { id: user.id });
 
         return {
             ...user,

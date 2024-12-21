@@ -3,7 +3,7 @@
     import { pullDB } from '$lib/db';
     let { request, openRequest }: ComponentProps<any> = $props();
 
-    const currentArtist = pullDB('user', {}, { 'id': request.artistId });
+    const currentArtist = pullDB('user', {}, { id: request.artistId });
 
     let currentStage = $state('');
     let milestone = $state({

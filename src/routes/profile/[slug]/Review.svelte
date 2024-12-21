@@ -6,12 +6,11 @@
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
 
-    const filterDB = pullDB('review', { 'artist': artist.id }, {})
-        .map((review: any) => ({
-            ...review,
-            service: pullDB('services', {}, { 'id': review.service }),
-            user: pullDB('user', {}, { 'id': review.commissioner })
-        }));
+    const filterDB = pullDB('review', { artist: artist.id }, {}).map((review: any) => ({
+        ...review,
+        service: pullDB('services', {}, { id: review.service }),
+        user: pullDB('user', {}, { id: review.commissioner })
+    }));
 </script>
 
 <div class="grid grid-cols-2 gap-6 rounded-lg bg-gray-50 p-6">

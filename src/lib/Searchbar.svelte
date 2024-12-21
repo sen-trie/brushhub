@@ -15,7 +15,9 @@
     function validateSlug(pathName: string): boolean {
         return (
             pathName.startsWith('/search/') &&
-            pullDB('tags').some((tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase())
+            pullDB('tags').some(
+                (tag) => tag.name.toLowerCase() === pathName.split('/')[2]?.toLowerCase()
+            )
         );
     }
 
@@ -26,10 +28,8 @@
     function updateSuggestions() {
         activeIndex = 0;
         filteredTags = pullDB('tags')
-            .filter((tag) =>
-                tag.name.toLowerCase().includes(searchQuery.toLowerCase())
-            ).sort((a, b) => b.count - a.count)
-        ;
+            .filter((tag) => tag.name.toLowerCase().includes(searchQuery.toLowerCase()))
+            .sort((a, b) => b.count - a.count);
         showSuggestions = filteredTags.length > 0;
     }
 

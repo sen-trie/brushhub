@@ -29,31 +29,26 @@
     <section class="mb-8">
         <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>
         <div class="service-grid mt-4 grid grid-cols-4 gap-4">
-            <Services {serviceDB} filter={filter} viewOnly={false} {callback} />
+            <Services {serviceDB} {filter} viewOnly={false} {callback} />
         </div>
     </section>
 {/snippet}
 
+{#if showEditCommission}
+    <EditCommission closeEdit={resetView} {selectedService} />
+{:else if showCreateCommission}
+    <CreateCommission closeEdit={resetView} {currentArtist} />
+{:else}
+    <div class="mb-4 flex justify-end">
+        <button
+            class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+            onclick={() => (showCreateCommission = true)}
+        >
+            Create New Service
+        </button>
+    </div>
 
-<div>
-    {#if showEditCommission}
-        <EditCommission closeEdit={resetView} {selectedService} />
-    {:else if showCreateCommission}
-        <CreateCommission closeEdit={resetView} {currentArtist}/>
-    {:else}
-        <div class="overview-container p-4">
-            <div class="mb-4 flex justify-end">
-                <button
-                    class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-                    onclick={() => (showCreateCommission = true)}
-                >
-                    Create New Service
-                </button>
-            </div>
-
-            {#each ['published', 'archived', 'draft'] as serviceState}
-                {@render Service(serviceState)}
-            {/each}
-        </div>
-    {/if}
-</div>
+    {#each ['published', 'archived', 'draft'] as serviceState}
+        {@render Service(serviceState)}
+    {/each}
+{/if}

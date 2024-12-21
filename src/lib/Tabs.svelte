@@ -9,8 +9,19 @@
         bindable?: boolean;
     }
 
-    let { items, hideTabs = false, currentTab = 0, bindableItems = $bindable(), binded = false }: 
-        { items: TabItem[], hideTabs: boolean, currentTab: number, bindableItems: any | undefined, binded: boolean  } = $props();
+    let {
+        items,
+        hideTabs = false,
+        currentTab = 0,
+        bindableItems = $bindable(),
+        binded = false
+    }: {
+        items: TabItem[];
+        hideTabs: boolean;
+        currentTab: number;
+        bindableItems: any | undefined;
+        binded: boolean;
+    } = $props();
     let activeTabValue = $state(1);
 
     const handleClick = (tabValue: number) => () => (activeTabValue = tabValue);

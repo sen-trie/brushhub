@@ -7,12 +7,15 @@
     let searchQuery = $state('');
     let showSuggestions = $state(false);
     let filteredTags = $derived(
-        pullDB('tags', { 
-            'name': (tag) => (
-                tag.name.toLowerCase().includes(searchQuery.toLowerCase()) && 
-                !currentTags.includes(tag.name.toLowerCase()
-            ))
-        }, {}).sort((a, b) => b.count - a.count)
+        pullDB(
+            'tags',
+            {
+                name: (tag) =>
+                    tag.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+                    !currentTags.includes(tag.name.toLowerCase())
+            },
+            {}
+        ).sort((a, b) => b.count - a.count)
     );
 
     let activeIndex = $state(0);

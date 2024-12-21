@@ -9,8 +9,8 @@
     const artist = props[0];
     const currentArtist = getUser().id === artist.id;
 
-    const artDB = $derived(pullDB('artwork', { 'artist': artist.id }));
-    const serviceDB = pullDB('services', { 'artistId': artist.id, 'state': 'published' });
+    const artDB = $derived(pullDB('artwork', { artist: artist.id }));
+    const serviceDB = pullDB('services', { artistId: artist.id, state: 'published' });
 
     let uploadStep = $state(0);
     let uploadedImages: string[] = $state([]);

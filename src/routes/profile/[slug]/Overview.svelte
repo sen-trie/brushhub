@@ -10,9 +10,13 @@
     const artist = props[0];
     const currentArtist = getUser().id === artist.id;
 
-    const artistTOS = pullDB('tos', {}, { 'artistId': artist.id });
-    const serviceDB = pullDB('services', { 'artistId': artist.id,  'state': 'published' }, {});
-    const artDB = pullDB('artwork', { 'featured': (obj: any) => artist.featured.includes(obj.id) }, {});
+    const artistTOS = pullDB('tos', {}, { artistId: artist.id });
+    const serviceDB = pullDB('services', { artistId: artist.id, state: 'published' }, {});
+    const artDB = pullDB(
+        'artwork',
+        { featured: (obj: any) => artist.featured.includes(obj.id) },
+        {}
+    );
 </script>
 
 <div class="overview-container p-4">

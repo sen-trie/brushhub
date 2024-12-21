@@ -5,8 +5,9 @@
 
     const { selectedService }: ComponentProps<any> = $props();
 
-    const tos = pullDB('tos', {}, { 'artistId': selectedService.artistId })
-        ?.categories.filter((tos: any) => selectedService.termsOfService[tos.title] === true);
+    const tos = pullDB('tos', {}, { artistId: selectedService.artistId })?.categories.filter(
+        (tos: any) => selectedService.termsOfService[tos.title] === true
+    );
 </script>
 
 <h2 class="mt-6 text-lg font-semibold">Milestones</h2>

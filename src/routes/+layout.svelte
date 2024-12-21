@@ -9,39 +9,20 @@
     const toggleSidebar = () => (showSidebar = !showSidebar);
 </script>
 
-<div class="layout">
+<div class="flex flex-col h-screen">
     <Header {toggleSidebar} />
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}
-    <main class="content overflow-y-auto">
-        {@render children()}
+    <main class="content flex w-screen justify-center overflow-y-auto">
+        <div class="w-full p-4 sm:p-8
+            max-w-full sm:max-w-screen-2xl
+            "
+        >
+            {@render children()}
+        </div>
     </main>
 </div>
 
-<style lang="css">
-    .layout {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content {
-        flex-grow: 1;
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 10;
-    }
-
-    main {
-        transition: margin-left 0.3s;
-    }
+<style>
 </style>

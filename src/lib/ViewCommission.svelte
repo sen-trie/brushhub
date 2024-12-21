@@ -11,8 +11,8 @@
 
     let { closeRequest, request, artistView = false }: ComponentProps<any> = $props();
 
-    const currentArtist = pullDB('user', {}, { 'id': request.artistId });
-    const currentCommissioner = pullDB('user', {}, { 'id': request.customerId });
+    const currentArtist = pullDB('user', {}, { id: request.artistId });
+    const currentCommissioner = pullDB('user', {}, { id: request.customerId });
     const newRequestView = artistView && request.state.value === 'pending';
 
     // TODO: ARTIST VIEW

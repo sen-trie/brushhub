@@ -6,9 +6,13 @@
     const selectedService = props.selectedService;
     const currentArtist = props.currentArtist;
     console.log(props.currentArtist);
-
 </script>
 
 <div>
-    <ServicePage {selectedService} {currentArtist} artDB={selectedService.samples} viewOnly={true}/>
-</div> 
+    <ServicePage
+        {selectedService}
+        {currentArtist}
+        artDB={selectedService.samples}
+        viewOnly={true}
+    />
+</div>

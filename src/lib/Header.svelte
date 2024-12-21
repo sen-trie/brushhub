@@ -91,10 +91,10 @@
     });
 </script>
 
-<!-- style="background-color: {userPrefs.headerColor}" -->
 <header class="bg-gray-800 py-3 text-white">
     <nav class="container mx-auto flex items-center justify-between px-4">
         <div class="flex items-center gap-4">
+            <!-- TODO: GROUP UP SIDEBAR AND LOGO (LIKE YOUTUBE) -->
             <button class="text-white hover:text-orange-500" onclick={() => toggleSidebar()}>
                 ☰
             </button>

@@ -10,15 +10,12 @@
 
     const artworkArray = imageModules('artwork');
     const findArtist = (id: string) => {
-        return pullDB('artist', {}, { 'id': id });
+        return pullDB('artist', {}, { id: id });
     };
 
     const navigateToArtist = () => {
-        const artist = pullDB('user', {}, { 'id': selectedArt?.artist });
-        navigateTo(
-            `./profile/${artist.username}`,
-            $page.url.pathname
-        );
+        const artist = pullDB('user', {}, { id: selectedArt?.artist });
+        navigateTo(`./profile/${artist.username}`, $page.url.pathname);
     };
 
     function openPopup(art: Artwork) {

@@ -17,36 +17,36 @@
     let tabIndex = $state(0);
     let nodeTimeline = ['Overview', 'Types', 'Milestones', 'Terms of Service', 'Summary'];
     let selectedService = $state({
-        "state": "draft",
-        "isOpen": false,
-        "title": "",
-        "description": "",
-        "thumbnail": "1.jpg",
-        "samples": [],
-        "tags": [],
-        "types": [],
-        "extras": [],
-        "fastDelivery": {
-            "enabled": false,
-            "price": 50,
-            "type": "percentage",
-            "duration": 3,
-            "unit": "days"
+        state: 'draft',
+        isOpen: false,
+        title: '',
+        description: '',
+        thumbnail: '1.jpg',
+        samples: [],
+        tags: [],
+        types: [],
+        extras: [],
+        fastDelivery: {
+            enabled: false,
+            price: 50,
+            type: 'percentage',
+            duration: 3,
+            unit: 'days'
         },
-        "commercialUse": {
-            "enabled": false,
-            "price": 100,
-            "type": "percentage"
+        commercialUse: {
+            enabled: false,
+            price: 100,
+            type: 'percentage'
         },
-        "downpayment": {
-            "payment": {
-                "value": 20,
-                "enabled": false
+        downpayment: {
+            payment: {
+                value: 20,
+                enabled: false
             }
         },
-        "milestones": [],
-        "termsOfService": {},
-        "uniqueTos": []
+        milestones: [],
+        termsOfService: {},
+        uniqueTos: []
     });
 
     let items = $state([
@@ -82,23 +82,23 @@
             label: 'Summary',
             value: 5,
             component: SummaryCommission,
-            props: { selectedService, currentArtist },
+            props: { selectedService, currentArtist }
         }
     ]);
 
     const goToPreviousStep = () => {
         tabIndex--;
         return Math.min(tabIndex, 0);
-    }
+    };
 
     const proceedToNextStep = () => {
         tabIndex++;
         return Math.max(tabIndex, MAX_TABS);
-    }
+    };
 
     const changeIndex = (index: number) => {
         tabIndex = index;
-    }
+    };
 </script>
 
 <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
@@ -111,19 +111,25 @@
             </div>
         </div>
         <div class="p-4">
-            <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex}/>
+            <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
         </div>
-        <Tabs 
-            items={items} 
-            hideTabs={true} 
-            currentTab={tabIndex + 1} 
+        <Tabs
+            {items}
+            hideTabs={true}
+            currentTab={tabIndex + 1}
             bind:bindableItems={items}
             binded={true}
         />
-        <CommissionButtons 
-            {goToPreviousStep} {proceedToNextStep} 
-            backwards={'Previous Step'} forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}
-            finalStep={() => {closeEdit()}} finalWord={'Publish Service'}
+        <CommissionButtons
+            {goToPreviousStep}
+            {proceedToNextStep}
+            backwards={'Previous Step'}
+            forwards={'Next Step'}
+            indexes={[tabIndex, MAX_TABS]}
+            finalStep={() => {
+                closeEdit();
+            }}
+            finalWord={'Publish Service'}
         />
     </div>
 </div>

@@ -63,12 +63,6 @@
         artistView={true}
     />
 {:else}
-    <div>
-        <div class="overview-container p-4">
-            <h2 class="mb-4 text-lg font-semibold">Your Commissions</h2>
-            <div>
-                <Tabs {items} />
-            </div>
-        </div>
-    </div>
+    <h2 class="mb-4 text-lg font-semibold">Your Commissions</h2>
+    <Tabs {items} />
 {/if}

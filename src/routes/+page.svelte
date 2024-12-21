@@ -12,36 +12,47 @@
     let tagInput = $state('');
 
     let artDB = $derived(
-        pullDB('artwork', {
-            'tags': (obj: any) => {
-                return includesArray(obj.tags, tags);
+        pullDB(
+            'artwork',
+            {
+                tags: (obj: any) => {
+                    return includesArray(obj.tags, tags);
+                },
+                artist: (obj: any) => {
+                    const artist = pullDB('artist', {}, { id: obj.artist });
+                    return !openTagOnly || artist?.openCommission === true;
+                },
+                followers: (obj: any) => {
+                    const following = user.isNotEmpty() && user.following.includes(obj.artist);
+                    return !followersOnly || following;
+                },
+                services: (obj: any) => {
+                    const services = pullDB(
+                        'services',
+                        {
+                            state: 'published'
+                        },
+                        {
+                            samples: (service: any) => service.samples.includes(obj.id),
+                            commercialUse: (service: any) => service.commercialUse.enabled === true
+                        }
+                    );
+                    return !commercialUseOnly || !!services;
+                }
             },
-            'artist': (obj: any) => {
-                const artist = pullDB('artist', {}, { 'id': obj.artist });
-                return !openTagOnly || artist?.openCommission === true;
-            },
-            'followers': (obj: any) => {
-                const following = user.isNotEmpty() && user.following.includes(obj.artist);
-                return !followersOnly || following;
-            },
-            'services': (obj: any) => {
-                const services = pullDB('services', 
-                    { 
-                        'state': 'published', 
-                    }, { 
-                        'samples': (service: any) => service.samples.includes(obj.id),
-                        'commercialUse': (service: any) => service.commercialUse.enabled === true
-                    });
-                return !commercialUseOnly || !!services;
-            }
-        } , {})
+            {}
+        )
     );
 
     function addTag() {
         if (tagInput.trim().toLowerCase()) {
-            const newTag = pullDB('tags', {}, {
-                'name': (obj: any) => obj.name.toLowerCase() === tagInput
-            });
+            const newTag = pullDB(
+                'tags',
+                {},
+                {
+                    name: (obj: any) => obj.name.toLowerCase() === tagInput
+                }
+            );
 
             if (newTag) {
                 tags = [...tags, newTag?.name];
@@ -59,9 +70,9 @@
     }
 </script>
 
-<div class="container mx-auto mt-2 flex p-4">
+<div class="flex">
     <div class="content flex-grow">
-        <div class="mb-2 mb-4 flex items-center">
+        <div class="mb-4 flex items-center">
             <button
                 class="mr-4 text-2xl font-bold focus:outline-none
                     {followersOnly === false
@@ -98,7 +109,7 @@
         </label>
         <label class="checkbox mt-2 flex justify-between">
             Commercial use only
-            <input type="checkbox" bind:checked={commercialUseOnly}/>
+            <input type="checkbox" bind:checked={commercialUseOnly} />
         </label>
         <hr class="my-4" />
         <label class="mb-2 block">
@@ -132,7 +143,4 @@
 </div>
 
 <style>
-    .container {
-        max-width: 1200px;
-    }
 </style>

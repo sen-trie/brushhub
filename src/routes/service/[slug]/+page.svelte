@@ -8,7 +8,9 @@
     let { data }: { data: PageData } = $props();
     const selectedService = data.service;
 
-    const artDB = pullDB('artwork', {}, {}).filter((artwork: any) => selectedService.samples.includes(artwork.id));
+    const artDB = pullDB('artwork', {}, {}).filter((artwork: any) =>
+        selectedService.samples.includes(artwork.id)
+    );
     const currentArtist = pullDB('user', {}, { id: selectedService.artistId });
 
     let showPlaceCommission = $state(false);
@@ -32,5 +34,5 @@
     <div class="p-6">
         <BackButton />
         <ServicePage {selectedService} {artDB} {currentArtist} {openPlaceCommission} />
-    </div> 
+    </div>
 </div>

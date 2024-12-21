@@ -8,7 +8,7 @@ export const ssr = false;
 export const load: PageLoad = () => {
     const currentUser = getUser();
 
-    const artist = pullDB('artist', {}, { 'id': currentUser.id });
+    const artist = pullDB('artist', {}, { id: currentUser.id });
     if (!artist) {
         // TODO CHANGE TO SOMETHING ELSE
         throw error(404, 'You are not the current user');

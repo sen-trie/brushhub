@@ -6,8 +6,8 @@
     let { props = $bindable() }: ComponentProps<any> = $props();
     const selectedService = props.selectedService;
 
-    const currentTos = pullDB('tos', {}, { 'artistId': selectedService.artistId })?.categories ?? [];
-    
+    const currentTos = pullDB('tos', {}, { artistId: selectedService.artistId })?.categories ?? [];
+
     let tos = $state(
         currentTos.map((category) => ({
             ...category,

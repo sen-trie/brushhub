@@ -51,12 +51,8 @@
 {#if showRequest}
     <ViewCommission closeRequest={() => (showRequest = false)} request={currentCommission} />
 {:else}
+    <h2 class="mb-4 text-lg font-semibold">Your Orders</h2>
     <div>
-        <div class="overview-container p-4">
-            <h2 class="mb-4 text-lg font-semibold">Your Orders</h2>
-            <div>
-                <Tabs {items} />
-            </div>
-        </div>
+        <Tabs {items} />
     </div>
 {/if}

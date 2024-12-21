@@ -91,190 +91,179 @@
     </div>
 {/snippet}
 
-<div class="space-y-6 p-6">
-    <h1 class="text-2xl font-bold">Profile Customization</h1>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-            <p class="block text-sm font-medium text-gray-700">Profile Picture</p>
-            <p class="mt-1 text-sm text-gray-500">
-                Appears whenever your page is presented to others
-            </p>
+<h1 class="text-2xl font-bold">Profile Customization</h1>
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+        <p class="block text-sm font-medium text-gray-700">Profile Picture</p>
+        <p class="mt-1 text-sm text-gray-500">Appears whenever your page is presented to others</p>
 
-            {#if dpWarningMessage}
-                <p class="mt-2 text-sm text-red-500">{dpWarningMessage}</p>
-            {/if}
+        {#if dpWarningMessage}
+            <p class="mt-2 text-sm text-red-500">{dpWarningMessage}</p>
+        {/if}
 
-            <img
-                src={profileInfo.uploadedDP}
-                alt="DP"
-                class="mx-auto my-4 h-24 w-24 rounded-full"
-            />
-            {@render imageUpload('dp')}
-        </div>
-
-        <div>
-            <p class="block text-sm font-medium text-gray-700">Banner Image</p>
-            <p class="mt-1 text-sm text-gray-500">
-                This image will be displayed at the top of your profile page
-            </p>
-
-            {#if bannerWarningMessage}
-                <p class="mt-2 text-sm text-red-500">{bannerWarningMessage}</p>
-            {/if}
-
-            <!-- TODO FALLBACK -->
-            <img
-                src={profileInfo.uploadedBanner}
-                alt="Cover Banner"
-                class="mx-auto my-4 h-24 w-full rounded-md object-cover"
-            />
-            {@render imageUpload('banner')}
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-            <label for="username" class="block text-sm font-medium text-gray-700">Handle</label>
-            <p class="mt-1 text-sm text-gray-500">
-                Choose a unique handle - brushhub.com/{profileInfo.username}
-            </p>
-            <input
-                type="text"
-                id="username"
-                bind:value={profileInfo.username}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            />
-        </div>
-        <div>
-            <label for="displayName" class="block text-sm font-medium text-gray-700"
-                >Display Name</label
-            >
-            <p class="mt-1 text-sm text-gray-500">
-                Choose a channel name that represents you and your content
-            </p>
-            <input
-                type="text"
-                id="displayName"
-                bind:value={profileInfo.displayName}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            />
-        </div>
+        <img src={profileInfo.uploadedDP} alt="DP" class="mx-auto my-4 h-24 w-24 rounded-full" />
+        {@render imageUpload('dp')}
     </div>
 
     <div>
-        <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
-        <textarea
-            id="bio"
-            rows="3"
-            bind:value={profileInfo.bio}
-            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-        ></textarea>
-    </div>
-
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-            <label for="languages" class="block text-sm font-medium text-gray-700">Languages</label>
-            <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
-                <div class="flex flex-wrap gap-2">
-                    {#each profileInfo.languages as language, index}
-                        <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
-                        <div
-                            class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"
-                            onclick={() => profileInfo.languages.splice(index, 1)}
-                        >
-                            <span>{language}</span>
-                            <button class="text-xs font-bold">x</button>
-                        </div>
-                    {/each}
-                </div>
-                <input
-                    type="text"
-                    placeholder="Add language"
-                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-                    bind:value={languageValue}
-                />
-            </div>
-            <p class="mt-1 text-sm text-gray-500">Enter a comma after every language</p>
-        </div>
-
-        <div>
-            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-            <select
-                id="location"
-                bind:value={profileInfo.location}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-            >
-                {#each getCountryList() as country}
-                    <option value={country}>{country}</option>
-                {/each}
-            </select>
-        </div>
-    </div>
-
-    <div class="mt-6 space-y-2">
-        <label for="location" class="block text-sm font-medium text-gray-700">External Links</label>
-        <p class="text-sm text-gray-500">
-            Share external links with viewers. They'll be visible on your profile.
+        <p class="block text-sm font-medium text-gray-700">Banner Image</p>
+        <p class="mt-1 text-sm text-gray-500">
+            This image will be displayed at the top of your profile page
         </p>
-        {#each profileInfo.links as link, index}
-            <div class="flex items-center space-x-2">
-                <button
-                    class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
-                    onclick={() => moveLink(index, index - 1)}
-                    disabled={index === 0}
-                    aria-label="Move link up"
-                >
-                    ▲
-                </button>
 
-                <button
-                    class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
-                    onclick={() => moveLink(index, index + 1)}
-                    disabled={index === profileInfo.links.length - 1}
-                    aria-label="Move link down"
-                >
-                    ▼
-                </button>
-                <input
-                    type="url"
-                    bind:value={profileInfo.links[index]}
-                    placeholder="Enter link URL"
-                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-                />
-                <button
-                    class="text-gray-500 hover:text-red-500"
-                    onclick={() => profileInfo.links.splice(index, 1)}
-                    aria-label="Remove link"
-                >
-                    🗑️
-                </button>
+        {#if bannerWarningMessage}
+            <p class="mt-2 text-sm text-red-500">{bannerWarningMessage}</p>
+        {/if}
+
+        <!-- TODO FALLBACK -->
+        <img
+            src={profileInfo.uploadedBanner}
+            alt="Cover Banner"
+            class="mx-auto my-4 h-24 w-full rounded-md object-cover"
+        />
+        {@render imageUpload('banner')}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Handle</label>
+        <p class="mt-1 text-sm text-gray-500">
+            Choose a unique handle - brushhub.com/{profileInfo.username}
+        </p>
+        <input
+            type="text"
+            id="username"
+            bind:value={profileInfo.username}
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+        />
+    </div>
+    <div>
+        <label for="displayName" class="block text-sm font-medium text-gray-700">Display Name</label
+        >
+        <p class="mt-1 text-sm text-gray-500">
+            Choose a channel name that represents you and your content
+        </p>
+        <input
+            type="text"
+            id="displayName"
+            bind:value={profileInfo.displayName}
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+        />
+    </div>
+</div>
+
+<div>
+    <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
+    <textarea
+        id="bio"
+        rows="3"
+        bind:value={profileInfo.bio}
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+    ></textarea>
+</div>
+
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+        <label for="languages" class="block text-sm font-medium text-gray-700">Languages</label>
+        <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
+            <div class="flex flex-wrap gap-2">
+                {#each profileInfo.languages as language, index}
+                    <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
+                    <div
+                        class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"
+                        onclick={() => profileInfo.languages.splice(index, 1)}
+                    >
+                        <span>{language}</span>
+                        <button class="text-xs font-bold">x</button>
+                    </div>
+                {/each}
             </div>
-        {/each}
-
-        <button
-            class="mt-2 flex items-center text-orange-500 hover:underline"
-            onclick={() => profileInfo.links.push('')}
-        >
-            <span class="mr-2 text-lg">+</span>
-            Add new link
-        </button>
+            <input
+                type="text"
+                placeholder="Add language"
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                bind:value={languageValue}
+            />
+        </div>
+        <p class="mt-1 text-sm text-gray-500">Enter a comma after every language</p>
     </div>
 
-    <div class="mt-6 flex justify-end space-x-4">
-        <button
-            class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
-            onclick={() => {
-                if (confirm('Are you sure you want to discard all changes?')) {
-                    profileInfo = initialValue;
-                }
-            }}
+    <div>
+        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+        <select
+            id="location"
+            bind:value={profileInfo.location}
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
         >
-            Discard Changes
-        </button>
-        <!-- 
+            {#each getCountryList() as country}
+                <option value={country}>{country}</option>
+            {/each}
+        </select>
+    </div>
+</div>
+
+<div class="mt-6 space-y-2">
+    <label for="location" class="block text-sm font-medium text-gray-700">External Links</label>
+    <p class="text-sm text-gray-500">
+        Share external links with viewers. They'll be visible on your profile.
+    </p>
+    {#each profileInfo.links as link, index}
+        <div class="flex items-center space-x-2">
+            <button
+                class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                onclick={() => moveLink(index, index - 1)}
+                disabled={index === 0}
+                aria-label="Move link up"
+            >
+                ▲
+            </button>
+
+            <button
+                class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                onclick={() => moveLink(index, index + 1)}
+                disabled={index === profileInfo.links.length - 1}
+                aria-label="Move link down"
+            >
+                ▼
+            </button>
+            <input
+                type="url"
+                bind:value={profileInfo.links[index]}
+                placeholder="Enter link URL"
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            />
+            <button
+                class="text-gray-500 hover:text-red-500"
+                onclick={() => profileInfo.links.splice(index, 1)}
+                aria-label="Remove link"
+            >
+                🗑️
+            </button>
+        </div>
+    {/each}
+
+    <button
+        class="mt-2 flex items-center text-orange-500 hover:underline"
+        onclick={() => profileInfo.links.push('')}
+    >
+        <span class="mr-2 text-lg">+</span>
+        Add new link
+    </button>
+</div>
+
+<div class="mt-6 flex justify-end space-x-4">
+    <button
+        class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
+        onclick={() => {
+            if (confirm('Are you sure you want to discard all changes?')) {
+                profileInfo = initialValue;
+            }
+        }}
+    >
+        Discard Changes
+    </button>
+    <!-- 
     TODO -->
-        <button class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
-            Save
-        </button>
-    </div>
+    <button class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"> Save </button>
 </div>

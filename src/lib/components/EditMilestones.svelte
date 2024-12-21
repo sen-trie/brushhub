@@ -8,7 +8,9 @@
     let downpayment = $state(selectedService.downpayment);
     let showFinalPrice = $derived.by(() => {
         return (
-            selectedService.milestones.filter((tab: any) => tab.payment.enabled && tab.payment.value >= 100).length > 0
+            selectedService.milestones.filter(
+                (tab: any) => tab.payment.enabled && tab.payment.value >= 100
+            ).length > 0
         );
     });
 
@@ -31,21 +33,24 @@
     };
 
     function removeTab(index: number) {
-        selectedService.milestones = selectedService.milestones.filter((_: any, i: number) => i !== index);
+        selectedService.milestones = selectedService.milestones.filter(
+            (_: any, i: number) => i !== index
+        );
     }
 </script>
 
 <div>
     <h2 class="text-lg font-semibold">Milestones *</h2>
     <h3 class="mb-4">
-        Payment should be sequential, not additive (i.e 10% -> 60% -> 100%). If there are no other milestones, 
-        payment will only be fully provided once the final work is submitted. Note that these 
-        should only serve as a guide for your customers and can be negotiated during the project.
+        Payment should be sequential, not additive (i.e 10% -> 60% -> 100%). If there are no other
+        milestones, payment will only be fully provided once the final work is submitted. Note that
+        these should only serve as a guide for your customers and can be negotiated during the
+        project.
     </h3>
     <div class="space-y-2">
         <MilestoneTab tab={downpayment} downpayment={true} />
         {#each selectedService.milestones as tab, index}
-            <MilestoneTab {tab} removeSelf={() => (removeTab(index))} />
+            <MilestoneTab {tab} removeSelf={() => removeTab(index)} />
         {/each}
 
         <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
@@ -63,10 +68,5 @@
             </div>
         </div>
     </div>
-    <button
-        class="mt-4 text-orange-500"
-        onclick={addTab}
-    >
-        + Add new milestone
-    </button>
+    <button class="mt-4 text-orange-500" onclick={addTab}> + Add new milestone </button>
 </div>

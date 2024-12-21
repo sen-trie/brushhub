@@ -8,23 +8,23 @@ import requestDB from '$lib/db/request.json';
 import reviewDB from '$lib/db/review.json';
 
 type DBKeys = 'artwork' | 'tos' | 'services' | 'artist' | 'tags' | 'user' | 'request' | 'review';
-type callbackRecord = Record<string, string | number | boolean | Record<string, String> | ((obj: any) => boolean)>;
+type callbackRecord = Record<
+    string,
+    string | number | boolean | Record<string, String> | ((obj: any) => boolean)
+>;
 
 const DB_JSON: Record<DBKeys, any[]> = {
-    'user': userDB,
-    'tags': tagsDB,
-    'artist': artistDB,
-    'artwork': artworkDB,
-    'tos': tosData,
-    'services': services,
-    'request': requestDB,
-    'review': reviewDB
+    user: userDB,
+    tags: tagsDB,
+    artist: artistDB,
+    artwork: artworkDB,
+    tos: tosData,
+    services: services,
+    request: requestDB,
+    review: reviewDB
 };
 
-function pullCallback(
-    item: any, 
-    callbackRecord: callbackRecord
-): any {
+function pullCallback(item: any, callbackRecord: callbackRecord): any {
     let result: boolean = true;
     for (const key in callbackRecord) {
         const callbackValue = callbackRecord[key];

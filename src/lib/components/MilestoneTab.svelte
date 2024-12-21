@@ -64,7 +64,7 @@
                             type="text"
                             placeholder={tab.name}
                             bind:value={tab.name}
-                            class="mt-1 block rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 w-1/2"
+                            class="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
                     {/if}
                 </div>
@@ -110,8 +110,8 @@
                     </label>
                     <input
                         type="number"
-                        min=0
-                        max=100
+                        min="0"
+                        max="100"
                         placeholder={tab.payment.value}
                         bind:value={tab.payment.value}
                         onchange={() => {
