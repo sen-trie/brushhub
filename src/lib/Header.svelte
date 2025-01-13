@@ -91,8 +91,8 @@
     });
 </script>
 
-<header class="bg-gray-800 py-5 text-white">
-    <nav class="container mx-auto flex flex-col px-6 sm:px-4">
+<header class="bg-gray-800 py-4 text-white">
+    <nav class="container mx-auto flex flex-col screen-padding-x">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10"  
         >
             <div class="flex items-center gap-4 w-16 sm:w-auto">
@@ -115,9 +115,9 @@
                 {@render logo()}
             </div>
 
-            <div class="relative flex justify-end w-16">
+            <div class="relative flex justify-center w-24">
                 <button
-                    class="dropdown-button flex text-white hover:text-orange-500"
+                    class="dropdown-button text-white hover:text-orange-500"
                     onclick={toggleDropdown}
                 >
                     {#if user.displayName}

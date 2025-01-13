@@ -34,9 +34,9 @@
 <img
     src={getSingle('banner', artist.coverImage)}
     alt={artist.coverImage}
-    class="h-52 w-full rounded-xl object-cover -mt-8"
+    class="h-52 w-full rounded-xl object-cover counter-padding-top"
 />
-<div class="header-section my-4 flex items-center text-black">
+<div class="header-section my-6 flex items-center text-black">
     <div class="profile-info flex items-center">
         <img
             src={getSingle('dp', artist.avatar)}
@@ -64,7 +64,9 @@
     </div>
 </div>
 
-<Tabs {items} />
+<div class=" pb-12">
+    <Tabs {items} />
+</div>
 
 <style>
 </style>

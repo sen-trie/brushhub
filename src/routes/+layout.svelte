@@ -15,7 +15,7 @@
         <Sidebar {toggleSidebar} />
     {/if}
     <main class="content flex w-screen justify-center overflow-y-auto">
-        <div class="w-full p-4 sm:p-8
+        <div class="w-full screen-padding-x screen-padding-y
             max-w-full sm:max-w-screen-2xl
             "
         >
