@@ -13,46 +13,27 @@
     }
 </script>
 
+{#snippet signButton(profileIndex: number, profileName: string, profileImage: string, profileDescription: string)}
+    <button
+        onclick={() => handleLogin(profileIndex)}
+        class="flex max-w-[30%] flex-1 flex-col card-container items-center justify-center"
+    >
+        <img
+            src={getSingle('dp', profileImage)}
+            alt={profileName}
+            class="mb-4 h-16 w-16 rounded-full shadow"
+        />
+        <h2 class="text-lg font-bold text-gray-800">{profileName}</h2>
+        <p class="text-sm text-gray-500">{profileDescription}</p>
+    </button>
+{/snippet}
+
+
 <h1 class="mb-6 text-center text-3xl font-bold text-gray-800">BrushHub</h1>
 <p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>
 
 <div class="flex flex-row justify-around gap-4">
-    <button
-        on:click={() => handleLogin(1)}
-        class="flex max-w-[30%] flex-1 flex-col items-center rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md hover:bg-orange-50"
-    >
-        <img
-            src={getSingle('dp', '1.jpg')}
-            alt="Artist"
-            class="mb-4 h-16 w-16 rounded-full shadow"
-        />
-        <h2 class="text-lg font-bold text-gray-800">Artist</h2>
-        <p class="text-sm text-gray-500">Manage your commissions</p>
-    </button>
-
-    <button
-        on:click={() => handleLogin(2)}
-        class="flex max-w-[30%] flex-1 flex-col items-center rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md hover:bg-orange-50"
-    >
-        <img
-            src={getSingle('dp', '3.png')}
-            alt="Artist"
-            class="mb-4 h-16 w-16 rounded-full shadow"
-        />
-        <h2 class="text-lg font-bold text-gray-800">Commissioner</h2>
-        <p class="text-sm text-gray-500">Request and track services</p>
-    </button>
-
-    <button
-        on:click={() => handleLogin(0)}
-        class="flex max-w-[30%] flex-1 flex-col items-center rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md hover:bg-orange-50"
-    >
-        <img
-            src={getSingle('dp', '3.png')}
-            alt="Artist"
-            class="mb-4 h-16 w-16 rounded-full shadow"
-        />
-        <h2 class="text-lg font-bold text-gray-800">Guest</h2>
-        <p class="text-sm text-gray-500">Browse as a guest</p>
-    </button>
+    {@render signButton(1, 'Artist', '1.jpg', 'Manage your commissions')}
+    {@render signButton(2, 'Commissioner', '3.png', 'Request and track services')}
+    {@render signButton(0, 'Guest', '3.png', 'Browse as a guest')}
 </div>

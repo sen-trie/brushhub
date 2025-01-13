@@ -5,7 +5,6 @@
     const { props }: ComponentProps<any> = $props();
     const selectedService = props.selectedService;
     const currentArtist = props.currentArtist;
-    console.log(props.currentArtist);
 </script>
 
 <div>

@@ -25,7 +25,7 @@
 </script>
 
 {#snippet Service(filter: String)}
-    <section class="mb-8">
+    <section class="mb-8 card-container">
         <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>
         <div class="service-grid mt-4 grid grid-cols-4 gap-4">
             <Services {serviceDB} {filter} viewOnly={false} {callback} />

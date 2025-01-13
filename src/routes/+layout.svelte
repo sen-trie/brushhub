@@ -19,7 +19,9 @@
             max-w-full sm:max-w-screen-2xl
             "
         >
-            {@render children()}
+            <div class="pb-8">
+                {@render children()}
+            </div>
         </div>
     </main>
 </div>

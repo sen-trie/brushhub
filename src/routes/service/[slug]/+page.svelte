@@ -31,8 +31,6 @@
         <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} {currentArtist} />
     {/if}
 
-    <div class="p-6">
-        <BackButton />
-        <ServicePage {selectedService} {artDB} {currentArtist} {openPlaceCommission} />
-    </div>
+    <BackButton />
+    <ServicePage {selectedService} {artDB} {currentArtist} {openPlaceCommission} />
 </div>

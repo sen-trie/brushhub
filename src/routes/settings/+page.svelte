@@ -20,7 +20,7 @@
 <div class="space-y-4 font-medium text-lg">
     <div class="flex items-center justify-between">
         <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label>Theme mode</label>
+        <label>Appearance</label>
         <select
             bind:value={userPrefs.darkMode}
             class="rounded-md focus:border-orange-500 focus:ring-orange-500 w-40"

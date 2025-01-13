@@ -70,7 +70,7 @@
 <h2 class="mt-8 text-lg font-bold">Tiers</h2>
 <div class="mt-2 grid grid-cols-1 gap-4 md:grid-cols-3">
     {#each selectedService.types as type, index}
-        <div class="rounded-lg border p-4 shadow-sm">
+        <div class="card-container">
             <h2 class="text-lg font-semibold text-orange-500">
                 {type.name || (viewOnly && `Missing Name`)}
             </h2>
@@ -97,7 +97,7 @@
 <h2 class="mt-8 text-lg font-bold">Extras</h2>
 <div class="mt-2 grid grid-cols-1 gap-4 md:grid-cols-3">
     {#each selectedService.extras as extra}
-        <div class="rounded-lg border bg-orange-50 p-4 shadow-sm">
+        <div class="card-container">
             <h3 class="font-semibold text-orange-500">
                 {extra.name || (viewOnly && `Missing Name`)}
             </h3>

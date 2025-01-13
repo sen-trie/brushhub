@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class=" pb-12">
+<div>
     <Tabs {items} />
 </div>
 

@@ -98,9 +98,9 @@
         </div>
         <Browse {artDB} />
     </div>
-    <div class="filter-panel ml-8 w-64 rounded-lg bg-gray-100 p-4 shadow">
-        <button class="clear-button mb-4" onclick={clearFilters}>
-            <i class="fas fa-times"></i> Clear filters
+    <div class="filter-panel ml-8 card-container h-80">
+        <button class="clear-button" onclick={clearFilters}>
+            Clear filters
         </button>
         <hr class="my-4" />
         <label class="checkbox flex justify-between">
@@ -126,7 +126,7 @@
                 >
             </div>
         </label>
-        <div class="tags mt-4">
+        <div class="tags">
             {#each tags as tag}
                 <button
                     class="tag mb-2 mr-2 inline-block rounded bg-gray-200 px-2 py-1 text-gray-800"
@@ -136,7 +136,7 @@
                 >
             {/each}
         </div>
-        <button class="apply-button mt-4 w-full rounded-full bg-orange-500 p-3 text-white"
+        <button class="mt-4 w-full confirm-button"
             >Apply Filter</button
         >
     </div>
