@@ -17,34 +17,30 @@
     const isIndexEmpty = indexes[0] === 0 && indexes[1] === 0;
 </script>
 
+{#snippet backButton(extraClass: string = '')}
+    <button class="confirm-button {extraClass}" 
+        onclick={goToPreviousStep}>
+        {backwards}
+    </button>
+{/snippet}
+
+{#snippet forwardButton()}
+    <button
+        class="confirm-button {forwards === 'Submit Request' ? 'save-button' : ''}"
+        onclick={proceedToNextStep}
+        >
+        {forwards}
+    </button>
+{/snippet}
+
 <div class="mt-6 flex items-center justify-between">
     {#if isIndexEmpty}
-        <button class="flex items-center font-medium text-orange-500" onclick={goToPreviousStep}>
-            <i class="fas fa-arrow-left mr-2"></i>
-            {backwards}
-        </button>
-        <button
-            class="confirm-button {forwards === 'Submit Request' ? 'save-button' : ''}"
-            onclick={proceedToNextStep}
-        >
-            {forwards}
-        </button>
+        {@render backButton()}
+        {@render forwardButton()}
     {:else}
-        <button
-            class="flex items-center font-medium text-orange-500
-                {indexes[0] === 0 ? 'invisible' : ''}
-            "
-            onclick={goToPreviousStep}
-        >
-            {backwards}
-        </button>
+        {@render backButton(indexes[0] === 0 ? 'invisible' : '')}
         {#if indexes[0] != indexes[1]}
-            <button
-                class="confirm-button {forwards === 'Submit Request' ? 'save-button' : ''}"
-                onclick={proceedToNextStep}
-            >
-                {forwards}
-            </button>
+            {@render forwardButton()}
         {:else}
             <button class="confirm-button save-button" onclick={finalStep}>
                 {finalWord}

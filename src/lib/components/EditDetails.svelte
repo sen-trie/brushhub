@@ -49,7 +49,7 @@
     {@render serviceBlock(selectedService.extras, removeType, true)}
 
     <h2 class="mt-8 text-lg font-semibold">Add-in Services</h2>
-    <div class="space-y-4">
+    <div class="space-y-4 mt-4">
         <div class="flex items-center space-x-4">
             <input
                 type="checkbox"
@@ -59,12 +59,12 @@
             <label for="fast-delivery" class="flex-1">Fast Delivery</label>
             <input
                 type="number"
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 placeholder="Duration"
                 bind:value={selectedService.fastDelivery.duration}
             />
             <select
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 bind:value={selectedService.fastDelivery.unit}
             >
                 <option value="days">Days</option>
@@ -72,12 +72,12 @@
             </select>
             <input
                 type="number"
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 placeholder="Price"
                 bind:value={selectedService.fastDelivery.price}
             />
             <select
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 bind:value={selectedService.fastDelivery.type}
             >
                 <option value="percentage">%</option>
@@ -95,12 +95,12 @@
             <label for="commercial-use" class="flex-1">Commercial Use</label>
             <input
                 type="number"
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 placeholder="Price"
                 bind:value={selectedService.commercialUse.price}
             />
             <select
-                class="rounded-md border px-2 py-1"
+                class="input-box"
                 bind:value={selectedService.commercialUse.type}
             >
                 <option value="percentage">%</option>

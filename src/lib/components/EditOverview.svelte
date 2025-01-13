@@ -9,10 +9,11 @@
     const selectedService = props.selectedService;
 
     const handleImageUpload = (event: Event) => {
+        console.log('handleImageUpload');
         const files = (event.target as HTMLInputElement).files;
         if (!files) return;
 
-        if (uploadedImages.length + files.length > 10) {
+        if (selectedService.samples.length + files.length > 10) {
             imageWarningMessage = 'You can upload a maximum of 10 images.';
             return;
         }
@@ -24,7 +25,7 @@
             }
             const fileReader = new FileReader();
             fileReader.onload = () => {
-                uploadedImages = [...uploadedImages, fileReader.result as string];
+                selectedService.samples = [...selectedService.samples, fileReader.result as string];
             };
             fileReader.readAsDataURL(file);
         }
@@ -32,13 +33,13 @@
     };
 
     const removeImage = (index: number) => {
-        uploadedImages = uploadedImages.filter((_, i) => i !== index);
+        selectedService.samples = selectedService.samples.filter((_: any, i: any) => i !== index);
     };
 </script>
 
 <div>
     <h2 class="text-lg font-semibold">Overview</h2>
-    <div>
+    <div class="mt-2">
         <label for="title" class="block text-sm font-medium">Title</label>
         <input
             id="title"
@@ -57,8 +58,8 @@
         ></textarea>
     </div>
 
-    <div>
+    <div class="mt-4">
         <h3 class="text-sm font-medium text-gray-700">References</h3>
-        <ImageSamples {uploadedImages} {imageWarningMessage} {removeImage} {handleImageUpload} />
+        <ImageSamples uploadedImages={selectedService.samples} {imageWarningMessage} {removeImage} {handleImageUpload} />
     </div>
 </div>

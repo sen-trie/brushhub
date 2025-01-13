@@ -1,9 +1,8 @@
 <script lang="ts">
     import Services from '$lib/Services.svelte';
-    import EditCommission from './EditCommission.svelte';
-    import CreateCommission from './CreateCommission.svelte';
     import type { Service } from '$lib/types';
     import type { PageData } from './$types';
+    import TemplateCommission from './TemplateCommission.svelte';
     let { data }: { data: PageData } = $props();
 
     const serviceDB: Service[] = data?.service;
@@ -35,9 +34,9 @@
 {/snippet}
 
 {#if showEditCommission}
-    <EditCommission closeEdit={resetView} {selectedService} />
+    <TemplateCommission closeEdit={resetView} editOrCreate={true} props={selectedService} />
 {:else if showCreateCommission}
-    <CreateCommission closeEdit={resetView} {currentArtist} />
+    <TemplateCommission closeEdit={resetView} editOrCreate={false} props={currentArtist} />
 {:else}
     <div class="mb-4 flex justify-end">
         <button

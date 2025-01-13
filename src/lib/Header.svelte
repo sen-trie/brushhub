@@ -92,7 +92,7 @@
 </script>
 
 <header class="bg-gray-800 py-4 text-white">
-    <nav class="container mx-auto flex flex-col screen-padding-x">
+    <nav class="container flex flex-col screen-padding-x">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10"  
         >
             <div class="flex items-center gap-4 w-16 sm:w-auto">

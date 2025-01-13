@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
-    import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
     import Timeline from '$lib/components/Timeline.svelte';
     import Tabs from '$lib/Tabs.svelte';
     import EditDetails from '$lib/components/EditDetails.svelte';
@@ -101,35 +100,24 @@
     };
 </script>
 
-<div class="fixed inset-0 z-50 overflow-y-auto bg-white">
-    <div class="relative p-6">
-        <div class="mb-4 flex w-full justify-between border-b-2">
-            <BackButtonArrow {closeEdit} buttonText="Create Service" includeBorder={false} />
-            <div class="flex pb-4">
-                <button class="discard-button">Discard Service</button>
-                <button class="confirm-button mx-4">Save as Draft</button>
-            </div>
-        </div>
-        <div class="p-4">
-            <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
-        </div>
-        <Tabs
-            {items}
-            hideTabs={true}
-            currentTab={tabIndex + 1}
-            bind:bindableItems={items}
-            binded={true}
-        />
-        <CommissionButtons
-            {goToPreviousStep}
-            {proceedToNextStep}
-            backwards={'Previous Step'}
-            forwards={'Next Step'}
-            indexes={[tabIndex, MAX_TABS]}
-            finalStep={() => {
-                closeEdit();
-            }}
-            finalWord={'Publish Service'}
-        />
-    </div>
+<div class="pt-4">
+    <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
+<Tabs
+    {items}
+    hideTabs={true}
+    currentTab={tabIndex + 1}
+    bind:bindableItems={items}
+    binded={true}
+/>
+<CommissionButtons
+    {goToPreviousStep}
+    {proceedToNextStep}
+    backwards={'Previous Step'}
+    forwards={'Next Step'}
+    indexes={[tabIndex, MAX_TABS]}
+    finalStep={() => {
+        closeEdit();
+    }}
+    finalWord={'Publish Service'}
+/>

@@ -5,7 +5,7 @@
     const { closeEdit, buttonText, includeBorder = true }: ComponentProps<any> = $props();
 </script>
 
-<div class="ml-4 flex pb-2 {includeBorder ? 'mb-4 border-b-2' : ''}">
+<div class="ml-4 flex {includeBorder ? 'mb-4 border-b-2' : ''}">
     <button
         class="flex items-center space-x-2 text-sm font-bold"
         onclick={closeEdit}

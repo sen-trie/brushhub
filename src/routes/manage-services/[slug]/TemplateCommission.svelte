@@ -1,0 +1,29 @@
+<script lang="ts">
+    import type { ComponentProps } from 'svelte';
+    import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
+    import EditCommission from './EditCommission.svelte';
+    import CreateCommission from './CreateCommission.svelte';
+
+    const { closeEdit, editOrCreate, props }: ComponentProps<any> = $props();
+</script>
+
+<div class="fixed inset-0 z-50 overflow-y-auto bg-white">
+    <div class="relative p-6">
+        <div class="mb-4 p-4 pt-0 flex w-full justify-between border-b-2
+            px-2 sm:px-4 md:px-6 lg:px-8">
+            <BackButtonArrow {closeEdit} includeBorder={false} 
+                             buttonText={editOrCreate ? "Edit Service" : "Create Service"}/> 
+            <div class="flex">
+                <button class="discard-button">Discard Changes</button>
+                <button class="save-button mx-4">Save and Leave</button>
+            </div>
+        </div>
+        <div class="px-2 sm:px-6 md:px-10 lg:px-16">
+            {#if editOrCreate}
+                <EditCommission closeEdit={closeEdit} selectedService={props}/>
+            {:else}
+                <CreateCommission closeEdit={closeEdit} currentArtist={props}/>     
+            {/if}
+        </div>
+    </div>
+</div>

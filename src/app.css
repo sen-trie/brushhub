@@ -30,4 +30,8 @@ label {
     .counter-padding-top {
         @apply -mt-6 sm:-mt-8 lg:-mt-10
     }
+
+    .input-box {
+        @apply rounded-md border px-2 py-1 w-24
+    }
 }
