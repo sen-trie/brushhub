@@ -1,6 +1,7 @@
 <script lang="ts">
     import { calculateTimePassed, formatResponseTime, getUser, navigateTo } from '$lib/util';
     import type { ComponentProps } from 'svelte';
+    import { PencilSquare, Icon, MapPin, Language, Link } from 'svelte-hero-icons';
     import { pullDB } from '$lib/db';
     import { page } from '$app/stores';
     import Browse from '$lib/Browse.svelte';
@@ -19,36 +20,74 @@
     );
 </script>
 
-<div class="">
+<div>
     <div class="content-section flex flex-col gap-6 md:flex-row">
-        <div class="left-column flex w-full flex-col gap-6 md:w-1/3">
+        <div class="left-column flex w-full flex-col md:w-1/4">
             <div class="bio card-container">
-                <p class="mb-4">{artist.bio}</p>
-                <p class="mb-2">{artist.location}</p>
-                <p class="mb-4">{artist.languages.join(', ')}</p>
-                <a href="https://{artist.youtube}" target="_blank" class="mt-2 block text-blue-600">
-                    {artist.youtube}
-                </a>
-                <a href="https://{artist.twitter}" target="_blank" class="mt-2 block text-blue-600">
-                    {artist.twitter}
-                </a>
+                <p>{artist.bio}</p>
+                <hr class="my-4" />
+                <div class="flex flex-col my-2 gap-2">
+                    <div class="flex gap-2">
+                        <Icon src={MapPin} size="24" />
+                        <p class="truncate max-w-64">{artist.location}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <Icon src={Language} size="24"/>
+                        <p class="truncate max-w-64">{artist.languages.join(', ')}</p>
+                    </div>
+                    {#each artist.links as link}
+                        <div class="flex gap-2">
+                            <Icon src={Link} size="24" />
+                            <a href={"//" + link} target="_blank" class="text-blue-600 truncate max-w-64">
+                                {link}
+                            </a>
+                        </div>
+                    {/each}
+                </div>
 
                 {#if currentArtist}
                     <button
-                        class="edit-profile mt-4 text-orange-600"
-                        onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}
-                        >Edit your profile <i class="fas fa-edit"></i></button
-                    >
+                        class="confirm-button rounded flex gap-2 mt-4"
+                        onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}>
+                        <Icon src={PencilSquare} size="24" />
+                        Edit Your Profile
+                    </button>
                 {/if}
 
-                <p class="mt-4">Joined {calculateTimePassed(new Date(artist.joined))} ago</p>
-                <p>Satisfaction Level: {artist.satisfaction}/5.0</p>
-                <p>Avg. Response Time: {formatResponseTime(artist.responseTime)}</p>
-                <p>Completion Rate: {artist.completionRate}%</p>
-                <p class="mb-4">Total: {artist.total}</p>
+                <hr class="my-4" />
+                <div class="flex flex-col my-4 gap-1">
+                    <p>Joined {calculateTimePassed(new Date(artist.joined))} ago</p>
+                    <div class="grid grid-cols-4 gap-1">
+                        <div class="col-span-3">
+                            <p>Satisfaction Level:</p>
+                        </div>
+                        <div class="col-span-1 text-end">
+                            <p>{artist.satisfaction}/5.0</p>
+                        </div>
+                        <div class="col-span-3">
+                            <p>Avg. Response Time:</p>
+                        </div>
+                        <div class="col-span-1 text-end">
+                            <p>{formatResponseTime(artist.responseTime)}</p>
+                        </div>
+                        <div class="col-span-3">
+                            <p>Completion Rate:</p>
+                        </div>
+                        <div class="col-span-1 text-end">
+                            <p>{artist.completionRate}%</p>
+                        </div>
+                        <div class="col-span-3">
+                            <p>Total Commissions:</p>
+                        </div>
+                        <div class="col-span-1 text-end">
+                            <p>{artist.total}</p>
+                        </div>
+                    </div>
+                </div>
 
                 {#if artistTOS}
-                    <div class="tos-container mx-auto max-w-2xl rounded-lg bg-gray-50 p-4 shadow">
+                    <hr class="my-4" />
+                    <div class="tos-container">
                         <h3 class="mb-2 text-xl font-bold">Terms of Service</h3>
                         <p class="mb-2 text-sm text-gray-500">
                             Last updated: {new Date(artistTOS.lastUpdated).toLocaleDateString()}
@@ -77,7 +116,7 @@
             </div>
         </div>
 
-        <div class="right-column flex w-full flex-col gap-6 md:w-2/3">
+        <div class="right-column flex w-full flex-col gap-6 md:w-3/4">
             <div class="featured-artworks card-container">
                 <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
                 <Browse {artDB} showArtist={false} />
