@@ -16,14 +16,14 @@
     }
 </script>
 
-<h1 class="mb-4 text-2xl font-bold">BrushHub Settings</h1>
-<div class="space-y-4">
+<h1 class="mb-2 text-2xl font-bold">BrushHub Settings</h1>
+<div class="space-y-4 font-medium text-lg">
     <div class="flex items-center justify-between">
         <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label class="text-sm font-medium">Theme mode</label>
+        <label>Theme mode</label>
         <select
             bind:value={userPrefs.darkMode}
-            class="rounded-md text-sm shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            class="rounded-md focus:border-orange-500 focus:ring-orange-500 w-40"
         >
             <option value="auto">Auto Detect</option>
             <option value="dark">Dark</option>
@@ -33,10 +33,10 @@
 
     <div class="flex items-center justify-between">
         <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label class="text-sm font-medium">Preferred Currency</label>
+        <label>Preferred Currency</label>
         <select
             bind:value={userPrefs.preferredCurrency}
-            class="rounded-md focus:border-orange-500 focus:ring-orange-500"
+            class="rounded-md focus:border-orange-500 focus:ring-orange-500 w-40"
         >
             {#each Object.entries(exchangeRates) as [rate, _]}
                 <option value={rate}>{rate}</option>
@@ -45,9 +45,9 @@
     </div>
 </div>
 
-<div class="mt-10 flex justify-end space-x-4">
+<div class="mt-4 flex justify-end space-x-4">
     <button
-        class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+        class="large-button"
         onclick={savePreferences}
     >
         Save Preferences
@@ -55,36 +55,38 @@
 </div>
 
 {#if user.displayName}
-    <div class="my-8 border-t border-gray-700"></div>
+    <div class="my-4 border-t border-gray-700"></div>
     <div>
         <h1 class="mb-2 text-2xl font-bold">Your BrushHub Profile</h1>
-        <p class="mb-6 text-sm text-gray-400">
+        <p class="text-sm text-gray-400">
             This is your public presence on BrushHub. You need a profile to upload your own
             services, comment on artwork, or create commissions.
         </p>
 
-        <div class="mb-6 flex items-center space-x-4">
-            <img
-                src={getSingle('dp', user.avatar)}
-                alt={`${user.displayName}'s avatar`}
-                class="h-16 w-16 rounded-full border border-gray-700 shadow"
-            />
-            <div>
-                <p class="text-lg font-semibold">{user.displayName}</p>
-                <p class="text-sm text-gray-400">@{user.username}</p>
+        <div class="my-6 flex items-center space-x-4">
+            <div class="w-auto flex items-center space-x-4 bg-gray-700 p-6 py-3 rounded">
+                <img
+                    src={getSingle('dp', user.avatar)}
+                    alt={`${user.displayName}'s avatar`}
+                    class="h-16 w-16 rounded-full border border-gray-700 shadow"
+                />
+                <div>
+                    <p class="text-lg font-semibold text-white">{user.displayName}</p>
+                    <p class="text-sm text-gray-400">@{user.username}</p>
+                </div>
             </div>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-x-4">
             <a
                 href="/profile/{user.username}"
-                class="block text-sm font-medium text-red-500 hover:text-red-400"
+                class="large-button"
             >
                 View Profile
             </a>
             <a
                 href="/account/edit"
-                class="block text-sm font-medium text-red-500 hover:text-red-400"
+                class="large-button"
             >
                 Manage Profile
             </a>
