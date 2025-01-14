@@ -100,7 +100,7 @@
     };
 </script>
 
-<div class="py-4">
+<div class="py-4 mb-2">
     <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
 <div class="card-container">

@@ -107,11 +107,11 @@
         </button>
         <hr class="my-4" />
         <label class="checkbox flex justify-between">
-            Open only
+            Open Artists Only
             <input type="checkbox" bind:checked={openTagOnly} />
         </label>
         <label class="checkbox mt-2 flex justify-between">
-            Commercial use only
+            Commercial Use Only
             <input type="checkbox" bind:checked={commercialUseOnly} />
         </label>
         <hr class="my-4" />

@@ -29,7 +29,7 @@
 {/snippet}
 
 
-<h1 class="mb-6 text-center text-3xl font-bold text-gray-800">BrushHub</h1>
+<h1 class="mb-2 text-center text-3xl font-bold text-gray-800">BrushHub Profiles</h1>
 <p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>
 
 <div class="flex flex-row justify-around gap-4">
