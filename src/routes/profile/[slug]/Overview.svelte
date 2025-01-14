@@ -62,7 +62,7 @@
                             <p>Satisfaction Level:</p>
                         </div>
                         <div class="col-span-1 text-end">
-                            <p>{artist.satisfaction}/5.0</p>
+                            <p>{artist.satisfaction} / 5.0</p>
                         </div>
                         <div class="col-span-3">
                             <p>Avg. Response Time:</p>

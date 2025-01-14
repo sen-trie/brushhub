@@ -42,4 +42,12 @@ label {
     .card-container {
         @apply rounded-lg border border-gray-300 p-4 shadow-md
     }
+
+    .page-title {
+        @apply text-2xl font-bold
+    }
+
+    .entire-screen {
+        @apply fixed inset-0 z-50 overflow-y-auto bg-white
+    }
 }

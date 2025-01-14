@@ -2,7 +2,7 @@
     import Tabs from '$lib/Tabs.svelte';
     import Dashboard from '$lib/Dashboard.svelte';
     import ViewCommission from '$lib/ViewCommission.svelte';
-    import type { PageData } from '../$types';
+    import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
     const requestDB: any[] = data?.request;
@@ -63,6 +63,6 @@
         artistView={true}
     />
 {:else}
-    <h2 class="mb-4 text-lg font-semibold">Your Commissions</h2>
+    <h1 class="page-title mb-2">Your Commissions</h1>
     <Tabs {items} />
 {/if}

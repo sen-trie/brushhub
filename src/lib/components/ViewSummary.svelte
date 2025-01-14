@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="mb-4 flex justify-between">
-        <span class="font-medium text-gray-900">{calculateCurrency(commissionChoice.price)}</span>
+    <div class="mb-4 flex justify-end">
+        <span class="page-title pr-4">Net Total: {calculateCurrency(commissionChoice.price)}</span>
     </div>
 </div>

@@ -37,4 +37,6 @@
     ];
 </script>
 
-<Tabs {items} />
+<div class="card-container">
+    <Tabs {items} />
+</div>

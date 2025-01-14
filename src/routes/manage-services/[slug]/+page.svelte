@@ -38,7 +38,8 @@
 {:else if showCreateCommission}
     <TemplateCommission closeEdit={resetView} editOrCreate={false} props={currentArtist} />
 {:else}
-    <div class="mb-4 flex justify-end">
+    <div class="-mt-2 mb-4 flex justify-between px-4 items-center">
+        <h1 class="page-title">Manage Services</h1>
         <button
             class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
             onclick={() => (showCreateCommission = true)}

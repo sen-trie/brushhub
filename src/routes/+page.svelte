@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Icon, Funnel } from 'svelte-hero-icons';
     import { getUser, includesArray } from '$lib/util';
     import { pullDB } from '$lib/db';
     import Browse from '$lib/Browse.svelte';
@@ -98,9 +99,11 @@
         </div>
         <Browse {artDB} />
     </div>
-    <div class="filter-panel ml-8 card-container h-80">
-        <button class="clear-button" onclick={clearFilters}>
-            Clear filters
+    <div class="filter-panel ml-8 card-container sticky h-full
+                    top-6 sm:top-8 lg:top-10">
+        <button class="clear-button flex gap-2 justify-center" onclick={clearFilters}>
+            <Icon src={Funnel} size="24"/>
+            Clear Filters
         </button>
         <hr class="my-4" />
         <label class="checkbox flex justify-between">
@@ -136,9 +139,9 @@
                 >
             {/each}
         </div>
-        <button class="mt-4 w-full confirm-button"
+        <!-- <button class="mt-4 w-full confirm-button"
             >Apply Filter</button
-        >
+        > -->
     </div>
 </div>
 

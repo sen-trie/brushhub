@@ -7,7 +7,7 @@
     const openRequest = props.openRequest;
 </script>
 
-<table class="w-full border-collapse text-left">
+<table class="w-full border-collapse text-left -mt-4">
     <thead>
         <tr class="border-b text-sm font-medium text-gray-700">
             <th class="px-4 py-2">SERVICE</th>

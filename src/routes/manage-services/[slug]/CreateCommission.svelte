@@ -23,7 +23,7 @@
         thumbnail: '1.jpg',
         samples: [],
         tags: [],
-        types: [],
+        types: [{ name: "Sample Name", price: 20, type: "currency", description: "Sample Description"}],
         extras: [],
         fastDelivery: {
             enabled: false,
@@ -100,16 +100,18 @@
     };
 </script>
 
-<div class="pt-4">
+<div class="py-4">
     <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
-<Tabs
-    {items}
-    hideTabs={true}
-    currentTab={tabIndex + 1}
-    bind:bindableItems={items}
-    binded={true}
-/>
+<div class="card-container">
+    <Tabs
+        {items}
+        hideTabs={true}
+        currentTab={tabIndex + 1}
+        bind:bindableItems={items}
+        binded={true}
+    />
+</div>
 <CommissionButtons
     {goToPreviousStep}
     {proceedToNextStep}

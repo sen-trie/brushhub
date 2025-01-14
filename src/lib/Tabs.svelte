@@ -28,7 +28,7 @@
 {#snippet tabItem(items: Record<string, any>[])}
     {#each items as item}
         {#if item.value === (!currentTab ? activeTabValue : currentTab)}
-            <div class="pt-6">
+            <div class="{!hideTabs ? "pt-6" : ""}">
                 {#if item.bindable}
                     <item.component bind:props={item.props} />
                 {:else}

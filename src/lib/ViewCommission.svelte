@@ -39,33 +39,38 @@
 
 <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
     <div class="relative p-6">
-        <BackButtonArrow closeEdit={closeRequest} buttonText="View Commission Request" />
-        <div class="mb-2 ml-2">
-            <h1 class="text-2xl font-bold">{request.service.title}</h1>
-            <button
-                class="text-l text-gray-500"
-                onclick={() =>
+        <div class="mb-4 p-4 pt-0 flex w-full justify-between border-b-2
+            px-2 sm:px-4 md:px-6 lg:px-8">
+            <BackButtonArrow closeEdit={closeRequest} buttonText="View Commission Request" />
+        </div>
+        <div class="px-2 sm:px-6 md:px-10 lg:px-16">
+            <div class="card-container">
+                <h1 class="page-title">{request.service.title}</h1>
+                <button
+                    class="text-l text-gray-500 mb-4 underline"
+                    onclick={() =>
                     navigateTo(
                         `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
                         $page.url.pathname
-                    )}
-            >
-                {artistView
-                    ? `Requested by: ${currentCommissioner?.displayName}`
-                    : `Service by: ${currentArtist?.displayName}`}
-            </button>
+                    )}>
+                    {artistView
+                        ? `Requested by: ${currentCommissioner?.displayName}`
+                        : `Service by: ${currentArtist?.displayName}`}
+                </button>
+                {#if !newRequestView}
+                    <Tabs {items} />
+                {:else}
+                    <ViewSummary
+                        props={{
+                            request: request
+                        }}
+                    />
+                    <div class="flex w-full justify-end space-x-2">    
+                        <button class="discard-button">Reject</button>
+                        <button class="save-button">Accept</button>
+                    </div>
+                {/if}
+            </div>
         </div>
-
-        {#if !newRequestView}
-            <Tabs {items} />
-        {:else}
-            <ViewSummary
-                props={{
-                    request: request
-                }}
-            />
-            <button>Reject</button>
-            <button>Accept</button>
-        {/if}
     </div>
 </div>

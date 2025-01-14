@@ -33,9 +33,9 @@
 {#snippet serviceBlock(services: any[], removeSelf: (arg0: number) => void, extra = false)}
     <div class="space-y-2 py-2">
         {#each services as tab, index}
-            <ServiceTab {tab} {removeSelf} />
+            <ServiceTab {tab} removeSelf={() => removeSelf(index)} />
         {/each}
-        <button class="mt-2 text-orange-500" onclick={addType}
+        <button class="mt-2 text-orange-500" onclick={extra ? addExtra : addType}
             >+ Add new {extra ? 'extra' : 'type'}...</button
         >
     </div>
@@ -46,7 +46,7 @@
     {@render serviceBlock(selectedService.types, removeType)}
 
     <h2 class="mt-8 text-lg font-semibold">Extras</h2>
-    {@render serviceBlock(selectedService.extras, removeType, true)}
+    {@render serviceBlock(selectedService.extras, removeExtra, true)}
 
     <h2 class="mt-8 text-lg font-semibold">Add-in Services</h2>
     <div class="space-y-4 mt-4">

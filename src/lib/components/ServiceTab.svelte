@@ -1,22 +1,23 @@
-<script>
+<script lang="ts">
     import { getPreferredCurrency } from '$lib/util';
     let { tab = $bindable(), removeSelf, extra = false } = $props();
     let openState = $state(false);
 </script>
 
-<!-- 
-TODO SWITCH TO USD  -->
+{#snippet closeButton(text: String)}
+    <button
+        class="absolute right-2 text-gray-500 hover:text-orange-500"
+        onclick={() => (openState = !openState)}
+    >
+    {text}
+    </button>
+{/snippet}
 
-<div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
+<div class="flex items-center justify-between rounded-lg border p-4 shadow">
     <button class="mr-4 text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
     {#if !openState}
         <div class="relative grow">
-            <button
-                class="absolute right-2 top-2 text-gray-500 hover:text-orange-500"
-                onclick={() => (openState = !openState)}
-            >
-                Edit
-            </button>
+            {@render closeButton("Edit")}
             <div class="flex flex-col gap-2">
                 {#if tab.name}
                     <h3 class="text-lg font-bold text-gray-800">{tab.name}</h3>
@@ -44,15 +45,10 @@ TODO SWITCH TO USD  -->
         </div>
     {:else}
         <div class="relative grow">
-            <button
-                class="absolute right-2 top-2 text-gray-500 hover:text-orange-500"
-                onclick={() => (openState = !openState)}
-            >
-                Close
-            </button>
+            {@render closeButton("Close")}
             <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Name*</label>
+                <div class="mt-4">
+                    <label class="block text-base font-medium text-gray-700">Name*</label>
                     <input
                         type="text"
                         placeholder={tab.name}
@@ -61,7 +57,7 @@ TODO SWITCH TO USD  -->
                     />
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Price*</label>
+                    <label class="block text-base font-medium text-gray-700">Price*</label>
                     <div class="flex items-center gap-2">
                         <input
                             type="number"
@@ -81,7 +77,7 @@ TODO SWITCH TO USD  -->
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Description</label>
+                    <label class="block text-base font-medium text-gray-700">Description</label>
                     <textarea
                         bind:value={tab.description}
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
