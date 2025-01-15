@@ -15,7 +15,7 @@
 
 <div class="grid grid-cols-2 gap-6">
     {#each filterDB as review}
-        <div class="flex flex-col gap-4 card-container">
+        <div class="card-container flex flex-col gap-4">
             <div class="flex items-center gap-1">
                 {#each Array(review.rating) as _}
                     <span class="fas fa-star text-orange-500">★</span>

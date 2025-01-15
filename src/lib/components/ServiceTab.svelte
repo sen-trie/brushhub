@@ -9,7 +9,7 @@
         class="absolute right-2 text-gray-500 hover:text-orange-500"
         onclick={() => (openState = !openState)}
     >
-    {text}
+        {text}
     </button>
 {/snippet}
 
@@ -17,7 +17,7 @@
     <button class="mr-4 text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
     {#if !openState}
         <div class="relative grow">
-            {@render closeButton("Edit")}
+            {@render closeButton('Edit')}
             <div class="flex flex-col gap-2">
                 {#if tab.name}
                     <h3 class="text-lg font-bold text-gray-800">{tab.name}</h3>
@@ -45,7 +45,7 @@
         </div>
     {:else}
         <div class="relative grow">
-            {@render closeButton("Close")}
+            {@render closeButton('Close')}
             <div class="space-y-4">
                 <div class="mt-4">
                     <label class="block text-base font-medium text-gray-700">Name*</label>

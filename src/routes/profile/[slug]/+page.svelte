@@ -34,7 +34,7 @@
 <img
     src={getSingle('banner', artist.coverImage)}
     alt={artist.coverImage}
-    class="h-52 w-full rounded-xl object-cover counter-padding-top"
+    class="counter-padding-top h-52 w-full rounded-xl object-cover"
 />
 <div class="header-section my-6 flex items-center text-black">
     <div class="profile-info flex items-center">

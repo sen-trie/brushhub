@@ -26,19 +26,23 @@
             <div class="bio card-container">
                 <p>{artist.bio}</p>
                 <hr class="my-4" />
-                <div class="flex flex-col my-2 gap-2">
+                <div class="my-2 flex flex-col gap-2">
                     <div class="flex gap-2">
                         <Icon src={MapPin} size="24" />
-                        <p class="truncate max-w-64">{artist.location}</p>
+                        <p class="max-w-64 truncate">{artist.location}</p>
                     </div>
                     <div class="flex gap-2">
-                        <Icon src={Language} size="24"/>
-                        <p class="truncate max-w-64">{artist.languages.join(', ')}</p>
+                        <Icon src={Language} size="24" />
+                        <p class="max-w-64 truncate">{artist.languages.join(', ')}</p>
                     </div>
                     {#each artist.links as link}
                         <div class="flex gap-2">
                             <Icon src={Link} size="24" />
-                            <a href={"//" + link} target="_blank" class="text-blue-600 truncate max-w-64">
+                            <a
+                                href={'//' + link}
+                                target="_blank"
+                                class="max-w-64 truncate text-blue-600"
+                            >
                                 {link}
                             </a>
                         </div>
@@ -47,15 +51,16 @@
 
                 {#if currentArtist}
                     <button
-                        class="confirm-button rounded flex gap-2 mt-4"
-                        onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}>
+                        class="confirm-button mt-4 flex gap-2 rounded"
+                        onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}
+                    >
                         <Icon src={PencilSquare} size="24" />
                         Edit Your Profile
                     </button>
                 {/if}
 
                 <hr class="my-4" />
-                <div class="flex flex-col my-4 gap-1">
+                <div class="my-4 flex flex-col gap-1">
                     <p>Joined {calculateTimePassed(new Date(artist.joined))} ago</p>
                     <div class="grid grid-cols-4 gap-1">
                         <div class="col-span-3">
@@ -96,7 +101,7 @@
                         {#each artistTOS.categories as category (category.title)}
                             <details class="category group border-b last:border-none">
                                 <summary
-                                    class="flex cursor-pointer items-center justify-between py-3 text-m font-medium text-gray-700 hover:text-orange-500 focus:outline-none"
+                                    class="text-m flex cursor-pointer items-center justify-between py-3 font-medium text-gray-700 hover:text-orange-500 focus:outline-none"
                                 >
                                     <span>{category.title}</span>
                                     <span

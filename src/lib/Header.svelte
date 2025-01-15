@@ -91,14 +91,13 @@
     });
 </script>
 
-<header class="bg-gray-800 py-4 text-white flex justify-center screen-padding-x">
+<header class="screen-padding-x flex justify-center bg-gray-800 py-4 text-white">
     <nav class="container flex flex-col">
-        <div class="flex w-full justify-between space-x-0 sm:space-x-10"  
-        >
-            <div class="flex items-center gap-4 w-16 sm:w-auto">
+        <div class="flex w-full justify-between space-x-0 sm:space-x-10">
+            <div class="flex w-16 items-center gap-4 sm:w-auto">
                 <!-- TODO: GROUP UP SIDEBAR AND LOGO (LIKE YOUTUBE) -->
-                <button 
-                    class="text-white hover:text-orange-500 justify-start" 
+                <button
+                    class="justify-start text-white hover:text-orange-500"
                     onclick={() => toggleSidebar()}
                 >
                     <p>☰</p>
@@ -108,14 +107,14 @@
                 </div>
             </div>
 
-            <div class="relative w-full hidden sm:flex">
+            <div class="relative hidden w-full sm:flex">
                 <Searchbar />
             </div>
             <div class="flex sm:hidden">
                 {@render logo()}
             </div>
 
-            <div class="relative flex justify-center w-24">
+            <div class="relative flex w-24 justify-center">
                 <button
                     class="dropdown-button text-white hover:text-orange-500"
                     onclick={toggleDropdown}
@@ -152,8 +151,8 @@
 
 {#snippet userDropdown(user: any)}
     <div
-        class="dropdown-menu absolute right-0 z-20 top-full mt-1 w-56 rounded bg-gray-700 text-sm shadow-lg"
-    >   
+        class="dropdown-menu absolute right-0 top-full z-20 mt-1 w-56 rounded bg-gray-700 text-sm shadow-lg"
+    >
         <div class="border-b border-gray-600 p-4">
             <div class="flex items-center">
                 <img

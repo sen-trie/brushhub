@@ -99,10 +99,12 @@
         </div>
         <Browse {artDB} />
     </div>
-    <div class="filter-panel ml-8 card-container sticky h-full
-                    top-6 sm:top-8 lg:top-10">
-        <button class="clear-button flex gap-2 justify-center" onclick={clearFilters}>
-            <Icon src={Funnel} size="24"/>
+    <div
+        class="filter-panel card-container sticky top-6 ml-8
+                    h-full sm:top-8 lg:top-10"
+    >
+        <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
+            <Icon src={Funnel} size="24" />
             Clear Filters
         </button>
         <hr class="my-4" />

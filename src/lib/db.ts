@@ -117,6 +117,7 @@ export const getImage = (
     return imageDict[`/src/lib/assets/${queryLocal}/${specificImg}`];
 };
 
-export const getSingle = (queryLocal: string, specificImg: string = '') => {
+export const getSingle = (queryLocal: string, specificImg: string = ''): string => {
+    if (specificImg.startsWith('data:image')) return specificImg;
     return getImage(queryLocal, specificImg, imageModules(queryLocal));
 };

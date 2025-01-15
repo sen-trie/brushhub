@@ -1,9 +1,17 @@
 <script lang="ts">
-    let { uploadedImages, imageWarningMessage, removeImage, handleImageUpload } = $props();
+    import { getSingle } from '$lib/db';
+    let {
+        uploadedImages,
+        imageWarningMessage,
+        removeImage,
+        handleImageUpload,
+        size = 16
+    } = $props();
 </script>
 
 <div
-    class="mt-2 flex h-48 w-full flex-wrap items-center justify-center gap-2 rounded-md border border-dashed border-gray-300 bg-gray-50 p-2"
+    class="mt-2 flex h-48 w-full flex-wrap items-center justify-center gap-2 rounded-md
+            border border-dashed border-gray-300 bg-gray-50 p-2"
 >
     {#if uploadedImages.length === 0}
         <span class="text-sm text-gray-500">No images uploaded</span>
@@ -11,12 +19,13 @@
     {#each uploadedImages as image, index}
         <div class="relative">
             <img
-                src={image}
+                src={getSingle('artwork', image)}
                 alt="Uploaded reference"
-                class="h-16 w-16 rounded-md border object-cover"
+                class="h-{size} w-{size} rounded-md border object-cover"
             />
             <button
-                class="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white"
+                class="absolute right-0 top-0 flex h-{size / 4} w-{size / 4}
+                items-center justify-center rounded-full bg-red-500 text-xs text-white"
                 onclick={() => removeImage(index)}
             >
                 ×

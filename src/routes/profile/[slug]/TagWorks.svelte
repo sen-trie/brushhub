@@ -42,7 +42,7 @@
 
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
     <div class="flex h-[70vh] w-full max-w-4xl flex-col rounded-lg bg-white p-6 shadow-lg">
-        <h2 class="mb-4 text-2xl font-bold">Tag Artworks</h2>
+        <h2 class="page-title mb-4">Tag Artworks</h2>
         <div class="flex w-full grow overflow-y-auto">
             <div class="h-full w-1/3 overflow-y-auto border-r border-gray-200 pr-4">
                 {#each uploadedImages as image, index}
@@ -69,9 +69,9 @@
                 {/each}
             </div>
 
-            <div class="h-full w-2/3 overflow-y-auto pl-6">
-                <div>
-                    <div class="mb-4">
+            <div class="h-full w-2/3 overflow-y-auto p-4 pt-0">
+                <div class="flex flex-col space-y-4">
+                    <div>
                         <label class="mb-2 block text-sm font-semibold">Title</label>
                         <input
                             type="text"
@@ -81,7 +81,7 @@
                         />
                     </div>
 
-                    <div class="mb-4">
+                    <div>
                         <!-- svelte-ignore a11y_label_has_associated_control -->
                         <label class="mb-2 block text-sm font-semibold">Description</label>
                         <textarea
@@ -92,13 +92,13 @@
                         ></textarea>
                     </div>
 
-                    <div class="mb-4">
+                    <div>
                         <!-- svelte-ignore a11y_label_has_associated_control -->
                         <label class="mb-2 block text-sm font-semibold">Tags</label>
                         <SearchTags bind:currentTags={imageTags[currentIndex].tags} />
                     </div>
 
-                    <div class="mb-4">
+                    <div>
                         <!-- svelte-ignore a11y_label_has_associated_control -->
                         <label class="mb-2 block text-sm font-semibold">Add to Service</label>
                         {#if serviceDB.length > 0}
@@ -118,15 +118,10 @@
                 </div>
             </div>
         </div>
-        <div class="flex w-full justify-end space-x-4">
+        <div class="mt-4 flex w-full justify-end space-x-4">
+            <button class="discard-button" onclick={backStep}> Discard </button>
             <button
-                class="rounded bg-red-500 px-6 py-3 text-white hover:bg-red-600"
-                onclick={backStep}
-            >
-                Back
-            </button>
-            <button
-                class={`rounded px-6 py-3 text-white ${
+                class={`save-button ${
                     uploadedImages.length > 0
                         ? 'bg-green-500 hover:bg-green-600'
                         : 'cursor-not-allowed bg-gray-400'

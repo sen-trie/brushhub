@@ -39,20 +39,23 @@
 
 <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
     <div class="relative p-6">
-        <div class="mb-4 p-4 pt-0 flex w-full justify-between border-b-2
-            px-2 sm:px-4 md:px-6 lg:px-8">
+        <div
+            class="mb-4 flex w-full justify-between border-b-2 p-4 px-2
+            pt-0 sm:px-4 md:px-6 lg:px-8"
+        >
             <BackButtonArrow closeEdit={closeRequest} buttonText="View Commission Request" />
         </div>
         <div class="px-2 sm:px-6 md:px-10 lg:px-16">
             <div class="card-container">
                 <h1 class="page-title">{request.service.title}</h1>
                 <button
-                    class="text-l text-gray-500 mb-4 underline"
+                    class="text-l mb-4 text-gray-500 underline"
                     onclick={() =>
-                    navigateTo(
-                        `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
-                        $page.url.pathname
-                    )}>
+                        navigateTo(
+                            `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
+                            $page.url.pathname
+                        )}
+                >
                     {artistView
                         ? `Requested by: ${currentCommissioner?.displayName}`
                         : `Service by: ${currentArtist?.displayName}`}
@@ -65,7 +68,7 @@
                             request: request
                         }}
                     />
-                    <div class="flex w-full justify-end space-x-2">    
+                    <div class="flex w-full justify-end space-x-2">
                         <button class="discard-button">Reject</button>
                         <button class="save-button">Accept</button>
                     </div>

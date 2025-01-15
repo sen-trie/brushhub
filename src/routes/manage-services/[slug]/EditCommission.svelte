@@ -7,7 +7,10 @@
     import EditMilestones from '$lib/components/EditMilestones.svelte';
     import EditTos from '$lib/components/EditTos.svelte';
 
-    const { closeEdit, selectedService }: { closeEdit: () => void; selectedService: Service | null } = $props();
+    const {
+        closeEdit,
+        selectedService
+    }: { closeEdit: () => void; selectedService: Service | null } = $props();
 
     let items = [
         {

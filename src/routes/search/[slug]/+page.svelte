@@ -34,14 +34,12 @@
             window.location.reload();
         }
     });
-
 </script>
 
 <div>
-    <h1 class="text-2xl font-bold mb-4"> Search Results: "{searchQuery}"</h1>
+    <h1 class="mb-4 text-2xl font-bold">Search Results: "{searchQuery}"</h1>
     <Tabs {items} />
 </div>
-
 
 <style>
 </style>

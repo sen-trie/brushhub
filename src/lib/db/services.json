@@ -7,7 +7,7 @@
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "1.jpg",
-        "samples": [1, 2],
+        "samples": ["1.png", "2.png"],
         "tags": ["illustration", "character", "fantasy"],
         "types": [
             {
@@ -104,7 +104,7 @@
         "title": "High-quality Illustration",
         "description": "This service provides you with fully rendered artwork, including a free simple background.",
         "thumbnail": "1.jpg",
-        "samples": [1, 2],
+        "samples": ["1.png", "2.png"],
         "tags": ["illustration", "character", "fantasy"],
         "types": [
             {
@@ -201,7 +201,7 @@
         "title": "Manga",
         "description": "Black and white manga-style illustration.",
         "thumbnail": "2.jpg",
-        "samples": [3, 4],
+        "samples": ["3.png", "4.png"],
         "tags": ["anime", "manga", "illustration"],
         "types": [
             {

@@ -1,35 +1,53 @@
 <script lang="ts">
+    import { getSingle } from '$lib/db';
     import type { ComponentProps } from 'svelte';
+    import SearchTags from '$lib/components/SearchTags.svelte';
     import ImageSamples from './ImageSamples.svelte';
 
     let { props = $bindable() }: ComponentProps<any> = $props();
-    let uploadedImages: string[] = $state([]);
     let imageWarningMessage: string = $state('');
+    let thumbWarningMessage: string = $state('');
 
     const selectedService = props.selectedService;
 
-    const handleImageUpload = (event: Event) => {
-        console.log('handleImageUpload');
-        const files = (event.target as HTMLInputElement).files;
-        if (!files) return;
+    const handleImageUpload = (event: Event, imageLocation: string) => {
+        let files = (event.target as HTMLInputElement).files;
+        let firstFile = files?.[0];
+        if (!files || !firstFile) return;
 
-        if (selectedService.samples.length + files.length > 10) {
+        if (imageLocation === 'sample' && selectedService.samples.length + files.length > 10) {
             imageWarningMessage = 'You can upload a maximum of 10 images.';
             return;
         }
 
-        for (const file of files) {
-            if (!file.type.startsWith('image/')) {
-                imageWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
+        if (imageLocation === 'thumbnail') {
+            if (!firstFile.type.startsWith('image/')) {
+                thumbWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
                 return;
             }
             const fileReader = new FileReader();
             fileReader.onload = () => {
-                selectedService.samples = [...selectedService.samples, fileReader.result as string];
+                selectedService.thumbnail = fileReader.result as string;
+                thumbWarningMessage = '';
             };
-            fileReader.readAsDataURL(file);
+            fileReader.readAsDataURL(firstFile);
+        } else {
+            for (const file of files) {
+                if (!file.type.startsWith('image/')) {
+                    imageWarningMessage = 'Only image files (e.g., jpg, png) are allowed.';
+                    return;
+                }
+                const fileReader = new FileReader();
+                fileReader.onload = () => {
+                    selectedService.samples = [
+                        ...selectedService.samples,
+                        fileReader.result as string
+                    ];
+                    imageWarningMessage = '';
+                };
+                fileReader.readAsDataURL(file);
+            }
         }
-        imageWarningMessage = '';
     };
 
     const removeImage = (index: number) => {
@@ -37,9 +55,9 @@
     };
 </script>
 
-<div>
-    <h2 class="text-lg font-semibold">Overview</h2>
-    <div class="mt-2">
+<h2 class="mb-2 text-lg font-semibold">Overview</h2>
+<div class="flex flex-col space-y-4">
+    <div>
         <label for="title" class="block text-sm font-medium">Title</label>
         <input
             id="title"
@@ -48,7 +66,42 @@
             bind:value={selectedService.title}
         />
     </div>
-    <div class="mt-4">
+    <div>
+        <label for="upload-thumbnail" class="block text-sm font-medium mb-2">Service Thumbnail</label>
+        <input
+            id="upload-thumbnail"
+            type="file"
+            accept="image/*"
+            class="hidden"
+            onchange={(e) => handleImageUpload(e, 'thumbnail')}
+        />
+        <div class="flex flex-row justify-center items-center">
+            <img
+                src={getSingle('thumbnail', selectedService.thumbnail)}
+                alt="thumbnail"
+                class="w-full rounded-md object-cover flex-1 h-48"
+            />
+            <div class="flex flex-1 content-center flex-col space-y-2">
+                <label
+                    for="upload-thumbnail"
+                    class="cursor-pointer rounded bg-orange-500 px-4 py-2 
+                          text-sm font-medium text-white hover:bg-orange-600 m-auto"
+                >
+                    Upload Image
+                </label>
+                <button
+                    class="text-red-500 hover:underline"
+                    onclick={() => {
+                        selectedService.thumbnail = '';
+                        thumbWarningMessage = '';
+                    }}
+                >
+                    Remove
+                </button>
+            </div>
+        </div>
+    </div>
+    <div>
         <label for="description" class="block text-sm font-medium">Description</label>
         <textarea
             id="description"
@@ -58,8 +111,22 @@
         ></textarea>
     </div>
 
-    <div class="mt-4">
+    <div>
+        <!-- svelte-ignore a11y_label_has_associated_control -->
+        <label class="mb-2 block text-sm font-semibold">Tags</label>
+        <SearchTags bind:currentTags={selectedService.tags} />
+    </div>
+
+    <div>
         <h3 class="text-sm font-medium text-gray-700">References</h3>
-        <ImageSamples uploadedImages={selectedService.samples} {imageWarningMessage} {removeImage} {handleImageUpload} />
+        <ImageSamples
+            uploadedImages={selectedService.samples}
+            {imageWarningMessage}
+            size={24}
+            {removeImage}
+            handleImageUpload={(e: InputEvent) => {
+                handleImageUpload(e, 'sample');
+            }}
+        />
     </div>
 </div>

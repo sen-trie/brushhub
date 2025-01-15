@@ -18,8 +18,7 @@
 </script>
 
 {#snippet backButton(extraClass: string = '')}
-    <button class="confirm-button {extraClass}" 
-        onclick={goToPreviousStep}>
+    <button class="confirm-button {extraClass}" onclick={goToPreviousStep}>
         {backwards}
     </button>
 {/snippet}
@@ -28,7 +27,7 @@
     <button
         class="confirm-button {forwards === 'Submit Request' ? 'save-button' : ''}"
         onclick={proceedToNextStep}
-        >
+    >
         {forwards}
     </button>
 {/snippet}

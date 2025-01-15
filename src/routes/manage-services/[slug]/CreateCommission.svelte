@@ -23,7 +23,9 @@
         thumbnail: '1.jpg',
         samples: [],
         tags: [],
-        types: [{ name: "Sample Name", price: 20, type: "currency", description: "Sample Description"}],
+        types: [
+            { name: 'Sample Name', price: 20, type: 'currency', description: 'Sample Description' }
+        ],
         extras: [],
         fastDelivery: {
             enabled: false,
@@ -100,7 +102,7 @@
     };
 </script>
 
-<div class="py-4 mb-2">
+<div class="mb-2 py-4">
     <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
 <div class="card-container">

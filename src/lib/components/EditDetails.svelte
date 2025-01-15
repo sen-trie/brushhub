@@ -49,7 +49,7 @@
     {@render serviceBlock(selectedService.extras, removeExtra, true)}
 
     <h2 class="mt-8 text-lg font-semibold">Add-in Services</h2>
-    <div class="space-y-4 mt-4">
+    <div class="mt-4 space-y-4">
         <div class="flex items-center space-x-4">
             <input
                 type="checkbox"
@@ -63,10 +63,7 @@
                 placeholder="Duration"
                 bind:value={selectedService.fastDelivery.duration}
             />
-            <select
-                class="input-box"
-                bind:value={selectedService.fastDelivery.unit}
-            >
+            <select class="input-box" bind:value={selectedService.fastDelivery.unit}>
                 <option value="days">Days</option>
                 <option value="weeks">Weeks</option>
             </select>
@@ -76,10 +73,7 @@
                 placeholder="Price"
                 bind:value={selectedService.fastDelivery.price}
             />
-            <select
-                class="input-box"
-                bind:value={selectedService.fastDelivery.type}
-            >
+            <select class="input-box" bind:value={selectedService.fastDelivery.type}>
                 <option value="percentage">%</option>
                 <option value="currency">{getPreferredCurrency()}</option>
             </select>
@@ -99,10 +93,7 @@
                 placeholder="Price"
                 bind:value={selectedService.commercialUse.price}
             />
-            <select
-                class="input-box"
-                bind:value={selectedService.commercialUse.type}
-            >
+            <select class="input-box" bind:value={selectedService.commercialUse.type}>
                 <option value="percentage">%</option>
                 <option value="currency">{getPreferredCurrency()}</option>
             </select>

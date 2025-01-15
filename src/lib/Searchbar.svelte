@@ -69,21 +69,21 @@
     });
 </script>
 
-    <input
-        type="text"
-        bind:value={searchQuery}
-        bind:this={inputRef}
-        oninput={updateSuggestions}
-        onkeydown={handleKeyDown}
-        placeholder="Search for tags..."
-        class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
-    />
+<input
+    type="text"
+    bind:value={searchQuery}
+    bind:this={inputRef}
+    oninput={updateSuggestions}
+    onkeydown={handleKeyDown}
+    placeholder="Search for tags..."
+    class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+/>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 {#key $page.url}
     {#if showSuggestions}
         <ul
-            class="absolute left-0 top-full mt-1 w-full z-30 rounded-lg border border-gray-300 bg-white shadow-lg overflow-clip"
+            class="absolute left-0 top-full z-30 mt-1 w-full overflow-clip rounded-lg border border-gray-300 bg-white shadow-lg"
         >
             {#each filteredTags.slice(0, 10) as tag, index}
                 <li
@@ -100,4 +100,3 @@
         </ul>
     {/if}
 {/key}
-

@@ -13,10 +13,15 @@
     }
 </script>
 
-{#snippet signButton(profileIndex: number, profileName: string, profileImage: string, profileDescription: string)}
+{#snippet signButton(
+    profileIndex: number,
+    profileName: string,
+    profileImage: string,
+    profileDescription: string
+)}
     <button
         onclick={() => handleLogin(profileIndex)}
-        class="flex max-w-[30%] flex-1 flex-col card-container items-center justify-center"
+        class="card-container flex max-w-[30%] flex-1 flex-col items-center justify-center"
     >
         <img
             src={getSingle('dp', profileImage)}
@@ -27,7 +32,6 @@
         <p class="text-sm text-gray-500">{profileDescription}</p>
     </button>
 {/snippet}
-
 
 <h1 class="mb-2 text-center text-3xl font-bold text-gray-800">BrushHub Profiles</h1>
 <p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>

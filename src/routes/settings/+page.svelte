@@ -17,13 +17,13 @@
 </script>
 
 <h1 class="mb-2 text-2xl font-bold">BrushHub Settings</h1>
-<div class="space-y-4 font-medium text-lg">
+<div class="space-y-4 text-lg font-medium">
     <div class="flex items-center justify-between">
         <!-- svelte-ignore a11y_label_has_associated_control -->
         <label>Appearance</label>
         <select
             bind:value={userPrefs.darkMode}
-            class="rounded-md focus:border-orange-500 focus:ring-orange-500 w-40"
+            class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500"
         >
             <option value="auto">Auto Detect</option>
             <option value="dark">Dark</option>
@@ -36,7 +36,7 @@
         <label>Preferred Currency</label>
         <select
             bind:value={userPrefs.preferredCurrency}
-            class="rounded-md focus:border-orange-500 focus:ring-orange-500 w-40"
+            class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500"
         >
             {#each Object.entries(exchangeRates) as [rate, _]}
                 <option value={rate}>{rate}</option>
@@ -46,12 +46,7 @@
 </div>
 
 <div class="mt-4 flex justify-end space-x-4">
-    <button
-        class="large-button"
-        onclick={savePreferences}
-    >
-        Save Preferences
-    </button>
+    <button class="large-button" onclick={savePreferences}> Save Preferences </button>
 </div>
 
 {#if user.displayName}
@@ -64,7 +59,7 @@
         </p>
 
         <div class="my-6 flex items-center space-x-4">
-            <div class="w-auto flex items-center space-x-4 bg-gray-700 p-6 py-3 rounded">
+            <div class="flex w-auto items-center space-x-4 rounded bg-gray-700 p-6 py-3">
                 <img
                     src={getSingle('dp', user.avatar)}
                     alt={`${user.displayName}'s avatar`}
@@ -78,18 +73,8 @@
         </div>
 
         <div class="space-x-4">
-            <a
-                href="/profile/{user.username}"
-                class="large-button"
-            >
-                View Profile
-            </a>
-            <a
-                href="/account/edit"
-                class="large-button"
-            >
-                Manage Profile
-            </a>
+            <a href="/profile/{user.username}" class="large-button"> View Profile </a>
+            <a href="/account/edit" class="large-button"> Manage Profile </a>
         </div>
     </div>
 {/if}
