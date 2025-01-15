@@ -48,8 +48,8 @@
             action: () => navigateHeader('/settings')
         },
         {
-            name: 'Help',
-            path: '/help',
+            name: 'About',
+            path: '/about',
             iconClass: 'fas fa-question-circle',
             action: () => signOut()
         }

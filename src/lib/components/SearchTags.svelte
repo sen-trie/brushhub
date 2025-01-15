@@ -2,7 +2,7 @@
     import type { ComponentProps } from 'svelte';
     import { pullDB } from '$lib/db';
 
-    let { currentTags = $bindable() }: ComponentProps<any> = $props();
+    let { currentTags = $bindable(), slim = false }: ComponentProps<any> = $props();
 
     let searchQuery = $state('');
     let showSuggestions = $state(false);
@@ -15,7 +15,7 @@
                     !currentTags.includes(tag.name.toLowerCase())
             },
             {}
-        ).sort((a, b) => b.count - a.count)
+        ).sort((a: any, b: any) => b.count - a.count)
     );
 
     let activeIndex = $state(0);
@@ -58,8 +58,8 @@
 </script>
 
 <div class="relative">
-    <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
-        <div class="mb-2 flex flex-wrap gap-2">
+    <div class="{slim ? "" : "mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm"}">
+        <div class="{currentTags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
             {#each currentTags as tag, index}
                 <div
                     class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"

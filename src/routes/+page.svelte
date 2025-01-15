@@ -3,6 +3,7 @@
     import { getUser, includesArray } from '$lib/util';
     import { pullDB } from '$lib/db';
     import Browse from '$lib/Browse.svelte';
+    import SearchTags from '$lib/components/SearchTags.svelte';
 
     const user = getUser();
 
@@ -101,7 +102,7 @@
     </div>
     <div
         class="filter-panel card-container sticky top-6 ml-8
-                    h-full sm:top-8 lg:top-10"
+                min-w-64 h-full sm:top-8 lg:top-10"
     >
         <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />
@@ -117,33 +118,11 @@
             <input type="checkbox" bind:checked={commercialUseOnly} />
         </label>
         <hr class="my-4" />
-        <label class="mb-2 block">
-            Tags
-            <div class="tag-input mt-2 flex items-center">
-                <input
-                    type="text"
-                    bind:value={tagInput}
-                    placeholder="Add a tag..."
-                    class="mr-2 flex-grow rounded border p-2"
-                />
-                <button class="add-tag rounded bg-orange-500 p-2 text-white" onclick={addTag}
-                    >+</button
-                >
-            </div>
-        </label>
-        <div class="tags">
-            {#each tags as tag}
-                <button
-                    class="tag mb-2 mr-2 inline-block rounded bg-gray-200 px-2 py-1 text-gray-800"
-                    onclick={() => {
-                        removeTag(tag);
-                    }}>{tag}</button
-                >
-            {/each}
+        <div>
+            <!-- svelte-ignore a11y_label_has_associated_control -->
+            <label class="mb-2 block text-sm font-semibold">Tags</label>
+            <SearchTags bind:currentTags={tags} slim={true} />
         </div>
-        <!-- <button class="mt-4 w-full confirm-button"
-            >Apply Filter</button
-        > -->
     </div>
 </div>
 

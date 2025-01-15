@@ -9,7 +9,7 @@
     const selectedService = data.service;
 
     const artDB = pullDB('artwork', {}, {}).filter((artwork: any) =>
-        selectedService.samples.includes(artwork.id)
+        selectedService.samples.includes(artwork.imgSrc)
     );
     const currentArtist = pullDB('user', {}, { id: selectedService.artistId });
 

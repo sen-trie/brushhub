@@ -5,7 +5,7 @@
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
-    let { artDB, showArtist = true }: ComponentProps<any> = $props();
+    let { artDB, showArtist = true, size = 48 }: ComponentProps<any> = $props();
     let selectedArt: Artwork | null = $state(null);
 
     const artworkArray = imageModules('artwork');
@@ -38,7 +38,7 @@
             <img
                 src={getImage('artwork', art.imgSrc, artworkArray)}
                 alt="Artwork"
-                class="h-48 w-full object-cover"
+                class="h-{size} w-full object-cover"
             />
             <div
                 class="absolute right-2 top-2 cursor-default rounded-full bg-red-500 p-1 text-white"

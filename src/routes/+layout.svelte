@@ -14,10 +14,10 @@
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}
-    <main class="content flex w-screen justify-center overflow-y-auto">
+    <main class="content flex w-screen justify-center overflow-y-auto h-full">
         <div
             class="screen-padding-x screen-padding-y w-full
-            max-w-full sm:max-w-screen-2xl
+            max-w-full sm:max-w-screen-2xl min-h-full
             "
         >
             <div class="pb-8">
