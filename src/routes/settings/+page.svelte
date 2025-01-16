@@ -58,7 +58,7 @@
             services, comment on artwork, or create commissions.
         </p>
 
-        <div class="my-6 flex items-center space-x-4">
+        <div class="my-4 flex items-center space-x-4">
             <div class="flex w-auto items-center space-x-4 rounded bg-gray-700 p-6 py-3">
                 <img
                     src={getSingle('dp', user.avatar)}

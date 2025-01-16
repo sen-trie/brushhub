@@ -49,9 +49,8 @@
         },
         {
             name: 'About',
-            path: '/about',
             iconClass: 'fas fa-question-circle',
-            action: () => signOut()
+            action: () => navigateHeader('/about')
         }
     ];
 

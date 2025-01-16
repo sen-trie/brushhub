@@ -1,7 +1,7 @@
 <script lang="ts">
     import { calculateTimePassed, formatResponseTime, getUser, navigateTo } from '$lib/util';
-    import type { ComponentProps } from 'svelte';
     import { PencilSquare, Icon, MapPin, Language, Link } from 'svelte-hero-icons';
+    import type { ComponentProps } from 'svelte';
     import { pullDB } from '$lib/db';
     import { page } from '$app/stores';
     import Browse from '$lib/Browse.svelte';
