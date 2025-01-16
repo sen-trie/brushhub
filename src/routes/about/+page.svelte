@@ -12,28 +12,28 @@
                 'https://github.com/sen-trie/': 'Github'
             }
         }, {
-            name: 'sentrie',
+            name: '_',
             dp: '1.jpg',
-            role: 'Developer and Artist',
+            role: '_',
             links: {
-                'https://sen-trie.github.io/portfolio/': 'Portfolio',
-                'https://github.com/sen-trie/': 'Github'
+                '__': '_',
+                '_': '_'
             }
         }, {
-            name: 'sentrie',
+            name: '_',
             dp: '1.jpg',
-            role: 'Developer and Artist',
+            role: '_',
             links: {
-                'https://sen-trie.github.io/portfolio/': 'Portfolio',
-                'https://github.com/sen-trie/': 'Github'
+                '__': '_',
+                '_': '_'
             }
         }, {
-            name: 'sentrie',
+            name: '_',
             dp: '1.jpg',
-            role: 'Developer and Artist',
+            role: '_',
             links: {
-                'https://sen-trie.github.io/portfolio/': 'Portfolio',
-                'https://github.com/sen-trie/': 'Github'
+                '__': '_',
+                '_': '_'
             }
         }
     ]
@@ -80,7 +80,15 @@
         </div>
     </div>
     <div>    
-        <p>What is BrushHub?</p>
-        <p class="text-base font-medium">BrushHub is a front-end only </p>
+        <p>Tech Stack</p>
+        <p class="text-base font-normal">Developed using SvelteKit and Tailwind. 
+            The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>.
+        </p>
     </div>
 </div>
+
+<style>
+    a {
+        text-decoration: underline;
+    }
+</style>

@@ -14,14 +14,19 @@
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}
-    <main class="content flex w-screen justify-center overflow-y-auto h-full">
+    <main class="content flex flex-col w-screen justify-center overflow-y-auto h-full">
         <div
             class="screen-padding-x screen-padding-y w-full
-            max-w-full sm:max-w-screen-2xl min-h-full
+            max-w-full sm:max-w-screen-2xl min-h-full pb-0
             "
         >
-            <div class="pb-8">
-                {@render children()}
+            <div class="pb-4 min-h-full flex flex-col">
+                <div class="flex-1 mb-8">
+                    {@render children()}
+                </div>
+                <footer class="text-center text-gray-400 text-sm">
+                    © {new Date().getFullYear()} sentrie. All rights reserved. Demonstration purposes only
+                </footer>
             </div>
         </div>
     </main>
