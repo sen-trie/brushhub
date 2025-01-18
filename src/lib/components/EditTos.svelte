@@ -7,14 +7,13 @@
     const selectedService = props.selectedService;
 
     const currentTos = pullDB('tos', {}, { artistId: selectedService.artistId })?.categories ?? [];
-
     let tos = $state(
-        currentTos.map((category) => ({
+        currentTos.map((category: any) => ({
             ...category,
             enabled: selectedService.termsOfService[category.title]
         }))
     );
-
+    
     let uniqueTos = $state(
         selectedService.uniqueTos.map((category: any) => ({
             ...category,
@@ -44,7 +43,7 @@
         Choose sections from your global contract, or add a new term specific to this service. Any
         changes made here to the global terms will be applied for all other services.
     </h3>
-    <div class="mt-4 flex flex-col gap-4">
+    <div class="my-4 flex flex-col gap-2">
         {#each tos as tab}
             <TosTab {tab} />
         {/each}
@@ -58,5 +57,5 @@
             />
         {/each}
     </div>
-    <button class="mt-2 text-orange-500" onclick={addToUniqueTos}>+ Add new section...</button>
+    <button class=" text-orange-500" onclick={addToUniqueTos}>+ Add new section...</button>
 </div>

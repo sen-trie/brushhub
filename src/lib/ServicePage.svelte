@@ -8,6 +8,7 @@
         artDB,
         currentArtist,
         viewOnly = false,
+        artViewOnly = false,
         openPlaceCommission = () => {}
     }: ComponentProps<any> = $props();
 
@@ -64,7 +65,7 @@
 
 <h2 class="mt-4 text-lg font-bold">Samples</h2>
 <div class="mt-2">
-    <Browse {artDB} showArtist={false} />
+    <Browse {artDB} showArtist={false} {artViewOnly}/>
 </div>
 
 <h2 class="mt-8 text-lg font-bold">Tiers</h2>

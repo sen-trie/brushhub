@@ -13,5 +13,6 @@
         {currentArtist}
         artDB={selectedService.samples}
         viewOnly={true}
+        artViewOnly={true}
     />
 </div>

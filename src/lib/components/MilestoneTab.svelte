@@ -3,12 +3,13 @@
     let openState = $state(false);
 </script>
 
-<div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
+<div class="flex items-center justify-between rounded-lg border p-4 shadow">
     {#if !downpayment}
         <button class="mr-6 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
             >Remove</button
         >
     {/if}
+
     {#if !openState}
         <div class="relative grow">
             <button

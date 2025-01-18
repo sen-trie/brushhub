@@ -43,10 +43,9 @@
     <h2 class="text-lg font-semibold">Milestones *</h2>
     <h3 class="mb-4">
         Payment should be sequential, not additive (i.e 10% -> 60% -> 100%). If there are no other
-        milestones, payment will only be fully provided once the final work is submitted. Note that
-        these should only serve as a guide for your customers and can be negotiated during the
-        project.
+        milestones, payment will only be fully provided once the final work is submitted.
     </h3>
+    <!-- Note that these should only serve as a guide for your customers and can be negotiated during the project. -->
     <div class="space-y-2">
         <MilestoneTab tab={downpayment} downpayment={true} />
         {#each selectedService.milestones as tab, index}

@@ -98,23 +98,25 @@
                 </button>
             {/if}
         </div>
-        <Browse {artDB} />
+        <div>
+            <Browse {artDB} />
+        </div>
     </div>
     <div
-        class="filter-panel card-container sticky top-6 ml-8
-                min-w-64 h-full sm:top-8 lg:top-10"
+        class="filter-panel sticky top-6 ml-8
+                sm:top-8 lg:top-10 w-80 pt-2"
     >
         <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />
             Clear Filters
         </button>
         <hr class="my-4" />
-        <label class="checkbox flex justify-between">
+        <label class="checkbox flex justify-between items-center">
             Open Artists Only
             <input type="checkbox" bind:checked={openTagOnly} />
         </label>
-        <label class="checkbox mt-2 flex justify-between">
-            Commercial Use Only
+        <label class="checkbox mt-2 flex justify-between items-center">
+            Commercial Use
             <input type="checkbox" bind:checked={commercialUseOnly} />
         </label>
         <hr class="my-4" />

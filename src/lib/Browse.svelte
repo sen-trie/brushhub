@@ -5,7 +5,7 @@
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
-    let { artDB, showArtist = true, size = 48 }: ComponentProps<any> = $props();
+    let { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
     let selectedArt: Artwork | null = $state(null);
 
     const artworkArray = imageModules('artwork');
@@ -19,11 +19,21 @@
     };
 
     function openPopup(art: Artwork) {
+        if (typeof art === 'string') {
+            return;
+        }
         selectedArt = art;
     }
 
     function closePopup() {
         selectedArt = null;
+    }
+
+    function returnArt(art: string | Record<string, any>) {
+        if (typeof art === 'string' && art.startsWith('data:image')) {
+            return art;
+        }
+        return getImage('artwork', art.imgSrc, artworkArray);
     }
 </script>
 
@@ -31,21 +41,17 @@
     {#each artDB as art}
         <button
             type="button"
-            class="relative w-full cursor-pointer overflow-hidden rounded-lg border bg-white shadow"
+            class="relative w-full overflow-hidden rounded-lg border bg-white shadow
+                   {!artViewOnly ? "cursor-pointer" : "cursor-default"}"
             onclick={() => openPopup(art)}
             aria-label="View artwork details"
         >
             <img
-                src={getImage('artwork', art.imgSrc, artworkArray)}
+                src={returnArt(art)}
                 alt="Artwork"
                 class="h-{size} w-full object-cover"
             />
-            <div
-                class="absolute right-2 top-2 cursor-default rounded-full bg-red-500 p-1 text-white"
-            >
-                <i class="fas fa-times text-xs"></i>
-            </div>
-            {#if !findArtist(art.artist)?.openCommission}
+            {#if !findArtist(art.artist)?.openCommission && !artViewOnly}
                 <span
                     class="absolute left-2 top-2 rounded bg-gray-700 px-2 py-1 text-xs text-white"
                 >

@@ -82,7 +82,7 @@
 
     {#if showSuggestions && filteredTags.length > 0}
         <ul
-            class="absolute left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
+            class="left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
         >
             {#each filteredTags.slice(0, 6) as tag, index}
                 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->

@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
+    import { pullDB } from '$lib/db';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
     import Timeline from '$lib/components/Timeline.svelte';
     import Tabs from '$lib/Tabs.svelte';
@@ -11,16 +12,20 @@
 
     const { closeEdit, currentArtist }: ComponentProps<any> = $props();
 
+    const service = pullDB('tos', { artistId: Number(currentArtist.id) }, {})[0].categories;
+    const tos = Object.assign({}, ...service.map((entry: any) => ({[entry.title]: true})));
+
     const MAX_TABS = 4;
 
     let tabIndex = $state(0);
     let nodeTimeline = ['Overview', 'Types', 'Milestones', 'Terms of Service', 'Summary'];
     let selectedService = $state({
+        artistId: currentArtist.id,
         state: 'draft',
         isOpen: false,
         title: '',
         description: '',
-        thumbnail: '1.jpg',
+        thumbnail: '',
         samples: [],
         tags: [],
         types: [
@@ -46,7 +51,7 @@
             }
         },
         milestones: [],
-        termsOfService: {},
+        termsOfService: tos,
         uniqueTos: []
     });
 

@@ -3,7 +3,7 @@
     let openState = $state(false);
 </script>
 
-<div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
+<div class="flex items-center justify-between rounded-lg border p-4 shadow">
     {#if unique}
         <button class="mr-4 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
             >Remove</button
@@ -17,10 +17,11 @@
             class="mr-4 h-4 w-4 text-orange-500 focus:ring-orange-500"
         />
     {/if}
+
     {#if !openState}
         <div class="relative grow">
             <button
-                class="absolute right-2 top-2 text-gray-500 hover:text-orange-500"
+                class="absolute right-2 text-gray-500 hover:text-orange-500"
                 onclick={() => (openState = !openState)}
             >
                 Edit
@@ -34,12 +35,12 @@
     {:else}
         <div class="relative grow">
             <button
-                class="absolute right-2 top-2 text-gray-500 hover:text-orange-500"
+                class="absolute right-2 text-gray-500 hover:text-orange-500"
                 onclick={() => (openState = !openState)}
             >
                 Edit
             </button>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2 pr-16">
                 <input
                     type="text"
                     placeholder={tab.title}
