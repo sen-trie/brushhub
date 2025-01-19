@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import { pullDB } from '$lib/db';
-    let { request, openRequest }: ComponentProps<any> = $props();
+    let { request, openRequest, editEntry = () => {} }: ComponentProps<any> = $props();
 
     const currentArtist = pullDB('user', {}, { id: request.artistId });
 

@@ -19,7 +19,7 @@
     </thead>
     <tbody>
         {#each requestDB as request}
-            <Request {request} {openRequest} />
+            <Request {request} {openRequest}/>
         {/each}
     </tbody>
 </table>

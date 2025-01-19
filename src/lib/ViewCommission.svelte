@@ -9,13 +9,11 @@
     import { navigateTo } from '$lib/util';
     import { page } from '$app/stores';
 
-    let { closeRequest, request, artistView = false }: ComponentProps<any> = $props();
+    let { closeRequest, request, artistView = false, editEntry = () => {} }: ComponentProps<any> = $props();
 
     const currentArtist = pullDB('user', {}, { id: request.artistId });
     const currentCommissioner = pullDB('user', {}, { id: request.customerId });
     const newRequestView = artistView && request.state.value === 'pending';
-
-    // TODO: ARTIST VIEW
 
     let items = [
         {
@@ -69,8 +67,12 @@
                         }}
                     />
                     <div class="flex w-full justify-end space-x-2">
-                        <button class="discard-button">Reject</button>
-                        <button class="save-button">Accept</button>
+                        <button class="discard-button"
+                            onclick={() => {editEntry(false, request); closeRequest()}}
+                        >Reject</button>
+                        <button class="save-button"
+                            onclick={() => {editEntry(true, request); closeRequest()}}
+                        >Accept</button>
                     </div>
                 {/if}
             </div>

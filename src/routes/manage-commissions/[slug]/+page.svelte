@@ -1,11 +1,10 @@
 <script lang="ts">
-    import Tabs from '$lib/Tabs.svelte';
-    import Dashboard from '$lib/Dashboard.svelte';
     import ViewCommission from '$lib/ViewCommission.svelte';
+    import CommissionOrderTab from '$lib/components/CommissionOrderTab.svelte';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
 
-    const requestDB: any[] = data?.request;
+    let requestDB: any[] = $state(data?.request);
     let currentCommission = $state({});
 
     let showRequest = $state(false);
@@ -14,46 +13,25 @@
         currentCommission = request;
     };
 
-    let items = [
-        {
-            label: `New Requests (${requestDB.filter((req) => req.state.value === 'pending').length})`,
-            value: 1,
-            component: Dashboard,
-            props: {
-                requestDB: requestDB.filter((req) => req.state.value === 'pending'),
-                openRequest: openRequest
-            }
-        },
-        {
-            label: `Active (${requestDB.filter((req) => req.state.value === 'active').length})`,
-            value: 2,
-            component: Dashboard,
-            props: {
-                requestDB: requestDB.filter((req) => req.state.value === 'active'),
-                openRequest: openRequest
-            }
-        },
-        {
-            label: 'Cancelled / Rejected',
-            value: 3,
-            component: Dashboard,
-            props: {
-                requestDB: requestDB.filter(
-                    (req) => req.state.value === 'cancelled' || req.state.value === 'rejected'
-                ),
-                openRequest: openRequest
-            }
-        },
-        {
-            label: 'Finished',
-            value: 4,
-            component: Dashboard,
-            props: {
-                requestDB: requestDB.filter((req) => req.state.value === 'finished'),
-                openRequest: openRequest
-            }
+    const editEntry = (accept: boolean, entry: any) => {
+        const milestones = entry.service.milestones.map((milestone: any) => {
+            return {
+                approval: null,
+                name: milestone.name,
+                date: null,
+                feedback: '',
+                sample: [],
+            };
+        });
+
+        if (accept) {
+            entry.state = { value: 'active', progress: milestones };    
+        } else {
+            entry.state = { value: 'cancelled', progress: milestones };
         }
-    ];
+        requestDB = requestDB.map((req: any) => req.id === entry.id ? entry : req);
+        console.log(requestDB);
+    }
 </script>
 
 {#if showRequest}
@@ -61,8 +39,9 @@
         closeRequest={() => (showRequest = false)}
         request={currentCommission}
         artistView={true}
+        {editEntry}
     />
 {:else}
     <h1 class="page-title mb-2">Your Commissions</h1>
-    <Tabs {items} />
+    <CommissionOrderTab commissionOrOrder={true} {requestDB} {openRequest}/>
 {/if}
