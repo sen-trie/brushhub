@@ -30,6 +30,12 @@
         }
     };
 
+    const publishDraft = () => {
+        newService.state = "published";
+        addEntry(newService);
+        closeEdit();
+    }
+
     if (!editOrCreate) {
         const currentArtist = props.currentArtist;
         const service = pullDB('tos', { artistId: Number(currentArtist.id) }, {})[0].categories;
@@ -90,7 +96,7 @@
                 <button onclick={discardChanges} class="discard-button"
                     >{editOrCreate ? 'Delete Service' : 'Discard Draft'}</button
                 >
-                <button class="save-button mx-4" onclick={closeEdit}>Save and Leave</button>
+                <button class="save-button mx-4" onclick={publishDraft}>Publish</button>
             </div>
         </div>
         <div class="px-2 sm:px-6 md:px-10 lg:px-16">

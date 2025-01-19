@@ -130,7 +130,7 @@
             <div class="services card-container">
                 <h3 class="text-lg font-semibold">Services</h3>
                 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
-                    <Services {serviceDB} />
+                    <Services {serviceDB}/>
                 </div>
                 {#if serviceDB.length === 0}
                     <img

@@ -85,7 +85,7 @@
                                 removeImage(index);
                             }}
                         >
-                            ×
+                            X
                         </button>
                     </div>
                 {/each}

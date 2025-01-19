@@ -123,6 +123,6 @@ export const getSingle = (queryLocal: string, specificImg: string = ''): string 
 };
 
 export const wrapDefault = (queryLocal: string, checkedString: any): string => {
-    if (checkedString) return checkedString;
+    if (getSingle(queryLocal, checkedString)) return getSingle(queryLocal, checkedString);
     return getImage(queryLocal, 'default.png', imageModules(queryLocal));
 }

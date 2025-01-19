@@ -46,7 +46,6 @@
 
         <div class="ml-6 space-y-2">
             <h1 class="profile-name text-3xl font-bold">{artist.displayName}</h1>
-            <!-- TODO STANDARDIZE STATUS -->
             <span
                 class="profile-status inline-block rounded
                     {artist.openCommission ? 'bg-green-500' : 'bg-red-500'} 

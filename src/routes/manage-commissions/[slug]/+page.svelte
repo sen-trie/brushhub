@@ -30,7 +30,6 @@
             entry.state = { value: 'rejected', progress: milestones };
         }
         requestDB = requestDB.map((req: any) => req.id === entry.id ? entry : req);
-        console.log(requestDB);
     }
 </script>
 

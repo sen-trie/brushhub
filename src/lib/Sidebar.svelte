@@ -1,14 +1,7 @@
 <script lang="ts">
     import {
-        Icon,
-        Cog,
-        Home,
-        BuildingStorefront,
-        User,
-        ArrowLeftStartOnRectangle,
-        ArrowLeftEndOnRectangle,
-        InboxStack,
-        PaintBrush
+        Icon, Cog, Home, BuildingStorefront, User, ArrowLeftStartOnRectangle,
+        ArrowLeftEndOnRectangle, InboxStack, PaintBrush
     } from 'svelte-hero-icons';
     import { fly, fade } from 'svelte/transition';
     import { navigateTo, stopPropagation } from '$lib/util';

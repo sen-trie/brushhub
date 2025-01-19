@@ -41,7 +41,9 @@
     <section class="card-container mb-8">
         <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>
         <div class="service-grid mt-4 grid grid-cols-4 gap-4">
-            <Services {serviceDB} {filter} viewOnly={false} {callback} />
+            <Services serviceDB={serviceDB.filter((service: any) => service.state === filter)} 
+                      viewOnly={false} currentArtist={true} {callback} {editEntry} {removeEntry}
+            />
         </div>
         {#if serviceDB.filter((service: any) => service.state === filter).length === 0}
             <img
