@@ -45,19 +45,41 @@
         </div>
         <div class="px-2 sm:px-6 md:px-10 lg:px-16">
             <div class="card-container">
-                <h1 class="page-title">{request.service.title}</h1>
-                <button
-                    class="text-l mb-4 text-gray-500 underline"
-                    onclick={() =>
-                        navigateTo(
-                            `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
-                            $page.url.pathname
-                        )}
-                >
-                    {artistView
-                        ? `Requested by: ${currentCommissioner?.displayName}`
-                        : `Service by: ${currentArtist?.displayName}`}
-                </button>
+                <div class="flex mb-4 justify-between items-center">
+                    <div class="flex flex-col items-start">
+                        <h1 class="page-title">{request.service.title}</h1>
+                        <button
+                            class="text-l text-gray-500 underline"
+                            onclick={() =>
+                                navigateTo(
+                                    `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
+                                    $page.url.pathname
+                                )}
+                        >
+                            {artistView
+                                ? `Requested by: ${currentCommissioner?.displayName}`
+                                : `Service by: ${currentArtist?.displayName}`}
+                        </button>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-500 
+                                {request.state.value === 'active' ? 'text-green-500' : ''} 
+                                {request.state.value === 'rejected' ? 'text-red-500' : ''}
+                                {request.state.value === 'pending' ? 'text-yellow-500' : ''}
+                        mr-4">
+                            State:
+                            {request.state.value === 'pending'
+                                ? 'Pending'
+                                : request.state.value === 'active'
+                                ? 'In Progress'
+                                : request.state.value === 'rejected'
+                                ? 'Rejected'
+                                : request.state.value === 'completed'
+                                ? 'Completed'
+                                : 'Cancelled'}
+                        </p>
+                    </div>
+                </div>
                 {#if !newRequestView}
                     <Tabs {items} />
                 {:else}
