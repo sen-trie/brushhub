@@ -2,6 +2,7 @@
     import '../app.css';
     import Header from '$lib/Header.svelte';
     import Sidebar from '$lib/Sidebar.svelte';
+    import '@fontsource-variable/noto-sans-jp';
 
     let { children } = $props();
     let showSidebar = $state(false);

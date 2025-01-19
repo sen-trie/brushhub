@@ -165,7 +165,7 @@
                 </div>
             </div>
         </div>
-        <ul class="pb-2">
+        <ul class="py-2">
             {#each menuItemsLogged as { name, iconClass, action }}
                 <li>
                     <button

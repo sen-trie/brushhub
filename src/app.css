@@ -6,6 +6,10 @@ label {
     user-select: none;
 }
 
+body {
+    font-family: 'Noto Sans JP Variable', sans-serif;
+}
+
 @layer components {
     .confirm-button {
         @apply rounded-full bg-orange-500 px-4 py-2 text-white hover:bg-orange-700;
