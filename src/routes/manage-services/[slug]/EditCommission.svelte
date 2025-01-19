@@ -1,16 +1,12 @@
 <script lang="ts">
-    import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
-    import type { Service } from '$lib/types';
+    import type { ComponentProps } from 'svelte';
     import Tabs from '$lib/Tabs.svelte';
     import EditOverview from '$lib/components/EditOverview.svelte';
     import EditDetails from '$lib/components/EditDetails.svelte';
     import EditMilestones from '$lib/components/EditMilestones.svelte';
     import EditTos from '$lib/components/EditTos.svelte';
 
-    const {
-        closeEdit,
-        selectedService
-    }: { closeEdit: () => void; selectedService: Service | null } = $props();
+    let { selectedService }: ComponentProps<any>  = $props();
 
     let items = [
         {

@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
-    import { pullDB } from '$lib/db';
     import CommissionButtons from '$lib/components/CommissionButtons.svelte';
     import Timeline from '$lib/components/Timeline.svelte';
     import Tabs from '$lib/Tabs.svelte';
@@ -10,50 +9,13 @@
     import EditTos from '$lib/components/EditTos.svelte';
     import SummaryCommission from './SummaryCommission.svelte';
 
-    const { closeEdit, currentArtist }: ComponentProps<any> = $props();
-
-    const service = pullDB('tos', { artistId: Number(currentArtist.id) }, {})[0].categories;
-    const tos = Object.assign({}, ...service.map((entry: any) => ({[entry.title]: true})));
+    const { closeEdit, selectedService, currentArtist }: ComponentProps<any> = $props();
 
     const MAX_TABS = 4;
 
     let tabIndex = $state(0);
     let nodeTimeline = ['Overview', 'Types', 'Milestones', 'Terms of Service', 'Summary'];
-    let selectedService = $state({
-        artistId: currentArtist.id,
-        state: 'draft',
-        isOpen: false,
-        title: '',
-        description: '',
-        thumbnail: '',
-        samples: [],
-        tags: [],
-        types: [
-            { name: 'Sample Name', price: 20, type: 'currency', description: 'Sample Description' }
-        ],
-        extras: [],
-        fastDelivery: {
-            enabled: false,
-            price: 50,
-            type: 'percentage',
-            duration: 3,
-            unit: 'days'
-        },
-        commercialUse: {
-            enabled: false,
-            price: 100,
-            type: 'percentage'
-        },
-        downpayment: {
-            payment: {
-                value: 20,
-                enabled: false
-            }
-        },
-        milestones: [],
-        termsOfService: tos,
-        uniqueTos: []
-    });
+    
 
     let items = $state([
         {

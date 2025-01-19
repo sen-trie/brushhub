@@ -6,7 +6,7 @@
     import TemplateCommission from './TemplateCommission.svelte';
     let { data }: { data: PageData } = $props();
 
-    const serviceDB: Service[] = data?.service;
+    let serviceDB: Service[] = $state(data?.service);
     const currentArtist = data?.user;
 
     let selectedService = $state<Service | null>(null);
@@ -23,6 +23,18 @@
         showEditCommission = false;
         showCreateCommission = false;
     };
+
+    const addEntry = (newService: Service) => {
+        serviceDB = [...serviceDB, newService];
+    };
+
+    const removeEntry = (id: number) => {
+        serviceDB = serviceDB.filter((service) => service.id !== id);
+    };
+
+    const editEntry = (newService: Service) => {
+        serviceDB = serviceDB.map((service) => (service.id === newService.id ? newService : service));
+    };
 </script>
 
 {#snippet Service(filter: String)}
@@ -31,7 +43,7 @@
         <div class="service-grid mt-4 grid grid-cols-4 gap-4">
             <Services {serviceDB} {filter} viewOnly={false} {callback} />
         </div>
-        {#if serviceDB.length === 0}
+        {#if serviceDB.filter((service: any) => service.state === filter).length === 0}
             <img
                 src={wrapDefault('artwork', '')}
                 alt="Service Missing"
@@ -42,9 +54,12 @@
 {/snippet}
 
 {#if showEditCommission}
-    <TemplateCommission closeEdit={resetView} editOrCreate={true} props={selectedService} />
+    <TemplateCommission closeEdit={resetView} editOrCreate={true} 
+                        props={selectedService} {addEntry} {removeEntry} {editEntry}/>
 {:else if showCreateCommission}
-    <TemplateCommission closeEdit={resetView} editOrCreate={false} props={currentArtist} />
+    <TemplateCommission closeEdit={resetView} editOrCreate={false} 
+                        props={{currentArtist: currentArtist, id: serviceDB[serviceDB.length-1].id + 1}} 
+                        {addEntry} {removeEntry} {editEntry}/>
 {:else}
     <div class="-mt-2 mb-4 flex items-center justify-between px-4">
         <h1 class="page-title">Manage Services</h1>
@@ -56,7 +71,7 @@
         </button>
     </div>
 
-    {#each ['published', 'archived', 'draft'] as serviceState}
+    {#each ['published', 'draft', 'archived'] as serviceState}
         {@render Service(serviceState)}
     {/each}
 {/if}
