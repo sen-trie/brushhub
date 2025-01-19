@@ -59,20 +59,20 @@
         </p>
 
         <div class="my-4 flex items-center space-x-4">
-            <div class="flex w-auto items-center space-x-4 rounded bg-gray-700 p-6 py-3">
+            <div class="flex w-auto items-center space-x-4 rounded bg-gray-100 p-6 py-3 border-gray-300 border-2">
                 <img
                     src={getSingle('dp', user.avatar)}
                     alt={`${user.displayName}'s avatar`}
-                    class="h-16 w-16 rounded-full border border-gray-700 shadow"
+                    class="h-16 w-16 rounded-full border  shadow"
                 />
                 <div>
-                    <p class="text-lg font-semibold text-white">{user.displayName}</p>
+                    <p class="text-lg font-semibold">{user.displayName}</p>
                     <p class="text-sm text-gray-400">@{user.username}</p>
                 </div>
             </div>
         </div>
 
-        <div class="space-x-4">
+        <div class="mt-2 space-x-4">
             <a href="/profile/{user.username}" class="large-button"> View Profile </a>
             <a href="/account/edit" class="large-button"> Manage Profile </a>
         </div>

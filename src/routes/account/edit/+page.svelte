@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSingle, wrapDefault } from '$lib/db';
+    import { wrapDefault } from '$lib/db';
     import { getCountryList } from '$lib/util';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
@@ -7,8 +7,8 @@
     const initialValue = {
         ...data.artist,
         ...data.user,
-        uploadedDP: getSingle('dp', data.user.avatar),
-        uploadedBanner: getSingle('banner', data.user.coverImage)
+        uploadedDP: data.user.avatar,
+        uploadedBanner: data.user.coverImage
     };
 
     let profileInfo = $state(initialValue);

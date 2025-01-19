@@ -76,7 +76,9 @@
     oninput={updateSuggestions}
     onkeydown={handleKeyDown}
     placeholder="Search for tags..."
-    class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    class="w-full rounded-full border  bg-white px-4 py-2 text-gray-700 
+            border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500
+    "
 />
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->

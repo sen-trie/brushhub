@@ -76,7 +76,8 @@
                 {/if}
             </div>
         </div>
-        {#if service.state === 'published'}
+
+        {#if service.state === 'published' && !viewOnly}
             <div class="mt-4 mr-2" onclick={(event) => {event.stopPropagation()}}>
                 <label class="inline-flex items-center cursor-pointer w-full justify-end">
                     <input type="checkbox" bind:checked={service.isOpen} class="sr-only peer">
