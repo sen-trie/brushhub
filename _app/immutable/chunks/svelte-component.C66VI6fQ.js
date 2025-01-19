@@ -1,1 +1,0 @@
-import{m as r,o as c,v as s,E as i,w as h,x as m,y as p}from"./runtime.CHrGdgHD.js";function u(o,t,f){r&&c();var n=o,a,e;s(()=>{a!==(a=t())&&(e&&(p(e),e=null),a&&(e=h(()=>f(n,a))))},i),r&&(n=m)}export{u as c};
