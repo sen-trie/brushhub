@@ -2,7 +2,7 @@
     import { calculateTimePassed, formatResponseTime, getUser, navigateTo } from '$lib/util';
     import { PencilSquare, Icon, MapPin, Language, Link } from 'svelte-hero-icons';
     import type { ComponentProps } from 'svelte';
-    import { pullDB } from '$lib/db';
+    import { pullDB, wrapDefault } from '$lib/db';
     import { page } from '$app/stores';
     import Browse from '$lib/Browse.svelte';
     import Services from '$lib/Services.svelte';
@@ -132,6 +132,14 @@
                 <div class="service-grid mt-4 grid grid-cols-2 gap-4">
                     <Services {serviceDB} />
                 </div>
+                {#if serviceDB.length === 0}
+                    <img
+                        src={wrapDefault('artwork', '')}
+                        alt="Service Missing"
+                        class="h-48 w-full rounded-md object-contain"
+                    />
+                {/if}
+
                 {#if currentArtist}
                     <button
                         class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"

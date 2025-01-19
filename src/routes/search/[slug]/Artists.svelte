@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSingle } from '$lib/db';
+    import { getSingle, wrapDefault } from '$lib/db';
     import { navigateTo } from '$lib/util';
     import { page } from '$app/stores';
     import type { ComponentProps } from 'svelte';
@@ -68,3 +68,11 @@
         </div>
     {/each}
 </div>
+
+{#if artistDB.length === 0}
+    <img
+        src={wrapDefault('artwork', '')}
+        alt="Artist Missing"
+        class="h-48 w-full rounded-md object-contain"
+    />
+{/if}

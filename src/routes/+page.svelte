@@ -98,13 +98,13 @@
                 </button>
             {/if}
         </div>
-        <div>
+        <div class="min-w-full">
             <Browse {artDB} />
         </div>
     </div>
     <div
-        class="filter-panel sticky top-6 ml-8
-                sm:top-8 lg:top-10 w-80 pt-2"
+        class="filter-panel sticky top-6 ml-8 h-96
+                sm:top-8 lg:top-10 w-72 pt-2"
     >
         <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />

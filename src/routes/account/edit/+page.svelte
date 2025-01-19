@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSingle } from '$lib/db';
+    import { getSingle, wrapDefault } from '$lib/db';
     import { getCountryList } from '$lib/util';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
@@ -105,7 +105,7 @@
             {/if}
 
             <img
-                src={profileInfo.uploadedDP}
+                src={wrapDefault('dp', profileInfo.uploadedDP)}
                 alt="DP"
                 class="mx-auto my-4 h-24 w-24 rounded-full"
             />
@@ -122,9 +122,8 @@
                 <p class="mt-2 text-sm text-red-500">{bannerWarningMessage}</p>
             {/if}
 
-            <!-- TODO FALLBACK -->
             <img
-                src={profileInfo.uploadedBanner}
+                src={wrapDefault('banner', profileInfo.uploadedBanner)}
                 alt="Cover Banner"
                 class="mx-auto my-4 h-24 w-full rounded-md object-cover"
             />

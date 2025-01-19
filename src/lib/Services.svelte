@@ -2,7 +2,7 @@
     import type { ComponentProps } from 'svelte';
     import { navigateTo, calculateCurrency } from './util';
     import { page } from '$app/stores';
-    import { getSingle } from '$lib/db';
+    import { getSingle, wrapDefault } from '$lib/db';
 
     let { serviceDB, filter = null, viewOnly = true, callback }: ComponentProps<any> = $props();
     serviceDB = filter ? serviceDB.filter((service: any) => service.state === filter) : serviceDB;

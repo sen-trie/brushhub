@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSingle } from '$lib/db';
+    import { getSingle, wrapDefault } from '$lib/db';
     import type { ComponentProps } from 'svelte';
     import SearchTags from '$lib/components/SearchTags.svelte';
     import ImageSamples from './ImageSamples.svelte';
@@ -77,9 +77,9 @@
         />
         <div class="flex flex-row justify-center items-center">
             <img
-                src={getSingle('thumbnail', selectedService.thumbnail)}
+                src={wrapDefault('thumbnail', selectedService.thumbnail)}
                 alt="thumbnail"
-                class="w-full rounded-md object-cover flex-1 h-48"
+                class="w-full rounded-md object-contain flex-1 h-48"
             />
             <div class="flex flex-1 content-center flex-col space-y-2">
                 <label

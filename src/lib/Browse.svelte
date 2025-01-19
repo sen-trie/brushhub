@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import type { Artwork } from '$lib/types';
-    import { pullDB, imageModules, getImage } from '$lib/db';
+    import { pullDB, imageModules, getImage, wrapDefault } from '$lib/db';
     import { navigateTo } from './util';
     import { page } from '$app/stores';
 
@@ -61,6 +61,16 @@
         </button>
     {/each}
 </div>
+
+{#if artDB.length === 0}
+    <img
+        src={wrapDefault('artwork', '')}
+        alt="Artwork"
+        class="h-{size} w-full object-contain"
+    />
+{/if}
+
+
 {#if selectedArt}
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <div

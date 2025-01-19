@@ -121,3 +121,8 @@ export const getSingle = (queryLocal: string, specificImg: string = ''): string 
     if (specificImg.startsWith('data:image')) return specificImg;
     return getImage(queryLocal, specificImg, imageModules(queryLocal));
 };
+
+export const wrapDefault = (queryLocal: string, checkedString: any): string => {
+    if (checkedString) return checkedString;
+    return getImage(queryLocal, 'default.png', imageModules(queryLocal));
+}

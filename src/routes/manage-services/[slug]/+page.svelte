@@ -2,6 +2,7 @@
     import Services from '$lib/Services.svelte';
     import type { Service } from '$lib/types';
     import type { PageData } from './$types';
+    import { wrapDefault } from '$lib/db';
     import TemplateCommission from './TemplateCommission.svelte';
     let { data }: { data: PageData } = $props();
 
@@ -30,6 +31,13 @@
         <div class="service-grid mt-4 grid grid-cols-4 gap-4">
             <Services {serviceDB} {filter} viewOnly={false} {callback} />
         </div>
+        {#if serviceDB.length === 0}
+            <img
+                src={wrapDefault('artwork', '')}
+                alt="Service Missing"
+                class="h-48 w-full rounded-md object-contain"
+            />
+        {/if}
     </section>
 {/snippet}
 
