@@ -79,7 +79,7 @@
 >
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <aside
-        class="flex w-64 flex-col items-center border-r border-gray-300 bg-white px-4 py-6"
+        class="flex w-64 flex-col items-center border-r px-4 py-6"
         onclick={(e) => stopPropagation(e)}
         transition:fly={{ x: -300, duration: 300 }}
     >
@@ -103,7 +103,7 @@
                         }}
                         onkeypress={(e) => handleKeyPress(e, item.path)}
                         class="flex w-full items-center justify-between space-x-6 rounded-lg p-2
-                               transition hover:bg-gray-100 hover:text-orange-500 focus:bg-gray-100 focus:text-orange-500 focus:outline-none"
+                               transition hover-gray  hover:text-orange-500"
                     >
                         <Icon src={item.src} size="32" />
                         <span class="mb-1 flex-grow text-left text-lg font-medium">{item.name}</span

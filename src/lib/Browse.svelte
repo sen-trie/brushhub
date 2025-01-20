@@ -41,7 +41,7 @@
     {#each artDB as art}
         <button
             type="button"
-            class="relative w-full overflow-hidden rounded-lg border bg-white shadow
+            class="relative w-full overflow-hidden rounded-lg colour-border border-2 bg-white shadow
                    {!artViewOnly ? "cursor-pointer" : "cursor-default"}"
             onclick={() => openPopup(art)}
             aria-label="View artwork details"
@@ -74,13 +74,14 @@
 {#if selectedArt}
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <div
-        class="fixed inset-0 z-50 flex items-center justify-center !bg-black !bg-opacity-50"
+        class="fixed inset-0 z-50 flex items-center justify-center 
+                !bg-black !bg-opacity-50 dark:!bg-opacity-65"
         role="dialog"
         aria-modal="true"
         onclick={closePopup}
     >
         <div
-            class="relative w-2/3 rounded-lg p-6 shadow-lg"
+            class="relative w-2/3 rounded-lg p-6 shadow-lg dark:bg-stone-800 border-2 colour-border"
             role="dialog"
             aria-labelledby="modal-title"
             aria-describedby="modal-description"

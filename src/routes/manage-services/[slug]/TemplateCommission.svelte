@@ -82,7 +82,7 @@
 </script>
 
 <div class="fixed inset-0 z-50 overflow-y-auto">
-    <div class="relative !bg-gray-100">
+    <div class="relative !bg-gray-100 dark:!bg-stone-900">
         <div
             class="mb-4 flex w-full justify-between border-b-2 pt-4 pb-2
             px-2 sm:px-6 md:px-8 lg:px-10"
@@ -99,7 +99,7 @@
                 <button class="save-button mx-4" onclick={publishDraft}>Publish</button>
             </div>
         </div>
-        <div class="px-2 sm:px-6 md:px-10 lg:px-16 !bg-gray-100 pb-6">
+        <div class="px-2 sm:px-6 md:px-10 lg:px-16 !bg-gray-100 dark:!bg-stone-900 pb-6">
             {#if editOrCreate}
                 <EditCommission {closeEdit} selectedService={props} />
             {:else}

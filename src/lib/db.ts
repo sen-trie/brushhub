@@ -85,11 +85,6 @@ export function saveUser(newUser: Record<string, any>) {
         ...overrides.users,
         [userId]: newUser
     }
-
-    overrides.user = {
-        ...overrides.users,
-        [userId]: newUser
-    }
 }
 
 // THIS IS AN "API" TO PULL DATA FROM

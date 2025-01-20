@@ -75,7 +75,7 @@
     bind:this={inputRef}
     oninput={updateSuggestions}
     onkeydown={handleKeyDown}
-    placeholder="Search for tags..."
+    placeholder="Search"
     class="w-full rounded-full border  bg-white px-4 py-2 text-gray-700 
             border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500
     "

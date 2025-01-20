@@ -46,7 +46,7 @@
 
 <div class="flex flex-col">
     {#if !hideTabs}
-        <ul class="sticky top-0 z-10 flex border-b border-gray-300 bg-white">
+        <ul class="sticky top-0 z-10 flex border-b colour-border">
             {#if binded}
                 {@render tabLabel(bindableItems)}
             {:else}

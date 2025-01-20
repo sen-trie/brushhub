@@ -80,23 +80,25 @@
                         </p>
                     </div>
                 </div>
-                {#if !newRequestView}
-                    <Tabs {items} />
-                {:else}
-                    <ViewSummary
-                        props={{
-                            request: request
-                        }}
-                    />
-                    <div class="flex w-full justify-end space-x-2">
-                        <button class="discard-button"
-                            onclick={() => {editEntry(false, request); closeRequest()}}
-                        >Reject</button>
-                        <button class="save-button"
-                            onclick={() => {editEntry(true, request); closeRequest()}}
-                        >Accept</button>
-                    </div>
-                {/if}
+                <div class="px-4">
+                    {#if !newRequestView}
+                        <Tabs {items} />
+                    {:else}
+                        <ViewSummary
+                            props={{
+                                request: request
+                            }}
+                        />
+                        <div class="flex w-full justify-end space-x-2">
+                            <button class="discard-button"
+                                onclick={() => {editEntry(false, request); closeRequest()}}
+                            >Reject</button>
+                            <button class="save-button"
+                                onclick={() => {editEntry(true, request); closeRequest()}}
+                            >Accept</button>
+                        </div>
+                    {/if}
+                </div>
             </div>
         </div>
     </div>

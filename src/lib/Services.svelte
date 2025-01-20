@@ -31,7 +31,7 @@
 
 {#each serviceDB as service, index}
     <div
-        class="relative service flex flex-col rounded-lg border border-gray-200 p-4 shadow-sm cursor-pointer"
+        class="relative service flex flex-col rounded-lg border colour-border p-4 shadow-sm cursor-pointer"
         onclick={viewOnly
             ? () => navigateOut(service)
             : () => callback(service)}

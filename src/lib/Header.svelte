@@ -80,7 +80,7 @@
     });
 </script>
 
-<header class="screen-padding-x flex py-4 justify-center bg-white text-black border-b-2 border-gray-200">
+<header class="screen-padding-x flex py-2 justify-center text-black border-b-2 border-gray-200">
     <nav class="container flex flex-col">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10">
             <div class="flex w-16 items-center gap-4 sm:w-auto">
@@ -139,7 +139,7 @@
 
 {#snippet userDropdown(user: any)}
     <div
-        class="dropdown-menu absolute right-0 top-full z-20 mt-1 w-56 rounded bg-white text-black text-sm shadow-lg
+        class="dropdown-menu absolute right-0 top-full z-20 mt-1 w-56 rounded text-sm shadow-lg
                border-2 border-gray-400
         "
     >
@@ -160,7 +160,7 @@
             {#each menuItemsLogged as { name, iconClass, action }}
                 <li>
                     <button
-                        class="flex w-full items-center px-4 py-2 hover:bg-gray-200"
+                        class="flex w-full items-center px-4 py-2 hover-gray"
                         onclick={action}
                     >
                         <i class="{iconClass} mr-2"></i>
