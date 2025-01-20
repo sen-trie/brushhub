@@ -42,12 +42,22 @@ function pullCallback(item: any, callbackRecord: callbackRecord): any {
 function pullSpecific(
     dbData: Array<any>,
     filter: callbackRecord,
-    condition: callbackRecord
+    condition: callbackRecord,
+    currentOverride: Record<string, any> = {}
 ): any | any[] {
     let db = dbData;
+
+    if (Object.keys(currentOverride).length > 0) {
+        const [[key, value]] = Object.entries(condition);
+        if (currentOverride[String(value)]) {
+            return currentOverride[String(value)];
+        }
+    }
+
     if (Object.keys(filter).length !== 0) {
         db = db.filter((item: any) => pullCallback(item, filter));
     }
+
     if (Object.keys(condition).length !== 0) {
         const res = db.find((item: any) => pullCallback(item, condition));
         return res ?? null;
@@ -60,7 +70,26 @@ export function pullDB(
     filter: callbackRecord = {},
     condition: callbackRecord = {}
 ): any | any[] {
-    return pullSpecific(DB_JSON[db], filter, condition);
+    let currentOverride = {}
+    if (overrides[db]) {
+        currentOverride = overrides[db];
+    }
+
+    return pullSpecific(DB_JSON[db], filter, condition, currentOverride);
+}
+
+let overrides: Record<string, any> = {}
+export function saveUser(newUser: Record<string, any>) {
+    const userId = newUser["id"];
+    overrides.artist = {
+        ...overrides.users,
+        [userId]: newUser
+    }
+
+    overrides.user = {
+        ...overrides.users,
+        [userId]: newUser
+    }
 }
 
 // THIS IS AN "API" TO PULL DATA FROM

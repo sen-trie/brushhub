@@ -33,7 +33,7 @@
                     </div>
                     <div class="flex gap-2">
                         <Icon src={Language} size="24" />
-                        <p class="max-w-64 truncate">{artist.languages.join(', ')}</p>
+                        <p class="max-w-64 truncate">{artist.languages.length > 0 ? artist.languages.join(', ') : '-'}</p>
                     </div>
                     {#each artist.links as link}
                         <div class="flex gap-2">

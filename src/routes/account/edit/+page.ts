@@ -10,7 +10,6 @@ export const load: PageLoad = () => {
 
     const artist = pullDB('artist', {}, { id: currentUser.id });
     if (!artist) {
-        // TODO CHANGE TO SOMETHING ELSE
         throw error(404, 'You are not the current user');
     }
 

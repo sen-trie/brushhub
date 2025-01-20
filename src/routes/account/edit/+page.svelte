@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { wrapDefault } from '$lib/db';
+    import { wrapDefault,saveUser } from '$lib/db';
     import { getCountryList } from '$lib/util';
     import type { PageData } from './$types';
     let { data }: { data: PageData } = $props();
@@ -50,6 +50,11 @@
         };
         fileReader.readAsDataURL(file);
     };
+
+    const saveProfile = () => {
+        alert('Saved!');
+        saveUser($state.snapshot(profileInfo));
+    }
 
     function moveLink(fromIndex: number, toIndex: number) {
         if (toIndex < 0 || toIndex >= profileInfo.links.length) return;
@@ -261,19 +266,24 @@
         </div>
     </div>
 
-    <div class="mt-6 flex justify-end space-x-4">
-        <button
-            class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
-            onclick={() => {
-                if (confirm('Are you sure you want to discard all changes?')) {
-                    profileInfo = initialValue;
-                }
-            }}
-        >
-            Discard Changes
-        </button>
-        <!-- 
-        TODO -->
-        <button class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"> Save </button>
+    <div class="mt-6 flex justify-between space-x-4 items-center">
+        <p class="text-sm text-gray-500">
+            *Disclaimer: Since no database is being used, some information like images and usernames are not retained after saving.
+        </p>
+        <div class="flex space-x-4">
+            <button
+                class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
+                onclick={() => {
+                    if (confirm('Are you sure you want to discard all changes?')) {
+                        profileInfo = initialValue;
+                    }
+                }}
+                >
+                Discard Changes
+            </button>
+            <button class="rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+                onclick={saveProfile}
+            >Save</button>
+        </div>
     </div>
 </div>

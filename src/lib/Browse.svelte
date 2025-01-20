@@ -87,11 +87,12 @@
             onclick={(e) => e.stopImmediatePropagation()}
         >
             <button
-                class="absolute right-2 top-2 rounded-full bg-red-500 p-2 text-white"
+                class="absolute right-2 top-2 w-10 h-10 flex items-center justify-center rounded-full 
+                        bg-red-500 text-white hover:bg-red-600 text-lg"
                 onclick={closePopup}
                 aria-label="Close popup"
             >
-                <i class="fas fa-times"></i>
+                X
             </button>
             <div class="flex">
                 <img
