@@ -38,12 +38,12 @@
     </div>
     <div class="flex max-w-lg flex-wrap items-center gap-2">
         {#if selectedService.tags.length === 0 && viewOnly}
-            <span class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600">
+            <span class="rounded px-2 py-1 text-xs font-medium orange-tag">
                 No Tags
             </span>
         {/if}
         {#each selectedService.tags as tag}
-            <span class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600">
+            <span class="rounded px-2 py-1 text-xs font-medium orange-tag">
                 #{tag}
             </span>
         {/each}
@@ -52,12 +52,12 @@
 
 <div class="mt-4 flex flex-wrap items-center gap-2">
     {#if selectedService.fastDelivery.enabled}
-        <span class="rounded bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-600">
+        <span class="rounded px-2 py-1 text-xs font-medium yellow-tag">
             Fast Delivery
         </span>
     {/if}
     {#if selectedService.commercialUse.enabled}
-        <span class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600">
+        <span class="rounded px-2 py-1 text-xs font-medium orange-tag">
             Commercial
         </span>
     {/if}

@@ -94,14 +94,15 @@
                     <hr class="my-4" />
                     <div class="tos-container">
                         <h3 class="mb-2 text-xl font-bold">Terms of Service</h3>
-                        <p class="mb-2 text-sm text-gray-500">
+                        <p class="mb-2 text-sm text-stone-500 dark:text-stone-400">
                             Last updated: {new Date(artistTOS.lastUpdated).toLocaleDateString()}
                         </p>
 
                         {#each artistTOS.categories as category (category.title)}
                             <details class="category group border-b last:border-none">
                                 <summary
-                                    class="text-m flex cursor-pointer items-center justify-between py-3 font-medium text-gray-700 hover:text-orange-500 focus:outline-none"
+                                    class="text-m flex cursor-pointer items-center justify-between py-3 font-medium 
+                                            text-stone-700 dark:text-stone-300 hover:text-orange-500 focus:outline-none"
                                 >
                                     <span>{category.title}</span>
                                     <span
@@ -109,7 +110,7 @@
                                         >▼</span
                                     >
                                 </summary>
-                                <ul class="-mt-2 pb-4 pl-6 text-gray-600">
+                                <ul class="-mt-2 pb-4 pl-6 text-stone-600 dark:text-stone-300">
                                     {#each category.details as detail}
                                         <li class="list-disc">{detail}</li>
                                     {/each}

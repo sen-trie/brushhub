@@ -38,6 +38,14 @@ hr {
 }
 
 @layer components {
+    .orange-tag {
+        @apply bg-orange-100 text-orange-600 dark:bg-orange-600 dark:text-orange-100
+    }
+
+    .yellow-tag {
+        @apply bg-yellow-100 text-yellow-600 dark:bg-yellow-600 dark:text-yellow-100
+    }
+
     .colour-border {
         @apply border-stone-200 dark:border-stone-700
     }

@@ -287,3 +287,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    input, select, textarea {
+        background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
+        border-color: rgb(87 83 78 / var(--tw-bg-opacity, 1));
+        color: white;
+    }
+</style>

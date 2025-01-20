@@ -55,8 +55,8 @@
                 >
                     {artist.openCommission ? 'Open' : 'Closed'}
                 </span>
-                <p class="text-gray-600">@{artist.username}</p>
-                <div class="text-sm text-gray-500">
+                <p class="text-stone-600 dark:text-stone-400">@{artist.username}</p>
+                <div class="text-sm text-stone-500 dark:text-stone-200">
                     <span>{artist.followers.length} Followers</span> •
                     <span>{artist.following.length} Following</span>
                 </div>

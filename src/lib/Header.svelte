@@ -80,7 +80,8 @@
     });
 </script>
 
-<header class="screen-padding-x flex py-2 justify-center text-black border-b-2 border-gray-200">
+<header class="screen-padding-x flex py-2 justify-center text-black border-b-2 
+                border-stone-200 dark:border-stone-600">
     <nav class="container flex flex-col">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10">
             <div class="flex w-16 items-center gap-4 sm:w-auto">

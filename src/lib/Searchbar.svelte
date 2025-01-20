@@ -76,8 +76,9 @@
     oninput={updateSuggestions}
     onkeydown={handleKeyDown}
     placeholder="Search"
-    class="w-full rounded-full border  bg-white px-4 py-2 text-gray-700 
-            border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500
+    class="w-full rounded-full border  bg-white px-4 py-2 text-stone-700 
+            border-stone-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500
+            dark:bg-stone-900 dark:text-stone-200 
     "
 />
 
