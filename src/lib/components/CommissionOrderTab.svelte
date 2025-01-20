@@ -83,4 +83,6 @@
     }
 </script>
 
-<Tabs {items} />
+<div class="min-h-96">
+    <Tabs {items} />
+</div>

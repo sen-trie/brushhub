@@ -38,11 +38,6 @@
             action: () => signOut()
         },
         {
-            name: 'Toggle Dark Mode',
-            iconClass: 'fas fa-moon',
-            action: () => toggleDarkMode()
-        },
-        {
             name: 'Settings',
             iconClass: 'fas fa-cog',
             action: () => navigateHeader('/settings')
@@ -75,11 +70,6 @@
         });
     }
 
-    function toggleDarkMode() {
-        // TODO
-        console.log('Toggling dark mode...');
-    }
-
     // DID NOT INCLUDE UNMOUNT
     // SINCE HEADER IS MOUNTED EVERYWHERE
     // HOPEFULLY THIS DOESN'T BREAK
@@ -90,7 +80,7 @@
     });
 </script>
 
-<header class="screen-padding-x flex py-4 justify-center bg-white text-black border-b-4 border-orange-200">
+<header class="screen-padding-x flex py-4 justify-center bg-white text-black border-b-2 border-gray-200">
     <nav class="container flex flex-col">
         <div class="flex w-full justify-between space-x-0 sm:space-x-10">
             <div class="flex w-16 items-center gap-4 sm:w-auto">

@@ -17,6 +17,8 @@
 {#if showRequest}
     <ViewCommission closeRequest={() => (showRequest = false)} request={currentCommission} />
 {:else}
-    <h1 class="page-title mb-2">Your Orders</h1>
-    <CommissionOrderTab commissionOrOrder={false} {requestDB} {openRequest}/>
+    <div class="card-island">
+        <h1 class="page-title mb-4">Your Orders</h1>
+        <CommissionOrderTab commissionOrOrder={false} {requestDB} {openRequest}/>
+    </div>
 {/if}

@@ -61,29 +61,31 @@
     </div>
 {/snippet}
 
-<h1 class="mb-2 text-2xl font-bold">About BrushHub</h1>
-<div class="space-y-4 text-lg font-medium">
-    <div>    
-        <p>What is BrushHub?</p>
-        <p class="text-base font-normal">BrushHub is a front-end showcase aimed at demonstrating 
-            the concept and user experience of an artwork commissioning platform. This project
-            primarily focuses on building the design and UX of an online e-commerce platform. It does not 
-            include any backend services or database management systems.
-        </p>
-    </div>
-    <div>    
-        <p>Creators</p>
-        <div class="grid grid-cols-4 gap-4 p-2">
-            {#each creatorArray as creator}
-                {@render card(creator)}
-            {/each}
+<div class="card-island">
+    <h1 class="mb-4 text-2xl font-bold">About BrushHub</h1>
+    <div class="space-y-4 text-lg font-medium">
+        <div>    
+            <p>What is BrushHub?</p>
+            <p class="text-base font-normal">BrushHub is a front-end showcase aimed at demonstrating 
+                the concept and user experience of an artwork commissioning platform. This project
+                primarily focuses on building the design and UX of an online e-commerce platform. It does not 
+                include any backend services or database management systems.
+            </p>
         </div>
-    </div>
-    <div>    
-        <p>Tech Stack</p>
-        <p class="text-base font-normal">Developed using SvelteKit and Tailwind. 
-            The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>.
-        </p>
+        <div>    
+            <p>Creators</p>
+            <div class="grid grid-cols-4 gap-4 p-2">
+                {#each creatorArray as creator}
+                    {@render card(creator)}
+                {/each}
+            </div>
+        </div>
+        <div>    
+            <p>Tech Stack</p>
+            <p class="text-base font-normal">Developed using SvelteKit and Tailwind. 
+                The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>.
+            </p>
+        </div>
     </div>
 </div>
 

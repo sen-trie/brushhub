@@ -91,7 +91,7 @@
         {/if}
 
         {#if currentArtist}
-            <div class="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-1"
+            <div class="absolute top-4 right-4 text-white !bg-gray-800 rounded-full p-1"
                 onclick="{(event) => {
                     event.stopPropagation();
                     openIndex = index === openIndex ? -1 : index;

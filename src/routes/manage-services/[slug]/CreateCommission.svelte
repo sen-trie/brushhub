@@ -69,10 +69,10 @@
     };
 </script>
 
-<div class="mb-2 py-4">
+<div class="mb-4 card-container px-6">
     <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
-<div class="card-container">
+<div class="card-container px-6">
     <Tabs
         {items}
         hideTabs={true}
@@ -80,15 +80,7 @@
         bind:bindableItems={items}
         binded={true}
     />
+    <CommissionButtons {goToPreviousStep} {proceedToNextStep} backwards={'Previous Step'}
+    forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]} finalWord={'Publish Service'}
+    finalStep={() => { closeEdit() }}/>
 </div>
-<CommissionButtons
-    {goToPreviousStep}
-    {proceedToNextStep}
-    backwards={'Previous Step'}
-    forwards={'Next Step'}
-    indexes={[tabIndex, MAX_TABS]}
-    finalStep={() => {
-        closeEdit();
-    }}
-    finalWord={'Publish Service'}
-/>

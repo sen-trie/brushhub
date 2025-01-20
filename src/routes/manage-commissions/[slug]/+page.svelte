@@ -41,6 +41,8 @@
         {editEntry}
     />
 {:else}
-    <h1 class="page-title mb-2">Your Commissions</h1>
-    <CommissionOrderTab commissionOrOrder={true} {requestDB} {openRequest}/>
+    <div class="card-island">
+        <h1 class="page-title mb-4">Your Commissions</h1>
+        <CommissionOrderTab commissionOrOrder={true} {requestDB} {openRequest}/>
+    </div>
 {/if}

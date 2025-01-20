@@ -60,20 +60,22 @@
                         props={selectedService} {addEntry} {removeEntry} {editEntry}/>
 {:else if showCreateCommission}
     <TemplateCommission closeEdit={resetView} editOrCreate={false} 
-                        props={{currentArtist: currentArtist, id: serviceDB[serviceDB.length-1].id + 1}} 
+                        props={{currentArtist: currentArtist, id: serviceDB.length > 0 ? serviceDB[serviceDB.length-1].id + 1 : 1}} 
                         {addEntry} {removeEntry} {editEntry}/>
 {:else}
-    <div class="-mt-2 mb-4 flex items-center justify-between px-4">
-        <h1 class="page-title">Manage Services</h1>
-        <button
-            class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-            onclick={() => (showCreateCommission = true)}
-        >
-            Create New Service
-        </button>
-    </div>
+    <div class="card-island">
+        <div class="mb-4 flex items-center justify-between">
+            <h1 class="page-title">Manage Services</h1>
+            <button
+                class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+                onclick={() => (showCreateCommission = true)}
+            >
+                Create New Service
+            </button>
+        </div>
 
-    {#each ['published', 'draft', 'archived'] as serviceState}
-        {@render Service(serviceState)}
-    {/each}
+        {#each ['published', 'draft', 'archived'] as serviceState}
+            {@render Service(serviceState)}
+        {/each}
+    </div>
 {/if}

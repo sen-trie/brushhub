@@ -33,11 +33,13 @@
     </button>
 {/snippet}
 
-<h1 class="mb-2 text-center text-3xl font-bold text-gray-800">BrushHub Profiles</h1>
-<p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>
-
-<div class="flex flex-row justify-around gap-4">
-    {@render signButton(1, 'Artist', '1.jpg', 'Manage your commissions')}
-    {@render signButton(2, 'Commissioner', '3.png', 'Request and track services')}
-    {@render signButton(0, 'Guest', '3.png', 'Browse as a guest')}
+<div class="card-island">
+    <h1 class="mb-2 text-center text-3xl font-bold text-gray-800">BrushHub Profiles</h1>
+    <p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>
+    
+    <div class="flex flex-row justify-around gap-4">
+        {@render signButton(1, 'Artist', '1.jpg', 'Manage your commissions')}
+        {@render signButton(2, 'Commissioner', '3.png', 'Request and track services')}
+        {@render signButton(0, 'Guest', '3.png', 'Browse as a guest')}
+    </div>
 </div>

@@ -72,7 +72,7 @@
     }
 </script>
 
-<div class="flex">
+<div class="flex card-island min-h-full">
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
             <button
@@ -98,7 +98,7 @@
                 </button>
             {/if}
         </div>
-        <div class="min-w-full">
+        <div>
             <Browse {artDB} />
         </div>
     </div>

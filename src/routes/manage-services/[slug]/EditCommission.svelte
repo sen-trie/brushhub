@@ -36,6 +36,6 @@
     ];
 </script>
 
-<div class="card-container">
+<div class="card-container px-6">
     <Tabs {items} />
 </div>

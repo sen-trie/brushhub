@@ -81,11 +81,11 @@
 
 </script>
 
-<div class="fixed inset-0 z-50 overflow-y-auto bg-white">
-    <div class="relative p-6">
+<div class="fixed inset-0 z-50 overflow-y-auto">
+    <div class="relative !bg-gray-100">
         <div
-            class="mb-4 flex w-full justify-between border-b-2 px-2 pb-2
-            pt-0 sm:px-4 md:px-6 lg:px-8"
+            class="mb-4 flex w-full justify-between border-b-2 pt-4 pb-2
+            px-2 sm:px-6 md:px-8 lg:px-10"
         >
             <BackButtonArrow
                 closeEdit={returnDraft}
@@ -99,7 +99,7 @@
                 <button class="save-button mx-4" onclick={publishDraft}>Publish</button>
             </div>
         </div>
-        <div class="px-2 sm:px-6 md:px-10 lg:px-16">
+        <div class="px-2 sm:px-6 md:px-10 lg:px-16 !bg-gray-100 pb-6">
             {#if editOrCreate}
                 <EditCommission {closeEdit} selectedService={props} />
             {:else}

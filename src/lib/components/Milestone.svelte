@@ -17,18 +17,18 @@
 {#snippet circleNode(index = -2)}
     <div
         class="flex h-6 w-6 items-center justify-center rounded-full {emptyService(
-            'bg-orange-500',
-            'bg-gray-500',
+            '!bg-orange-500',
+            '!bg-gray-500',
             index
         )}"
     >
         {#if Object.keys(currentService).length === 0}
             <!-- ONLY PREVIEWING MILESTONE -->
-            <div class="h-3 w-3 rounded-full bg-white"></div>
+            <div class="h-3 w-3 rounded-full !bg-white"></div>
         {:else if currentService.value === 'finished'}
             <div></div>
         {:else if index === -1 || (index >= 0 && currentService.progress[index].date === null)}
-            <div class="h-3 w-3 rounded-full bg-white"></div>
+            <div class="h-3 w-3 rounded-full !bg-white"></div>
         {/if}
     </div>
 {/snippet}
@@ -77,7 +77,7 @@
             {/if}
         </div>
 
-        <div class="mx-2 h-1 flex-1 bg-orange-500"></div>
+        <div class="mx-2 h-1 flex-1 !bg-orange-500"></div>
 
         {#each selectedService.milestones as milestone, index}
             <div class="flex flex-col items-center">
@@ -92,7 +92,7 @@
                 )}
             </div>
             <div
-                class="mx-2 h-1 flex-1 {emptyService('bg-orange-500', 'bg-gray-500', index)}"
+                class="mx-2 h-1 flex-1 {emptyService('!bg-orange-500', '!bg-gray-500', index)}"
             ></div>
         {/each}
 
