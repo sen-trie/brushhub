@@ -101,8 +101,8 @@
         <h1 class="page-title -mb-2">Profile Customization</h1>
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
-                <p class="block text-sm font-medium text-gray-700">Profile Picture</p>
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="block text-sm font-medium heading">Profile Picture</p>
+                <p class="mt-1 text-sm sub-heading">
                     Appears whenever your page is presented to others
                 </p>
 
@@ -119,8 +119,8 @@
             </div>
 
             <div>
-                <p class="block text-sm font-medium text-gray-700">Banner Image</p>
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="block text-sm font-medium heading">Banner Image</p>
+                <p class="mt-1 text-sm sub-heading">
                     This image will be displayed at the top of your profile page
                 </p>
 
@@ -139,52 +139,53 @@
 
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-700">Handle</label>
-                <p class="mt-1 text-sm text-gray-500">
+                <label for="username" class="block text-sm font-medium heading">Handle</label>
+                <p class="mt-1 text-sm sub-heading">
                     Choose a unique handle - brushhub.com/{profileInfo.username}
                 </p>
                 <input
                     type="text"
                     id="username"
                     bind:value={profileInfo.username}
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                    class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                 />
             </div>
             <div>
-                <label for="displayName" class="block text-sm font-medium text-gray-700"
+                <label for="displayName" class="block text-sm font-medium heading"
                     >Display Name</label
                 >
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="mt-1 text-sm sub-heading">
                     Choose a channel name that represents you and your content
                 </p>
                 <input
                     type="text"
                     id="displayName"
                     bind:value={profileInfo.displayName}
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                    class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                 />
             </div>
         </div>
 
         <div>
-            <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
+            <label for="bio" class="block text-sm font-medium heading">Bio</label>
             <textarea
                 id="bio"
                 rows="3"
                 bind:value={profileInfo.bio}
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
             ></textarea>
         </div>
 
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
-                <label for="languages" class="block text-sm font-medium text-gray-700">Languages</label>
+                <label for="languages" class="block text-sm font-medium heading">Languages</label>
                 <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
                     <div class="flex flex-wrap gap-2">
                         {#each profileInfo.languages as language, index}
                             <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
                             <div
-                                class="items-center space-x-1 rounded !bg-orange-100 px-2 py-1 text-orange-500"
+                                class="items-center space-x-1 rounded px-2 py-1 justify-center flex
+                                        !bg-orange-100 text-orange-500 dark:!bg-orange-500 dark:text-orange-100"
                                 onclick={() => profileInfo.languages.splice(index, 1)}
                             >
                                 <span>{language}</span>
@@ -195,19 +196,19 @@
                     <input
                         type="text"
                         placeholder="Add language"
-                        class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="mt-2 block w-full rounded-md entry shadow-sm entry focus:border-orange-500 focus:ring-orange-500"
                         bind:value={languageValue}
                     />
                 </div>
-                <p class="mt-1 text-sm text-gray-500">Enter a comma after every language</p>
+                <p class="mt-1 text-sm sub-heading">Enter a comma after every language</p>
             </div>
 
             <div>
-                <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                <label for="location" class="block text-sm font-medium heading">Location</label>
                 <select
                     id="location"
                     bind:value={profileInfo.location}
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                    class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                 >
                     {#each getCountryList() as country}
                         <option value={country}>{country}</option>
@@ -217,14 +218,14 @@
         </div>
 
         <div class="mt-6 space-y-2">
-            <label for="location" class="block text-sm font-medium text-gray-700">External Links</label>
-            <p class="text-sm text-gray-500">
+            <label for="location" class="block text-sm font-medium heading">External Links</label>
+            <p class="text-sm sub-heading">
                 Share external links with viewers. They'll be visible on your profile.
             </p>
             {#each profileInfo.links as link, index}
                 <div class="flex items-center space-x-2">
                     <button
-                        class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                        class="sub-heading hover:text-orange-500 disabled:text-gray-300"
                         onclick={() => moveLink(index, index - 1)}
                         disabled={index === 0}
                         aria-label="Move link up"
@@ -233,7 +234,7 @@
                     </button>
 
                     <button
-                        class="text-gray-500 hover:text-orange-500 disabled:text-gray-300"
+                        class="sub-heading hover:text-orange-500 disabled:text-gray-300"
                         onclick={() => moveLink(index, index + 1)}
                         disabled={index === profileInfo.links.length - 1}
                         aria-label="Move link down"
@@ -244,10 +245,10 @@
                         type="url"
                         bind:value={profileInfo.links[index]}
                         placeholder="Enter link URL"
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
                     <button
-                        class="text-gray-500 hover:text-red-500"
+                        class="sub-heading hover:text-red-500"
                         onclick={() => profileInfo.links.splice(index, 1)}
                         aria-label="Remove link"
                     >
@@ -267,7 +268,7 @@
     </div>
 
     <div class="mt-6 flex justify-between space-x-4 items-center">
-        <p class="text-sm text-gray-500">
+        <p class="text-sm sub-heading">
             *Disclaimer: Since no database is being used, some information like images and usernames are not retained after saving.
         </p>
         <div class="flex space-x-4">
@@ -289,9 +290,15 @@
 </div>
 
 <style>
-    input, select, textarea {
-        background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
-        border-color: rgb(87 83 78 / var(--tw-bg-opacity, 1));
-        color: white;
+    .entry {
+        @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
+    }
+
+    .heading {
+        @apply text-stone-700 dark:text-stone-200
+    }
+
+    .sub-heading {
+        @apply text-stone-500 dark:text-stone-400
     }
 </style>

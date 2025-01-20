@@ -115,7 +115,7 @@
                             class="h-10 w-10 rounded-full"
                         />
                     {:else}
-                        <p>Sign In</p>
+                        <p class="hover:text-orange-500">Sign In</p>
                     {/if}
                 </button>
                 {#if showDropdown && user.displayName}

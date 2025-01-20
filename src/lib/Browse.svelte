@@ -88,7 +88,7 @@
             onclick={(e) => e.stopImmediatePropagation()}
         >
             <button
-                class="absolute right-2 top-2 w-10 h-10 flex items-center justify-center rounded-full 
+                class="absolute right-2 top-2 w-8 h-8 flex items-center justify-center rounded-full 
                         bg-red-500 text-white hover:bg-red-600 text-lg"
                 onclick={closePopup}
                 aria-label="Close popup"
@@ -105,10 +105,10 @@
                     <h2 class="text-2xl font-bold">
                         {selectedArt.title || 'Untitled Artwork'}
                     </h2>
-                    <p class="text-gray-600">
+                    <p>
                         {selectedArt.description || 'No description available.'}
                     </p>
-                    <p class="mt-2 text-sm text-gray-500">
+                    <p class="mt-2 text-sm">
                         {selectedArt.datePosted
                             ? 'Posted on: ' + new Date(selectedArt.datePosted).toLocaleDateString()
                             : ''}

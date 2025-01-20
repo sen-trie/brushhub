@@ -14,7 +14,7 @@ hr {
     border-color: rgb(12 10 9 / var(--tw-bg-opacity, 1));
 }
 
-.child-div div, .child-div section, header {
+.child-div div, .child-div section, header, aside {
     background-color: white;
 }
 

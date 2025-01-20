@@ -86,18 +86,20 @@
 {#key $page.url}
     {#if showSuggestions}
         <ul
-            class="absolute left-0 top-full z-30 mt-1 w-full overflow-clip rounded-lg border border-gray-300 bg-white shadow-lg"
+            class="absolute left-0 top-full z-30 mt-1 w-full overflow-clip rounded-lg border 
+                    colour-border bg-white shadow-lg dark:bg-stone-900"
         >
             {#each filteredTags.slice(0, 10) as tag, index}
                 <li
-                    class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
-                    activeIndex
-                        ? 'bg-orange-100'
+                    class="flex cursor-pointer items-center justify-between px-4 py-2
+                    hover:bg-orange-100 hover:dark:bg-orange-700 text-stone-700 dark:text-stone-200 
+                    {index === activeIndex
+                        ? 'bg-orange-100 dark:bg-orange-700'
                         : ''}"
                     onclick={() => selectTag(tag.name)}
                 >
                     <span>{tag.name}</span>
-                    <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
+                    <span class="text-sm text-stone-700 dark:text-stone-200">({tag.count} Mentions)</span>
                 </li>
             {/each}
         </ul>

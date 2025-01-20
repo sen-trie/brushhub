@@ -21,21 +21,21 @@
 )}
     <button
         onclick={() => handleLogin(profileIndex)}
-        class="card-container flex max-w-[30%] flex-1 flex-col items-center justify-center"
+        class="card-container flex max-w-[30%] flex-1 flex-col items-center justify-center group"
     >
         <img
             src={getSingle('dp', profileImage)}
             alt={profileName}
             class="mb-4 h-16 w-16 rounded-full shadow"
         />
-        <h2 class="text-lg font-bold text-gray-800">{profileName}</h2>
-        <p class="text-sm text-gray-500">{profileDescription}</p>
+        <h2 class="text-lg font-bold group-hover:text-orange-500">{profileName}</h2>
+        <p class="text-sm group-hover:text-orange-500">{profileDescription}</p>
     </button>
 {/snippet}
 
 <div class="card-island">
-    <h1 class="mb-2 text-center text-3xl font-bold text-gray-800">BrushHub Profiles</h1>
-    <p class="mb-6 text-center text-gray-500">Choose a profile to sign in:</p>
+    <h1 class="mb-2 text-center text-3xl font-bold">BrushHub Profiles</h1>
+    <p class="mb-6 text-center">Choose a profile to sign in:</p>
     
     <div class="flex flex-row justify-around gap-4">
         {@render signButton(1, 'Artist', '1.jpg', 'Manage your commissions')}

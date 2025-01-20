@@ -79,11 +79,11 @@
 >
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <aside
-        class="flex w-64 flex-col items-center border-r px-4 py-6"
+        class="flex w-64 flex-col items-center border-r px-4 py-6 border-stone-100 dark:border-stone-700"
         onclick={(e) => stopPropagation(e)}
         transition:fly={{ x: -300, duration: 300 }}
     >
-        <button onclick={() => toggleSidebar} class="flex w-full items-center justify-center"
+        <button onclick={() => toggleSidebar} class="flex w-full items-center justify-center hover:text-orange-500"
             >☰
         </button>
         <ul class="mt-6 w-full space-y-4">
@@ -102,10 +102,10 @@
                             }
                         }}
                         onkeypress={(e) => handleKeyPress(e, item.path)}
-                        class="flex w-full items-center justify-between space-x-6 rounded-lg p-2
+                        class="group flex w-full items-center justify-between space-x-6 rounded-lg p-2
                                transition hover-gray  hover:text-orange-500"
                     >
-                        <Icon src={item.src} size="32" />
+                        <Icon src={item.src} size="32" class="transition group-hover:text-orange-500" />
                         <span class="mb-1 flex-grow text-left text-lg font-medium">{item.name}</span
                         >
                     </button>
@@ -131,5 +131,13 @@
         background: rgba(0, 0, 0, 0.5);
         cursor: auto;
         z-index: 500;
+    }
+
+    .icon-transition {
+        transition: fill 0.3s ease;
+    }
+
+    button:hover .icon-transition {
+        fill: orange;
     }
 </style>

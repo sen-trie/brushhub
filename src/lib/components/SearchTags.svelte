@@ -76,20 +76,22 @@
             bind:this={inputRef}
             onkeydown={handleKeyDown}
             placeholder="Search for tags..."
-            class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            class="entry w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
         />
     </div>
 
     {#if showSuggestions && filteredTags.length > 0}
         <ul
-            class="left-0 z-30 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-lg"
+            class="left-0 z-30 mt-1 w-full rounded-lg border colour-border
+                 bg-white overflow-clip shadow-lg dark:bg-stone-900"
         >
             {#each filteredTags.slice(0, 6) as tag, index}
                 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
                 <li
-                    class="flex cursor-pointer items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-100 {index ===
-                    activeIndex
-                        ? 'bg-orange-100'
+                    class="flex cursor-pointer items-center justify-between px-4 py-2
+                    hover:bg-orange-100 hover:dark:bg-orange-700 text-stone-700 dark:text-stone-200 
+                    {index === activeIndex
+                        ? 'bg-orange-100 dark:bg-orange-700'
                         : ''}"
                     onclick={() => {
                         currentTags.push(tag.name);
@@ -97,9 +99,15 @@
                     }}
                 >
                     <span>{tag.name}</span>
-                    <span class="text-sm text-gray-500">({tag.count} Mentions)</span>
+                    <span class="text-sm">({tag.count})</span>
                 </li>
             {/each}
         </ul>
     {/if}
 </div>
+
+<style>
+    .entry {
+        @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
+    }
+</style>
