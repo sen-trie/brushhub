@@ -184,7 +184,7 @@
                         {#each profileInfo.languages as language, index}
                             <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
                             <div
-                                class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"
+                                class="items-center space-x-1 rounded !bg-orange-100 px-2 py-1 text-orange-500"
                                 onclick={() => profileInfo.languages.splice(index, 1)}
                             >
                                 <span>{language}</span>
