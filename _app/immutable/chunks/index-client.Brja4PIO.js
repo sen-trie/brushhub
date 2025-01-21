@@ -1,1 +1,0 @@
-import{ar as o,K as t,u as c,k as u}from"./runtime.C-s0Hq_6.js";function a(e){throw new Error("lifecycle_outside_component")}function i(e){o===null&&a(),t&&o.l!==null?l(o).m.push(e):c(()=>{const n=u(e);if(typeof n=="function")return n})}function l(e){var n=e.l;return n.u??(n.u={a:[],b:[],m:[]})}export{i as o};
