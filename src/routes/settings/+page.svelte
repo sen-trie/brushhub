@@ -6,13 +6,11 @@
     const user = getUser();
 
     function savePreferences() {
-        window.localStorage.setItem('user_pref', JSON.stringify(userPrefs));
-        window.location.reload();
-    }
+        console.log(userPrefs)
 
-    function pickRandomColor() {
-        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-        userPrefs.headerColor = randomColor;
+        window.localStorage.setItem('user_pref', JSON.stringify(userPrefs));
+        window.localStorage.setItem('color-theme', userPrefs.darkMode);
+        window.location.reload();
     }
 </script>
 

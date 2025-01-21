@@ -5,32 +5,15 @@
         <link rel="icon" href="%sveltekit.assets%/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         %sveltekit.head%
-        <!-- <script>
-            function detectColorScheme(){
-            var theme="light";    //default to light
-
-            //local storage is used to override OS theme settings
-            if(localStorage.getItem("theme")){
-                if(localStorage.getItem("theme") == "dark"){
-                    var theme = "dark";
-                }
-            } else if(!window.matchMedia) {
-                //matchMedia method not supported
-                return false;
-            } else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                //OS theme setting detected as dark
-                var theme = "dark";
+        <script>
+            if (localStorage.getItem('color-theme') === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
             }
-
-            theme = "dark";
-
-            //dark theme preferred, set document with a `data-theme` attribute
-            if (theme=="dark") {
-                document.documentElement.setAttribute("data-theme", "dark");
-            }
-            }
-            detectColorScheme();
-        </script> -->
+        </script>
     </head>
     
     <body data-sveltekit-preload-data="hover">

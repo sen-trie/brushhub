@@ -17,7 +17,7 @@
         <Sidebar {toggleSidebar} />
     {/if}
     <main class="content flex flex-col w-screen justify-center overflow-y-auto h-full 
-                bg-gray-100 dark:bg-stone-900">
+                !bg-gray-100 dark:!bg-stone-900">
         <div
             class="screen-padding-x screen-padding-y w-full
             max-w-full sm:max-w-screen-2xl h-full

@@ -62,7 +62,8 @@
         <div class="{currentTags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
             {#each currentTags as tag, index}
                 <div
-                    class="items-center space-x-1 rounded orange-tag px-2 py-1 orange-tag cursor-pointer"
+                    class="items-center space-x-1 rounded orange-tag px-2 py-1 orange-tag cursor-pointer flex
+                            !bg-orange-100 text-orange-500 dark:!bg-orange-500 dark:!text-orange-100"
                     onclick={() => currentTags.splice(index, 1)}
                 >
                     <span>{tag}</span>
@@ -107,10 +108,6 @@
 </div>
 
 <style>
-    .entry {
-        @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
-    }
-
     .orange-tag {
         @apply bg-orange-100 text-orange-600 dark:bg-orange-600 dark:text-orange-100
     }

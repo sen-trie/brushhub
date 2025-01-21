@@ -10,51 +10,27 @@ body {
     font-family: 'Noto Sans JP Variable', sans-serif;
 }
 
-hr {
-    border-color: rgb(12 10 9 / var(--tw-bg-opacity, 1));
-}
-
-.child-div div, .child-div section, header, aside {
-    background-color: white;
-}
-
-@media (prefers-color-scheme: dark) {
-    .child-div div, .child-div section, header, .dropdown-menu, aside, ul {
-        /* BG-STONE */
-        background-color: rgb(12 10 9 / var(--tw-bg-opacity, 1));
-    }
-
-    hr {
-        border-color: rgb(231 229 228 / var(--tw-bg-opacity, 1));
-    }
-
-    p, button, label, header, li, h1, h2, h3, h4, svg, summary {
-        color: rgb(231 229 228 / var(--tw-bg-opacity, 1));
-    }
-}
-
-[data-theme="dark"] {
-    .child-div div, .child-div section, header, .dropdown-menu, aside, ul {
-        /* BG-STONE */
-        background-color: rgb(12 10 9 / var(--tw-bg-opacity, 1));
-    }
-
-    hr {
-        border-color: rgb(231 229 228 / var(--tw-bg-opacity, 1));
-    }
-
-    p, button, label, header, li, h1, h2, h3, h4, svg, summary {
-        color: rgb(231 229 228 / var(--tw-bg-opacity, 1));
-    }
-}
-
 .child-div > .main-child {
     min-height: 100%;
 }
 
 @layer components {
+    .child-div div, .child-div section, header, .dropdown-menu, aside, ul {
+        /* BG-STONE */
+        @apply bg-white dark:bg-stone-800
+        /* background-color: rgb(12 10 9 / var(--tw-bg-opacity, 1)); */
+    }
+
+    hr {
+        @apply bg-stone-200 dark:bg-stone-700
+    }
+
+    p, button, label, header, li, h1, h2, h3, h4, svg, summary {
+        @apply dark:text-stone-100
+    }
+
     .entry {
-        @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
+        @apply cursor-pointer border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
     }
 
     .heading {

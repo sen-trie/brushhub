@@ -78,7 +78,7 @@
             <button
                 class="mr-4 text-2xl font-bold focus:outline-none
                     {followersOnly === false
-                    ? 'text-orange-500'
+                    ? 'text-orange-500 dark:text-orange-300'
                     : 'text-gray-400 hover:text-orange-500'}
                     "
                 onclick={() => (followersOnly = false)}
@@ -89,7 +89,7 @@
                 <button
                     class="mr-4 text-2xl font-bold focus:outline-none
                         {followersOnly === true
-                        ? 'text-orange-500'
+                        ? 'text-orange-500 dark:text-orange-300'
                         : 'text-gray-400 hover:text-orange-500'}
                         "
                     onclick={() => (followersOnly = true)}
@@ -110,13 +110,13 @@
             Clear Filters
         </button>
         <hr class="my-4" />
-        <label class="checkbox flex justify-between items-center">
+        <label class="checkbox flex justify-between items-center cursor-pointer">
             Open Artists Only
-            <input type="checkbox" bind:checked={openTagOnly} />
+            <input type="checkbox" class="cursor-pointer" bind:checked={openTagOnly} />
         </label>
-        <label class="checkbox mt-2 flex justify-between items-center">
+        <label class="checkbox mt-2 flex justify-between items-center cursor-pointer">
             Commercial Use
-            <input type="checkbox" bind:checked={commercialUseOnly} />
+            <input type="checkbox" class="cursor-pointer" bind:checked={commercialUseOnly} />
         </label>
         <hr class="my-4" />
         <div>
