@@ -53,7 +53,7 @@
                 {#each Object.entries(creator.links) as [link, text]}
                     <div class="flex justify-start items-center space-x-1">
                         <Icon src={Link} size="16" />
-                        <a href={link}>{text}</a>
+                        <a class="text-blue-500 dark:text-blue-100" href={link}>{text}</a>
                     </div>
                 {/each}
             </div>

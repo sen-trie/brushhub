@@ -10,7 +10,7 @@ export const load: PageLoad = () => {
 
     const artist = pullDB('artist', {}, { id: currentUser.id });
     if (!artist) {
-        throw error(404, 'You are not the current user');
+        throw error(404, 'Not Found');
     }
 
     return { artist };

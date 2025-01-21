@@ -15,13 +15,12 @@ export const load: PageLoad = async ({ params }) => {
 
     const user = pullDB('user', {}, { username: searchQuery });
     if (!user || currentUser.username !== user.username) {
-        // TODO CHANGE TO SOMETHING ELSE
-        throw error(404, 'You are not the current user');
+        throw error(404, 'Not Found');
     }
 
     let request = pullDB('request', { customerId: user.id }, {});
     request = request.map((req: any) => {
-        // O(N^2) COMPLEXITY - BEWARE
+
         return {
             ...req,
             service: pullDB('services', {}, { id: req.serviceId })
