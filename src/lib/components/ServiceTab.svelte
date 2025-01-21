@@ -6,7 +6,7 @@
 
 {#snippet closeButton(text: String)}
     <button
-        class="absolute right-2 text-gray-500 hover:text-orange-500"
+        class="absolute right-2  hover:text-orange-500"
         onclick={() => (openState = !openState)}
     >
         {text}
@@ -20,26 +20,26 @@
             {@render closeButton('Edit')}
             <div class="flex flex-col gap-2">
                 {#if tab.name}
-                    <h3 class="text-lg font-bold text-gray-800">{tab.name}</h3>
+                    <h3 class="text-lg font-bold">{tab.name}</h3>
                 {:else}
-                    <i class="fas text-lg font-bold text-gray-800">(Missing Name)</i>
+                    <i class="fas text-lg font-bold">(Missing Name)</i>
                 {/if}
 
                 {#if tab.description}
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm">
                         {tab.description}
                     </p>
                 {:else}
-                    <i class="fas fa-pencil-alt text-sm text-gray-500">(Missing Description)</i>
+                    <i class="fas fa-pencil-alt text-sm">(Missing Description)</i>
                 {/if}
 
                 {#if tab.price}
-                    <p class="text-sm font-medium text-gray-900">
+                    <p class="text-sm font-medium">
                         {tab.price}
                         {tab.type === 'percentage' ? '%' : getPreferredCurrency()}
                     </p>
                 {:else}
-                    <i class="fas fa-pencil-alt text-sm text-gray-500">(Missing Price)</i>
+                    <i class="fas fa-pencil-alt text-sm">(Missing Price)</i>
                 {/if}
             </div>
         </div>
@@ -47,28 +47,30 @@
         <div class="relative grow">
             {@render closeButton('Close')}
             <div class="space-y-4">
-                <div class="mt-4">
-                    <label class="block text-base font-medium text-gray-700">Name*</label>
+                <div>
+                    <!-- svelte-ignore a11y_label_has_associated_control -->
+                    <label class="block text-base font-medium">Name*</label>
                     <input
                         type="text"
                         placeholder={tab.name}
                         bind:value={tab.name}
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="mt-1 block w-1/2 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
                 </div>
                 <div>
-                    <label class="block text-base font-medium text-gray-700">Price*</label>
+                    <!-- svelte-ignore a11y_label_has_associated_control -->
+                    <label class="block text-base font-medium">Price*</label>
                     <div class="flex items-center gap-2">
                         <input
                             type="number"
                             placeholder={tab.price}
                             bind:value={tab.price}
-                            class="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="mt-1 block w-1/2 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
                         {#if extra === true}
                             <select
                                 bind:value={tab.type}
-                                class="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                                class="mt-1 block w-1/2 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                             >
                                 <option value="percentage">%</option>
                                 <option value="currency">{getPreferredCurrency()}</option>
@@ -77,10 +79,11 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-base font-medium text-gray-700">Description</label>
+                    <!-- svelte-ignore a11y_label_has_associated_control -->
+                    <label class="block text-base font-medium ">Description</label>
                     <textarea
                         bind:value={tab.description}
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         placeholder="Description..."
                     ></textarea>
                 </div>

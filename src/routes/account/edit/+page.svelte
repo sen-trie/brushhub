@@ -273,7 +273,7 @@
         </p>
         <div class="flex space-x-4">
             <button
-                class="rounded border border-red-500 px-4 py-2 text-red-500 hover:bg-red-50"
+                class="rounded border border-red-500 px-4 py-2 text-red-500 "
                 onclick={() => {
                     if (confirm('Are you sure you want to discard all changes?')) {
                         profileInfo = initialValue;
@@ -290,15 +290,4 @@
 </div>
 
 <style>
-    .entry {
-        @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
-    }
-
-    .heading {
-        @apply text-stone-700 dark:text-stone-200
-    }
-
-    .sub-heading {
-        @apply text-stone-500 dark:text-stone-400
-    }
 </style>

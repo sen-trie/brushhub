@@ -20,7 +20,7 @@
     };
 </script>
 
-<div class="flex justify-between">
+<div class="flex justify-between colour-border">
     <div class="flex flex-col justify-center">
         <div class="flex items-center space-x-4">
             <h1 class="text-2xl font-bold">{selectedService.title || 'Missing Title'}</h1>
@@ -34,7 +34,7 @@
                 </span>
             {/if}
         </div>
-        <p class="text-sm text-gray-500">{currentArtist.displayName}</p>
+        <p class="text-sm">{currentArtist.displayName}</p>
     </div>
     <div class="flex max-w-lg flex-wrap items-center gap-2">
         {#if selectedService.tags.length === 0 && viewOnly}
@@ -78,7 +78,7 @@
             <p class="font-bold text-green-600">
                 {isNaN(type.price) ? 'Undefined Price' : calculateCurrency(type.price)}
             </p>
-            <p class="mt-2 text-sm text-gray-600">
+            <p class="mt-2 text-sm">
                 {type.description || (viewOnly && `Missing Description`)}
             </p>
             {#if !viewOnly}
@@ -105,7 +105,7 @@
             <p class="font-bold text-green-600">
                 {calculateExtra(extra.price, extra.type)}
             </p>
-            <p class="mt-2 text-sm text-gray-600">
+            <p class="mt-2 text-sm">
                 {extra.description || (viewOnly && `Missing Description`)}
             </p>
         </div>

@@ -92,35 +92,35 @@
     });
 </script>
 
-<div class="grid grid-cols-2 gap-6 p-6 pb-0">
+<div class="grid grid-cols-2 gap-6 pt-6">
     <div>
         <div class="mb-4">
-            <label for="type" class="block text-sm font-medium text-gray-700">Type *</label>
+            <label for="type" class="block text-sm font-medium">Type *</label>
             <select
                 id="type"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
                 bind:value={commissionChoice.selectedTier}
             >
                 {#each selectedService.types as type, index}
-                    <option value={index}>{type.name} ({calculateCurrency(type.price)})</option>
+                    <option class="entry" value={index}>{type.name} ({calculateCurrency(type.price)})</option>
                 {/each}
             </select>
         </div>
 
         <div class="mb-4">
-            <label for="extras" class="block text-sm font-medium text-gray-700">Extras</label>
+            <label for="extras" class="block text-sm font-medium">Extras</label>
             <div class="mt-2 space-y-2">
                 {#each selectedService.extras as extra, index}
                     <div class="flex items-center">
                         <input
                             id={extra.name}
                             type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+                            class="h-4 w-4 rounded colour-border text-orange-500 focus:ring-orange-500"
                             bind:checked={commissionChoice.extras[index]}
                         />
                         <label
                             for={extra.name}
-                            class="ml-2 text-sm text-gray-700"
+                            class="ml-2 text-sm"
                             style="user-select: none;"
                             >{extra.name} (+{extra.type === 'percentage'
                                 ? `${extra.price} % of base price`
@@ -133,13 +133,13 @@
         </div>
 
         <div class="mb-4">
-            <label for="brief" class="block text-sm font-medium text-gray-700"
+            <label for="brief" class="block text-sm font-medium"
                 >Brief * ({MAX_BRIEF_LENGTH - uploadedBrief.length} characters left)</label
             >
             <textarea
                 id="brief"
                 rows="3"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
                 placeholder="Input your brief idea..."
                 bind:value={uploadedBrief}
                 oninput={(e) => {
@@ -148,10 +148,11 @@
                 }}
             ></textarea>
             <div class="mt-2 flex items-center">
-                <span class="mr-2 text-sm text-gray-500">Or</span>
+                <p class="mr-2 text-sm">Or</p>
                 <label
                     for="upload-brief"
-                    class="cursor-pointer rounded border border-gray-300 px-3 py-1 text-sm text-orange-500 hover:bg-orange-50"
+                    class="cursor-pointer rounded border colour-border px-3 py-1 text-sm 
+                            bg-orange-500 text-white hover:bg-orange-600"
                 >
                     Upload your brief
                 </label>
@@ -166,11 +167,11 @@
         </div>
 
         <div class="mb-4">
-            <label for="deadline" class="block text-sm font-medium text-gray-700">Deadline *</label>
+            <label for="deadline" class="block text-sm font-medium">Deadline *</label>
             <input
                 id="deadline"
                 type="date"
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
                 bind:value={commissionChoice.deadline}
                 min={minDate}
             />
@@ -180,11 +181,11 @@
     </div>
 
     <div>
-        <h3 class="text-sm font-medium text-gray-700">References</h3>
+        <h3 class="text-sm font-medium">References</h3>
         <ImageSamples {uploadedImages} {imageWarningMessage} {removeImage} {handleImageUpload} />
     </div>
 
     {#if warningMessage}
-        <p class="mb-4 text-sm text-red-500">{warningMessage}</p>
+        <p class="-mt-4 text-sm text-red-500">{warningMessage}</p>
     {/if}
 </div>

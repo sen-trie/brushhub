@@ -24,11 +24,11 @@
             <label>Appearance</label>
             <select
                 bind:value={userPrefs.darkMode}
-                class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500"
+                class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500 entry"
             >
-                <option value="auto">Auto Detect</option>
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
+                <option class="entry" value="auto">Auto Detect</option>
+                <option class="entry" value="dark">Dark</option>
+                <option class="entry" value="light">Light</option>
             </select>
         </div>
 
@@ -37,10 +37,10 @@
             <label>Preferred Currency</label>
             <select
                 bind:value={userPrefs.preferredCurrency}
-                class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500"
+                class="w-40 rounded-md focus:border-orange-500 focus:ring-orange-500 entry"
             >
                 {#each Object.entries(exchangeRates) as [rate, _]}
-                    <option value={rate}>{rate}</option>
+                    <option class="entry" value={rate}>{rate}</option>
                 {/each}
             </select>
         </div>

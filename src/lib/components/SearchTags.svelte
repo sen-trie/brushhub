@@ -58,11 +58,11 @@
 </script>
 
 <div class="relative">
-    <div class="{slim ? "" : "mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm"}">
+    <div class="{slim ? "" : "mt-1 block w-full rounded-md border colour-border bg-white p-2 shadow-sm"}">
         <div class="{currentTags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
             {#each currentTags as tag, index}
                 <div
-                    class="items-center space-x-1 rounded bg-orange-100 px-2 py-1 text-orange-500"
+                    class="items-center space-x-1 rounded orange-tag px-2 py-1 orange-tag cursor-pointer"
                     onclick={() => currentTags.splice(index, 1)}
                 >
                     <span>{tag}</span>
@@ -76,7 +76,7 @@
             bind:this={inputRef}
             onkeydown={handleKeyDown}
             placeholder="Search for tags..."
-            class="entry w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            class="entry w-full rounded-md colour-border shadow-sm focus:border-orange-500 focus:ring-orange-500"
         />
     </div>
 
@@ -109,5 +109,9 @@
 <style>
     .entry {
         @apply border-stone-200 bg-stone-100 text-stone-700 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100
+    }
+
+    .orange-tag {
+        @apply bg-orange-100 text-orange-600 dark:bg-orange-600 dark:text-orange-100
     }
 </style>

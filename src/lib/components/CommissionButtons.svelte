@@ -6,10 +6,6 @@
         backwards,
         forwards,
         indexes = [0, 0],
-        finalStep = (prop1: any) => {
-            proceedToNextStep(prop1);
-        },
-        finalWord = forwards
     }: ComponentProps<any> = $props();
 
     // FIRST IS CURRENT INDEX
@@ -40,10 +36,6 @@
         {@render backButton(indexes[0] === 0 ? 'invisible' : '')}
         {#if indexes[0] != indexes[1]}
             {@render forwardButton()}
-        {:else}
-            <button class="confirm-button save-button" onclick={finalStep}>
-                {finalWord}
-            </button>
         {/if}
     {/if}
 </div>

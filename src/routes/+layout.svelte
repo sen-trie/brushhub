@@ -10,6 +10,7 @@
     const toggleSidebar = () => (showSidebar = !showSidebar);
 </script>
 
+
 <div class="flex h-screen flex-col">
     <Header {toggleSidebar} />
     {#if showSidebar}
@@ -34,5 +35,4 @@
     </main>
 </div>
 
-<style>
-</style>
+<style></style>

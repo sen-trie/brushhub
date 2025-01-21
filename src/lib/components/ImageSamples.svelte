@@ -39,7 +39,7 @@
 <div class="mt-4">
     <label
         for="upload-images"
-        class="cursor-pointer rounded bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600"
+        class="cursor-pointer rounded px-4 py-2 text-sm font-medium bg-orange-500 text-white hover:bg-orange-600"
     >
         Upload Images
     </label>

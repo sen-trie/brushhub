@@ -62,7 +62,7 @@
         <input
             id="title"
             type="text"
-            class="mt-1 block w-full border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+            class="mt-1 block w-full shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm entry"
             bind:value={selectedService.title}
         />
     </div>
@@ -106,19 +106,19 @@
         <textarea
             id="description"
             rows="4"
-            class="mt-1 block w-full border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+            class="mt-1 block w-full entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
             bind:value={selectedService.description}
         ></textarea>
     </div>
 
-    <div>
+    <div class="relative">
         <!-- svelte-ignore a11y_label_has_associated_control -->
         <label class="mb-2 block text-sm font-semibold">Tags</label>
         <SearchTags bind:currentTags={selectedService.tags} />
     </div>
 
     <div>
-        <h3 class="text-sm font-medium text-gray-700">References</h3>
+        <h3 class="text-sm font-medium ">References</h3>
         <ImageSamples
             uploadedImages={selectedService.samples}
             {imageWarningMessage}

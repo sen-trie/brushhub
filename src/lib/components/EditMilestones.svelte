@@ -55,11 +55,11 @@
         <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
             <div class="relative grow">
                 <div class="flex flex-col">
-                    <h3 class="text-lg font-bold text-gray-800">Final Work</h3>
+                    <h3 class="text-lg font-bold">Final Work</h3>
                     {#if !showFinalPrice}
-                        <p class="text-sm font-medium text-gray-900">Pay 100%</p>
+                        <p class="text-sm font-medium">Pay 100%</p>
                     {:else}
-                        <p class="text-sm font-medium text-gray-900">
+                        <p class="text-sm font-medium">
                             No Additional Payment Required
                         </p>
                     {/if}

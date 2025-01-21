@@ -26,7 +26,7 @@
     }
 </script>
 
-<div>
+<div class="card-island">
     {#if showPlaceCommission}
         <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} {currentArtist} />
     {/if}

@@ -11,7 +11,7 @@
 </script>
 
 <h2 class="mt-6 text-lg font-semibold">Milestones</h2>
-<p class="mb-6 text-sm text-gray-500">
+<p class="mb-6 text-sm">
     * Your money will be held and paid to the artist as per the completion of milestones.
 </p>
 
@@ -23,11 +23,11 @@
         <details class="rounded-md border p-4">
             <summary class="text-sm font-semibold">{term.title}</summary>
             <!-- TODO: FIX NEW LINE NOT WORKING -->
-            <p class="mt-2 text-sm text-gray-500">{term.details}</p>
+            <p class="mt-2 text-sm">{term.details}</p>
         </details>
     {/each}
 </div>
 
-<p class="mt-6 text-sm text-gray-500">
+<p class="mt-6 text-sm">
     * By proceeding to the commission, you agree with the proposed milestones and terms of service.
 </p>

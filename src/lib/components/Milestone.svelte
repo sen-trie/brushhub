@@ -38,7 +38,7 @@
         <p
             class="mt-2 text-sm font-medium {emptyService(
                 'text-orange-500',
-                'text-gray-500',
+                '',
                 index
             )}"
         >
@@ -49,7 +49,7 @@
     {/if}
 
     {#if durationText}
-        <p class="text-xs text-gray-500">{durationText}</p>
+        <p class="text-xs">{durationText}</p>
     {:else}
         <span class="invisible">-</span>
     {/if}

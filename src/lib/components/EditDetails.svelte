@@ -59,27 +59,26 @@
             <label for="fast-delivery" class="flex-1">Fast Delivery</label>
             <input
                 type="number"
-                class="input-box"
+                class="input-box entry"
                 placeholder="Duration"
                 bind:value={selectedService.fastDelivery.duration}
             />
-            <select class="input-box" bind:value={selectedService.fastDelivery.unit}>
+            <select class="input-box entry" bind:value={selectedService.fastDelivery.unit}>
                 <option value="days">Days</option>
                 <option value="weeks">Weeks</option>
             </select>
             <input
                 type="number"
-                class="input-box"
+                class="input-box entry"
                 placeholder="Price"
                 bind:value={selectedService.fastDelivery.price}
             />
-            <select class="input-box" bind:value={selectedService.fastDelivery.type}>
+            <select class="input-box entry" bind:value={selectedService.fastDelivery.type}>
                 <option value="percentage">%</option>
                 <option value="currency">{getPreferredCurrency()}</option>
             </select>
         </div>
 
-        <!-- TODO FIX THIS PAGE -->
         <div class="flex items-center space-x-4">
             <input
                 type="checkbox"
@@ -89,11 +88,11 @@
             <label for="commercial-use" class="flex-1">Commercial Use</label>
             <input
                 type="number"
-                class="input-box"
+                class="input-box entry"
                 placeholder="Price"
                 bind:value={selectedService.commercialUse.price}
             />
-            <select class="input-box" bind:value={selectedService.commercialUse.type}>
+            <select class="input-box entry" bind:value={selectedService.commercialUse.type}>
                 <option value="percentage">%</option>
                 <option value="currency">{getPreferredCurrency()}</option>
             </select>

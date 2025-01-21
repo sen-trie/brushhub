@@ -47,7 +47,7 @@ function pullSpecific(
 ): any | any[] {
     let db = dbData;
 
-    if (Object.keys(currentOverride).length > 0) {
+    if (Object.keys(currentOverride).length > 0 && Object.keys(condition).length > 0) {
         const [[key, value]] = Object.entries(condition);
         if (currentOverride[String(value)]) {
             return currentOverride[String(value)];

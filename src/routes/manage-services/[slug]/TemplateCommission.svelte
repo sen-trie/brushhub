@@ -85,7 +85,7 @@
     <div class="relative !bg-gray-100 dark:!bg-stone-900">
         <div
             class="mb-4 flex w-full justify-between border-b-2 pt-4 pb-2
-            px-2 sm:px-6 md:px-8 lg:px-10"
+            colour-border px-2 sm:px-6 md:px-8 lg:px-10"
         >
             <BackButtonArrow
                 closeEdit={returnDraft}

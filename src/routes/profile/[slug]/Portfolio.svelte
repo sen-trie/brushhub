@@ -63,11 +63,11 @@
 
             <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
             <div
-                class="mb-6 grid min-h-64 cursor-pointer grid-cols-4 gap-6 rounded-lg border-2 border-dashed border-gray-300 p-4 hover:border-orange-500"
+                class="mb-6 grid min-h-64 cursor-pointer grid-cols-4 gap-6 rounded-lg border-2 border-dashed colour-border p-4 hover:border-orange-500"
                 onclick={() => document.getElementById('upload-images')?.click()}
             >
                 {#if uploadedImages.length === 0}
-                    <span class="col-span-4 mt-24 text-center text-sm text-gray-500">
+                    <span class="col-span-4 mt-24 text-center text-sm ">
                         No images uploaded
                     </span>
                 {/if}

@@ -81,6 +81,5 @@
         binded={true}
     />
     <CommissionButtons {goToPreviousStep} {proceedToNextStep} backwards={'Previous Step'}
-    forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]} finalWord={'Publish Service'}
-    finalStep={() => { closeEdit() }}/>
+    forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}/>
 </div>
