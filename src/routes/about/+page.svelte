@@ -6,7 +6,7 @@
         {
             name: 'sentrie',
             dp: '1.jpg',
-            role: 'Developer and Artist',
+            role: 'Developer and 3D Animator',
             links: {
                 'https://sen-trie.github.io/portfolio/': 'Portfolio',
                 'https://github.com/sen-trie/': 'Github'
@@ -43,7 +43,7 @@
     <div class="card-container flex w-auto items-center space-x-4 p-6 py-3">
         <img
             src={getSingle('dp', creator.dp)}
-            alt={`sentrie's avatar`}
+            alt={`${creator.name}'s avatar`}
             class="h-16 w-16 rounded-full border border-gray-700 shadow"
         />
         <div class="flex-1">
@@ -66,7 +66,7 @@
     <div class="space-y-4 text-lg font-medium">
         <div>    
             <p>What is BrushHub?</p>
-            <p class="text-base font-normal">BrushHub is a front-end showcase aimed at demonstrating 
+            <p class="text-base font-normal">BrushHub is a frontend showcase aimed at demonstrating 
                 the concept and user experience of an artwork commissioning platform. This project
                 primarily focuses on building the design and UX of an online e-commerce platform. It does not 
                 include any backend services or database management systems.
@@ -82,7 +82,7 @@
         </div>
         <div>    
             <p>Tech Stack</p>
-            <p class="text-base font-normal">Developed using SvelteKit and Tailwind. 
+            <p class="text-base font-normal">Developed using Svelte 5 and Tailwind. 
                 The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>.
             </p>
         </div>
