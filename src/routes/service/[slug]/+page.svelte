@@ -26,6 +26,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>BrushHub - {selectedService.title}</title> 
+</svelte:head>
+
 <div class="card-island">
     {#if showPlaceCommission}
         <PlaceCommission {selectedService} {closePlaceCommission} {tierIndex} {currentArtist} />

@@ -3,6 +3,10 @@
     import { getSingle } from '$lib/db';
 </script>
 
+<svelte:head>
+    <title>BrushHub - 404</title> 
+</svelte:head>
+
 <div class="flex flex-col card-island min-h-full justify-center items-center space-y-4">
     <img
         src={getSingle('dp', '404.png')}

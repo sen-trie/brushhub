@@ -68,9 +68,15 @@
     }
 
     function clearFilters() {
+        openTagOnly = false;
+        commercialUseOnly = false;
         tags = [];
     }
 </script>
+
+<svelte:head>
+    <title>BrushHub</title> 
+</svelte:head>
 
 <div class="flex card-island min-h-full">
     <div class="content flex-grow">

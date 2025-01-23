@@ -33,6 +33,10 @@
     </button>
 {/snippet}
 
+<svelte:head>
+    <title>BrushHub - Login</title> 
+</svelte:head>
+
 <div class="card-island">
     <h1 class="mb-2 text-center text-3xl font-bold">BrushHub Profiles</h1>
     <p class="mb-6 text-center">Choose a profile to sign in:</p>

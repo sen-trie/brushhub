@@ -14,6 +14,10 @@
     };
 </script>
 
+<svelte:head>
+    <title>BrushHub - Manage Orders</title> 
+</svelte:head>
+
 {#if showRequest}
     <ViewCommission closeRequest={() => (showRequest = false)} request={currentCommission} />
 {:else}

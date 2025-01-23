@@ -36,6 +36,11 @@
     });
 </script>
 
+<svelte:head>
+    <title>BrushHub - {searchQuery}</title> 
+</svelte:head>
+
+
 <div class="card-island">
     <h1 class="mb-4 text-2xl font-bold">Search Results: "{searchQuery}"</h1>
     <Tabs {items} />

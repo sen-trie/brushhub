@@ -37,6 +37,10 @@
     };
 </script>
 
+<svelte:head>
+    <title>BrushHub - Manage Services</title> 
+</svelte:head>
+
 {#snippet Service(filter: String)}
     <section class="card-container mb-8">
         <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>

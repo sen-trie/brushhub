@@ -14,6 +14,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>BrushHub - Settings</title> 
+</svelte:head>
+
 <div class="card-island min-h-full">
     <h1 class="mb-2 text-2xl font-bold">BrushHub Settings</h1>
     <div class="space-y-4 text-lg font-medium">

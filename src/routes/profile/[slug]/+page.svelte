@@ -31,13 +31,17 @@
     ];
 </script>
 
+<svelte:head>
+    <title>BrushHub - {artist.displayName}</title> 
+</svelte:head>
+
 <div class="card-island pt-0 px-0 pb-6">
     <img
         src={getSingle('banner', artist.coverImage)}
         alt={artist.coverImage}
         class="h-52 w-full object-cover"
     />
-    <div class="header-section mt-4 flex items-center text-black screen-padding-x">
+    <div class="header-section mt-4 flex justify-between items-center text-black screen-padding-x">
         <div class="profile-info flex items-center">
             <img
                 src={getSingle('dp', artist.avatar)}
@@ -57,10 +61,19 @@
                 </span>
                 <p class="text-stone-600 dark:text-stone-400">@{artist.username}</p>
                 <div class="text-sm text-stone-500 dark:text-stone-200">
-                    <span>{artist.followers.length} Followers</span> •
-                    <span>{artist.following.length} Following</span>
+                    <span>{artist.artFollowers} Followers</span>
                 </div>
             </div>
+        </div>
+        <div class="{artist.tags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
+            {#each artist.tags as tag, index}
+                <div
+                    class="items-center space-x-1 rounded orange-tag px-2 py-1 orange-tag cursor-pointer flex
+                            !bg-orange-100 text-orange-500 dark:!bg-orange-500 dark:!text-orange-100"
+                >
+                    <span>#{tag}</span>
+                </div>
+            {/each}
         </div>
     </div>
 </div>

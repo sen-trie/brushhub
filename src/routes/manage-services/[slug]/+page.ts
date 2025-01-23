@@ -15,7 +15,6 @@ export const load: PageLoad = ({ params }) => {
 
     const artist = pullDB('user', {}, { username: searchQuery });
     if (!artist || currentUser.username !== artist.username) {
-        // TODO CHANGE TO SOMETHING ELSE
         throw error(404, 'You are not the current artist');
     }
 

@@ -96,6 +96,10 @@
     </div>
 {/snippet}
 
+<svelte:head>
+    <title>BrushHub - Edit Profile</title> 
+</svelte:head>
+
 <div class="card-island">
     <div class="flex flex-col space-y-6">
         <h1 class="page-title -mb-2">Profile Customization</h1>

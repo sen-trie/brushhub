@@ -33,6 +33,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>BrushHub - Manage Commissions</title> 
+</svelte:head>
+
 {#if showRequest}
     <ViewCommission
         closeRequest={() => (showRequest = false)}

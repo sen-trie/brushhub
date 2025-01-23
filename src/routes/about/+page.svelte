@@ -39,6 +39,10 @@
     ]
 </script>
 
+<svelte:head>
+    <title>BrushHub - About</title> 
+</svelte:head>
+
 {#snippet card(creator: Record<string, any>)}
     <div class="card-container flex w-auto items-center space-x-4 p-6 py-3">
         <img
