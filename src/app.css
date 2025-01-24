@@ -6,6 +6,10 @@ label {
     user-select: none;
 }
 
+html {
+    background-color: light-dark(#ffffff, rgb(41 37 36)); 
+}
+
 body {
     font-family: 'Noto Sans JP Variable', sans-serif;
 }
@@ -15,7 +19,7 @@ body {
 }
 
 @layer components {
-    .child-div div, .child-div section, header, .dropdown-menu, aside, ul {
+    html, .child-div div, .child-div section, header, .dropdown-menu, aside, ul {
         /* BG-STONE */
         @apply bg-white dark:bg-stone-800
         /* background-color: rgb(12 10 9 / var(--tw-bg-opacity, 1)); */

@@ -3,7 +3,7 @@
     import type { Artwork } from '$lib/types';
     import { pullDB, imageModules, getImage, wrapDefault } from '$lib/db';
     import { navigateTo } from './util';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
 
     let { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
     let selectedArt: Artwork | null = $state(null);
@@ -15,7 +15,7 @@
 
     const navigateToArtist = () => {
         const artist = pullDB('user', {}, { id: selectedArt?.artist });
-        navigateTo(`./profile/${artist.username}`, $page.url.pathname);
+        navigateTo(`./profile/${artist.username}`, page.url.pathname);
     };
 
     function openPopup(art: Artwork) {
@@ -37,30 +37,29 @@
     }
 </script>
 
-<div class="grid grid-cols-4 gap-4">
-    {#each artDB as art}
-        <button
-            type="button"
-            class="relative w-full overflow-hidden rounded-lg colour-border border-2 bg-white shadow
-                   {!artViewOnly ? "cursor-pointer" : "cursor-default"}"
-            onclick={() => openPopup(art)}
-            aria-label="View artwork details"
-        >
-            <img
-                src={returnArt(art)}
-                alt="Artwork"
-                class="h-{size} w-full object-cover"
-            />
-            {#if !findArtist(art.artist)?.openCommission && !artViewOnly}
-                <span
-                    class="absolute left-2 top-2 rounded bg-gray-700 px-2 py-1 text-xs text-white"
-                >
-                    Closed
-                </span>
-            {/if}
-        </button>
-    {/each}
-</div>
+{#each artDB as art}
+    <button
+        type="button"
+        class="relative w-full overflow-hidden rounded-lg colour-border border-2 bg-white shadow
+                {!artViewOnly ? "cursor-pointer" : "cursor-default"}"
+        onclick={() => openPopup(art)}
+        aria-label="View artwork details"
+    >
+        <img
+            src={returnArt(art)}
+            alt="Artwork"
+            class="h-{size} w-full object-cover"
+        />
+        {#if !findArtist(art.artist)?.openCommission && !artViewOnly}
+            <span
+                class="absolute left-2 top-2 rounded bg-gray-700 px-2 py-1 text-xs text-white"
+            >
+                Closed
+            </span>
+        {/if}
+    </button>
+{/each}
+
 
 {#if artDB.length === 0}
     <img
@@ -81,7 +80,8 @@
         onclick={closePopup}
     >
         <div
-            class="relative w-2/3 rounded-lg p-6 shadow-lg dark:bg-stone-800 border-2 colour-border"
+            class="relative rounded-lg shadow-lg dark:bg-stone-800 border-2 colour-border flex 
+                     w-5/6 sm:w-1/2 p-2 sm:p-6"
             role="dialog"
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
@@ -95,49 +95,51 @@
             >
                 X
             </button>
-            <div class="flex">
+            <div class="flex flex-col sm:flex-row">
                 <img
                     src={getImage('artwork', selectedArt.imgSrc, artworkArray)}
                     alt="Artwork"
-                    class="h-64 w-64 rounded-md object-cover"
+                    class="h-64 w-96 rounded-md object-contain
+                           mt-2 sm:mt-0"
                 />
-                <div class="ml-6">
-                    <h2 class="text-2xl font-bold">
-                        {selectedArt.title || 'Untitled Artwork'}
-                    </h2>
-                    <p>
-                        {selectedArt.description || 'No description available.'}
-                    </p>
-                    <p class="mt-2 text-sm">
-                        {selectedArt.datePosted
-                            ? 'Posted on: ' + new Date(selectedArt.datePosted).toLocaleDateString()
-                            : ''}
-                    </p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        {#each selectedArt.tags as tag}
-                            <span
-                                class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600"
-                            >
-                                #{tag}
-                            </span>
-                        {/each}
+                <div class="p-2 sm:p-0 ml-0 sm:ml-6 flex flex-col justify-between">
+                    <div>
+                       <h2 class="text-xl font-bold">
+                            {selectedArt.title || 'Untitled Artwork'}
+                        </h2>
+                        <p>
+                            {selectedArt.description}
+                        </p>
+                        <p class="mt-2 text-sm">
+                            {selectedArt.datePosted
+                                ? 'Posted: ' + new Date(selectedArt.datePosted).toLocaleDateString()
+                                : ''}
+                        </p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            {#each selectedArt.tags as tag}
+                                <span
+                                    class="rounded bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600"
+                                >
+                                    #{tag}
+                                </span>
+                            {/each}
+                        </div>
                     </div>
-                    {#if showArtist}
-                        <button
-                            onclick={navigateToArtist}
-                            class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 text-center font-medium text-white"
-                        >
-                            To Artist Profile
-                        </button>
-                    {/if}
+                    <div>
+                        {#if showArtist}
+                            <button
+                                onclick={navigateToArtist}
+                                class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 
+                                        text-center font-medium text-white"
+                            >
+                                To Artist Profile
+                            </button>
+                        {/if}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 {/if}
 
-<style>
-    .grid div .fa-times {
-        pointer-events: none;
-    }
-</style>
+<style></style>

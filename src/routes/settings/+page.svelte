@@ -19,7 +19,7 @@
 </svelte:head>
 
 <div class="card-island min-h-full">
-    <h1 class="mb-2 text-2xl font-bold">BrushHub Settings</h1>
+    <h1 class="mb-4 sm:mb-2 text-2xl font-bold">BrushHub Settings</h1>
     <div class="space-y-4 text-lg font-medium">
         <div class="flex items-center justify-between">
             <!-- svelte-ignore a11y_label_has_associated_control -->

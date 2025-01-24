@@ -273,7 +273,7 @@
 
     <div class="mt-6 flex justify-between space-x-4 items-center">
         <p class="text-sm sub-heading">
-            *Disclaimer: Since no database is being used, some information like images and usernames are not retained after saving.
+            *Disclaimer: Since no database is being used, some information like images and usernames is not retained after saving.
         </p>
         <div class="flex space-x-4">
             <button

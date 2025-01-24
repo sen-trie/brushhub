@@ -68,7 +68,7 @@
         <div class="{artist.tags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
             {#each artist.tags as tag, index}
                 <div
-                    class="items-center space-x-1 rounded orange-tag px-2 py-1 orange-tag cursor-pointer flex
+                    class="items-center space-x-1 rounded orange-tag px-2 py-1 flex
                             !bg-orange-100 text-orange-500 dark:!bg-orange-500 dark:!text-orange-100"
                 >
                     <span>#{tag}</span>

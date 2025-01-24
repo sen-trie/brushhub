@@ -11,7 +11,6 @@
     let openTagOnly = $state(false);
     let commercialUseOnly = $state(false);
     let tags: string[] = $state([]);
-    let tagInput = $state('');
 
     let artDB = $derived(
         pullDB(
@@ -46,27 +45,6 @@
         )
     );
 
-    function addTag() {
-        if (tagInput.trim().toLowerCase()) {
-            const newTag = pullDB(
-                'tags',
-                {},
-                {
-                    name: (obj: any) => obj.name.toLowerCase() === tagInput
-                }
-            );
-
-            if (newTag) {
-                tags = [...tags, newTag?.name];
-                tagInput = '';
-            }
-        }
-    }
-
-    function removeTag(tag: string) {
-        tags = tags.filter((x) => x !== tag);
-    }
-
     function clearFilters() {
         openTagOnly = false;
         commercialUseOnly = false;
@@ -78,7 +56,7 @@
     <title>BrushHub</title> 
 </svelte:head>
 
-<div class="flex card-island min-h-full">
+<div class="flex flex-col-reverse sm:flex-row card-island min-h-full sm:space-x-8">
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
             <button
@@ -104,12 +82,13 @@
                 </button>
             {/if}
         </div>
-        <div>
-            <Browse {artDB} />
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <Browse {artDB}/>
         </div>
     </div>
     <div
-        class="filter-panel sticky top-6 ml-8 h-96 w-72 pt-4"
+        class="filter-panel sticky p-4
+                sm:top-6 sm:h-96 sm:min-w-64 sm:pt-4"
     >
         <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />
@@ -128,7 +107,9 @@
         <div>
             <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="mb-2 block text-sm font-semibold">Tags</label>
-            <SearchTags bind:currentTags={tags} slim={true} />
+            <div class="max-w-64">
+                <SearchTags bind:currentTags={tags} slim={true} />
+            </div>
         </div>
     </div>
 </div>

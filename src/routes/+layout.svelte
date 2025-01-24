@@ -26,7 +26,7 @@
                 <div class="child-div flex-1 mb-4">
                     {@render children()}
                 </div>
-                <footer class="text-center text-gray-400 text-sm pb-2">
+                <footer class="text-center text-gray-400 text-sm pb-4 sm:pb-2">
                     © {new Date().getFullYear()} sentrie. All rights reserved. Demonstration purposes only
                 </footer>
             </div>

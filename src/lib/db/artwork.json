@@ -6,7 +6,7 @@
         "tags": ["anime", "illustration"],
         "datePosted": "2024-01-01T10:00:00Z",
         "title": "Anime Character Illustration",
-        "description": "A vibrant anime-style character illustration showcasing detailed shading and dynamic poses."
+        "description": ""
     },
     {
         "id": 2,
@@ -43,5 +43,284 @@
         "datePosted": "2024-01-05T16:00:00Z",
         "title": "Fantasy World Design",
         "description": "A breathtaking fantasy world design blending anime aesthetics with 3D elements."
+    },
+    {
+        "id": 6,
+        "artist": 3,
+        "imgSrc": "dorain1.webp",
+        "tags": ["concept art", "character", "illustration"],
+        "datePosted": "2024-02-05T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 7,
+        "artist": 3,
+        "imgSrc": "dorain2.webp",
+        "tags": ["concept art", "character", "illustration"],
+        "datePosted": "2024-03-05T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 8,
+        "artist": 3,
+        "imgSrc": "dorain3.webp",
+        "tags": ["concept art", "illustration"],
+        "datePosted": "2024-01-15T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 9,
+        "artist": 3,
+        "imgSrc": "dorain4.webp",
+        "tags": ["concept art", "illustration"],
+        "datePosted": "2024-11-15T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 10,
+        "artist": 3,
+        "imgSrc": "dorain5.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-11-15T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 11,
+        "artist": 3,
+        "imgSrc": "dorain6.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-08-13T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 12,
+        "artist": 3,
+        "imgSrc": "dorain7.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-02-25T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 13,
+        "artist": 3,
+        "imgSrc": "dorain8.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-05-21T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 14,
+        "artist": 3,
+        "imgSrc": "dorain9.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-05-21T16:00:00Z",
+        "title": "Dorain",
+        "description": ""
+    },
+    {
+        "id": 15,
+        "artist": 3,
+        "imgSrc": "dragon1.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-05-21T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 16,
+        "artist": 3,
+        "imgSrc": "dragon2.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-05-11T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 17,
+        "artist": 3,
+        "imgSrc": "dragon3.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-11-01T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 18,
+        "artist": 3,
+        "imgSrc": "dragon4.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-06-01T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 19,
+        "artist": 3,
+        "imgSrc": "dragon5.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-10-01T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 20,
+        "artist": 3,
+        "imgSrc": "dragon6.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-10-11T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 21,
+        "artist": 3,
+        "imgSrc": "dragon7.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-09-04T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 22,
+        "artist": 3,
+        "imgSrc": "dragon8.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-03-04T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 23,
+        "artist": 3,
+        "imgSrc": "dragon9.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-03-04T16:00:00Z",
+        "title": "The Dragon's Librarian",
+        "description": ""
+    },
+    {
+        "id": 24,
+        "artist": 3,
+        "imgSrc": "lab1.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-03-04T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 25,
+        "artist": 3,
+        "imgSrc": "lab2.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-10-04T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 26,
+        "artist": 3,
+        "imgSrc": "lab3.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-09-12T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 27,
+        "artist": 3,
+        "imgSrc": "lab4.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-10-24T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 28,
+        "artist": 3,
+        "imgSrc": "lab5.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-04-12T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 29,
+        "artist": 3,
+        "imgSrc": "lab6.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-02-24T16:00:00Z",
+        "title": "Lab Escape",
+        "description": ""
+    },
+    {
+        "id": 30,
+        "artist": 3,
+        "imgSrc": "robyn1.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-07-24T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 31,
+        "artist": 3,
+        "imgSrc": "robyn2.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-02-24T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 32,
+        "artist": 3,
+        "imgSrc": "robyn3.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-06-24T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 33,
+        "artist": 3,
+        "imgSrc": "robyn4.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-07-22T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 34,
+        "artist": 3,
+        "imgSrc": "robyn5.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-02-14T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 35,
+        "artist": 3,
+        "imgSrc": "robyn6.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-03-24T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
+    },
+    {
+        "id": 36,
+        "artist": 3,
+        "imgSrc": "robyn7.webp",
+        "tags": ["concept art", "character"],
+        "datePosted": "2024-03-14T16:00:00Z",
+        "title": "Robyn",
+        "description": ""
     }
 ]

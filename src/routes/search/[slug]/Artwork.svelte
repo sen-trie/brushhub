@@ -9,4 +9,6 @@
     });
 </script>
 
-<Browse {artDB} />
+<div class="grid grid-cols-4 gap-4">
+    <Browse {artDB} />
+</div>

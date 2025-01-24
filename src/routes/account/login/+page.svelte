@@ -21,7 +21,7 @@
 )}
     <button
         onclick={() => handleLogin(profileIndex)}
-        class="card-container flex max-w-[30%] flex-1 flex-col items-center justify-center group"
+        class="card-container flex sm:max-w-[30%] flex-1 flex-col items-center justify-center group"
     >
         <img
             src={getSingle('dp', profileImage)}
@@ -41,7 +41,7 @@
     <h1 class="mb-2 text-center text-3xl font-bold">BrushHub Profiles</h1>
     <p class="mb-6 text-center">Choose a profile to sign in:</p>
     
-    <div class="flex flex-row justify-around gap-4">
+    <div class="flex flex-col sm:flex-row justify-around gap-4">
         {@render signButton(1, 'Artist', '1.jpg', 'Manage your commissions')}
         {@render signButton(2, 'Commissioner', '3.png', 'Request and track services')}
         {@render signButton(0, 'Guest', '3.png', 'Browse as a guest')}

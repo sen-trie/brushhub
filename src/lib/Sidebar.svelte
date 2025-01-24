@@ -83,7 +83,8 @@
         onclick={(e) => stopPropagation(e)}
         transition:fly={{ x: -300, duration: 300 }}
     >
-        <button onclick={() => toggleSidebar} class="flex w-full items-center justify-center hover:text-orange-500"
+        <button onclick={() => toggleSidebar} class="flex w-full items-center justify-center hover:text-orange-500
+                                                    text-2xl sm:text-lg"
             >☰
         </button>
         <ul class="mt-6 w-full space-y-4">
@@ -131,13 +132,5 @@
         background: rgba(0, 0, 0, 0.5);
         cursor: auto;
         z-index: 500;
-    }
-
-    .icon-transition {
-        transition: fill 0.3s ease;
-    }
-
-    button:hover .icon-transition {
-        fill: orange;
     }
 </style>

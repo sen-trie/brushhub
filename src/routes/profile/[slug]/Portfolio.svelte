@@ -50,7 +50,9 @@
             Upload New Artworks
         </button>
     {/if}
-    <Browse {artDB} showArtist={false} />
+    <div class="grid grid-cols-4 gap-4">
+        <Browse {artDB} showArtist={false} />
+    </div>
 </div>
 
 {#if uploadStep === 1}
