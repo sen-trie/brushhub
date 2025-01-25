@@ -49,7 +49,7 @@
                     <div class="flex flex-col items-start">
                         <h1 class="page-title">{request.service.title}</h1>
                         <button
-                            class="text-l text-gray-500 underline"
+                            class="text-l underline"
                             onclick={() =>
                                 navigateTo(
                                     `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
@@ -62,10 +62,10 @@
                         </button>
                     </div>
                     <div>
-                        <p class="text-lg text-gray-500 
-                                {request.state.value === 'active' ? 'text-green-500' : ''} 
-                                {request.state.value === 'rejected' ? 'text-red-500' : ''}
-                                {request.state.value === 'pending' ? 'text-yellow-500' : ''}
+                        <p class="text-lg text-center
+                                {request.state.value === 'active' ? '!text-green-500' : ''} 
+                                {request.state.value === 'rejected' ? '!text-red-500' : ''}
+                                {request.state.value === 'pending' ? '!text-yellow-500' : ''}
                         mr-4">
                             State:
                             {request.state.value === 'pending'

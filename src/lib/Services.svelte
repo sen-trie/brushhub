@@ -71,7 +71,7 @@
                     <span
                         class="rounded px-2 py-1 text-xs font-medium orange-tag"
                     >
-                        Commercial
+                        Commercial Use
                     </span>
                 {/if}
             </div>

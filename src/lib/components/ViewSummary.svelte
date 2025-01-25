@@ -9,53 +9,52 @@
     const commissionChoice = request;
 </script>
 
-<div>
+<div class="view-summary">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
         <!-- Left Section -->
         <div>
             <div class="mb-4 flex justify-between">
-                <span class="font-medium text-gray-700">Type:</span>
-                <span class="font-medium text-gray-900">{request.type}</span>
+                <span class="font-medium ">Type:</span>
+                <span class="font-medium ">{request.type}</span>
             </div>
             <div class="mb-4 flex justify-between">
-                <span class="font-medium text-gray-700">Extras:</span>
+                <span class="font-medium ">Extras:</span>
                 <div class="text-right">
                     {#each request.extras as extra}
-                        <span class="font-medium text-gray-900">{extra}</span>
+                        <span class="font-medium ">{extra}</span>
                     {:else}
-                        <p class="text-gray-500">No extras selected.</p>
+                        <p class="">No extras selected.</p>
                     {/each}
                 </div>
             </div>
             <div class="mb-4">
-                <span class="block font-medium text-gray-700">Brief:</span>
+                <span class="block font-medium ">Brief:</span>
                 <textarea
                     readonly
                     rows="5"
-                    class="mt-1 w-full rounded-md border-gray-300 bg-gray-100 min-h-32
-                           p-2 shadow-sm focus:border-gray-300 focus:ring-0 sm:text-sm"
+                    class="mt-1 w-full rounded-md entry min-h-32
+                           p-2 shadow-sm  sm:text-sm"
                     >{commissionChoice.brief}
                 </textarea>
             </div>
             <div class="mb-4 flex justify-between">
-                <span class="font-medium text-gray-700">Deadline:</span>
-                <span class="font-medium text-gray-900">
+                <span class="font-medium ">Deadline:</span>
+                <span class="font-medium text-">
                     {commissionChoice.deadline}
                     [{dueDeadline(commissionChoice.deadline)}]
                 </span>
             </div>
             {#if commissionChoice.commercialUse || commissionChoice.fastDelivery}
                 <div class="flex justify-between">
-                    <!-- TODO ADD IN SERVICES -->
-                    <span class="font-medium text-gray-700">Add-in Services:</span>
+                    <span class="font-medium ">Add-in Services:</span>
                     <div class="flex flex-col text-right">
                         {#if commissionChoice.commercialUse}
-                            <span class="font-medium text-gray-900">
+                            <span class="font-medium ">
                                 Commercial Use Allowed
                             </span>
                         {/if}
                         {#if commissionChoice.fastDelivery}
-                            <span class="font-medium text-gray-900">
+                            <span class="font-medium ">
                                 Fast Delivery ({selectedService.fastDelivery.duration} {selectedService.fastDelivery.unit}) 
                             </span>
                         {/if}
@@ -67,7 +66,7 @@
 
         <!-- Right Section -->
         <div>
-            <span class="mb-2 block font-medium text-gray-700">References:</span>
+            <span class="mb-2 block font-medium ">References:</span>
             <div class="grid grid-cols-3 gap-2">
                 {#each commissionChoice.images as ref}
                     <img

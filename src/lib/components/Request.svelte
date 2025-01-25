@@ -40,7 +40,7 @@
     <td class="px-4 py-2">
         <div class="flex flex-col">
             <span class="font-semibold">{request.service.title}</span>
-            <span class="text-xs text-gray-500">{currentArtist?.displayName}</span>
+            <span class="text-xs">{currentArtist?.displayName}</span>
         </div>
     </td>
     <td class="px-4 py-2">{request.type}</td>
@@ -63,7 +63,7 @@
     </td>
     <td class="px-4 py-2">
         <button
-            class="apply-button rounded-full bg-orange-500 p-3 px-6 text-white"
+            class="apply-button rounded-full bg-orange-500 p-3 px-6"
             onclick={() => {
                 openRequest(request);
             }}>View Details</button
