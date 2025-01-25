@@ -125,14 +125,14 @@
         <div class="right-column flex w-full flex-col gap-6 md:w-3/4">
             <div class="featured-artworks card-container">
                 <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
-                <div class="grid grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <Browse {artDB} showArtist={false} />
                 </div>
             </div>
 
             <div class="services card-container">
                 <h3 class="text-lg font-semibold">Services</h3>
-                <div class="service-grid mt-4 grid grid-cols-2 gap-4">
+                <div class="service-grid mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Services {serviceDB}/>
                 </div>
                 {#if serviceDB.length === 0}

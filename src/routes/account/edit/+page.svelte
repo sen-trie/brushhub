@@ -183,7 +183,7 @@
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div>
                 <label for="languages" class="block text-sm font-medium heading">Languages</label>
-                <div class="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm">
+                <div class="mt-1 block w-full rounded-md border entry bg-white p-2 shadow-sm">
                     <div class="flex flex-wrap gap-2">
                         {#each profileInfo.languages as language, index}
                             <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
@@ -271,7 +271,8 @@
         </div>
     </div>
 
-    <div class="mt-6 flex justify-between space-x-4 items-center">
+    <div class="flex justify-between space-x-4 items-center
+                mt-4 sm:mt-6 flex-col sm:flex-row space-y-4">
         <p class="text-sm sub-heading">
             *Disclaimer: Since no database is being used, some information like images and usernames is not retained after saving.
         </p>

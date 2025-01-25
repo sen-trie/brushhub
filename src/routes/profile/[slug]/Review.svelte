@@ -13,7 +13,7 @@
     }));
 </script>
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     {#each filterDB as review}
         <div class="card-container flex flex-col gap-4">
             <div class="flex items-center gap-1">

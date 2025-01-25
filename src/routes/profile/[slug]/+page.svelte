@@ -41,12 +41,13 @@
         alt={artist.coverImage}
         class="h-52 w-full object-cover"
     />
-    <div class="header-section mt-4 flex justify-between items-center text-black screen-padding-x">
+    <div class="header-section mt-4 flex justify-between text-black screen-padding-x
+                flex-col sm:flex-row items-start sm:items-center ml-4 sm:ml-0">
         <div class="profile-info flex items-center">
             <img
                 src={getSingle('dp', artist.avatar)}
                 alt={artist.displayName}
-                class="h-32 w-32 rounded-full object-cover"
+                class="h-24 w-24 sm:h-32 sm:w-32 rounded-full object-cover"
             />
 
             <div class="ml-6 space-y-2">
@@ -65,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="{artist.tags.length > 0 ? "mb-2" : ""} flex flex-wrap gap-2">
+        <div class="{artist.tags.length > 0 ? "sm:mb-2" : ""} flex flex-wrap gap-2 mt-4 sm:mt-0">
             {#each artist.tags as tag, index}
                 <div
                     class="items-center space-x-1 rounded orange-tag px-2 py-1 flex
