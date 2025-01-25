@@ -78,16 +78,16 @@
         </div>
         <div>    
             <p>Creators</p>
-            <div class="grid grid-cols-4 gap-4 p-2">
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 p-2">
                 {#each creatorArray as creator}
                     {@render card(creator)}
                 {/each}
             </div>
         </div>
         <div>    
-            <p>Tech Stack</p>
-            <p class="text-base font-normal">Developed using Svelte 5 and Tailwind. 
-                The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>.
+            <p>Additional Info</p>
+            <p class="text-base font-normal">Developed using Svelte 5, Typescript and Tailwind. 
+                The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>. All images and artwork was taken with permission from their respective artists.
             </p>
         </div>
     </div>

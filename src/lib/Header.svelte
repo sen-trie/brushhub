@@ -42,11 +42,6 @@
             iconClass: 'fas fa-cog',
             action: () => navigateHeader('/settings')
         },
-        {
-            name: 'About',
-            iconClass: 'fas fa-question-circle',
-            action: () => navigateHeader('/about')
-        }
     ];
 
     function toggleDropdown() {

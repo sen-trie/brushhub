@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/state';
     import { getSingle } from '$lib/db';
+    import { navigateTo } from '$lib/util';
 </script>
 
 <svelte:head>
@@ -14,5 +15,5 @@
         class="h-80 w-full object-contain"
     />
     <h1 class="text-3xl">{page.status}: {page.error?.message}</h1>
-    <button class="text-xl confirm-button" onclick={() => window.history.back()}>Return To Previous Page</button>
+    <button class="text-xl confirm-button" onclick={() => navigateTo('/', page.url.pathname)}>Return Home</button>
 </div>

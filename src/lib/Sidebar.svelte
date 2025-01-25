@@ -1,7 +1,7 @@
 <script lang="ts">
     import {
         Icon, Cog, Home, BuildingStorefront, User, ArrowLeftStartOnRectangle,
-        ArrowLeftEndOnRectangle, InboxStack, PaintBrush
+        ArrowLeftEndOnRectangle, InboxStack, PaintBrush, QuestionMarkCircle
     } from 'svelte-hero-icons';
     import { fly, fade } from 'svelte/transition';
     import { navigateTo, stopPropagation } from '$lib/util';
@@ -47,6 +47,11 @@
             name: 'Settings',
             path: './settings',
             src: Cog
+        },
+        {
+            name: 'About',
+            path: './about',
+            src: QuestionMarkCircle
         }
     ];
 
