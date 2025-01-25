@@ -3,7 +3,7 @@
     let openState = $state(false);
 </script>
 
-<div class="flex items-center justify-between rounded-lg border p-4 shadow">
+<div class="entry flex items-center justify-between rounded-lg border p-4 shadow">
     {#if unique}
         <button class="mr-4 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
             >Remove</button
@@ -14,7 +14,8 @@
             id="checkbox-enabled"
             placeholder={tab.enabled}
             bind:checked={tab.enabled}
-            class="mr-4 h-4 w-4 text-orange-500 focus:ring-orange-500"
+            class="mr-4 h-4 w-4 text-orange-500 focus:ring-orange-500
+                   {openState ? 'hidden sm:visible' : ''}"
         />
     {/if}
 

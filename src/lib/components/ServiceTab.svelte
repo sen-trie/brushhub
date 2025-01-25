@@ -6,21 +6,22 @@
 
 {#snippet closeButton(text: String)}
     <button
-        class="absolute right-2  hover:text-orange-500"
+        class="absolute right-2 hover:text-orange-500 underline"
         onclick={() => (openState = !openState)}
     >
         {text}
     </button>
 {/snippet}
 
-<div class="flex items-center justify-between rounded-lg border p-4 shadow">
-    <button class="mr-4 text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
+<div class="flex items-center justify-between rounded-lg border p-4 shadow entry">
+    <button class="mr-4 {openState ? 'hidden sm:visible' : ''} 
+                    text-red-500 hover:text-red-700" onclick={removeSelf}>Remove</button>
     {#if !openState}
         <div class="relative grow">
             {@render closeButton('Edit')}
             <div class="flex flex-col gap-2">
                 {#if tab.name}
-                    <h3 class="text-lg font-bold">{tab.name}</h3>
+                    <h3 class="text-lg font-bold max-w-32 xs:max-w-3xl">{tab.name}</h3>
                 {:else}
                     <i class="fas text-lg font-bold">(Missing Name)</i>
                 {/if}
@@ -54,7 +55,8 @@
                         type="text"
                         placeholder={tab.name}
                         bind:value={tab.name}
-                        class="mt-1 block w-1/2 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="mt-1 block w-3/4 sm:w-1/2 
+                              rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
                 </div>
                 <div>
@@ -65,7 +67,8 @@
                             type="number"
                             placeholder={tab.price}
                             bind:value={tab.price}
-                            class="mt-1 block w-1/2 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="mt-1 block w-3/4 sm:w-1/2 
+                                    rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
                         {#if extra === true}
                             <select

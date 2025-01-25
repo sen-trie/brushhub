@@ -52,7 +52,7 @@
             <MilestoneTab {tab} removeSelf={() => removeTab(index)} />
         {/each}
 
-        <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow">
+        <div class="mb-4 flex items-center justify-between rounded-lg border p-4 shadow entry">
             <div class="relative grow">
                 <div class="flex flex-col">
                     <h3 class="text-lg font-bold">Final Work</h3>

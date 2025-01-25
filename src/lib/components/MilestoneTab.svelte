@@ -3,9 +3,11 @@
     let openState = $state(false);
 </script>
 
-<div class="flex items-center justify-between rounded-lg border p-4 shadow">
+<div class="flex items-center justify-between rounded-lg border p-4 shadow entry">
     {#if !downpayment}
-        <button class="mr-6 text-red-500 hover:text-red-700" onclick={() => removeSelf()}
+        <button class="mr-6 text-red-500 hover:text-red-700
+                       {openState ? "hidden sm:visible" : ""}" 
+            onclick={() => removeSelf()}
             >Remove</button
         >
     {/if}
@@ -13,7 +15,7 @@
     {#if !openState}
         <div class="relative grow">
             <button
-                class="absolute right-2 top-2 hover:text-orange-500"
+                class="absolute right-2 top-0 sm:top-2 hover:text-orange-500 underline"
                 onclick={() => (openState = !openState)}
             >
                 Edit
@@ -34,9 +36,9 @@
                         </p>
                     </h3>
                 {:else if downpayment}
-                    <h3 class="text-lg font-bold ">
+                    <h3 class="text-lg font-bold">
                         Down Payment
-                        <p class="text-sm font-medium ">
+                        <p class="text-sm font-medium">
                             {tab.payment.enabled
                                 ? `Pay ${tab.payment.value}%`
                                 : 'No Down Payment Required'}
@@ -50,7 +52,7 @@
     {:else}
         <div class="relative grow">
             <button
-                class="absolute right-2 top-2 hover:text-orange-500"
+                class="absolute right-2 top-0 sm:top-2 hover:text-orange-500 underline"
                 onclick={() => (openState = !openState)}
             >
                 Close
@@ -60,6 +62,7 @@
                     {#if downpayment}
                         <h3 class="text-lg font-bold">Down Payment</h3>
                     {:else}
+                        <!-- svelte-ignore a11y_label_has_associated_control -->
                         <label class="block text-sm font-medium">Name*</label>
                         <input
                             type="text"
@@ -87,11 +90,13 @@
                             max="100"
                             placeholder={tab.duration.value}
                             bind:value={tab.duration.value}
-                            class="ml-2 w-24 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="ml-2 w-16 sm:w-24 
+                                  rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         />
                         <select
                             bind:value={tab.duration.unit}
-                            class="ml-2 w-32 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="ml-2 w-28 sm:w-32 
+                                  rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                         >
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
@@ -118,7 +123,8 @@
                         onchange={() => {
                             tab.payment.value = Math.min(100, Math.max(0, tab.payment.value));
                         }}
-                        class="ml-2 w-24 rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                        class="ml-2 w-16 sm:w-24 
+                              rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                     />
                     <span class="ml-1 text-sm">%</span>
                 </div>

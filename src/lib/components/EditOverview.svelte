@@ -75,13 +75,14 @@
             class="hidden"
             onchange={(e) => handleImageUpload(e, 'thumbnail')}
         />
-        <div class="flex flex-row justify-center items-center">
+        <div class="flex flex-col sm:flex-row justify-center items-center">
             <img
                 src={wrapDefault('thumbnail', selectedService.thumbnail)}
                 alt="thumbnail"
                 class="w-full rounded-md object-contain flex-1 h-48"
             />
-            <div class="flex flex-1 content-center flex-col space-y-2">
+            <div class="flex flex-1 content-center flex-row 
+                        mt-3 sm:mt-0 space-x-4 sm:space-x-0 sm:flex-col sm:space-y-2">
                 <label
                     for="upload-thumbnail"
                     class="cursor-pointer rounded bg-orange-500 px-4 py-2 
