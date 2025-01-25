@@ -22,7 +22,7 @@
     {#if !openState}
         <div class="relative grow">
             <button
-                class="absolute right-2 hover:text-orange-500"
+                class="absolute right-2 hover:text-orange-500 underline"
                 onclick={() => (openState = !openState)}
             >
                 Edit
@@ -64,7 +64,8 @@
                 <textarea
                     id="brief"
                     rows="3"
-                    class="mt-1 block w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                    class="mt-1 block w-full rounded-md min-h-64 sm:min-h-32
+                            entry shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
                     placeholder={tab.details}
                     bind:value={tab.details}
                 ></textarea>

@@ -69,7 +69,7 @@
     };
 </script>
 
-<div class="mb-4 card-container px-6">
+<div class="mb-4 card-container px-2 sm:px-6 overflow-x-auto">
     <Timeline {nodeTimeline} currentIndex={tabIndex} callback={changeIndex} />
 </div>
 <div class="card-container px-6">
@@ -83,3 +83,7 @@
     <CommissionButtons {goToPreviousStep} {proceedToNextStep} backwards={'Previous Step'}
     forwards={'Next Step'} indexes={[tabIndex, MAX_TABS]}/>
 </div>
+
+
+<style>
+</style>

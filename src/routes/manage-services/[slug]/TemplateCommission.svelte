@@ -31,6 +31,7 @@
     };
 
     const publishDraft = () => {
+        newService.isOpen = true;
         newService.state = "published";
         addEntry(newService);
         closeEdit();

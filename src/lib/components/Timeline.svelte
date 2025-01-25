@@ -17,7 +17,8 @@
             {/if}
         </div>
         <p
-            class="mt-2 text-sm font-medium
+            class="mt-2 text-sm font-medium text-center 
+                    {currentIndex === index ? 'text-orange-500' : ''}
               {passedNode(index, 'text')}
         "
         >
@@ -25,14 +26,17 @@
         </p>
     </div>
     {#if index !== nodeTimeline.length - 1}
-        <div class="mx-2 h-1 flex-1 {passedNode(index, 'bg')}"></div>
+        <div class="mx-2 w-12 h-1 flex-1 {passedNode(index, 'bg')}"></div>
     {/if}
 {/snippet}
 
-<div class="flex w-full items-center">
-    <div class="relative flex w-full items-center">
+<div class="flex items-center">
+    <div class="relative flex items-center ">
         {#each nodeTimeline as milestone, index}
             {@render circleNode(index)}
         {/each}
     </div>
 </div>
+
+<style>
+</style>
