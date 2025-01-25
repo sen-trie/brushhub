@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { Component } from 'svelte';
     import type { Service, CommissionChoice } from '$lib/types';
+    import { navigateTo } from './util';
+    import { page } from '$app/state';
     import CommissionOverview from '$lib/components/CommissionOverview.svelte';
     import CommissionBrief from '$lib/components/CommissionBrief.svelte';
     import CommissionCheckout from '$lib/components/CommissionCheckout.svelte';
@@ -81,7 +83,8 @@
             progress += 1;
         } else if (progress === steps.length - 1) {
             alert("Request Submitted!");
-            closePlaceCommission();
+            navigateTo('/profile/' + currentArtist.username, page.url.pathname);
+            
         }
     }
 
@@ -94,19 +97,19 @@
     }
 </script>
 
-<div class="fixed inset-0 z-50 overflow-y-auto">
-    <div class="relative !bg-gray-100 dark:!bg-stone-900 h-full">
+<div class="fixed inset-0 z-50 overflow-y-auto min-h-full">
+    <div class="h-full relative !bg-gray-100 dark:!bg-stone-900">
         <div
-            class="mb-4 flex w-full justify-between border-b-2 pt-4 pb-2
-            colour-border px-2 sm:px-6 md:px-8 lg:px-10"
+            class="mb-4 flex w-full justify-between border-b-2 
+            pt-4 pb-2 colour-border px-6 sm:px-6 md:px-8 lg:px-10"
         >
             <BackButtonArrow closeEdit={closePlaceCommission} buttonText="Place Commission Request" />
         </div>
         <div class="px-2 sm:px-6 md:px-10 lg:px-16 !bg-gray-100 dark:!bg-stone-900 pb-6">
             <div class="card-container px-6">
                 <div class="space-y-2">
-                    <h1 class="text-3xl font-bold">{selectedService.title}</h1>
-                    <p class="text-sm">{currentArtist.displayName}</p>
+                    <h1 class="text-2xl font-bold">{selectedService.title}</h1>
+                    <p class="text-normal">@{currentArtist.displayName}</p>
                 </div>
 
                 {#each steps as { component: Component, backwards, forwards }, index}

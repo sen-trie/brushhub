@@ -20,7 +20,8 @@
     };
 </script>
 
-<div class="flex justify-between colour-border">
+<div class="flex flex-col sm:flex-row justify-between colour-border
+            space-y-2 sm:space-y-0">
     <div class="flex flex-col justify-center">
         <div class="flex items-center space-x-4">
             <h1 class="text-2xl font-bold">{selectedService.title || 'Missing Title'}</h1>
@@ -34,7 +35,7 @@
                 </span>
             {/if}
         </div>
-        <p class="text-sm">{currentArtist.displayName}</p>
+        <p class="text-sm">@{currentArtist.displayName}</p>
     </div>
     <div class="flex max-w-lg flex-wrap items-center gap-2">
         {#if selectedService.tags.length === 0 && viewOnly}
@@ -50,6 +51,7 @@
     </div>
 </div>
 
+<h2 class="mt-4 -mb-2 visible sm:hidden text-lg font-bold">Available Add-ons</h2>
 <div class="mt-4 flex flex-wrap items-center gap-2">
     {#if selectedService.fastDelivery.enabled}
         <span class="rounded px-2 py-1 text-xs font-medium yellow-tag">
@@ -58,14 +60,14 @@
     {/if}
     {#if selectedService.commercialUse.enabled}
         <span class="rounded px-2 py-1 text-xs font-medium orange-tag">
-            Commercial
+            Commercial Use
         </span>
     {/if}
 </div>
 
 <h2 class="mt-4 text-lg font-bold">Samples</h2>
 <div class="mt-2">
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <Browse {artDB} showArtist={false} {artViewOnly}/>
     </div>
 </div>

@@ -13,9 +13,11 @@
 </script>
 
 <div class="pt-6">
-    <Milestone {selectedService} />
+    <div class="overflow-x-auto pb-4 sm:pb-0">
+        <Milestone {selectedService} />
+    </div>
 
-    <div class="mt-6 grid grid-cols-2 gap-6">
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 sm:gap-6">
         <!-- Left Section -->
         <div>
             <div class="mb-4 flex justify-between">
@@ -88,13 +90,14 @@
 
             <div class="mt-6">
                 <label for="payment-method" class="mb-2 block font-medium"
-                    >Method</label
+                    >Payment Method</label
                 >
                 <select
                     id="payment-method"
                     class="mt-1 block w-full rounded-md entry 
                             shadow-sm focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
                 >
+                    <option>BrushHub Wallet</option>
                     <option>Stripe</option>
                     <option>PayPal</option>
                     <option>Credit Card</option>
@@ -103,13 +106,14 @@
         </div>
     </div>
 
-    <div class="flex items-center justify-between">
-        <p class="text-sm">
+    <div class="flex flex-col sm:flex-row items-center justify-between">
+        <p class="text-sm mt-2 sm:mt-0">
             * Your payment will be held until the completion of commission milestones and refunded
             in case of cancellation.
         </p>
         <div class="text-right">
-            <p class="text-lg font-bold text-green-600">{calculateCurrency(finalPrice)}</p>
+            <p class="text-lg font-bold text-green-600 hidden sm:visible">Net Total: {calculateCurrency(finalPrice)}</p>
         </div>
     </div>
+    <p class="mt-2 text-right text-lg font-bold text-green-600 visible sm:hidden">Net Total: {calculateCurrency(finalPrice)}</p>
 </div>

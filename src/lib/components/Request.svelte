@@ -11,10 +11,12 @@
         date: ''
     });
 
+
     switch (request.state.value) {
         case 'active':
             currentStage = 'Active';
             milestone = request.state.progress.find((prog: any) => prog.date !== null);
+            milestone ??=  request.state.progress[0];
             break;
         case 'cancelled':
             currentStage = 'Cancelled';

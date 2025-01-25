@@ -11,4 +11,6 @@
     * Your money will be held and paid to the artist as per the completion of milestones.
 </p>
 
-<Milestone selectedService={request.service} currentService={request.state} />
+<div class="overflow-x-auto">
+    <Milestone selectedService={request.service} currentService={request.state} />
+</div>

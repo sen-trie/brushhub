@@ -92,7 +92,7 @@
     });
 </script>
 
-<div class="grid grid-cols-2 gap-6 pt-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-6">
     <div>
         <div class="mb-4">
             <label for="type" class="block text-sm font-medium">Type *</label>
@@ -134,7 +134,7 @@
 
         <div class="mb-4">
             <label for="brief" class="block text-sm font-medium"
-                >Brief * ({MAX_BRIEF_LENGTH - uploadedBrief.length} characters left)</label
+                >Brief* ({MAX_BRIEF_LENGTH - uploadedBrief.length} characters left)</label
             >
             <textarea
                 id="brief"
@@ -167,7 +167,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="deadline" class="block text-sm font-medium">Deadline *</label>
+            <label for="deadline" class="block text-sm font-medium">Deadline*</label>
             <input
                 id="deadline"
                 type="date"
@@ -177,7 +177,7 @@
             />
         </div>
 
-        <p class="mt-4 text-lg font-bold text-green-600">{calculateCurrency(price)}</p>
+        <p class="hidden sm:visible mt-4 text-lg font-bold text-green-600">Net Total: {calculateCurrency(price)}</p>
     </div>
 
     <div>
@@ -186,6 +186,7 @@
     </div>
 
     {#if warningMessage}
-        <p class="-mt-4 text-sm text-red-500">{warningMessage}</p>
+        <p class="sm:-mt-4 text-sm text-red-500">{warningMessage}</p>
     {/if}
+    <p class="visible sm:hidden text-lg text-right font-bold text-green-600">Net Total: {calculateCurrency(price)}</p>
 </div>

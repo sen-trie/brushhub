@@ -61,8 +61,8 @@
     {/if}
 {/snippet}
 
-<div class="flex w-full items-center">
-    <div class="relative flex w-full items-center">
+<div class="flex items-center text-center">
+    <div class="relative flex items-center">
         <div class="flex flex-col items-center">
             {@render circleNode()}
             {#if selectedService.downpayment.payment.enabled === false}
@@ -77,7 +77,7 @@
             {/if}
         </div>
 
-        <div class="mx-2 h-1 flex-1 !bg-orange-500"></div>
+        <div class="mx-2 w-64 h-1 flex-1 !bg-orange-500"></div>
 
         {#each selectedService.milestones as milestone, index}
             <div class="flex flex-col items-center">

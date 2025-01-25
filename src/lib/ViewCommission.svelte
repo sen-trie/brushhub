@@ -35,15 +35,15 @@
     ];
 </script>
 
-<div class="fixed inset-0 z-50 overflow-y-auto bg-white">
-    <div class="relative p-6">
+<div class="fixed inset-0 z-50 overflow-y-auto min-h-full">
+    <div class="h-full relative !bg-gray-100 dark:!bg-stone-900">
         <div
-            class="mb-4 flex w-full justify-between border-b-2 p-4 px-2
-            pt-0 sm:px-4 md:px-6 lg:px-8"
+            class="mb-4 flex w-full justify-between border-b-2 
+            pt-4 pb-2 colour-border px-6 sm:px-6 md:px-8 lg:px-10"
         >
             <BackButtonArrow closeEdit={closeRequest} buttonText="View Commission Request" />
         </div>
-        <div class="px-2 sm:px-6 md:px-10 lg:px-16">
+        <div class="px-2 sm:px-6 md:px-10 lg:px-16 !bg-gray-100 dark:!bg-stone-900 pb-6">
             <div class="card-container">
                 <div class="flex mb-4 justify-between items-center">
                     <div class="flex flex-col items-start">
@@ -80,7 +80,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="px-4">
+                <div class="sm:px-4">
                     {#if !newRequestView}
                         <Tabs {items} />
                     {:else}

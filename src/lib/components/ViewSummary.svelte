@@ -10,7 +10,7 @@
 </script>
 
 <div>
-    <div class="grid grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
         <!-- Left Section -->
         <div>
             <div class="mb-4 flex justify-between">
@@ -32,7 +32,8 @@
                 <textarea
                     readonly
                     rows="5"
-                    class="mt-1 w-full rounded-md border-gray-300 bg-gray-100 p-2 shadow-sm focus:border-gray-300 focus:ring-0 sm:text-sm"
+                    class="mt-1 w-full rounded-md border-gray-300 bg-gray-100 min-h-32
+                           p-2 shadow-sm focus:border-gray-300 focus:ring-0 sm:text-sm"
                     >{commissionChoice.brief}
                 </textarea>
             </div>
@@ -43,15 +44,25 @@
                     [{dueDeadline(commissionChoice.deadline)}]
                 </span>
             </div>
-            <div class="mb-4 flex justify-between">
-                <!-- TODO ADD IN SERVICES -->
-                <span class="font-medium text-gray-700">Add-in Services:</span>
-                <!-- <span class="font-medium text-gray-900">
-                    {selectedService.addInServices.length > 0
-                        ? selectedService.addInServices.join(', ')
-                        : 'None'}
-                </span> -->
-            </div>
+            {#if commissionChoice.commercialUse || commissionChoice.fastDelivery}
+                <div class="flex justify-between">
+                    <!-- TODO ADD IN SERVICES -->
+                    <span class="font-medium text-gray-700">Add-in Services:</span>
+                    <div class="flex flex-col text-right">
+                        {#if commissionChoice.commercialUse}
+                            <span class="font-medium text-gray-900">
+                                Commercial Use Allowed
+                            </span>
+                        {/if}
+                        {#if commissionChoice.fastDelivery}
+                            <span class="font-medium text-gray-900">
+                                Fast Delivery ({selectedService.fastDelivery.duration} {selectedService.fastDelivery.unit}) 
+                            </span>
+                        {/if}
+                    </div>
+                    
+                </div>
+            {/if}
         </div>
 
         <!-- Right Section -->

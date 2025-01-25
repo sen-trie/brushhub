@@ -7,7 +7,7 @@
     const openRequest = props.openRequest;
 </script>
 
-<div class="overflow-x-auto -mt-4">
+<div class="overflow-x-auto -mt-4 whitespace-nowrap">
     <table class="border-collapse text-left">
         <thead>
             <tr class="border-b text-sm font-medium text-gray-700">

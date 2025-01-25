@@ -22,10 +22,10 @@
         if (archiveState === true) {
             service.state = "archived";
         } else {
-            service.state = "published"
+            service.state = "published";
         }
 
-        editEntry(service)
+        editEntry(service);
     }
 </script>
 

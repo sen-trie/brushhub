@@ -10,12 +10,14 @@
     );
 </script>
 
-<h2 class="mt-6 text-lg font-semibold">Milestones</h2>
+<h2 class="mt-2 sm:mt-6 text-lg font-semibold">Milestones</h2>
 <p class="mb-6 text-sm">
     * Your money will be held and paid to the artist as per the completion of milestones.
 </p>
 
-<Milestone {selectedService} />
+<div class="overflow-x-auto pb-4 sm:pb-0">
+    <Milestone {selectedService} />
+</div>
 
 <h2 class="mt-6 text-lg font-semibold">Terms of Services</h2>
 <div class="mt-4 space-y-2">

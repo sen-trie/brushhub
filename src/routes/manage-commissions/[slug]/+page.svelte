@@ -14,6 +14,10 @@
     };
 
     const editEntry = (accept: boolean, entry: any) => {
+        if (!accept && !confirm('Are you sure you want to reject this request? This action cannot be undone.')) {
+           return;
+        }
+
         const milestones = entry.service.milestones.map((milestone: any) => {
             return {
                 approval: null,
