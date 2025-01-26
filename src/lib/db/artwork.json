@@ -1,50 +1,5 @@
 [
     {
-        "id": 1,
-        "artist": 1,
-        "imgSrc": "test.jpg",
-        "tags": ["anime", "illustration"],
-        "datePosted": "2024-01-01T10:00:00Z",
-        "title": "Anime Character Illustration",
-        "description": ""
-    },
-    {
-        "id": 2,
-        "artist": 1,
-        "imgSrc": "0.png",
-        "tags": ["3d", "character"],
-        "datePosted": "2024-01-02T14:30:00Z",
-        "title": "3D Character Model",
-        "description": "A fully rendered 3D character model with realistic textures and intricate details."
-    },
-    {
-        "id": 3,
-        "artist": 2,
-        "imgSrc": "1.png",
-        "tags": ["anime"],
-        "datePosted": "2024-01-03T08:45:00Z",
-        "title": "Anime Artwork",
-        "description": "A captivating anime artwork with expressive emotions and vibrant colours."
-    },
-    {
-        "id": 4,
-        "artist": 2,
-        "imgSrc": "2.png",
-        "tags": ["illustration", "concept art"],
-        "datePosted": "2024-01-04T12:15:00Z",
-        "title": "Concept Art Illustration",
-        "description": "Concept art focusing on a futuristic cityscape with stunning lighting and atmosphere."
-    },
-    {
-        "id": 5,
-        "artist": 5,
-        "imgSrc": "3.png",
-        "tags": ["anime", "3d", "fantasy"],
-        "datePosted": "2024-01-05T16:00:00Z",
-        "title": "Fantasy World Design",
-        "description": "A breathtaking fantasy world design blending anime aesthetics with 3D elements."
-    },
-    {
         "id": 6,
         "artist": 3,
         "imgSrc": "dorain1.webp",
@@ -291,7 +246,7 @@
         "id": 33,
         "artist": 3,
         "imgSrc": "robyn4.webp",
-        "tags": ["concept art", "character"],
+        "tags": ["concept art", "character", "fantasy"],
         "datePosted": "2024-07-22T16:00:00Z",
         "title": "Robyn",
         "description": ""
@@ -327,7 +282,7 @@
         "id": 37,
         "artist": 2,
         "imgSrc": "lightning1.jpg",
-        "tags": ["character", "anime", "portrait"],
+        "tags": ["character", "anime", "portrait", "fantasy"],
         "datePosted": "2024-07-14T16:00:00Z",
         "title": "Raiden Shogun",
         "description": "Sometimes peace and quiet is all you need. Hope I can get her tmr hehe"
@@ -336,7 +291,7 @@
         "id": 38,
         "artist": 2,
         "imgSrc": "lightning13.webp",
-        "tags": ["illustration", "aesthetic"],
+        "tags": ["illustration", "aesthetic", "fantasy"],
         "datePosted": "2024-10-14T16:00:00Z",
         "title": "Chureito Pagoda",
         "description": "Not sure if i went too far from the original design hehe~"
@@ -354,7 +309,7 @@
         "id": 40,
         "artist": 2,
         "imgSrc": "lightning3.webp",
-        "tags": ["character", "anime"],
+        "tags": ["character", "anime", "fantasy"],
         "datePosted": "2024-03-24T16:00:00Z",
         "title": "Sangonomiya Kokomi",
         "description": "The wait is over my comrades, the divine priestess of watasumi island is here 🐟🐟"
@@ -430,5 +385,167 @@
         "datePosted": "2024-11-23T16:00:00Z",
         "title": "Chang Li",
         "description": "Eons of time on this vast land, all encapsulated in a humble game... I am fortunate to have you as my opponent."
+    },
+    {
+        "id": 49,
+        "artist": 1,
+        "imgSrc": "sentrie1.png",
+        "tags": ["anime", "aesthetic", "3d"],
+        "datePosted": "2024-02-01T10:00:00Z",
+        "title": "A Floating Doll",
+        "description": ""
+    },
+    {
+        "id": 50,
+        "artist": 1,
+        "imgSrc": "sentrie2.webp",
+        "tags": ["anime", "aesthetic", "3d"],
+        "datePosted": "2024-02-21T10:00:00Z",
+        "title": "Peace~",
+        "description": ""
+    },
+    {
+        "id": 51,
+        "artist": 1,
+        "imgSrc": "sentrie9.jpg",
+        "tags": ["3d", "aesthetic"],
+        "datePosted": "2024-02-21T10:00:00Z",
+        "title": "Solo Camping By the Lake",
+        "description": ""
+    },
+    {
+        "id": 52,
+        "artist": 1,
+        "imgSrc": "sentrie3.png",
+        "tags": ["3d", "anime"],
+        "datePosted": "2024-03-14T16:00:00Z",
+        "title": "Happy Postcard",
+        "description": ""
+    },
+    {
+        "id": 53,
+        "artist": 1,
+        "imgSrc": "sentrie4.png",
+        "tags": ["3d", "character", "fantasy"],
+        "datePosted": "2024-10-14T16:00:00Z",
+        "title": "SEVENTEEN",
+        "description": ""
+    },
+    {
+        "id": 54,
+        "artist": 1,
+        "imgSrc": "sentrie5.png",
+        "tags": ["3d", "anime"],
+        "datePosted": "2024-05-14T16:00:00Z",
+        "title": "Final Goodbye!",
+        "description": ""
+    },
+    {
+        "id": 55,
+        "artist": 1,
+        "imgSrc": "sentrie6.jpg",
+        "tags": ["3d", "anime"],
+        "datePosted": "2024-07-14T16:00:00Z",
+        "title": "Figured Pose",
+        "description": ""
+    },
+    {
+        "id": 55,
+        "artist": 1,
+        "imgSrc": "sentrie7.png",
+        "tags": ["3d", "anime", "character"],
+        "datePosted": "2024-04-14T16:00:00Z",
+        "title": "Guitarhero in Space",
+        "description": ""
+    },
+    {
+        "id": 56,
+        "artist": 1,
+        "imgSrc": "sentrie8.png",
+        "tags": ["3d", "character"],
+        "datePosted": "2024-04-14T16:00:00Z",
+        "title": "Incompetent Crew",
+        "description": ""
+    },
+    {
+        "id": 57,
+        "artist": 4,
+        "imgSrc": "ayy1.jpg",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-05-14T16:00:00Z",
+        "title": "Elbow",
+        "description": ""
+    },
+    {
+        "id": 58,
+        "artist": 4,
+        "imgSrc": "ayy2.jpg",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-05-14T16:00:00Z",
+        "title": "Son Heung-min",
+        "description": ""
+    },
+    {
+        "id": 59,
+        "artist": 4,
+        "imgSrc": "ayy3.jpg",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-10-14T16:00:00Z",
+        "title": "Sword girl",
+        "description": ""
+    },
+    {
+        "id": 60,
+        "artist": 4,
+        "imgSrc": "ayy4.jpg",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-10-14T16:00:00Z",
+        "title": "Serpent skirmish",
+        "description": "When all hope seemed lost, the wind spirits of her sylph ancestry surrounded her, guiding her blade and her feet to a graceful waltz across the forecastle. With her newfound strength she confronted the leviathan, and Lyra would be later known as one of the fastest and most elegant sword users in the realm."
+    },
+    {
+        "id": 61,
+        "artist": 4,
+        "imgSrc": "ayy5.webp",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-08-14T16:00:00Z",
+        "title": "Hesitant Goodbye",
+        "description": ""
+    },
+    {
+        "id": 62,
+        "artist": 4,
+        "imgSrc": "ayy6.webp",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-09-03T16:00:00Z",
+        "title": "By the tree where we promised",
+        "description": ""
+    },
+    {
+        "id": 63,
+        "artist": 4,
+        "imgSrc": "ayy7.webp",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-09-09T16:00:00Z",
+        "title": "Feora",
+        "description": ""
+    },
+    {
+        "id": 64,
+        "artist": 4,
+        "imgSrc": "ayy8.webp",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-09-09T16:00:00Z",
+        "title": "Miles",
+        "description": ""
+    },
+    {
+        "id": 64,
+        "artist": 4,
+        "imgSrc": "ayy9.webp",
+        "tags": ["handdrawn", "character"],
+        "datePosted": "2024-12-19T16:00:00Z",
+        "title": "Osko, Knight of the library",
+        "description": ""
     }
 ]

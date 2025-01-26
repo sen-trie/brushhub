@@ -10,7 +10,7 @@
     });
 </script>
 
-<div class="service-grid grid grid-cols-4 gap-4">
+<div class="service-grid grid grid-cols-1 sm:grid-cols-4 gap-4">
     <Services {serviceDB} />
 </div>
 

@@ -88,7 +88,7 @@
     >
         <div
             class="relative rounded-lg shadow-lg dark:bg-stone-800 border-2 colour-border flex 
-                     w-5/6 sm:w-1/2 p-2 sm:p-6"
+                     w-5/6 sm:w-auto sm:max-w-[90%] p-2 sm:p-6 sm:pr-16"
             role="dialog"
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
@@ -102,14 +102,14 @@
             >
                 <CloseButton size="20"/>
             </button>
-            <div class="flex flex-col sm:flex-row">
+            <div class="flex flex-col sm:flex-row justify-center">
                 <img
                     src={returnArt(selectedArt)}
                     alt="Artwork"
-                    class="h-64 w-96 rounded-md object-contain
+                    class="h-64 sm:h-[30rem] sm:max-w-[50vw] w-auto rounded-md object-contain
                            mt-2 sm:mt-0"
                 />
-                <div class="p-2 sm:p-0 ml-0 sm:ml-6 flex flex-col justify-between">
+                <div class="p-2 sm:p-0 ml-0 sm:ml-6 flex flex-col justify-between sm:max-w-[25vw] ">
                     <div>
                        <h2 class="text-xl font-bold">
                             {selectedArt.title || 'Untitled Artwork'}

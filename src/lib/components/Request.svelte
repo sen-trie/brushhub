@@ -63,7 +63,7 @@
     </td>
     <td class="px-4 py-2">
         <button
-            class="apply-button rounded-full bg-orange-500 p-3 px-6"
+            class="confirm-button rounded-full"
             onclick={() => {
                 openRequest(request);
             }}>View Details</button

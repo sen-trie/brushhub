@@ -15,7 +15,7 @@
     {#if showSidebar}
         <Sidebar {toggleSidebar} />
     {/if}
-    <main class="content flex flex-col w-screen justify-center overflow-y-auto h-full 
+    <main id="main-content" class="main-div content flex flex-col w-screen justify-center overflow-y-auto h-full 
                 !bg-gray-100 dark:!bg-stone-900">
         <div
             class="screen-padding-x screen-padding-y w-full

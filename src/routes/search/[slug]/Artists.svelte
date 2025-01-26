@@ -1,7 +1,8 @@
 <script lang="ts">
     import { getSingle, wrapDefault } from '$lib/db';
     import { navigateTo } from '$lib/util';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
+    import { Icon, UserCircle } from 'svelte-hero-icons';
     import type { ComponentProps } from 'svelte';
     let { props }: ComponentProps<any> = $props();
 
@@ -15,7 +16,8 @@
 <div class="space-y-4">
     {#each artistDB as artist, index}
         <div
-            class="flex items-center justify-between rounded-lg border bg-white p-4 shadow-sm {index ===
+            class="flex items-center flex-col sm:flex-row space-y-3 sm:space-y-0
+                   justify-between rounded-lg border colour-border p-4 shadow-sm {index ===
             0
                 ? 'bg-blue-50'
                 : ''}"
@@ -24,45 +26,37 @@
                 <img
                     src={getSingle('dp', artist.avatar)}
                     alt="Artist avatar"
-                    class="mr-4 h-16 w-16 rounded-full border border-gray-300 object-cover"
+                    class="mr-4 h-16 w-16 rounded-full border colour-border object-cover"
                 />
                 <div>
                     <div class="flex items-center space-x-2">
                         <h3 class="text-lg font-bold">{artist.displayName}</h3>
                         {#if !artist.openCommission}
                             <span
-                                class="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold text-white"
+                                class="rounded-full bg-red-500 px-3 py-1 text-sm font-semibold"
                             >
                                 Closed
                             </span>
                         {/if}
                     </div>
-                    <p class="text-sm text-gray-500">@{artist.username}</p>
-                    <p class="text-sm font-medium text-gray-700">{artist.artFollowers} Followers</p>
+                    <p class="text-sm ">@{artist.username}</p>
+                    <p class="text-sm font-medium ">{artist.artFollowers} Followers</p>
                 </div>
             </div>
 
-            <div class="mx-4 max-w-sm text-sm text-gray-700">
+            <p class="mx-4 max-w-sm text-sm ">
                 {artist.bio}
-            </div>
+            </p>
 
             <button
-                class="flex items-center gap-2 rounded-md border border-blue-500 px-4 py-2 text-sm font-medium text-blue-500 hover:bg-blue-50"
+                class="flex justify-center items-center gap-2 rounded-md border 
+                        border-blue-500 px-4 py-2 text-sm font-medium text-blue-500 
+                        hover:bg-blue-50 dark:hover:bg-blue-600"
                 onclick={() => {
-                    navigateTo(`./profile/${artist.username}`, $page.url.pathname);
+                    navigateTo(`./profile/${artist.username}`, page.url.pathname);
                 }}
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    class="h-4 w-4"
-                >
-                    <path
-                        d="M12 4c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zm0-2C5.92 2 2 5.92 2 12s3.92 10 10 10 10-3.92 10-10S18.08 2 12 2zm2 10v2H10v-2H8v-2h2V8h2v2h2v2h-2z"
-                        fill="currentColor"
-                    />
-                </svg>
+                <Icon src={UserCircle} size="24" />
                 View Page
             </button>
         </div>

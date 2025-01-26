@@ -8,7 +8,7 @@
 </script>
 
 <div class="overflow-x-auto -mt-4 whitespace-nowrap">
-    <table class="border-collapse text-left">
+    <table class="border-collapse text-left w-full">
         <thead>
             <tr class="border-b text-sm font-medium">
                 <th class="px-4 py-2 w-4/12">SERVICE</th>

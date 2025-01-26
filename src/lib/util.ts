@@ -96,7 +96,12 @@ export function navigateTo(path: string, pageUrl: string): void {
         path = path.replace('./', '/');
     }
 
-    goto(`${base}${path}`);
+    goto(`${base}${path}`).then(() => {
+        const element = document.getElementById('main-content');
+        if (element) {
+            element.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
 }
 
 export function stopPropagation(event: MouseEvent): void {
