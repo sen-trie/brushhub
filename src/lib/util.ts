@@ -14,7 +14,7 @@ export async function handleImageUpload(
     if (!files) return [uploadedImages, ''];
 
     if (uploadedImages.length + files.length > maxImages) {
-        return [uploadedImages, `You can upload a maximum of ${maxImages} images.`];
+        return [uploadedImages, `You can only upload a maximum of ${maxImages} images.`];
     }
 
     const newUploadedImages = [...uploadedImages];

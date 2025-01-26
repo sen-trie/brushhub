@@ -16,7 +16,7 @@
         if (!files || !firstFile) return;
 
         if (imageLocation === 'sample' && selectedService.samples.length + files.length > 10) {
-            imageWarningMessage = 'You can upload a maximum of 10 images.';
+            imageWarningMessage = 'You can only upload a maximum of 10 images.';
             return;
         }
 
