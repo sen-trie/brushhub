@@ -6,10 +6,11 @@
     import TagWorks from './TagWorks.svelte';
 
     let { props }: ComponentProps<any> = $props();
+    let additionalDB: any[] = $state([]);
     const artist = props[0];
     const currentArtist = getUser().id === artist.id;
 
-    const artDB = $derived(pullDB('artwork', { artist: artist.id }));
+    const artDB = $derived(additionalDB.concat(pullDB('artwork', { artist: artist.id })));
     const serviceDB = pullDB('services', { artistId: artist.id, state: 'published' });
 
     let uploadStep = $state(0);
@@ -51,13 +52,13 @@
         </button>
     {/if}
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <Browse {artDB} showArtist={false} />
+        <Browse {artDB} showArtist={false} shuffle={true}/>
     </div>
 </div>
 
 {#if uploadStep === 1}
-    <div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-        <div class="h-auto w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
+    <div class="modal-pop">
+        <div class="max-h-[75vh] sm:h-auto w-full max-w-2xl rounded-lg bg-white p-6 shadow-lg">
             <h2 class="mb-6 text-2xl font-bold">Upload Images</h2>
             <div class="mb-6 border-b border-orange-500">
                 <p class="mt-4 text-center font-semibold text-orange-500">Browse from Device</p>
@@ -65,20 +66,22 @@
 
             <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
             <div
-                class="mb-6 grid min-h-64 cursor-pointer grid-cols-4 gap-6 rounded-lg border-2 border-dashed colour-border p-4 hover:border-orange-500"
+                class="mb-4 sm:mb-6 grid min-h-64 cursor-pointer grid-cols-2 sm:grid-cols-4 gap-6 
+                        rounded-lg border-2 border-dashed colour-border p-4 hover:border-orange-500
+                        max-h-[40vh] overflow-y-auto"
                 onclick={() => document.getElementById('upload-images')?.click()}
             >
                 {#if uploadedImages.length === 0}
-                    <span class="col-span-4 mt-24 text-center text-sm ">
+                    <p class="col-span-4 mt-24 text-center text-sm ">
                         No images uploaded
-                    </span>
+                    </p>
                 {/if}
                 {#each uploadedImages as image, index}
                     <div class="group relative">
                         <img
                             src={image}
                             alt="Uploaded reference"
-                            class="h-32 w-32 rounded-md border object-cover"
+                            class="h-32 w-full rounded-md border object-cover"
                         />
                         <button
                             class="absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white hover:bg-red-600"
@@ -94,7 +97,7 @@
             </div>
 
             {#if imageWarningMessage}
-                <p class="mt-2 text-sm text-red-500">{imageWarningMessage}</p>
+                <p class="mb-4 sm:mb-0 -mt-2 sm:mt-2 text-sm text-red-500">{imageWarningMessage}</p>
             {/if}
 
             <input
@@ -132,9 +135,16 @@
         {uploadedImages}
         {serviceDB}
         backStep={() => (uploadStep = 1)}
-        sumbitTag={(tags: any) => {
-            // TODO
-            console.log(tags);
+        submitTag={(tags: any) => {
+            const now = new Date();
+            const currentTimeISO = now.toISOString();
+            tags.map((item: any) => {
+                item.datePosted = currentTimeISO;
+                item.artist = artist.id;
+                return item;
+            });
+
+            additionalDB = [...tags, ...additionalDB];
             resetUpload();
         }}
     />

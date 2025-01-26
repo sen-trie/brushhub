@@ -1,12 +1,12 @@
 <script lang="ts">
     import SearchTags from '$lib/components/SearchTags.svelte';
     import type { ComponentProps } from 'svelte';
-    let { uploadedImages, serviceDB, backStep, sumbitTag }: ComponentProps<any> = $props();
+    let { uploadedImages, serviceDB, backStep, submitTag }: ComponentProps<any> = $props();
 
     const tagDefaults = { title: '', description: '', tags: [], service: '' };
 
     let currentIndex = $state(0);
-    let imageTags = $state(uploadedImages.map(() => ({ ...tagDefaults })));
+    let imageTags = $state(uploadedImages.map((src: string) => ({ ...tagDefaults, imgSrc: src })));
 
     const isTagged = (index: number): string => {
         const image = imageTags[index];
@@ -19,36 +19,19 @@
         }
         return '';
     };
-
-    const handleTagUpdate = (index: number, field: string, value: any) => {
-        uploadedImages = uploadedImages.map((image: any, i: number) =>
-            i === index ? { ...image, [field]: value } : image
-        );
-    };
-
-    const addTag = (index: number, tag: string) => {
-        if (tag.trim() && !uploadedImages[index].tags.includes(tag.trim())) {
-            handleTagUpdate(index, 'tags', [...uploadedImages[index].tags, tag.trim()]);
-        }
-    };
-
-    const removeTag = (index: number, tagIndex: number) => {
-        const updatedTags = uploadedImages[index].tags.filter(
-            (_: any, i: number) => i !== tagIndex
-        );
-        handleTagUpdate(index, 'tags', updatedTags);
-    };
 </script>
 
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-    <div class="flex h-[70vh] w-full max-w-4xl flex-col rounded-lg bg-white p-6 shadow-lg">
+<div class="modal-pop">
+    <div class="flex flex-col h-[90vh] sm:h-[70vh] w-full max-w-4xl rounded-lg bg-white p-6 shadow-lg">
         <h2 class="page-title mb-4">Tag Artworks</h2>
-        <div class="flex w-full grow overflow-y-auto">
-            <div class="h-full w-1/3 overflow-y-auto border-r border-gray-200 pr-4">
+        <div class="flex flex-col sm:flex-row w-full grow overflow-y-auto sm:gap-2">
+            <div class="h-1/2 sm:h-full items-center sm:w-1/3 overflow-auto sm:border-r border-gray-200 sm:pr-4
+                        flex flex-row sm:flex-col space-x-2">
                 {#each uploadedImages as image, index}
                     <div
-                        class="relative mb-4 cursor-pointer rounded-lg border p-2 hover:border-orange-500 {currentIndex ===
-                        index
+                        class="relative mb-4 cursor-pointer rounded-lg border p-2 
+                                hover:border-orange-500 min-w-32 h-36 sm:w-auto sm:h-auto
+                        {currentIndex === index
                             ? 'border-2 border-orange-500'
                             : ''}"
                         onclick={() => (currentIndex = index)}
@@ -69,14 +52,16 @@
                 {/each}
             </div>
 
-            <div class="h-full w-2/3 overflow-y-auto p-4 pt-0">
+            <hr class="visible sm:hidden mb-4" />
+
+            <div class="h-full sm:w-2/3 overflow-y-auto p-4 pt-2 card-container">
                 <div class="flex flex-col space-y-4">
                     <div>
                         <label class="mb-2 block text-sm font-semibold">Title</label>
                         <input
                             type="text"
                             bind:value={imageTags[currentIndex].title}
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                             placeholder="Enter title..."
                         />
                     </div>
@@ -87,7 +72,7 @@
                         <textarea
                             rows="3"
                             bind:value={imageTags[currentIndex].description}
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                            class="w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                             placeholder="Enter description..."
                         ></textarea>
                     </div>
@@ -104,7 +89,7 @@
                         {#if serviceDB.length > 0}
                             <select
                                 bind:value={imageTags[currentIndex].service}
-                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                                class="w-full rounded-md entry shadow-sm focus:border-orange-500 focus:ring-orange-500"
                             >
                                 <option value="" disabled>Select a service</option>
                                 {#each serviceDB as service}
@@ -127,7 +112,7 @@
                         : 'cursor-not-allowed bg-gray-400'
                 }`}
                 disabled={uploadedImages.length === 0}
-                onclick={() => sumbitTag(imageTags)}
+                onclick={() => submitTag(imageTags)}
             >
                 Continue
             </button>

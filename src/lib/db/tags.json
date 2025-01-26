@@ -6,5 +6,6 @@
     { "id": 5, "name": "concept art", "count": 55 },
     { "id": 6, "name": "fantasy", "count": 130 },
     { "id": 7, "name": "portrait", "count": 90 },
-    { "id": 8, "name": "handdrawn", "count": 290 }
+    { "id": 8, "name": "handdrawn", "count": 290 },
+    { "id": 9, "name": "aesthetic", "count": 190 }
 ]

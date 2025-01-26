@@ -5,7 +5,11 @@
     import { navigateTo } from './util';
     import { page } from '$app/state';
 
-    let { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
+    let { artDB, showArtist = true, size = 48, artViewOnly = false, shuffle = false }: ComponentProps<any> = $props();
+    if (shuffle) {
+        artDB = artDB.sort(() => Math.random() - 0.5);
+    }
+    
     let selectedArt: Artwork | null = $state(null);
 
     const artworkArray = imageModules('artwork');
@@ -30,9 +34,15 @@
     }
 
     function returnArt(art: string | Record<string, any>) {
+        console.log(art)
         if (typeof art === 'string' && art.startsWith('data:image')) {
             return art;
+        } else if (typeof art === 'object' && art !== null && !Array.isArray(art)) {
+            if (art.imgSrc && typeof art.imgSrc === 'string' && art.imgSrc.startsWith('data:image')) {
+                return art.imgSrc;
+            }
         }
+
         return getImage('artwork', art.imgSrc, artworkArray);
     }
 </script>
@@ -73,8 +83,7 @@
 {#if selectedArt}
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <div
-        class="fixed inset-0 z-50 flex items-center justify-center 
-                !bg-black !bg-opacity-50 dark:!bg-opacity-65"
+        class="modal-pop"
         role="dialog"
         aria-modal="true"
         onclick={closePopup}
@@ -97,7 +106,7 @@
             </button>
             <div class="flex flex-col sm:flex-row">
                 <img
-                    src={getImage('artwork', selectedArt.imgSrc, artworkArray)}
+                    src={returnArt(selectedArt)}
                     alt="Artwork"
                     class="h-64 w-96 rounded-md object-contain
                            mt-2 sm:mt-0"

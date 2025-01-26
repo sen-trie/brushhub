@@ -322,5 +322,113 @@
         "datePosted": "2024-03-14T16:00:00Z",
         "title": "Robyn",
         "description": ""
+    },
+    {
+        "id": 37,
+        "artist": 2,
+        "imgSrc": "lightning1.jpg",
+        "tags": ["character", "anime", "portrait"],
+        "datePosted": "2024-07-14T16:00:00Z",
+        "title": "Raiden Shogun",
+        "description": "Sometimes peace and quiet is all you need. Hope I can get her tmr hehe"
+    },
+    {
+        "id": 38,
+        "artist": 2,
+        "imgSrc": "lightning13.webp",
+        "tags": ["illustration", "aesthetic"],
+        "datePosted": "2024-10-14T16:00:00Z",
+        "title": "Chureito Pagoda",
+        "description": "Not sure if i went too far from the original design hehe~"
+    },
+    {
+        "id": 39,
+        "artist": 2,
+        "imgSrc": "lightning2.webp",
+        "tags": ["character", "anime", "portrait"],
+        "datePosted": "2024-09-14T16:00:00Z",
+        "title": "Zhongli",
+        "description": "A cultured man creating his own cup for a divine indulgence of wine."
+    },
+    {
+        "id": 40,
+        "artist": 2,
+        "imgSrc": "lightning3.webp",
+        "tags": ["character", "anime"],
+        "datePosted": "2024-03-24T16:00:00Z",
+        "title": "Sangonomiya Kokomi",
+        "description": "The wait is over my comrades, the divine priestess of watasumi island is here 🐟🐟"
+    },
+    {
+        "id": 41,
+        "artist": 2,
+        "imgSrc": "lightning4.webp",
+        "tags": ["character", "anime"],
+        "datePosted": "2024-10-24T16:00:00Z",
+        "title": "Ningguang and Beidou",
+        "description": "Young Beidou and Ningguang on a trip to become pirate king 👒 I mean on a trip to mondstadt"
+    },
+    {
+        "id": 42,
+        "artist": 2,
+        "imgSrc": "lightning5.webp",
+        "tags": ["character", "anime"],
+        "datePosted": "2024-06-24T16:00:00Z",
+        "title": "Eula",
+        "description": "Dance of sacrifice act III: Flickering Candle Light~Eula ⛸️❄️✨"
+    },
+    {
+        "id": 43,
+        "artist": 2,
+        "imgSrc": "lightning6.webp",
+        "tags": ["character", "anime"],
+        "datePosted": "2024-07-14T16:00:00Z",
+        "title": "Yelan",
+        "description": "Genshin's Queen of Gambling 🎲"
+    },
+    {
+        "id": 44,
+        "artist": 2,
+        "imgSrc": "lightning7.webp",
+        "tags": ["character", "anime", "portrait"],
+        "datePosted": "2024-05-14T16:00:00Z",
+        "title": "Yoimiya",
+        "description": "Yoimiya is awesome ✌🏻✨✨✨"
+    },
+    {
+        "id": 45,
+        "artist": 2,
+        "imgSrc": "lightning9.webp",
+        "tags": ["aesthetic", "illustration", "portrait"],
+        "datePosted": "2024-12-14T16:00:00Z",
+        "title": "Galaxy",
+        "description": "In galaxy and stars, one feels like the universe. Free from everything, flowing naturally in space & emptiness"
+    },
+    {
+        "id": 46,
+        "artist": 2,
+        "imgSrc": "lightning10.webp",
+        "tags": ["aesthetic", "illustration"],
+        "datePosted": "2024-11-23T16:00:00Z",
+        "title": "Path to Enlightenment",
+        "description": "Through Compassion & Wisdom, one can attain enlightenment"
+    },
+    {
+        "id": 47,
+        "artist": 2,
+        "imgSrc": "lightning11.webp",
+        "tags": ["aesthetic", "illustration", "portrait"],
+        "datePosted": "2024-11-23T16:00:00Z",
+        "title": "Path to Enlightenment",
+        "description": "Through Compassion & Wisdom, one can attain enlightenment"
+    },
+    {
+        "id": 48,
+        "artist": 2,
+        "imgSrc": "lightning12.webp",
+        "tags": ["character", "anime", "portrait"],
+        "datePosted": "2024-11-23T16:00:00Z",
+        "title": "Chang Li",
+        "description": "Eons of time on this vast land, all encapsulated in a humble game... I am fortunate to have you as my opponent."
     }
 ]
