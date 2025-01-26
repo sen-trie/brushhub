@@ -6,8 +6,6 @@
     const user = getUser();
 
     function savePreferences() {
-        console.log(userPrefs)
-
         window.localStorage.setItem('user_pref', JSON.stringify(userPrefs));
         window.localStorage.setItem('color-theme', userPrefs.darkMode);
         window.location.reload();

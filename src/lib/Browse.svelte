@@ -1,15 +1,13 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import type { Artwork } from '$lib/types';
+    import CloseButton from '$lib/components/CloseButton.svelte';
     import { pullDB, imageModules, getImage, wrapDefault } from '$lib/db';
     import { navigateTo } from './util';
     import { page } from '$app/state';
 
-    let { artDB, showArtist = true, size = 48, artViewOnly = false, shuffle = false }: ComponentProps<any> = $props();
-    if (shuffle) {
-        artDB = artDB.sort(() => Math.random() - 0.5);
-    }
-    
+    let { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
+
     let selectedArt: Artwork | null = $state(null);
 
     const artworkArray = imageModules('artwork');
@@ -34,7 +32,6 @@
     }
 
     function returnArt(art: string | Record<string, any>) {
-        console.log(art)
         if (typeof art === 'string' && art.startsWith('data:image')) {
             return art;
         } else if (typeof art === 'object' && art !== null && !Array.isArray(art)) {
@@ -45,6 +42,7 @@
 
         return getImage('artwork', art.imgSrc, artworkArray);
     }
+
 </script>
 
 {#each artDB as art}
@@ -102,7 +100,7 @@
                 onclick={closePopup}
                 aria-label="Close popup"
             >
-                X
+                <CloseButton size="20"/>
             </button>
             <div class="flex flex-col sm:flex-row">
                 <img

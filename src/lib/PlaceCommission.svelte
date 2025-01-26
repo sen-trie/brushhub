@@ -30,8 +30,6 @@
         deadline: ''
     });
 
-    // TODO: CLEAN UP
-
     let progress = $state(0);
     let steps: { component: Component; backwards: string; forwards: string }[] = [
         {

@@ -2,6 +2,7 @@
     import { pullDB } from '$lib/db';
     import type { ComponentProps } from 'svelte';
     import { handleImageUpload, getUser } from '$lib/util';
+    import CloseButton from '$lib/components/CloseButton.svelte';
     import Browse from '$lib/Browse.svelte';
     import TagWorks from './TagWorks.svelte';
 
@@ -90,7 +91,7 @@
                                 removeImage(index);
                             }}
                         >
-                            X
+                            <CloseButton size="16"/>
                         </button>
                     </div>
                 {/each}

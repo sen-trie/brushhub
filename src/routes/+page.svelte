@@ -83,7 +83,7 @@
             {/if}
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <Browse {artDB} shuffle={true}/>
+            <Browse {artDB}}/>
         </div>
     </div>
     <div

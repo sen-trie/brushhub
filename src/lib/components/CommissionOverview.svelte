@@ -24,7 +24,6 @@
     {#each tos as term}
         <details class="rounded-md border p-4">
             <summary class="text-sm font-semibold">{term.title}</summary>
-            <!-- TODO: FIX NEW LINE NOT WORKING -->
             <p class="mt-2 text-sm">{term.details}</p>
         </details>
     {/each}
