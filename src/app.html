@@ -2,12 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="A frontend showcase aimed at demonstrating 
-        the concept and user experience of an artwork commissioning platform.">
-        <meta name="author" content="sentrie">
         <title>BrushHub</title>
+        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+        <meta name="author" content="sentrie">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="A frontend showcase aimed at demonstrating a potential design concept and user experience for an artwork commissioning platform.">
+        <meta name="keywords" content="art, frontend, user experience, commission, design">
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sen-trie.github.io/brushhub//" />
+        <meta property="og:title" content="BrushHub" />
+        <meta property="og:description" content="A frontend showcase aimed at demonstrating a potential design concept and user experience for an artwork commissioning platform." />
+        <meta property="og:image" content="%sveltekit.assets%/banner.png" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://sen-trie.github.io/brushhub/" />
+        <meta property="twitter:title" content="BrushHub" />
+        <meta property="twitter:description" content="A frontend showcase aimed at demonstrating a potential design concept and user experience for an artwork commissioning platform." />
+        <meta property="twitter:image" content="%sveltekit.assets%/banner.png" />
+
         %sveltekit.head%
         <script>
             if (localStorage.getItem('color-theme') === 'light') {
