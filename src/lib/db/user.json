@@ -37,20 +37,29 @@
     },
     {
         "id": 5,
-        "username": "manga_master",
-        "displayName": "Manga Master",
+        "username": "zd_44",
+        "displayName": "zhidi44",
         "followers": [3],
         "following": [1],
         "avatar": "5.png",
-        "coverImage": "1.png"
+        "coverImage": ""
     },
     {
         "id": 6,
-        "username": "commission_guru",
-        "displayName": "Commission Guru",
+        "username": "postneko",
+        "displayName": "nekochan",
         "followers": [],
         "following": [1],
         "avatar": "6.png",
-        "coverImage": "1.jpg"
+        "coverImage": ""
+    },
+    {
+        "id": 6,
+        "username": "ndw",
+        "displayName": "naturedraws",
+        "followers": [],
+        "following": [1],
+        "avatar": "6.png",
+        "coverImage": ""
     }
 ]

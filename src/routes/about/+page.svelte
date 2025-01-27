@@ -1,19 +1,19 @@
 <script lang="ts">
     import { Icon, Link } from 'svelte-hero-icons';
-    import { getSingle } from "$lib/db";
+    import { wrapDefault } from "$lib/db";
 
     const creatorArray = [
         {
             name: 'sentrie',
             dp: '1.jpg',
-            role: 'Developer and 3D Animator',
+            role: 'Developer / Animator',
             links: {
                 'https://sen-trie.github.io/portfolio/': 'Portfolio',
                 'https://github.com/sen-trie/': 'Github'
             }
         }, {
             name: '_',
-            dp: '1.jpg',
+            dp: '',
             role: '_',
             links: {
                 '__': '_',
@@ -21,7 +21,7 @@
             }
         }, {
             name: '_',
-            dp: '1.jpg',
+            dp: '',
             role: '_',
             links: {
                 '__': '_',
@@ -29,7 +29,7 @@
             }
         }, {
             name: '_',
-            dp: '1.jpg',
+            dp: '',
             role: '_',
             links: {
                 '__': '_',
@@ -46,7 +46,7 @@
 {#snippet card(creator: Record<string, any>)}
     <div class="card-container flex w-auto items-center space-x-4 p-6 py-3">
         <img
-            src={getSingle('dp', creator.dp)}
+            src={wrapDefault('dp', creator.dp)}
             alt={`${creator.name}'s avatar`}
             class="h-16 w-16 rounded-full border border-gray-700 shadow"
         />
@@ -72,8 +72,8 @@
             <p>What is BrushHub?</p>
             <p class="text-base font-normal">BrushHub is a frontend showcase aimed at demonstrating 
                 the concept and user experience of an artwork commissioning platform. This project
-                primarily focuses on building the design and UX of an online e-commerce platform. It does not 
-                include any backend services or database management systems.
+                primarily focuses on building the design and UX of an online e-commerce platform. Thus, it does not 
+                include any backend services or database management systems - any changes you made will not be saved.
             </p>
         </div>
         <div>    
@@ -87,7 +87,7 @@
         <div>    
             <p>Additional Info</p>
             <p class="text-base font-normal">Developed using Svelte 5, Typescript and Tailwind. 
-                The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>. All images and artwork was taken with permission from their respective artists.
+                The source code for this website is available on <a href="https://github.com/sen-trie/brushhub">Github</a>. All images and artwork were taken with permission from their respective artists.
             </p>
         </div>
     </div>

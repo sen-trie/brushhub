@@ -6,10 +6,15 @@
     import { navigateTo } from './util';
     import { page } from '$app/state';
 
-    const { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
+    let { artDB, showArtist = true, size = 48, artViewOnly = false,
+            selectArray = $bindable(), selectMode = false,
+     }: ComponentProps<any> = $props();
+
     let selectedArt: Artwork | null = $state(null);
     let selectedArtist = $derived(pullDB('user', {}, { id: selectedArt?.artist }));
+    let highlightArray = $state(artDB.map((_: any) => false));
 
+    const MAX_FEATURED = 4;
     const artworkArray = imageModules('artwork');
     const findArtist = (id: string) => {
         return pullDB('artist', {}, { id: id });
@@ -30,6 +35,25 @@
         selectedArt = null;
     }
 
+    function selectFeatureArt(index: number, art: Artwork) {
+        if (!selectMode) {
+            return;
+        }
+
+        if (highlightArray[index] === true) {
+            for (let i = 0; i < selectArray.length; i++) {
+                if (selectArray[i].id == art.id) {
+                    selectArray.splice(i, 1)
+                }
+            }
+
+            highlightArray[index] = false;
+        } else if (selectArray.length < MAX_FEATURED) {
+            selectArray.push(art);
+            highlightArray[index] = true;
+        }
+    }
+
     function returnArt(art: string | Record<string, any>) {
         if (typeof art === 'string' && art.startsWith('data:image')) {
             return art;
@@ -44,12 +68,14 @@
 
 </script>
 
-{#each artDB as art}
+{#each artDB as art, index}
     <button
         type="button"
         class="relative w-full overflow-hidden rounded-lg colour-border border-2 bg-white shadow
-                {!artViewOnly ? "cursor-pointer" : "cursor-default"}"
-        onclick={() => openPopup(art)}
+                {(!artViewOnly || selectMode) ? "cursor-pointer" : "cursor-default"}
+                {highlightArray[index] ? "border-4 border-orange-600 dark:border-orange-600" : ""}
+        "
+        onclick={() => {openPopup(art); selectFeatureArt(index, art)}}
         aria-label="View artwork details"
     >
         <img
@@ -76,8 +102,7 @@
     />
 {/if}
 
-
-{#if selectedArt}
+{#if selectedArt && !selectMode}
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
     <div
         class="modal-pop"

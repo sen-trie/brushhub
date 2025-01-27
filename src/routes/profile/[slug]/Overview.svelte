@@ -3,9 +3,10 @@
     import { PencilSquare, Icon, MapPin, Language, Link } from 'svelte-hero-icons';
     import type { ComponentProps } from 'svelte';
     import { pullDB, wrapDefault } from '$lib/db';
-    import { page } from '$app/stores';
+    import { page } from '$app/state';
     import Browse from '$lib/Browse.svelte';
     import Services from '$lib/Services.svelte';
+    import CloseButton from '$lib/components/CloseButton.svelte';
 
     let { props }: ComponentProps<any> = $props();
     const artist = props[0];
@@ -13,11 +14,16 @@
 
     const artistTOS = pullDB('tos', {}, { artistId: artist.id });
     const serviceDB = pullDB('services', { artistId: artist.id, state: 'published' }, {});
-    const artDB = pullDB(
-        'artwork',
-        { featured: (obj: any) => artist.featured.includes(obj.imgSrc) },
-        {}
-    );
+
+    let chosenDB = $state([]);
+    let selectFeaturedArt = $state(false);
+    let featuredDB = $derived.by(() => {
+        return chosenDB.length > 0 
+                ? chosenDB 
+                : pullDB('artwork', { featured: (obj: any) => artist.featured.includes(obj.imgSrc) },{})
+    });
+
+    $inspect(chosenDB)
 </script>
 
 <div>
@@ -52,7 +58,7 @@
                 {#if currentArtist}
                     <button
                         class="confirm-button mt-4 flex gap-2 rounded"
-                        onclick={() => navigateTo(`/account/edit`, $page.url.pathname)}
+                        onclick={() => navigateTo(`/account/edit`, page.url.pathname)}
                     >
                         <Icon src={PencilSquare} size="24" />
                         Edit Your Profile
@@ -126,8 +132,16 @@
             <div class="featured-artworks card-container">
                 <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <Browse {artDB} showArtist={false} />
+                    <Browse artDB={chosenDB.length > 0 ? chosenDB : featuredDB} showArtist={false} />
                 </div>
+                {#if currentArtist}
+                    <button
+                        class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+                        onclick={() => {selectFeaturedArt = !selectFeaturedArt; chosenDB = []}}
+                    >
+                        Edit Showcase
+                    </button>
+                {/if}
             </div>
 
             <div class="services card-container">
@@ -147,7 +161,7 @@
                     <button
                         class="my-services-button mt-4 rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
                         onclick={() =>
-                            navigateTo(`/manage-services/${artist.username}`, $page.url.pathname)}
+                            navigateTo(`/manage-services/${artist.username}`, page.url.pathname)}
                     >
                         My Services &gt;
                     </button>
@@ -156,6 +170,40 @@
         </div>
     </div>
 </div>
+
+{#if selectFeaturedArt}
+    <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+    <div
+        class="modal-pop"
+        role="dialog"
+        aria-modal="true"
+    >
+        <div
+            class="relative rounded-lg shadow-lg dark:bg-stone-800 border-2 colour-border flex 
+                     w-5/6 sm:w-auto sm:max-w-[90%] p-2 sm:p-6 sm:pr-16 max-h-[80vh]"
+            role="dialog"
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description"
+        >
+            <button
+                class="absolute right-2 top-2 w-8 h-8 flex items-center justify-center rounded-full 
+                        bg-red-500 text-white hover:bg-red-600 text-lg z-10"
+                onclick={() => {selectFeaturedArt = !selectFeaturedArt}}
+                aria-label="Close popup"
+            >
+                <CloseButton size="20"/>
+            </button>
+            <div class="flex flex-col overflow-y-auto pr-2 pt-2 mt:pt-0">
+                <h1 class="text-xl font-bold mb-4 w-full text-center px-12 sm:px-0">Choose Featured Artworks (Max 4)</h1>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <Browse artDB={pullDB('artwork', { artist: artist.id })} showArtist={false} 
+                            artViewOnly={true} selectMode={true} bind:selectArray={chosenDB}/>
+                </div>
+            </div>
+        </div>
+    </div>
+{/if}
+
 
 <style>
 </style>

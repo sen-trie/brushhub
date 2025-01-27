@@ -90,7 +90,7 @@
         class="filter-panel sticky p-4
                 sm:top-6 sm:h-96 sm:min-w-64 sm:pt-4"
     >
-        <button class="clear-button flex justify-center gap-2" onclick={clearFilters}>
+        <button class="confirm-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />
             Clear Filters
         </button>
