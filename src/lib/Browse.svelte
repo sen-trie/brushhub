@@ -6,9 +6,9 @@
     import { navigateTo } from './util';
     import { page } from '$app/state';
 
-    let { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
-
+    const { artDB, showArtist = true, size = 48, artViewOnly = false }: ComponentProps<any> = $props();
     let selectedArt: Artwork | null = $state(null);
+    let selectedArtist = $derived(pullDB('user', {}, { id: selectedArt?.artist }));
 
     const artworkArray = imageModules('artwork');
     const findArtist = (id: string) => {
@@ -16,8 +16,7 @@
     };
 
     const navigateToArtist = () => {
-        const artist = pullDB('user', {}, { id: selectedArt?.artist });
-        navigateTo(`./profile/${artist.username}`, page.url.pathname);
+        navigateTo(`./profile/${selectedArtist.username}`, page.url.pathname);
     };
 
     function openPopup(art: Artwork) {
@@ -111,9 +110,13 @@
                 />
                 <div class="p-2 sm:p-0 ml-0 sm:ml-6 flex flex-col justify-between sm:max-w-[25vw] ">
                     <div>
-                       <h2 class="text-xl font-bold">
+                        <h2 class="text-xl font-bold">
                             {selectedArt.title || 'Untitled Artwork'}
                         </h2>
+                        <h2 class="text-lg underline">
+                            By: {selectedArtist.displayName}
+                        </h2>
+                        
                         <p>
                             {selectedArt.description}
                         </p>
@@ -139,7 +142,7 @@
                                 class="mt-4 block rounded-lg bg-orange-500 px-4 py-2 
                                         text-center font-medium text-white"
                             >
-                                To Artist Profile
+                                To @{selectedArtist.username}'s Profile
                             </button>
                         {/if}
                     </div>

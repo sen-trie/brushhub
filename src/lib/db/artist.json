@@ -13,7 +13,7 @@
         "completionRate": 95,
         "total": 120,
         "tags": ["3d", "character", "fantasy"],
-        "featured": [1, 2]
+        "featured": ["sentrie1.png", "sentrie2.webp", "sentrie9.jpg"]
     },
     {
         "id": 2,
@@ -29,7 +29,7 @@
         "completionRate": 85,
         "total": 145,
         "tags": ["anime", "aesthetic", "portrait"],
-        "featured": [3, 4]
+        "featured": ["lightning9.webp", "lightning10.webp", "lightning2.webp", "lightning7.webp"]
     },
     {
         "id": 3,
@@ -45,7 +45,7 @@
         "completionRate": 331,
         "total": 345,
         "tags": ["concept art", "illustration", "character", "fantasy"],
-        "featured": [3, 4]
+        "featured": ["robyn4.webp", "dorain3.webp", "lab1.webp", "dragon2.webp"]
     },
     {
         "id": 4,
@@ -61,6 +61,6 @@
         "completionRate": 131,
         "total": 145,
         "tags": ["handdrawn", "character"],
-        "featured": [3, 4]
+        "featured": ["ayy4.jpg", "ayy1.jpg", "ayy5.webp"]
     }
 ]

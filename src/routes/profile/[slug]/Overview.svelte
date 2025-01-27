@@ -15,7 +15,7 @@
     const serviceDB = pullDB('services', { artistId: artist.id, state: 'published' }, {});
     const artDB = pullDB(
         'artwork',
-        { featured: (obj: any) => artist.featured.includes(obj.id) },
+        { featured: (obj: any) => artist.featured.includes(obj.imgSrc) },
         {}
     );
 </script>
