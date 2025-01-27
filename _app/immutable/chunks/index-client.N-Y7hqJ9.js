@@ -1,0 +1,1 @@
+import{ae as o,ai as t,a8 as c,u as a}from"./runtime.CN-Xrd-W.js";function u(n){throw new Error("lifecycle_outside_component")}function r(n){o===null&&u(),t&&o.l!==null?i(o).m.push(n):c(()=>{const e=a(n);if(typeof e=="function")return e})}function i(n){var e=n.l;return e.u??(e.u={a:[],b:[],m:[]})}export{r as o};
