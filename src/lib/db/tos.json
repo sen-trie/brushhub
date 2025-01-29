@@ -1,7 +1,7 @@
 [
     {
         "artistId": 1,
-        "lastUpdated": "2023-11-15T12:00:00Z",
+        "lastUpdated": "2024-12-30T12:00:00Z",
         "categories": [
             {
                 "title": "Prohibited Works",
@@ -16,7 +16,7 @@
                 "title": "References",
                 "details": [
                     "Provide at least 2 reference images per major element (e.g., character, background, item).",
-                    "Include as many visual materials as possible."
+                    "Include a link to the 3D model"
                 ]
             },
             {
@@ -30,7 +30,7 @@
     },
     {
         "artistId": 2,
-        "lastUpdated": "2023-10-10T08:30:00Z",
+        "lastUpdated": "2024-12-28T10:00:00Z",
         "categories": [
             {
                 "title": "Prohibited Works",
@@ -42,17 +42,59 @@
                 ]
             },
             {
-                "title": "Payment",
+                "title": "Usage Rights",
                 "details": [
-                    "50% upfront payment is required.",
-                    "The remaining 50% is due upon approval of the final draft."
+                    "Doodles are for personal use only."
+                ]
+            }
+        ]
+    },
+    {
+        "artistId": 3,
+        "lastUpdated": "2024-12-29T15:30:00Z",
+        "categories": [
+            {
+                "title": "Prohibited Works",
+                "details": [
+                    "Explicit Content",
+                    "Hate Speech",
+                    "Fetish Content",
+                    "Illegal Activities"
+                ]
+            },
+            {
+                "title": "References",
+                "details": [
+                    "Provide clear and detailed references for characters, environments, or props.",
+                    "Include mood boards or concept ideas if available."
+                ]
+            }
+        ]
+    },
+    {
+        "artistId": 4,
+        "lastUpdated": "2024-12-31T09:00:00Z",
+        "categories": [
+            {
+                "title": "Prohibited Works",
+                "details": [
+                    "Explicit Content",
+                    "Hate Speech",
+                    "Fetish Content",
+                    "Illegal Activities"
+                ]
+            },
+            {
+                "title": "References",
+                "details": [
+                    "Provide clear references for poses, expressions, and character details.",
+                    "Include any specific color palettes or themes you want incorporated."
                 ]
             },
             {
                 "title": "Edits and Revisions",
                 "details": [
-                    "Up to 3 revisions are allowed for free.",
-                    "Additional revisions may incur extra fees."
+                    "Up to 2 revisions are allowed."
                 ]
             }
         ]

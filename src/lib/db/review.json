@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "service": 1,
+        "service": 4,
         "commissioner": 5,
         "artist": 1,
         "rating": 5,
@@ -9,26 +9,122 @@
     },
     {
         "id": 2,
-        "service": 2,
-        "commissioner": 4,
+        "service": 5,
+        "commissioner": 6,
         "artist": 1,
         "rating": 4,
         "comment": "Great work, just needed a few revisions."
     },
     {
         "id": 3,
-        "service": 3,
-        "commissioner": 5,
+        "service": 5,
+        "commissioner": 7,
         "artist": 1,
         "rating": 5,
         "comment": "Received my order very fast!!"
     },
     {
         "id": 4,
-        "service": 1,
-        "commissioner": 4,
+        "service": 4,
+        "commissioner": 8,
         "artist": 1,
         "rating": 5,
         "comment": "Very happy with the product."
+    },
+    {
+        "id": 5,
+        "service": 7,
+        "commissioner": 5,
+        "artist": 2,
+        "rating": 5,
+        "comment": "Lightning Art was so speedy!!!! Absolutely loved the artwork she made for me 💖💖 A new piece of deco for my room 555"
+    },
+    {
+        "id": 5,
+        "service": 7,
+        "commissioner": 9,
+        "artist": 2,
+        "rating": 5,
+        "comment": "Loved every minute of working with them! Every step from the start was nothing but pleasant interactions."
+    },
+    {
+        "id": 5,
+        "service": 7,
+        "commissioner": 13,
+        "artist": 2,
+        "rating": 5,
+        "comment": "Great experience. Fabulous communication. Definitely recommend."
+    },
+    {
+        "id": 6,
+        "service": 1,
+        "commissioner": 11,
+        "artist": 3,
+        "rating": 5,
+        "comment": "They communicated well and were polite about revisions with no issues. I got the delivery as expected with no issues."
+    },
+    {
+        "id": 7,
+        "service": 1,
+        "commissioner": 12,
+        "artist": 3,
+        "rating": 5,
+        "comment": "They did an AMAZING job on the illustrations ✨. The visual appeal and creativity far exceeded my expectations. "
+    },
+    {
+        "id": 7,
+        "service": 2,
+        "commissioner": 10,
+        "artist": 3,
+        "rating": 5,
+        "comment": "Really incredible communication and understanding of the project. will be coming back for more no doubt"
+    },
+    {
+        "id": 8,
+        "service": 6,
+        "commissioner": 13,
+        "artist": 3,
+        "rating": 5,
+        "comment": "Loved every minute of working with them! Every step from the start was nothing but pleasant interactions."
+    },
+    {
+        "id": 9,
+        "service": 6,
+        "commissioner": 14,
+        "artist": 3,
+        "rating": 5,
+        "comment": "Amazing communication, quick delivery, fully understood the concept I was going for!"
+    },
+    {
+        "id": 10,
+        "service": 1,
+        "commissioner": 7,
+        "artist": 4,
+        "rating": 5,
+        "comment": "What a great experience. Extremely prompt and communicative. Delivered all designs quickly and was somehow able to read my mind on what I needed."
+    },
+    {
+        "id": 11,
+        "service": 1,
+        "commissioner": 9,
+        "artist": 4,
+        "rating": 5,
+        "comment": "Great first draft and very responsive to several adjustments."
+    },
+    {
+        "id": 12,
+        "service": 1,
+        "commissioner": 6,
+        "artist": 4,
+        "rating": 5,
+        "comment": "Amazing to work with! They were very responsive and polite and delivered the work very quickly! They were also honest with the timeline of when they could take my order and I really appreciated that!"
+    },
+    {
+        "id": 13,
+        "service": 1,
+        "commissioner": 15,
+        "artist": 4,
+        "rating": 5,
+        "comment": "They were absolutely amazing oh my goodness. They did everything I asked and more and completed my vision!"
     }
 ]

@@ -22,8 +22,6 @@
                 ? chosenDB 
                 : pullDB('artwork', { featured: (obj: any) => artist.featured.includes(obj.imgSrc) },{})
     });
-
-    $inspect(chosenDB)
 </script>
 
 <div>
@@ -132,7 +130,7 @@
             <div class="featured-artworks card-container">
                 <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <Browse artDB={chosenDB.length > 0 ? chosenDB : featuredDB} showArtist={false} />
+                    <Browse artDB={chosenDB.length > 0 ? chosenDB : featuredDB} showArtist={false} artViewOnly={true}/>
                 </div>
                 {#if currentArtist}
                     <button

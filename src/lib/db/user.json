@@ -54,12 +54,84 @@
         "coverImage": ""
     },
     {
-        "id": 6,
+        "id": 7,
         "username": "ndw",
         "displayName": "naturedraws",
         "followers": [],
         "following": [1],
-        "avatar": "6.png",
+        "avatar": "7.png",
+        "coverImage": ""
+    },
+    {
+        "id": 8,
+        "username": "itzzy",
+        "displayName": "Itzy",
+        "followers": [],
+        "following": [1],
+        "avatar": "8.png",
+        "coverImage": ""
+    },
+    {
+        "id": 9,
+        "username": "silkveil",
+        "displayName": "Silk Veil",
+        "followers": [],
+        "following": [1],
+        "avatar": "9.png",
+        "coverImage": ""
+    },
+    {
+        "id": 10,
+        "username": "ember_ridge",
+        "displayName": "Ember",
+        "followers": [],
+        "following": [1],
+        "avatar": "10.png",
+        "coverImage": ""
+    },
+    {
+        "id": 11,
+        "username": "swordgirl",
+        "displayName": "Sword Girl",
+        "followers": [],
+        "following": [1],
+        "avatar": "11.png",
+        "coverImage": ""
+    },
+    {
+        "id": 12,
+        "username": "otako",
+        "displayName": "OTAKO",
+        "followers": [],
+        "following": [1],
+        "avatar": "12.png",
+        "coverImage": ""
+    },
+    {
+        "id": 13,
+        "username": "selene_tong",
+        "displayName": "Selene Tong",
+        "followers": [],
+        "following": [1],
+        "avatar": "13.png",
+        "coverImage": ""
+    },
+    {
+        "id": 14,
+        "username": "eljuniorg",
+        "displayName": "eljuniorg",
+        "followers": [],
+        "following": [1],
+        "avatar": "14.png",
+        "coverImage": ""
+    },
+    {
+        "id": 15,
+        "username": "willo",
+        "displayName": "Will O",
+        "followers": [],
+        "following": [1],
+        "avatar": "15.png",
         "coverImage": ""
     }
 ]

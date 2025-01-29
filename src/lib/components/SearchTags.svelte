@@ -77,7 +77,7 @@
             bind:this={inputRef}
             onkeydown={handleKeyDown}
             placeholder="Search for tags..."
-            class="entry w-full rounded-md colour-border shadow-sm focus:border-orange-500 focus:ring-orange-500"
+            class="entry w-full rounded-md colour-border shadow-sm focus:border-orange-500 focus:ring-orange-500 cursor-text"
         />
     </div>
 

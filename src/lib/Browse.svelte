@@ -72,7 +72,7 @@
     <button
         type="button"
         class="relative w-full overflow-hidden rounded-lg colour-border border-2 bg-white shadow
-                {(!artViewOnly || selectMode) ? "cursor-pointer" : "cursor-default"}
+                cursor-pointer
                 {highlightArray[index] ? "border-4 border-orange-600 dark:border-orange-600" : ""}
         "
         onclick={() => {openPopup(art); selectFeatureArt(index, art)}}

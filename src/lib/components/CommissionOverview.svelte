@@ -19,10 +19,10 @@
     <Milestone {selectedService} />
 </div>
 
-<h2 class="mt-6 text-lg font-semibold">Terms of Services</h2>
+<h2 class="mt-6 text-lg font-semibold">Terms of Service</h2>
 <div class="mt-4 space-y-2">
     {#each tos as term}
-        <details class="rounded-md border p-4">
+        <details class="rounded-md border p-4 cursor-pointer">
             <summary class="text-sm font-semibold">{term.title}</summary>
             <p class="mt-2 text-sm">{term.details}</p>
         </details>

@@ -1,43 +1,377 @@
 [
     {
         "id": 1,
-        "artistId": 1,
+        "artistId": 3,
         "state": "published",
         "isOpen": true,
-        "title": "High-quality Illustration",
-        "description": "This service provides you with fully rendered artwork, including a free simple background.",
-        "thumbnail": "1.jpg",
-        "samples": ["1.png", "2.png"],
-        "tags": ["illustration", "character", "fantasy"],
+        "title": "Character Concept Art",
+        "description": "Character concept art for games, movies, or personal projects.",
+        "thumbnail": "dorain8.webp",
+        "samples": ["dorain9.webp", "dorain7.webp", "dorain8.webp"],
+        "tags": ["concept art", "character"],
         "types": [
             {
-                "name": "Headshot",
-                "price": 300,
-                "description": "A detailed headshot illustration."
-            },
-            {
-                "name": "Half-body",
-                "price": 400,
-                "description": "An illustration covering half of the body."
+                "name": "Bust",
+                "price": 30,
+                "description": "A detailed bust concept art."
             },
             {
                 "name": "Full-body",
-                "price": 500,
-                "description": "A fully rendered full-body illustration."
+                "price": 50,
+                "description": "A full-body character concept art."
             }
         ],
         "extras": [
             {
-                "name": "Character",
+                "name": "Additional Outfit",
                 "type": "percentage",
-                "price": 70,
-                "description": "Additional character in the illustration."
+                "price": 50,
+                "description": "Add an extra outfit design for the character."
             },
             {
+                "name": "Background",
+                "type": "currency",
+                "price": 100,
+                "description": "Add background/scene."
+            }
+        ],
+        "fastDelivery": {
+            "enabled": true,
+            "price": 60,
+            "type": "percentage",
+            "duration": 5,
+            "unit": "days"
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 150,
+            "type": "percentage"
+        },
+        "downpayment": {
+            "payment": {
+                "value": 25,
+                "enabled": true
+            }
+        },
+        "milestones": [
+            {
+                "name": "Initial Sketch",
+                "duration": {
+                    "value": 4,
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 30,
+                    "enabled": false
+                }
+            },
+            {
+                "name": "Final Render",
+                "duration": {
+                    "value": 7,
+                    "unit": "days",
+                    "enabled": false
+                },
+                "payment": {
+                    "value": 70,
+                    "enabled": true
+                }
+            }
+        ],
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true
+        },
+        "uniqueTos": []
+    },
+    {
+        "id": 2,
+        "artistId": 3,
+        "state": "published",
+        "isOpen": true,
+        "title": "Environment Concept Art",
+        "description": "High-quality environment concept art for games, movies, or personal projects.",
+        "thumbnail": "dorain3.webp",
+        "samples": ["dorain3.webp", "dorain4.webp"],
+        "tags": ["concept art"],
+        "types": [
+            {
+                "name": "Small Scene",
+                "price": 50,
+                "description": "A small environment scene concept art."
+            },
+            {
+                "name": "Large Scene",
+                "price": 80,
+                "description": "A large, detailed environment scene concept art."
+            }
+        ],
+        "extras": [
+            {
+                "name": "Additional Lighting Pass",
+                "type": "currency",
+                "price": 30,
+                "description": "Add an extra lighting pass to the scene."
+            }
+        ],
+        "fastDelivery": {
+            "enabled": false
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 200,
+            "type": "percentage"
+        },
+        "downpayment": {
+            "payment": {
+                "value": 30,
+                "enabled": true
+            }
+        },
+        "milestones": [
+            {
+                "name": "Blockout",
+                "duration": {
+                    "value": 5,
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 40,
+                    "enabled": false
+                }
+            },
+            {
+                "name": "Final Render",
+                "duration": {
+                    "value": 10,
+                    "unit": "days",
+                    "enabled": false
+                },
+                "payment": {
+                    "value": 60,
+                    "enabled": true
+                }
+            }
+        ],
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true
+        },
+        "uniqueTos": []
+    },
+    {
+        "id": 3,
+        "artistId": 3,
+        "state": "published",
+        "isOpen": true,
+        "title": "Comic Style Concept Art",
+        "description": "Comic-style concept art for characters, covers, or panels.",
+        "thumbnail": "dragon8.webp",
+        "samples": ["dragon5.webp", "dragon6.webp", "dragon8.webp"],
+        "tags": ["concept art", "comic", "character design"],
+        "types": [
+            {
+                "name": "Panel Layout",
+                "price": 60,
+                "description": "A single comic panel layout with basic details."
+            },
+            {
+                "name": "Full Spread Layout",
+                "price": 100,
+                "description": "A double-paged comic panel layout with basic details."
+            }
+        ],
+        "extras": [
+            {
                 "name": "Detailed Background",
+                "type": "percentage",
+                "price": 30,
+                "description": "Add a detailed background to the design."
+            }
+        ],
+        "fastDelivery": {
+            "enabled": true,
+            "price": 50,
+            "type": "percentage",
+            "duration": 5,
+            "unit": "days"
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 100,
+            "type": "percentage"
+        },
+        "downpayment": {
+            "payment": {
+                "value": 25,
+                "enabled": true
+            }
+        },
+        "milestones": [
+            {
+                "name": "Initial Sketch",
+                "duration": {
+                    "value": 4,
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 30,
+                    "enabled": false
+                }
+            },
+            {
+                "name": "Final Line Art",
+                "duration": {
+                    "value": 7,
+                    "unit": "days",
+                    "enabled": false
+                },
+                "payment": {
+                    "value": 70,
+                    "enabled": true
+                }
+            }
+        ],
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true,
+            "Edits and Revisions": true
+        }
+    },
+    {
+        "id": 4,
+        "artistId": 1,
+        "state": "published",
+        "isOpen": true,
+        "title": "3D Character Animation",
+        "description": "3D character animation for games, movies, or personal projects.",
+        "thumbnail": "sentrie9.jpg",
+        "samples": ["sentrie9.jpg", "sentrie8.png"],
+        "tags": ["3d", "character"],
+        "types": [
+            {
+                "name": "Idle Animation",
+                "price": 50,
+                "description": "A looping idle animation for a 3D character."
+            },
+            {
+                "name": "Walk Cycle",
+                "price": 100,
+                "description": "A smooth walk cycle animation for a 3D character."
+            },
+            {
+                "name": "Custom Animation",
+                "price": 300,
+                "description": "A fully custom animation based on your requirements."
+            }
+        ],
+        "extras": [
+            {
+                "name": "Facial Animation",
+                "type": "currency",
+                "price": 60,
+                "description": "Add facial expressions and lip-syncing to the animation."
+            },
+            {
+                "name": "Additional Character",
+                "type": "percentage",
+                "price": 70,
+                "description": "Add an extra character to the animation."
+            }
+        ],
+        "fastDelivery": {
+            "enabled": true,
+            "price": 100,
+            "type": "percentage",
+            "duration": 7,
+            "unit": "days"
+        },
+        "commercialUse": {
+            "enabled": true,
+            "price": 200,
+            "type": "percentage"
+        },
+        "downpayment": {
+            "payment": {
+                "value": 30,
+                "enabled": true
+            }
+        },
+        "milestones": [
+            {
+                "name": "Blocking",
+                "duration": {
+                    "value": 9,
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 40,
+                    "enabled": false
+                }
+            },
+            {
+                "name": "Final Animation",
+                "duration": {
+                    "value": 18,
+                    "unit": "days",
+                    "enabled": false
+                },
+                "payment": {
+                    "value": 60,
+                    "enabled": true
+                }
+            }
+        ],
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": false,
+            "Commission Briefs": true
+        },
+        "uniqueTos": [
+            {
+                "title": "Animation References",
+                "details": "If possible, include as many links to videos with different camera angles if a custom animation is requested. Include a link to the 3D model"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "artistId": 1,
+        "state": "published",
+        "isOpen": true,
+        "title": "3D Character Posing",
+        "description": "Character posing for renders, references, or animations.",
+        "thumbnail": "sentrie2.webp",
+        "samples": ["sentrie1.png", "sentrie2.webp", "sentrie6.jpg"],
+        "tags": ["3D posing", "character design", "rendering"],
+        "types": [
+            {
+                "name": "Single Pose",
+                "price": 40,
+                "description": "A single dynamic pose for a 3D character."
+            },
+            {
+                "name": "Pose Set",
+                "price": 160,
+                "description": "A set of 5 dynamic poses for a 3D character."
+            }
+        ],
+        "extras": [
+            {
+                "name": "Facial Expression",
+                "type": "currency",
+                "price": 30,
+                "description": "Add a custom facial expression to the pose."
+            },
+            {
+                "name": "Background Rendering",
                 "type": "currency",
                 "price": 50,
-                "description": "A detailed background for the illustration."
+                "description": "Add a rendered background to the pose."
             }
         ],
         "fastDelivery": {
@@ -49,7 +383,7 @@
         },
         "commercialUse": {
             "enabled": true,
-            "price": 100,
+            "price": 150,
             "type": "percentage"
         },
         "downpayment": {
@@ -60,9 +394,9 @@
         },
         "milestones": [
             {
-                "name": "Sketch",
+                "name": "Initial Pose",
                 "duration": {
-                    "value": 3,
+                    "value": 2,
                     "unit": "days",
                     "enabled": true
                 },
@@ -72,14 +406,14 @@
                 }
             },
             {
-                "name": "Base Color",
+                "name": "Final Render",
                 "duration": {
-                    "value": 7,
+                    "value": 6,
                     "unit": "days",
                     "enabled": false
                 },
                 "payment": {
-                    "value": 50,
+                    "value": 70,
                     "enabled": true
                 }
             }
@@ -90,145 +424,40 @@
             "Commission Briefs": true
         },
         "uniqueTos": [
-            {
-                "title": "Prohibited Content",
-                "details": "I do not draw explicit content, hate speech, or offensive material."
-            }
         ]
     },
     {
-        "id": 2,
-        "artistId": 1,
+        "id": 6,
+        "artistId": 4,
         "state": "published",
         "isOpen": true,
-        "title": "High-quality Illustration",
-        "description": "This service provides you with fully rendered artwork, including a free simple background.",
-        "thumbnail": "1.jpg",
-        "samples": ["1.png", "2.png"],
-        "tags": ["illustration", "character", "fantasy"],
+        "title": "Handdrawn Illustrations",
+        "description": "Custom handdrawn illustrations for books, posters, or personal use.",
+        "thumbnail": "ayy1.jpg",
+        "samples": ["ayy1.jpg", "ayy2.jpg", "ayy3.jpg"],
+        "tags": ["handdrawn", "illustration"],
         "types": [
             {
-                "name": "Headshot",
-                "price": 300,
-                "description": "A detailed headshot illustration."
+                "name": "Single Character",
+                "price": 35,
+                "description": "A handdrawn illustration of a single character."
             },
             {
-                "name": "Half-body",
-                "price": 400,
-                "description": "An illustration covering half of the body."
-            },
-            {
-                "name": "Full-body",
-                "price": 500,
-                "description": "A fully rendered full-body illustration."
+                "name": "Scene",
+                "price": 100,
+                "description": "A handdrawn illustration of a scene with multiple elements."
             }
         ],
         "extras": [
             {
-                "name": "Character",
+                "name": "Additional Character",
                 "type": "percentage",
-                "price": 70,
-                "description": "Additional character in the illustration."
-            },
-            {
-                "name": "Detailed Background",
-                "type": "currency",
                 "price": 50,
-                "description": "A detailed background for the illustration."
+                "description": "Add an extra character to the illustration."
             }
         ],
         "fastDelivery": {
-            "enabled": true,
-            "duration": 3,
-            "unit": "days",
-            "type": "percentage",
-            "price": 50
-        },
-        "commercialUse": {
-            "enabled": true,
-            "price": 100,
-            "type": "percentage"
-        },
-        "downpayment": {
-            "payment": {
-                "value": 20,
-                "enabled": true
-            }
-        },
-        "milestones": [
-            {
-                "name": "Sketch",
-                "duration": {
-                    "value": 3,
-                    "unit": "days",
-                    "enabled": true
-                },
-                "payment": {
-                    "value": 30,
-                    "enabled": false
-                }
-            },
-            {
-                "name": "Base Color",
-                "duration": {
-                    "value": 7,
-                    "unit": "days",
-                    "enabled": false
-                },
-                "payment": {
-                    "value": 50,
-                    "enabled": true
-                }
-            }
-        ],
-        "termsOfService": {
-            "Prohibited Works": true,
-            "References": true,
-            "Commission Briefs": true
-        },
-        "uniqueTos": [
-            {
-                "title": "Prohibited Content",
-                "details": "I do not draw explicit content, hate speech, or offensive material."
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "artistId": 1,
-        "state": "archived",
-        "isOpen": false,
-        "title": "Manga",
-        "description": "Black and white manga-style illustration.",
-        "thumbnail": "2.jpg",
-        "samples": ["3.png", "4.png"],
-        "tags": ["anime", "manga", "illustration"],
-        "types": [
-            {
-                "name": "Panel",
-                "price": 200,
-                "description": "A single manga panel illustration."
-            },
-            {
-                "name": "Page",
-                "price": 500,
-                "description": "A full manga page illustration."
-            }
-        ],
-        "extras": [
-            {
-                "name": "Background Details",
-                "type": "percentage",
-                "price": 20,
-                "description": "Detailed background for the illustration."
-            }
-        ],
-        "fastDelivery": {
-            "enabled": false,
-            "duration": 3,
-            "unit": "days",
-            "type": "percentage",
-            "price": 50
+            "enabled": false
         },
         "commercialUse": {
             "enabled": true,
@@ -237,13 +466,13 @@
         },
         "downpayment": {
             "payment": {
-                "value": 30,
+                "value": 25,
                 "enabled": true
             }
         },
         "milestones": [
             {
-                "name": "Line Art",
+                "name": "Initial Sketch",
                 "duration": {
                     "value": 5,
                     "unit": "days",
@@ -255,9 +484,101 @@
                 }
             },
             {
-                "name": "Shading",
+                "name": "Final Art",
                 "duration": {
-                    "value": 3,
+                    "value": 10,
+                    "unit": "days",
+                    "enabled": false
+                },
+                "payment": {
+                    "value": 70,
+                    "enabled": true
+                }
+            }
+        ],
+        "termsOfService": {
+            "Prohibited Works": true,
+            "References": true,
+            "Edits and Revisions": true
+        },
+        "uniqueTos": [
+        ]
+    },
+    {
+        "id": 7,
+        "artistId": 2,
+        "state": "published",
+        "isOpen": true,
+        "title": "Simple Handdrawn Doodles",
+        "description": "Fun, quirky, and expressive handdrawn doodles perfect for personal use, gifts, or small projects.",
+        "thumbnail": "lightning6.webp",
+        "samples": ["lightning6.webp", "lightning7.webp", "lightning5.webp"],
+        "tags": ["handdrawn", "character"],
+        "types": [
+            {
+                "name": "Single Doodle",
+                "price": 15,
+                "description": "A simple, handdrawn portait of a single subject (e.g., a character, object, or small scene)."
+            },
+            {
+                "name": "Doodle Pack",
+                "price": 30,
+                "description": "A set of 3 handdrawn doodles with a cohesive theme (e.g., characters, objects, or small scenes)."
+            }
+        ],
+        "extras": [
+            {
+                "name": "Color",
+                "type": "currency",
+                "price": 10,
+                "description": "Add flat colors to the doodle(s)."
+            },
+            {
+                "name": "Shading",
+                "type": "currency",
+                "price": 15,
+                "description": "Add simple shading to the doodle(s)."
+            },
+            {
+                "name": "Background Elements",
+                "type": "currency",
+                "price": 20,
+                "description": "Add small background elements to the doodle(s)."
+            }
+        ],
+        "fastDelivery": {
+            "enabled": true,
+            "price": 20,
+            "type": "percentage",
+            "duration": 2,
+            "unit": "days"
+        },
+        "commercialUse": {
+            "enabled": false
+        },
+        "downpayment": {
+            "payment": {
+                "value": 20,
+                "enabled": true
+            }
+        },
+        "milestones": [
+            {
+                "name": "Initial Sketch",
+                "duration": {
+                    "value": 1,
+                    "unit": "days",
+                    "enabled": true
+                },
+                "payment": {
+                    "value": 50,
+                    "enabled": false
+                }
+            },
+            {
+                "name": "Final Doodle",
+                "duration": {
+                    "value": 2,
                     "unit": "days",
                     "enabled": false
                 },
@@ -269,14 +590,7 @@
         ],
         "termsOfService": {
             "Prohibited Works": true,
-            "Payment": false,
-            "Edits and Revisions": true
-        },
-        "uniqueTos": [
-            {
-                "title": "Prohibited Content",
-                "details": "I do not draw explicit content, hate speech, or offensive material."
-            }
-        ]
+            "Usage Rights": true
+        }
     }
 ]
