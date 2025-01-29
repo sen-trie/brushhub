@@ -81,7 +81,7 @@
     },
     {
         "id": 8,
-        "service": 6,
+        "service": 3,
         "commissioner": 13,
         "artist": 3,
         "rating": 5,
@@ -89,7 +89,7 @@
     },
     {
         "id": 9,
-        "service": 6,
+        "service": 3,
         "commissioner": 14,
         "artist": 3,
         "rating": 5,
@@ -97,7 +97,7 @@
     },
     {
         "id": 10,
-        "service": 1,
+        "service": 6,
         "commissioner": 7,
         "artist": 4,
         "rating": 5,
@@ -105,7 +105,7 @@
     },
     {
         "id": 11,
-        "service": 1,
+        "service": 6,
         "commissioner": 9,
         "artist": 4,
         "rating": 5,
@@ -113,7 +113,7 @@
     },
     {
         "id": 12,
-        "service": 1,
+        "service": 6,
         "commissioner": 6,
         "artist": 4,
         "rating": 5,
@@ -121,7 +121,7 @@
     },
     {
         "id": 13,
-        "service": 1,
+        "service": 6,
         "commissioner": 15,
         "artist": 4,
         "rating": 5,

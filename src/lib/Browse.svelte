@@ -145,7 +145,7 @@
                         <p>
                             {selectedArt.description}
                         </p>
-                        <p class="mt-2 text-sm">
+                        <p class="mt-2 text-sm sub-heading">
                             {selectedArt.datePosted
                                 ? 'Posted: ' + new Date(selectedArt.datePosted).toLocaleDateString()
                                 : ''}

@@ -52,7 +52,7 @@
         />
         <div class="flex-1">
             <p class="text-lg font-semibold">@{creator.name}</p>
-            <p class="text-sm text-gray-400 mb-1">{creator.role}</p>
+            <p class="text-sm sub-heading mb-1">{creator.role}</p>
             <div class="text-sm flex flex-col">
                 {#each Object.entries(creator.links) as [link, text]}
                     <div class="flex justify-start items-center space-x-1">
@@ -78,7 +78,7 @@
         </div>
         <div>    
             <p>Creators</p>
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 p-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2">
                 {#each creatorArray as creator}
                     {@render card(creator)}
                 {/each}

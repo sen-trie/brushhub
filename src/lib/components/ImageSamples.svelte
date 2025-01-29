@@ -14,7 +14,7 @@
             border border-dashed border-gray-300 bg-gray-50 p-2"
 >
     {#if uploadedImages.length === 0}
-        <span class="text-sm text-gray-500">No images uploaded</span>
+        <span class="text-sm sub-heading">No images uploaded</span>
     {/if}
     {#each uploadedImages as image, index}
         <div class="relative">

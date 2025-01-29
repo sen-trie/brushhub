@@ -53,7 +53,7 @@
 
         <div class="mt-4 text-left flex-grow">
             <h4 class="text-lg font-semibold">{service.title}</h4>
-            <p class="mt-2 text-green-600">
+            <p class="mt-2 green-text">
                 {service.types.length > 0
                     ? `${calculateCurrency(Math.min(...service.types.map((type: any) => type.price)))} ~ 
                             ${calculateCurrency(Math.max(...service.types.map((type: any) => type.price)))}`

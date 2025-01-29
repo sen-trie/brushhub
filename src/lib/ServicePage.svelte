@@ -67,7 +67,7 @@
 
 <h2 class="mt-4 text-lg font-bold">Samples</h2>
 <div class="mt-2">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <Browse {artDB} showArtist={false} {artViewOnly}/>
     </div>
 </div>
@@ -79,7 +79,7 @@
             <h2 class="text-lg font-semibold text-orange-500">
                 {type.name || (viewOnly && `Missing Name`)}
             </h2>
-            <p class="font-bold text-green-600">
+            <p class="font-bold green-text">
                 {isNaN(type.price) ? 'Undefined Price' : calculateCurrency(type.price)}
             </p>
             <p class="mt-2 text-sm">
@@ -106,7 +106,7 @@
             <h3 class="font-semibold text-orange-500">
                 {extra.name || (viewOnly && `Missing Name`)}
             </h3>
-            <p class="font-bold text-green-600">
+            <p class="font-bold green-text">
                 {calculateExtra(extra.price, extra.type)}
             </p>
             <p class="mt-2 text-sm">

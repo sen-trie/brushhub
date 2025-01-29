@@ -58,7 +58,8 @@
     const menuItemsNotLogged = [
         { name: 'Home', path: './', src: Home },
         { name: 'Sign In', path: './account/login/', src: ArrowLeftEndOnRectangle },
-        { name: 'Settings', path: './settings', src: Cog }
+        { name: 'Settings', path: './settings', src: Cog },
+        { name: 'About', path: './about', src: QuestionMarkCircle }
     ];
 
     function handleKeyPress(event: KeyboardEvent, path: string) {
@@ -94,7 +95,7 @@
         </button>
         <ul class="mt-6 w-full space-y-4">
             {#each user.displayName ? menuItemsLogged : menuItemsNotLogged as item}
-                <li class="text-gray-600">
+                <li class="sub-heading">
                     <button
                         type="button"
                         onclick={() => {

@@ -95,7 +95,7 @@
             <div class="relative hidden w-full sm:flex">
                 <Searchbar />
             </div>
-            <div class="flex sm:hidden">
+            <div class="flex pl-8 sm:hidden">
                 {@render logo()}
             </div>
 
@@ -149,7 +149,7 @@
                 />
                 <div>
                     <p class="font-semibold">{user.displayName}</p>
-                    <p class="text-gray-400">@{user.username}</p>
+                    <p class="sub-heading">@{user.username}</p>
                 </div>
             </div>
         </div>

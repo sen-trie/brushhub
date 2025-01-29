@@ -25,8 +25,11 @@
                         <span class="fas fa-star text-gray-300">★</span>
                     {/each}
                 {/if}
+                <p class="font-bold text-orange-500">
+                    [{review.rating}]
+                </p>
             </div>
-            <p class="text-gray-800">{review.comment}</p>
+            <p class="text-gray-800 flex-grow">{review.comment}</p>
             <div class="mt-2 flex items-center gap-4">
                 <div class="h-10 w-10 rounded-full bg-gray-300">
                     <img
@@ -39,7 +42,7 @@
                     <p class="font-bold text-gray-700">
                         {review?.user?.displayName || 'Anonymous'}
                     </p>
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm sub-heading">
                         (Purchased: {review.service?.title || 'Unknown'})
                     </p>
                 </div>

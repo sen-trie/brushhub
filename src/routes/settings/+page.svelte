@@ -54,7 +54,7 @@
         <div class="my-4 border-t border-gray-700"></div>
         <div>
             <h1 class="mb-2 text-2xl font-bold">Your BrushHub Profile</h1>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm sub-heading">
                 This is your public presence on BrushHub. You need a profile to upload your own
                 services, comment on artwork, or create commissions.
             </p>
@@ -68,7 +68,7 @@
                     />
                     <div>
                         <p class="text-lg font-semibold">{user.displayName}</p>
-                        <p class="text-sm text-gray-400">@{user.username}</p>
+                        <p class="text-sm sub-heading">@{user.username}</p>
                     </div>
                 </div>
             </div>

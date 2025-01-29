@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="{artist.tags.length > 0 ? "sm:mb-2" : ""} flex flex-wrap gap-2 mt-4 sm:mt-0">
+        <div class="{artist.tags.length > 0 ? "sm:mb-2" : ""} flex flex-wrap gap-2 mt-4 sm:mt-0 md:max-w-[40%]">
             {#each artist.tags as tag, index}
                 <div
                     class="items-center space-x-1 rounded orange-tag px-2 py-1 flex

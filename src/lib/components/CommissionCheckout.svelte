@@ -112,8 +112,8 @@
             in case of cancellation.
         </p>
         <div class="text-right">
-            <p class="text-lg font-bold text-green-600 hidden sm:visible">Net Total: {calculateCurrency(finalPrice)}</p>
+            <p class="text-lg font-bold green-text hidden sm:visible">Net Total: {calculateCurrency(finalPrice)}</p>
         </div>
     </div>
-    <p class="mt-2 text-right text-lg font-bold text-green-600 visible sm:hidden">Net Total: {calculateCurrency(finalPrice)}</p>
+    <p class="mt-2 text-right text-lg font-bold green-text visible sm:hidden">Net Total: {calculateCurrency(finalPrice)}</p>
 </div>

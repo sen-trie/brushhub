@@ -63,7 +63,7 @@
                     </div>
                     <div>
                         <p class="text-lg text-center
-                                {request.state.value === 'active' ? '!text-green-500' : ''} 
+                                {request.state.value === 'active' ? '!green-text' : ''} 
                                 {request.state.value === 'rejected' ? '!text-red-500' : ''}
                                 {request.state.value === 'pending' ? '!text-yellow-500' : ''}
                         mr-4">

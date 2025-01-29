@@ -25,8 +25,8 @@
 </script>
 
 <div>
-    <div class="content-section flex flex-col gap-6 md:flex-row">
-        <div class="left-column flex w-full flex-col md:w-1/4">
+    <div class="content-section flex flex-col gap-6 lg:flex-row">
+        <div class="left-column flex w-full flex-col lg:w-1/4">
             <div class="bio card-container">
                 <p>{artist.bio}</p>
                 <hr class="my-4" />
@@ -45,7 +45,7 @@
                             <a
                                 href={'//' + link}
                                 target="_blank"
-                                class="max-w-64 truncate text-blue-600"
+                                class="max-w-full truncate text-blue-600"
                             >
                                 {link}
                             </a>
@@ -126,10 +126,10 @@
             </div>
         </div>
 
-        <div class="right-column flex w-full flex-col gap-6 md:w-3/4">
+        <div class="right-column flex w-full flex-col gap-6 lg:w-3/4">
             <div class="featured-artworks card-container">
                 <h3 class="mb-4 text-lg font-semibold">Featured Artworks</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <Browse artDB={chosenDB.length > 0 ? chosenDB : featuredDB} showArtist={false} artViewOnly={true}/>
                 </div>
                 {#if currentArtist}

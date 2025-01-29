@@ -55,7 +55,7 @@
     {/if}
 
     {#if payText}
-        <p class="text-xs font-bold text-green-600">{payText}</p>
+        <p class="text-xs font-bold green-text">{payText}</p>
     {:else}
         <span class="invisible">-</span>
     {/if}

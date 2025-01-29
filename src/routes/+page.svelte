@@ -56,14 +56,14 @@
     <title>BrushHub</title> 
 </svelte:head>
 
-<div class="flex flex-col-reverse sm:flex-row card-island min-h-full sm:space-x-8">
+<div class="flex flex-col-reverse lg:flex-row card-island min-h-full lg:space-x-8">
     <div class="content flex-grow">
         <div class="mb-4 flex items-center">
             <button
                 class="mr-4 text-2xl font-bold focus:outline-none
                     {followersOnly === false
                     ? 'text-orange-500 dark:text-orange-300'
-                    : 'text-gray-400 hover:text-orange-500'}
+                    : 'sub-heading hover:text-orange-500'}
                     "
                 onclick={() => (followersOnly = false)}
             >
@@ -74,7 +74,7 @@
                     class="mr-4 text-2xl font-bold focus:outline-none
                         {followersOnly === true
                         ? 'text-orange-500 dark:text-orange-300'
-                        : 'text-gray-400 hover:text-orange-500'}
+                        : 'sub-heading hover:text-orange-500'}
                         "
                     onclick={() => (followersOnly = true)}
                 >
@@ -82,13 +82,13 @@
                 </button>
             {/if}
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             <Browse {artDB}/>
         </div>
     </div>
     <div
         class="filter-panel sticky p-4
-                sm:top-6 sm:h-96 sm:min-w-64 sm:pt-4"
+                lg:top-6 lg:h-96 lg:min-w-64 lg:pt-4"
     >
         <button class="confirm-button flex justify-center gap-2" onclick={clearFilters}>
             <Icon src={Funnel} size="24" />

@@ -177,7 +177,7 @@
             />
         </div>
 
-        <p class="hidden sm:visible mt-4 text-lg font-bold text-green-600">Net Total: {calculateCurrency(price)}</p>
+        <p class="hidden sm:visible mt-4 text-lg font-bold green-text">Net Total: {calculateCurrency(price)}</p>
     </div>
 
     <div>
@@ -188,5 +188,5 @@
     {#if warningMessage}
         <p class="sm:-mt-4 text-sm text-red-500">{warningMessage}</p>
     {/if}
-    <p class="visible sm:hidden text-lg text-right font-bold text-green-600">Net Total: {calculateCurrency(price)}</p>
+    <p class="visible sm:hidden text-lg text-right font-bold green-text">Net Total: {calculateCurrency(price)}</p>
 </div>
