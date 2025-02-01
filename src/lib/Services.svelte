@@ -1,12 +1,12 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import { Icon, EllipsisVertical } from 'svelte-hero-icons';
-    import { navigateTo, calculateCurrency, stopPropagation } from './util';
+    import { navigateTo, calculateCurrency } from './util';
     import { page } from '$app/state';
     import { wrapDefault } from '$lib/db';
 
     let { serviceDB, viewOnly = true, currentArtist = false,
-          removeEntry, editEntry, callback }: ComponentProps<any> = $props();
+          removeEntry, editEntry, callback, openComm = true }: ComponentProps<any> = $props();
     
     let openIndex = $state(-1);
 
@@ -79,16 +79,21 @@
 
         {#if service.state === 'published' && !viewOnly}
             <div class="mt-4 mr-2" onclick={(event) => {event.stopPropagation()}}>
-                <label class="inline-flex items-center cursor-pointer w-full justify-end">
-                    <input type="checkbox" bind:checked={service.isOpen} class="sr-only peer">
-                    <span class="mr-3 text-sm font-medium">{service.isOpen ? 'Open' : 'Closed'}</span>
-                    <div class="relative w-11 h-6 !bg-stone-200 dark:!bg-stone-500 peer-checked:!bg-orange-600
-                                rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                                after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:border after:rounded-full after:h-5 after:w-5 after:transition-all
-                                peer-checked:after:!border-white after:!bg-white after:!border-stone-300 
-                                peer-focus:!ring-blue-300
-                                "></div>
-                </label>
+                {#if openComm}
+                    <label class="inline-flex items-center cursor-pointer w-full justify-end">
+                        <input type="checkbox" bind:checked={service.isOpen} class="sr-only peer">
+                        <span class="mr-3 text-sm font-medium">{service.isOpen ? 'Open' : 'Closed'}</span>
+                        <div class="relative w-11 h-6 !bg-stone-200 dark:!bg-stone-500 peer-checked:!bg-orange-600
+                                    rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                                    after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:border after:rounded-full after:h-5 after:w-5 after:transition-all
+                                    peer-checked:after:!border-white after:!bg-white after:!border-stone-300 
+                                    peer-focus:!ring-blue-300
+                                    "
+                        ></div>
+                    </label>
+                {:else}
+                    <p class="text-sm font-medium text-right w-full sub-heading">All Services Closed</p>
+                {/if}
             </div>
         {/if}
 

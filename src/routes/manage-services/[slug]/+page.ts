@@ -13,11 +13,12 @@ export const load: PageLoad = ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
     const currentUser = getUser();
 
-    const artist = pullDB('user', {}, { username: searchQuery });
-    if (!artist || currentUser.username !== artist.username) {
+    const artistUser = pullDB('user', {}, { username: searchQuery });
+    if (!artistUser || currentUser.username !== artistUser.username) {
         throw error(404, 'You are not the current artist');
     }
 
-    const service = pullDB('services', { artistId: Number(artist.id) }, {});
-    return { service };
+    const service = pullDB('services', { artistId: Number(artistUser.id) }, {});
+    const artist = pullDB('artist', { id: Number(artistUser.id) }, {})[0];
+    return { service, artist };
 };

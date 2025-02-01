@@ -7,7 +7,8 @@
     let { data }: { data: PageData } = $props();
 
     let serviceDB: Service[] = $state(data?.service);
-    const currentArtist = data?.user;
+    let currentArtist = data?.user;
+    let openComm = $state(data.artist.openCommission);
 
     let selectedService = $state<Service | null>(null);
     let showEditCommission = $state(false);
@@ -45,7 +46,7 @@
     <section class="card-container mb-8">
         <h2 class="mb-4 text-lg font-semibold">{filter[0].toUpperCase() + filter.slice(1)}</h2>
         <div class="service-grid mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Services serviceDB={serviceDB.filter((service: any) => service.state === filter)} 
+            <Services serviceDB={serviceDB.filter((service: any) => service.state === filter)} {openComm}
                       viewOnly={false} currentArtist={true} {callback} {editEntry} {removeEntry}
             />
         </div>
@@ -70,12 +71,21 @@
     <div class="card-island">
         <div class="mb-4 flex items-center justify-between">
             <h1 class="page-title">Manage Services</h1>
-            <button
-                class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
-                onclick={() => (showCreateCommission = true)}
-            >
-                Create New Service
-            </button>
+            <div>
+                <button
+                    class="my-services-button rounded px-4 py-2 mr-4 discard-button 
+                    {openComm ? '!bg-stone-100 !text-red-700 ' : ''}"
+                    onclick={() => (openComm = !openComm)}
+                >
+                    {openComm ? 'Services Open' : 'Services Closed'}
+                </button>    
+                <button
+                    class="my-services-button rounded bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+                    onclick={() => (showCreateCommission = true)}
+                >
+                    Create New Service
+                </button>
+            </div>
         </div>
 
         {#each ['published', 'draft', 'archived'] as serviceState}

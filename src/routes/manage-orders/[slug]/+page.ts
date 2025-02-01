@@ -9,7 +9,7 @@ export const entries: EntryGenerator = async () => {
     return [{ slug: 'hungry_anne' }];
 };
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = ({ params }) => {
     const searchQuery = params.slug.toLowerCase();
     const currentUser = getUser();
 
@@ -20,7 +20,6 @@ export const load: PageLoad = async ({ params }) => {
 
     let request = pullDB('request', { customerId: user.id }, {});
     request = request.map((req: any) => {
-
         return {
             ...req,
             service: pullDB('services', {}, { id: req.serviceId })
