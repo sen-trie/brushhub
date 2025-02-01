@@ -1,7 +1,7 @@
 <script lang="ts">
     import Milestone from './Milestone.svelte';
     import type { ComponentProps } from 'svelte';
-    import { calculateCommission, calculateCurrency, dueDeadline } from '$lib/util';
+    import { calculateCommission, calculateCurrency } from '$lib/util';
 
     const { selectedService, commissionChoice }: ComponentProps<any> = $props();
 
@@ -70,7 +70,7 @@
                 <p class="font-medium">Deadline:</p>
                 <p class="font-medium">
                     {commissionChoice.deadline}
-                    [{dueDeadline(commissionChoice.deadline)}]
+                    <!-- [{dueDeadline(commissionChoice.deadline)}] -->
                 </p>
             </div>
         </div>

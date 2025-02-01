@@ -6,8 +6,6 @@
     import BackButtonArrow from '$lib/components/BackButtonArrow.svelte';
 
     import type { ComponentProps } from 'svelte';
-    import { navigateTo } from '$lib/util';
-    import { page } from '$app/stores';
 
     let { closeRequest, request, artistView = false, editEntry = () => {} }: ComponentProps<any> = $props();
 
@@ -48,18 +46,13 @@
                 <div class="flex mb-4 justify-between items-center">
                     <div class="flex flex-col items-start">
                         <h1 class="page-title">{request.service.title}</h1>
-                        <button
+                        <p
                             class="text-l underline"
-                            onclick={() =>
-                                navigateTo(
-                                    `./profile/${artistView ? currentCommissioner?.username : currentArtist?.username}`,
-                                    $page.url.pathname
-                                )}
                         >
                             {artistView
                                 ? `Requested by: ${currentCommissioner?.displayName}`
                                 : `Service by: ${currentArtist?.displayName}`}
-                        </button>
+                        </p>
                     </div>
                     <div>
                         <p class="text-lg text-center

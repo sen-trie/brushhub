@@ -1,68 +1,104 @@
 [
     {
         "id": 1,
-        "artistId": 2,
-        "customerId": 1,
+        "artistId": 3,
+        "customerId": 9,
         "serviceId": 1,
         "state": {
             "value": "pending",
             "progress": [
                 {
-                    "name": "Sketch",
+                    "name": "Initial Sketch",
                     "date": null,
                     "feedback": "",
                     "approval": null,
-                    "sample": []
+                    "sample": ""
                 },
                 {
-                    "name": "Base Colour",
+                    "name": "Final Render",
                     "date": null,
                     "feedback": "",
                     "approval": null,
-                    "sample": []
+                    "sample": ""
                 }
             ]
         },
-        "brief": "I WANT A DRAWING OF A CAT",
-        "deadline": "2021-01-31",
-        "references": [1, 2],
+        "brief": "I'm looking for a character concept for a battle-hardened female knight for my indie game. She should wear ornate but functional armor with a slightly worn look. Her weapon of choice is a greatsword, and she has a long, tattered cape. She has a scar over one eye and a serious expression.",
+        "start": "",
+        "deadline": "2024-08-31",
+        "references": ["1.webp", "2.webp"],
         "type": "Full-body",
-        "extras": ["Character"],
+        "extras": ["Background"],
         "fastDelivery": true,
         "commercialUse": true,
-        "price": 650
+        "price": 120
     },
     {
         "id": 2,
-        "artistId": 2,
-        "customerId": 1,
+        "artistId": 3,
+        "customerId": 10,
         "serviceId": 1,
         "state": {
             "value": "active",
             "progress": [
                 {
-                    "name": "Sketch",
-                    "date": "2021-12-21",
+                    "name": "Initial Sketch",
+                    "date": "2024-06-05",
                     "feedback": "",
                     "approval": true,
-                    "sample": []
+                    "sample": "4.png"
                 },
                 {
-                    "name": "Base Colour",
+                    "name": "Final Render",
                     "date": null,
                     "feedback": "",
                     "approval": null,
-                    "sample": []
+                    "sample": ""
                 }
             ]
         },
-        "brief": "I WANT A DRAWING OF A CAT",
-        "deadline": "2021-12-30",
-        "references": [1, 2],
+        "brief": "I'm looking for a grounded and practical female adventurer design for my project. She should wear light armor and travel-ready clothing, designed for mobility rather than heavy protection. Her outfit should include a tunic, a reinforced belt with pouches, and layered cloth or leather armor on key areas like forearms and legs. The design should reflect a worn yet functional aesthetic, showing subtle wear and tear from long journeys. She has a pragmatic yet determined expression, and her stance should reflect confidence.",
+        "start": "2024-06-01",
+        "deadline": "2024-06-22",
+        "references": ["3.webp"],
         "type": "Full-body",
         "extras": ["Character"],
         "fastDelivery": true,
         "commercialUse": true,
-        "price": 650
+        "price": 115
+    },
+    {
+        "id": 3,
+        "artistId": 3,
+        "customerId": 13,
+        "serviceId": 3,
+        "state": {
+            "value": "active",
+            "progress": [
+                {
+                    "name": "Initial Sketch",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                },
+                {
+                    "name": "Final Line Art",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                }
+            ]
+        },
+        "brief": "I'm looking for a grounded and practical female adventurer design for my project. She should wear light armor and travel-ready clothing, designed for mobility rather than heavy protection. Her outfit should include a tunic, a reinforced belt with pouches, and layered cloth or leather armor on key areas like forearms and legs. The design should reflect a worn yet functional aesthetic, showing subtle wear and tear from long journeys. She has a pragmatic yet determined expression, and her stance should reflect confidence.",
+        "start": "2024-07-02",
+        "deadline": "2024-07-30",
+        "references": ["3.webp"],
+        "type": "Panel Layout",
+        "extras": ["Detailed Background"],
+        "fastDelivery": false,
+        "commercialUse": false,
+        "price": 80
     }
 ]

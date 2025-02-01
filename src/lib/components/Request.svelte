@@ -1,9 +1,10 @@
 <script lang="ts">
     import type { ComponentProps } from 'svelte';
     import { pullDB } from '$lib/db';
-    let { request, openRequest, editEntry = () => {} }: ComponentProps<any> = $props();
+    let { request, openRequest, artistOrCommissioner }: ComponentProps<any> = $props();
 
     const currentArtist = pullDB('user', {}, { id: request.artistId });
+    const currentCommissioner = pullDB('user', {}, { id: request.customerId });
 
     let currentStage = $state('');
     let milestone = $state({
@@ -11,12 +12,11 @@
         date: ''
     });
 
-
     switch (request.state.value) {
         case 'active':
             currentStage = 'Active';
-            milestone = request.state.progress.find((prog: any) => prog.date !== null);
-            milestone ??=  request.state.progress[0];
+            milestone = request.state.progress.find((prog: any) => prog.date === null);
+            milestone ??= request.state.progress[0];
             break;
         case 'cancelled':
             currentStage = 'Cancelled';
@@ -40,7 +40,7 @@
     <td class="px-4 py-2">
         <div class="flex flex-col">
             <span class="font-semibold">{request.service.title}</span>
-            <span class="text-xs">{currentArtist?.displayName}</span>
+            <span class="text-xs">{artistOrCommissioner ? currentCommissioner?.displayName : currentArtist?.displayName}</span>
         </div>
     </td>
     <td class="px-4 py-2">{request.type}</td>

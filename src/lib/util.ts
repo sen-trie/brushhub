@@ -228,20 +228,20 @@ export function formatResponseTime(responseTime: string): string {
     return days > 0 ? `${days} days` : `${hours} hours`;
 }
 
-export function dueDeadline(deadline: number): string {
-    const now = new Date();
-    const dueDate = new Date(deadline);
-    const timeDiff = dueDate.getTime() - now.getTime();
+// export function dueDeadline(deadline: number): string {
+//     const now = new Date();
+//     const dueDate = new Date(deadline);
+//     const timeDiff = dueDate.getTime() - now.getTime();
 
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    if (days > 0) {
-        return `Due in ${days} days`;
-    } else if (days === 0) {
-        return 'Due today';
-    } else {
-        return `Overdue by ${-days} days`;
-    }
-}
+//     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+//     if (days > 0) {
+//         return `Due in ${days} days`;
+//     } else if (days === 0) {
+//         return 'Due today';
+//     } else {
+//         return `Overdue by ${-days} days`;
+//     }
+// }
 
 const countryNames: string[] = Object.entries(countries)
     .map(([_, name]) => name.name)

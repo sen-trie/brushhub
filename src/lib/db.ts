@@ -124,6 +124,15 @@ export const imageModules: any = (queryLocal: string = 'artwork') => {
                     import: 'default'
                 }
             );
+        case 'reference':
+            return import.meta.glob(
+                '$lib/assets/reference/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
+                {
+                    eager: true,
+                    query: '?url',
+                    import: 'default'
+                }
+            );
         default:
             return import.meta.glob('$lib/assets/*/**', {
                 eager: true,

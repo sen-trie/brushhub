@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             {#each requestDB as request}
-                <Request {request} {openRequest}/>
+                <Request {request} {openRequest} artistOrCommissioner={props.artistOrCommissioner}/>
             {/each}
         </tbody>
     </table>

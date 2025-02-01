@@ -18,7 +18,7 @@ export const load: PageLoad = ({ params }) => {
         throw error(404, 'Not Found');
     }
 
-    let request = pullDB('request', { customerId: user.id }, {});
+    let request = pullDB('request', { artistId: user.id }, {});
     request = request.map((req: any) => {
         return {
             ...req,

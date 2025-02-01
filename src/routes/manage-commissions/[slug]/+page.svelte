@@ -51,6 +51,6 @@
 {:else}
     <div class="card-island">
         <h1 class="page-title mb-4">Your Commissions</h1>
-        <CommissionOrderTab commissionOrOrder={true} {requestDB} {openRequest}/>
+        <CommissionOrderTab commissionOrOrder={true} {requestDB} {openRequest} artistOrCommissioner={true}/>
     </div>
 {/if}
