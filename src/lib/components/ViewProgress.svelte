@@ -18,7 +18,7 @@
 
 <h2 class="text-lg font-semibold mb-1">Progress</h2>
 <div>
-    {#each request.state.progress as milestone}
+    {#each request.state.progress.toReversed() as milestone}
         {#if milestone.date !== null}
         <p>
             <span class="font-bold">{milestone.date}:</span>
@@ -31,8 +31,13 @@
         />
         {/if}
     {/each}
+
     <p>
         <span class="font-bold">{request.start}:</span>
-        <span>Accepted Commission</span>
+        {#if request.state.value === "rejected"}
+            <span>Rejected Commission</span>
+        {:else}   
+            <span>Accepted Commission</span>
+        {/if}
     </p>
 </div>

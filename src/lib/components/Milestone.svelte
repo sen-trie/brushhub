@@ -16,11 +16,9 @@
 
 {#snippet circleNode(index = -2)}
     <div
-        class="flex h-6 w-6 items-center justify-center rounded-full {emptyService(
-            '!bg-orange-500',
-            '!bg-gray-500',
-            index
-        )}"
+        class="flex h-6 w-6 items-center justify-center rounded-full {
+            emptyService( '!bg-orange-500', '!bg-gray-500', index)
+        }"
     >
         {#if Object.keys(currentService).length === 0}
             <!-- ONLY PREVIEWING MILESTONE -->
@@ -63,28 +61,41 @@
 
 <div class="flex items-center text-center">
     <div class="relative flex items-center">
-        <div class="flex flex-col items-center">
-            {@render circleNode()}
-            {#if selectedService.downpayment.payment.enabled === false}
-                {@render payNode(-2, 'Start', 'Start of Project', '')}
-            {:else}
-                {@render payNode(
-                    -2,
-                    'Start',
-                    'Start of Project',
-                    `Pay ${selectedService.downpayment.payment.value}%`
-                )}
-            {/if}
-        </div>
+        {#if Object.keys(currentService).length === 0 || currentService.value !== 'rejected'}
+            <div class="flex flex-col items-center">
+                {@render circleNode()}
+                {#if selectedService.downpayment.payment.enabled === false}
+                    {@render payNode(-2, 'Start', 'Start of Project', '')}
+                {:else}
+                    {@render payNode(-2, 'Start', 'Start of Project',
+                        `Pay ${selectedService.downpayment.payment.value}%`
+                    )}
+                {/if}
+            </div>
+            <div class="mx-2 w-64 h-1 flex-1 !bg-orange-500"></div>
+        {:else}
+            <div class="flex flex-col items-center">
+                <div class="flex h-6 w-6 items-center justify-center rounded-full !bg-gray-500">
+                    <div class="h-3 w-3 rounded-full !bg-white"></div>
+                </div>
+                {#if selectedService.downpayment.payment.enabled === false}
+                    {@render payNode(-2, 'Start', 'Start of Project', '')}
+                {:else}
+                    {@render payNode(-2, 'Start', 'Start of Project',
+                        `Pay ${selectedService.downpayment.payment.value}%`
+                    )}
+                {/if}
+            </div>
+            
+        <div class="mx-2 w-64 h-1 flex-1 !bg-gray-500"></div>
+        {/if}
 
-        <div class="mx-2 w-64 h-1 flex-1 !bg-orange-500"></div>
 
         {#each selectedService.milestones as milestone, index}
             <div class="flex flex-col items-center">
                 {@render circleNode(index)}
                 {@render payNode(
-                    index,
-                    milestone.name,
+                    index, milestone.name,
                     milestone.duration
                         ? `${milestone.duration.value} ${milestone.duration.unit}`
                         : '',

@@ -26,7 +26,7 @@
         "brief": "I'm looking for a character concept for a battle-hardened female knight for my indie game. She should wear ornate but functional armor with a slightly worn look. Her weapon of choice is a greatsword, and she has a long, tattered cape. She has a scar over one eye and a serious expression.",
         "start": "",
         "deadline": "2024-08-31",
-        "references": ["1.webp", "2.webp"],
+        "references": ["1.png"],
         "type": "Full-body",
         "extras": ["Background"],
         "fastDelivery": true,
@@ -57,10 +57,10 @@
                 }
             ]
         },
-        "brief": "I'm looking for a grounded and practical female adventurer design for my project. She should wear light armor and travel-ready clothing, designed for mobility rather than heavy protection. Her outfit should include a tunic, a reinforced belt with pouches, and layered cloth or leather armor on key areas like forearms and legs. The design should reflect a worn yet functional aesthetic, showing subtle wear and tear from long journeys. She has a pragmatic yet determined expression, and her stance should reflect confidence.",
+        "brief": "I need a lightly armored adventurer or warrior with a medieval or fantasy-inspired look. Start with a simple base outfit—tunic, belt, pants, and boots—then gradually add more details like pouches, reinforced armor, structured gloves, and layered fabrics.",
         "start": "2024-06-01",
         "deadline": "2024-06-22",
-        "references": ["3.webp"],
+        "references": [],
         "type": "Full-body",
         "extras": ["Character"],
         "fastDelivery": true,
@@ -91,14 +91,116 @@
                 }
             ]
         },
-        "brief": "I'm looking for a grounded and practical female adventurer design for my project. She should wear light armor and travel-ready clothing, designed for mobility rather than heavy protection. Her outfit should include a tunic, a reinforced belt with pouches, and layered cloth or leather armor on key areas like forearms and legs. The design should reflect a worn yet functional aesthetic, showing subtle wear and tear from long journeys. She has a pragmatic yet determined expression, and her stance should reflect confidence.",
+        "brief": "Looking for a grounded and practical female adventurer design for my project. Can you draw the progression of her suiting up? Her final outfit should include a tunic, a reinforced belt with pouches, and layered cloth or leather armor on key areas like forearms and legs.",
         "start": "2024-07-02",
         "deadline": "2024-07-30",
-        "references": ["3.webp"],
+        "references": [],
         "type": "Panel Layout",
         "extras": ["Detailed Background"],
         "fastDelivery": false,
         "commercialUse": false,
         "price": 80
+    },
+    {
+        "id": 4,
+        "artistId": 2,
+        "customerId": 1,
+        "serviceId": 7,
+        "state": {
+            "value": "finished",
+            "progress": [
+                {
+                    "name": "Initial Sketch",
+                    "date": "2024-08-07",
+                    "feedback": "",
+                    "approval": null,
+                    "sample": "9.png"
+                },
+                {
+                    "name": "Final Doodle",
+                    "date": "2024-08-10",
+                    "feedback": "",
+                    "approval": null,
+                    "sample": "7.webp"
+                }
+            ]
+        },
+        "brief": "Can you draw Zhongli from Genshin Impact holding his ultimate cube (similar to pose from the splash art). He should be wearing his white hood from his archon form. To this left, also include a box labelled 'Osmanthus wine'.",
+        "start": "2024-08-05",
+        "deadline": "2024-08-15",
+        "references": ["8.webp"],
+        "type": "Single Doodle",
+        "extras": ["Colour"],
+        "fastDelivery": false,
+        "commercialUse": false,
+        "price": 35
+    },
+    {
+        "id": 5,
+        "artistId": 2,
+        "customerId": 1,
+        "serviceId": 7,
+        "state": {
+            "value": "active",
+            "progress": [
+                {
+                    "name": "Initial Sketch",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                },
+                {
+                    "name": "Final Doodle",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                }
+            ]
+        },
+        "brief": "Draw Ononoki in any pose you want - Remember that she is expressionless (only her face, not her body)",
+        "start": "2024-09-10",
+        "deadline": "2024-09-27",
+        "references": ["10.webp"],
+        "type": "Single Doodle",
+        "extras": ["Shading"],
+        "fastDelivery": false,
+        "commercialUse": false,
+        "price": 40
+    },
+    {
+        "id": 6,
+        "artistId": 4,
+        "customerId": 1,
+        "serviceId": 6,
+        "state": {
+            "value": "rejected",
+            "progress": [
+                {
+                    "name": "Initial Sketch",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                },
+                {
+                    "name": "Final Doodle",
+                    "date": null,
+                    "feedback": "",
+                    "approval": null,
+                    "sample": ""
+                }
+            ]
+        },
+        "brief": "Can you draw Marisa from the Touhou Project locked in like the Gi-hun meme from Squid Game S2? Emphasize the intense expression - do shading on the face from the left.",
+        "start": "2024-08-23",
+        "deadline": "2024-09-13",
+        "references": ["6.png", "5.webp"],
+        "type": "Single Character",
+        "extras": ["Shading"],
+        "fastDelivery": false,
+        "commercialUse": false,
+        "price": 110
     }
 ]

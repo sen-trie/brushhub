@@ -67,7 +67,7 @@
                                 ? 'In Progress'
                                 : request.state.value === 'rejected'
                                 ? 'Rejected'
-                                : request.state.value === 'completed'
+                                : request.state.value === 'finished'
                                 ? 'Completed'
                                 : 'Cancelled'}
                         </p>
