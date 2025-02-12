@@ -8,34 +8,34 @@
             dp: '1.jpg',
             role: 'Developer / Animator',
             links: {
-                'https://sen-trie.github.io/portfolio/': 'Portfolio',
-                'https://github.com/sen-trie/': 'Github'
+                'Portfolio': 'https://sen-trie.github.io/portfolio/',
+                'Github': 'https://github.com/sen-trie/'
             }
         }, {
-            name: '_',
-            dp: '',
-            role: '_',
+            name: 'Emaan Tariq',
+            dp: '20.jpg',
+            role: 'Designer',
             links: {
-                '__': '_',
-                '_': '_'
-            }
-        }, {
-            name: '_',
-            dp: '',
-            role: '_',
-            links: {
-                '__': '_',
-                '_': '_'
-            }
-        }, {
-            name: '_',
-            dp: '',
-            role: '_',
-            links: {
-                '__': '_',
-                '_': '_'
+                'LinkedIn': 'https://www.linkedin.com/in/emaantariq/',
             }
         }
+        // }, {
+        //     name: '_',
+        //     dp: '',
+        //     role: '_',
+        //     links: {
+        //         '__': '_',
+        //         '_': '_'
+        //     }
+        // }, {
+        //     name: '_',
+        //     dp: '',
+        //     role: '_',
+        //     links: {
+        //         '__': '_',
+        //         '_': '_'
+        //     }
+        // }
     ]
 </script>
 
@@ -45,19 +45,19 @@
 
 {#snippet card(creator: Record<string, any>)}
     <div class="card-container flex w-auto items-center space-x-4 p-6 py-3">
-        <img
+        <!-- <img
             src={wrapDefault('dp', creator.dp)}
             alt={`${creator.name}'s avatar`}
             class="h-16 w-16 rounded-full border border-gray-700 shadow"
-        />
+        /> -->
         <div class="flex-1">
             <p class="text-lg font-semibold">@{creator.name}</p>
             <p class="text-sm sub-heading mb-1">{creator.role}</p>
             <div class="text-sm flex flex-col">
-                {#each Object.entries(creator.links) as [link, text]}
+                {#each Object.entries(creator.links) as [text, link]}
                     <div class="flex justify-start items-center space-x-1">
                         <Icon src={Link} size="16" />
-                        <a class="text-blue-500 dark:text-blue-100" href={link}>{text}</a>
+                        <a class="text-blue-500 dark:text-blue-100" href={link as string}>{text}</a>
                     </div>
                 {/each}
             </div>
@@ -78,7 +78,7 @@
         </div>
         <div>    
             <p>Creators</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 p-2">
                 {#each creatorArray as creator}
                     {@render card(creator)}
                 {/each}

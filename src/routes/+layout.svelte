@@ -27,7 +27,7 @@
                     {@render children()}
                 </div>
                 <footer class="text-center sub-heading text-sm pb-4 sm:pb-2">
-                    © {new Date().getFullYear()} sentrie. All rights reserved. Demonstration purposes only
+                    © sentrie. All rights reserved. Demonstration purposes only
                 </footer>
             </div>
         </div>
